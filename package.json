@@ -221,5 +221,6 @@
     "type": "opencollective",
     "url": "https://opencollective.com/bootstrap-vue",
     "logo": "https://opencollective.com/bootstrap-vue/logo.txt"
-  }
+  },
+  "packageManager": "yarn@3.2.1"
 }

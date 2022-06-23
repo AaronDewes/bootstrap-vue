@@ -17,3 +17,9 @@ RELEASE-NOTES.md
 package-lock.json
 sw.js
 workbox*.js*
+.yarn/*
+!.yarn/patches
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
