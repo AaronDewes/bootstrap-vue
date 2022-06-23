@@ -1,10 +1,8 @@
-import Vue from 'vue'
+import { Vue, isVue3 } from 'vue-demi'
 import { mergeData } from 'vue-functional-data-merge'
 
 // --- Constants ---
 const COMPONENT_UID_KEY = '_uid'
-
-const isVue3 = Vue.version.startsWith('3')
 
 const ALLOWED_FIELDS_IN_DATA = [
   'class',
