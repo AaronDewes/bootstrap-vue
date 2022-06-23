@@ -4401,10 +4401,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"bootstrap-icons@npm:^1.5.0":
-  version: 1.5.0
-  resolution: "bootstrap-icons@npm:1.5.0"
-  checksum: d36851ad6bf315d20589a7a7f4b513f867a4c55d85ac6881644c0261be56185307cde3f1968f326922a7a925c65897543ca9889ab3054e3a0e4a98005fcb7f4a
+"bootstrap-icons@npm:^1.8.3":
+  version: 1.8.3
+  resolution: "bootstrap-icons@npm:1.8.3"
+  checksum: c7f9cac462f1dce1798a067b5185968206b8e71d8e2934bcdae437b3eb94a624de7860f628d920d68ab5f744948ac5251d00812a90d21fc8fc0d4757b567e6ca
   languageName: node
   linkType: hard
 
@@ -4435,7 +4435,7 @@ __metadata:
     babel-jest: ^26.6.3
     babel-plugin-istanbul: ^6.0.0
     bootstrap: ">=4.5.3 <5.0.0"
-    bootstrap-icons: ^1.5.0
+    bootstrap-icons: ^1.8.3
     bundlewatch: ^0.3.2
     clean-css-cli: ^4.3.0
     codemirror: ^5.61.0
