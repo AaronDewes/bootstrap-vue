@@ -25,15 +25,35 @@
               <b-media-aside vertical-align="center">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 408" width="30px" height="30px">
                   <defs>
-                    <linearGradient id="bs-logo-a" x1="76.079" x2="523.48" y1="10.798" y2="365.945" gradientUnits="userSpaceOnUse">
+                    <linearGradient
+                      id="bs-logo-a"
+                      x1="76.079"
+                      x2="523.48"
+                      y1="10.798"
+                      y2="365.945"
+                      gradientUnits="userSpaceOnUse">
                       <stop stop-color="#9013fe"/>
                       <stop offset="1" stop-color="#6610f2"/>
                     </linearGradient>
-                    <linearGradient id="bs-logo-b" x1="193.508" x2="293.514" y1="109.74" y2="278.872" gradientUnits="userSpaceOnUse">
+                    <linearGradient
+                      id="bs-logo-b"
+                      x1="193.508"
+                      x2="293.514"
+                      y1="109.74"
+                      y2="278.872"
+                      gradientUnits="userSpaceOnUse">
                       <stop stop-color="#fff"/>
                       <stop offset="1" stop-color="#f1e5fc"/>
                     </linearGradient>
-                    <filter xmlns="http://www.w3.org/2000/svg" id="bs-logo-c" width="197" height="249" x="161.901" y="83.457" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
+                    <filter
+                      id="bs-logo-c"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="197"
+                      height="249"
+                      x="161.901"
+                      y="83.457"
+                      color-interpolation-filters="sRGB"
+                      filterUnits="userSpaceOnUse">
                       <feFlood flood-opacity="0" result="BackgroundImageFix"/>
                       <feColorMatrix in="SourceAlpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/><feOffset dy="4"/>
                       <feGaussianBlur stdDeviation="8"/><feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.15 0"/>
