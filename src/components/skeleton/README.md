@@ -13,7 +13,7 @@
         <b-progress-bar :value="loadingTime" :label="`${((loadingTime / maxLoadingTime) * 100).toFixed(2)}%`"></b-progress-bar>
       </b-progress>
 
-      <b-button class="ml-3" @click="startLoading()">Reload</b-button>
+      <b-button class="ms-3" @click="startLoading()">Reload</b-button>
     </div>
 
     <b-skeleton-wrapper :loading="loading">

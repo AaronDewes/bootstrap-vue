@@ -736,7 +736,7 @@ This example also demonstrates additional accessibility markup.
           >
             <p><strong id="form-confirm-label">Are you sure?</strong></p>
             <div class="d-flex">
-              <b-button variant="outline-danger" class="mr-3" @click="onCancel">
+              <b-button variant="outline-danger" class="me-3" @click="onCancel">
                 Cancel
               </b-button>
               <b-button variant="outline-success" @click="onOK">OK</b-button>

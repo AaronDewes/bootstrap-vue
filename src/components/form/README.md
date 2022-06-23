@@ -131,16 +131,16 @@ visitors with class `.sr-only`.
     <label class="sr-only" for="inline-form-input-name">Name</label>
     <b-form-input
       id="inline-form-input-name"
-      class="mb-2 mr-sm-2 mb-sm-0"
+      class="mb-2 me-sm-2 mb-sm-0"
       placeholder="Jane Doe"
     ></b-form-input>
 
     <label class="sr-only" for="inline-form-input-username">Username</label>
-    <b-input-group prepend="@" class="mb-2 mr-sm-2 mb-sm-0">
+    <b-input-group prepend="@" class="mb-2 me-sm-2 mb-sm-0">
       <b-form-input id="inline-form-input-username" placeholder="Username"></b-form-input>
     </b-input-group>
 
-    <b-form-checkbox class="mb-2 mr-sm-2 mb-sm-0">Remember me</b-form-checkbox>
+    <b-form-checkbox class="mb-2 me-sm-2 mb-sm-0">Remember me</b-form-checkbox>
 
     <b-button variant="primary">Save</b-button>
   </b-form>
@@ -154,15 +154,15 @@ Custom form controls and selects are also supported.
 ```html
 <div>
   <b-form inline>
-    <label class="mr-sm-2" for="inline-form-custom-select-pref">Preference</label>
+    <label class="me-sm-2" for="inline-form-custom-select-pref">Preference</label>
     <b-form-select
       id="inline-form-custom-select-pref"
-      class="mb-2 mr-sm-2 mb-sm-0"
+      class="mb-2 me-sm-2 mb-sm-0"
       :options="[{ text: 'Choose...', value: null }, 'One', 'Two', 'Three']"
       :value="null"
     ></b-form-select>
 
-    <b-form-checkbox class="mb-2 mr-sm-2 mb-sm-0">Remember my preference</b-form-checkbox>
+    <b-form-checkbox class="mb-2 me-sm-2 mb-sm-0">Remember my preference</b-form-checkbox>
 
     <b-button variant="primary">Save</b-button>
   </b-form>

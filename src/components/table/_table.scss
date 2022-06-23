@@ -68,7 +68,7 @@
     > td {
       // Important is needed to override the standard `bg-variants`
       // as the also use `!important`
-      background-color: $table-dark-active-bg !important;
+      //background-color: $table-dark-active-bg !important;
     }
   }
 
@@ -76,11 +76,11 @@
   &.table-hover.table-dark > tbody > tr.bg-active:hover {
     td,
     th {
-      color: $table-dark-hover-color;
+      //color: $table-dark-hover-color;
       // `$table-dark-hover-bg` default is a very transparent white
       // We overlay it over the background color to achieve the
       // same color effect while keeping the background solid
-      background-image: linear-gradient($table-dark-hover-bg, $table-dark-hover-bg);
+      //background-image: linear-gradient($table-dark-hover-bg, $table-dark-hover-bg);
       background-repeat: no-repeat;
     }
   }
@@ -193,9 +193,9 @@
         > tfoot {
           > tr > .bg-b-table-default {
             // Default cell color in table dark mode
-            color: $table-dark-color;
+            //color: $table-dark-color;
             // Default cell background color in table dark mode
-            background-color: $table-dark-bg;
+            //background-color: $table-dark-bg;
           }
         }
       }
@@ -216,7 +216,7 @@
             // `$table-dark-accent-bg` (used for striping) default is a very transparent white
             // We overlay it over the background color to achieve the same color
             // effect while keeping the background solid.
-            background-image: linear-gradient($table-dark-accent-bg, $table-dark-accent-bg);
+            //background-image: linear-gradient($table-dark-accent-bg, $table-dark-accent-bg);
             background-repeat: no-repeat;
           }
         }
@@ -236,11 +236,11 @@
 
         &.table-dark {
           > tbody > tr:hover > .bg-b-table-default {
-            color: $table-dark-hover-color;
+            //color: $table-dark-hover-color;
             // `$table-dark-hover-bg` default is a very transparent white
             // We overlay it over the background color to achieve the same color
             // effect while keeping the background solid.
-            background-image: linear-gradient($table-dark-hover-bg, $table-dark-hover-bg);
+            //background-image: linear-gradient($table-dark-hover-bg, $table-dark-hover-bg);
             background-repeat: no-repeat;
           }
         }
@@ -280,14 +280,14 @@ $bv-escaped-characters: (("<", "%3c"), (">", "%3e"), ("#", "%23"));
 
         &:not(.b-table-sort-icon-left) {
           // Default is icon on the right
-          background-position: right calc(#{$table-cell-padding} / 2) center;
-          padding-right: calc(#{$table-cell-padding} + #{$b-table-sort-icon-bg-width});
+          background-position: right calc(#{$table-cell-padding-x} / 2) center;
+          padding-right: calc(#{$table-cell-padding-x} + #{$b-table-sort-icon-bg-width});
         }
 
         &.b-table-sort-icon-left {
           // Left aligned sort icon
-          background-position: left calc(#{$table-cell-padding} / 2) center;
-          padding-left: calc(#{$table-cell-padding} + #{$b-table-sort-icon-bg-width});
+          background-position: left calc(#{$table-cell-padding-x} / 2) center;
+          padding-left: calc(#{$table-cell-padding-x} + #{$b-table-sort-icon-bg-width});
         }
       }
 
@@ -345,14 +345,14 @@ $bv-escaped-characters: (("<", "%3c"), (">", "%3e"), ("#", "%23"));
       > tr > [aria-sort] {
         &:not(.b-table-sort-icon-left) {
           // Default is icon on the right
-          background-position: right calc(#{$table-cell-padding-sm} / 2) center;
-          padding-right: calc(#{$table-cell-padding-sm} + #{$b-table-sort-icon-bg-width});
+          background-position: right calc(#{$table-cell-padding-x-sm} / 2) center;
+          padding-right: calc(#{$table-cell-padding-x-sm} + #{$b-table-sort-icon-bg-width});
         }
 
         &.b-table-sort-icon-left {
           // Left aligned sort icon
-          background-position: left calc(#{$table-cell-padding-sm} / 2) center;
-          padding-left: calc(#{$table-cell-padding-sm} + #{$b-table-sort-icon-bg-width});
+          background-position: left calc(#{$table-cell-padding-x-sm} / 2) center;
+          padding-left: calc(#{$table-cell-padding-x-sm} + #{$b-table-sort-icon-bg-width});
         }
       }
     }

@@ -49,13 +49,13 @@
               <b-card-text class="flex-grow-1">{{ theme.description }}</b-card-text>
               <b-card-text class="text-muted small">
                 <span class="d-block d-lg-inline-block mb-2 mb-lg-0"><strong>Category:</strong> {{ theme.category }}</span>
-                <span class="d-block d-lg-inline-block ml-lg-3"><i><strong>Provided by:</strong> {{ theme.provider }}</i></span>
+                <span class="d-block d-lg-inline-block ms-lg-3"><i><strong>Provided by:</strong> {{ theme.provider }}</i></span>
               </b-card-text>
               <b-card-text class="d-flex align-items-center">
                 <b-button :href="theme.href" target="_blank" variant="bd-primary">
                   Get {{ theme.type || 'theme' }}
                 </b-button>
-                <span v-if="theme.price" class="text-muted position-relative ml-3">
+                <span v-if="theme.price" class="text-muted position-relative ms-3">
                   <strong>Price:</strong> {{ theme.price }}<b-link href="#theme-notes" title="See notes">*</b-link>
                 </span>
               </b-card-text>

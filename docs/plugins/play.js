@@ -112,7 +112,7 @@ const processExamples = (el, binding, vnode) => {
     pre.textContent = text
 
     // Highlight again
-    hljs.highlightBlock(pre)
+    hljs.highlightElement(pre)
 
     // Add editable class
     pre.classList.add(CLASS_NAMES_EDITABLE)
@@ -135,7 +135,7 @@ const processExamples = (el, binding, vnode) => {
 
       pre.onblur = () => {
         // Re-highlight
-        hljs.highlightBlock(pre)
+        hljs.highlightElement(pre)
         // Store "previous" content on pre element
         pre.$_v_play_content = pre.textContent.trim()
       }

@@ -387,9 +387,9 @@ component.
     <b-toast id="my-toast" variant="warning" solid>
       <template #toast-title>
         <div class="d-flex flex-grow-1 align-items-baseline">
-          <b-img blank blank-color="#ff5555" class="mr-2" width="12" height="12"></b-img>
-          <strong class="mr-auto">Notice!</strong>
-          <small class="text-muted mr-2">42 seconds ago</small>
+          <b-img blank blank-color="#ff5555" class="me-2" width="12" height="12"></b-img>
+          <strong class="me-auto">Notice!</strong>
+          <small class="text-muted me-2">42 seconds ago</small>
         </div>
       </template>
       This is the content of the toast.
@@ -512,10 +512,10 @@ for generating more complex toast content:
         // Create the title
         const vNodesTitle = h(
           'div',
-          { class: ['d-flex', 'flex-grow-1', 'align-items-baseline', 'mr-2'] },
+          { class: ['d-flex', 'flex-grow-1', 'align-items-baseline', 'me-2'] },
           [
-            h('strong', { class: 'mr-2' }, 'The Title'),
-            h('small', { class: 'ml-auto text-italics' }, '5 minutes ago')
+            h('strong', { class: 'me-2' }, 'The Title'),
+            h('small', { class: 'ms-auto text-italics' }, '5 minutes ago')
           ]
         )
         // Pass the VNodes as an array for message and title
@@ -635,12 +635,12 @@ provides general guidelines when using toasts.
 - For toasts with long textual content, adjust the `auto-hide-delay` to a larger timeout, to allow
   users time to read the content of the toast. The average person reads about 200 words per minute,
   so a good length of time to keep messages up is 5 seconds, plus 300 extra milliseconds per word.
-  The shortest default that should be used as a best practice is 5
-  seconds (5000ms). In addition to a reasonable default timeout, you could also allow the user to
-  choose how long they want toasts to stay up for. Most people inherently understand whether they
-  are fast or slow readers. Having a profile setting that is part of the user login will allow slow
-  readers to pick a longer time if the messages are going away too fast, and fast readers to pick a
-  short time if the messages are staying up too long.
+  The shortest default that should be used as a best practice is 5 seconds (5000ms). In addition to
+  a reasonable default timeout, you could also allow the user to choose how long they want toasts to
+  stay up for. Most people inherently understand whether they are fast or slow readers. Having a
+  profile setting that is part of the user login will allow slow readers to pick a longer time if
+  the messages are going away too fast, and fast readers to pick a short time if the messages are
+  staying up too long.
 - To account for memory loss and distraction as well as disability-related issues such as ADHD, a
   best practice would be to implement a location where users can refer to a list of past toast
   messages which have been shown. Preferably this list should be sortable, with the default being

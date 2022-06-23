@@ -10,7 +10,7 @@
 
         <b-col cols="auto" md="4" class="text-left">
           <h5 class="bd-text-purple-bright mb-1">Documentation</h5>
-          <ul class="list-unstyled ml-3">
+          <ul class="list-unstyled ms-3">
             <li><b-link to="/" exact>Home</b-link></li>
             <li><b-link to="/docs" exact>Getting Started</b-link></li>
             <li><b-link to="/docs/components" exact>Components</b-link></li>
@@ -20,21 +20,21 @@
             <li><b-link to="/play" exact>Playground</b-link></li>
           </ul>
           <h5 class="bd-text-purple-bright mb-1 mt-3">Themes</h5>
-          <ul class="list-unstyled ml-3">
+          <ul class="list-unstyled ms-3">
             <li><b-link to="/themes" exact>Themes and dashboards</b-link></li>
           </ul>
         </b-col>
 
         <b-col cols="auto" class="text-left">
           <h5 class="bd-text-purple-bright mb-1">Community</h5>
-          <ul class="list-unstyled ml-3">
+          <ul class="list-unstyled ms-3">
             <li><a href="https://github.com/bootstrap-vue/bootstrap-vue" target="_blank">GitHub</a></li>
             <li><a href="https://discord.gg/j2Mtcny" target="_blank">Discord chat</a></li>
             <li><a href="https://twitter.com/BootstrapVue" target="_blank">Twitter</a></li>
             <li><a href="https://opencollective.com/bootstrap-vue/" target="_blank">Open Collective</a></li>
           </ul>
           <h5 class="bd-text-purple-bright mb-1 mt-3">Release notes</h5>
-          <ul class="list-unstyled ml-3">
+          <ul class="list-unstyled ms-3">
             <li><b-link to="/docs/reference/changelog" exact>Changelog</b-link></li>
           </ul>
         </b-col>

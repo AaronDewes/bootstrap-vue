@@ -939,7 +939,7 @@ export const BCalendar = Vue.extend({
     const $gridCaption = h(
       'div',
       {
-        staticClass: 'b-calendar-grid-caption text-center font-weight-bold',
+        staticClass: 'b-calendar-grid-caption text-center fw-bold',
         class: { 'text-muted': disabled },
         attrs: {
           id: gridCaptionId,
@@ -1006,7 +1006,7 @@ export const BCalendar = Vue.extend({
               'text-muted': !day.isThisMonth && !isSelected,
               'text-dark':
                 !(isToday && highlightToday) && !isSelected && !isActive && day.isThisMonth,
-              'font-weight-bold': (isSelected || day.isThisMonth) && !day.isDisabled
+              'fw-bold': (isSelected || day.isThisMonth) && !day.isDisabled
             },
             on: { click: () => this.onClickDay(day) }
           },

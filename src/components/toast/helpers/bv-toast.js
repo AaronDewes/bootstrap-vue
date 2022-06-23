@@ -132,7 +132,7 @@ const plugin = Vue => {
         // Can be a string, or array of VNodes
         if (prop === 'title' && isString(value)) {
           // Special case for title if it is a string, we wrap in a <strong>
-          value = [parent.$createElement('strong', { class: 'mr-2' }, value)]
+          value = [parent.$createElement('strong', { class: 'me-2' }, value)]
         }
         toast.$slots[propsToSlots[prop]] = concat(value)
       }

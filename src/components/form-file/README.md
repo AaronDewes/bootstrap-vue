@@ -247,7 +247,7 @@ All three properties are always arrays, regardless of the setting of the `multip
   <b-form-file multiple>
    <template slot="file-name" slot-scope="{ names }">
      <b-badge variant="dark">{{ names[0] }}</b-badge>
-     <b-badge v-if="names.length > 1" variant="dark" class="ml-1">
+     <b-badge v-if="names.length > 1" variant="dark" class="ms-1">
        + {{ names.length - 1 }} More files
      </b-badge>
    </template>
@@ -312,7 +312,7 @@ input. To take advantage of the `reset()` method, you will need to obtain a refe
   <div>
     <b-form-file v-model="file" ref="file-input" class="mb-2"></b-form-file>
 
-    <b-button @click="clearFiles" class="mr-2">Reset via method</b-button>
+    <b-button @click="clearFiles" class="me-2">Reset via method</b-button>
     <b-button @click="file = null">Reset via v-model</b-button>
 
     <p class="mt-2">Selected file: <b>{{ file ? file.name : '' }}</b></p>

@@ -219,7 +219,7 @@ const options = [
 ### Changing the option field names
 
 If you want to customize the field property names (for example using `name` field for display
-`text`) you can easily change them by setting the `text-field`, `html-field`, `value-field`, and
+`text`) you can easily change them by setting the `text-field`, `htms-field`, `value-field`, and
 `disabled-field` props to a string that contains the property name you would like to use:
 
 ```html

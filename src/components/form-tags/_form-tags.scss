@@ -62,9 +62,10 @@
 }
 
 .form-control-sm .b-form-tag {
-  line-height: $input-line-height-sm;
+  // TODO: This and the below were -sm and -lg variants
+  line-height: $input-line-height;
 }
 
 .form-control-lg .b-form-tag {
-  line-height: $input-line-height-lg;
+  line-height: $input-line-height;
 }

@@ -176,7 +176,7 @@ the addon:
 <div>
   <b-input-group class="mb-2">
     <b-input-group-prepend is-text>
-      <b-form-checkbox class="mr-n2">
+      <b-form-checkbox class="me-n2">
         <span class="sr-only">Checkbox for following text input</span>
       </b-form-checkbox>
     </b-input-group-prepend>
@@ -185,7 +185,7 @@ the addon:
 
   <b-input-group class="mb-2">
     <b-input-group-prepend is-text>
-      <b-form-radio class="mr-n2">
+      <b-form-radio class="me-n2">
         <span class="sr-only">Radio for following text input</span>
       </b-form-radio>
     </b-input-group-prepend>
@@ -194,7 +194,7 @@ the addon:
 
   <b-input-group>
     <b-input-group-prepend is-text>
-      <b-form-checkbox switch class="mr-n2">
+      <b-form-checkbox switch class="me-n2">
         <span class="sr-only">Switch for following text input</span>
       </b-form-checkbox>
     </b-input-group-prepend>
@@ -207,7 +207,7 @@ the addon:
 
 In the above example, we have use the `.sr-only` class on a `<span>` to visually hide the custom
 control's label content (while making them still accessible to screen reader users), and used the
-utility class `.mr-n2` to add a negative right margin to compensate for the "gutter" space between
+utility class `.me-n2` to add a negative right margin to compensate for the "gutter" space between
 the control and the hidden label.
 
 ## Multiple inputs
@@ -304,7 +304,7 @@ required to make everything fit correctly, depending on the size chosen:
   <b-input-group size="sm" prepend="Small" class="mb-2">
     <b-form-input aria-label="Small text input with custom switch"></b-form-input>
     <b-input-group-append is-text>
-      <b-form-checkbox switch class="mr-n2 mb-n1">
+      <b-form-checkbox switch class="me-n2 mb-n1">
         <span class="sr-only">Checkbox for previous text input</span>
       </b-form-checkbox>
     </b-input-group-append>
@@ -313,7 +313,7 @@ required to make everything fit correctly, depending on the size chosen:
   <b-input-group size="lg" prepend="Large" class="mb-2">
     <b-form-input aria-label="Large text input with switch"></b-form-input>
     <b-input-group-append is-text>
-      <b-form-checkbox switch class="mr-n2">
+      <b-form-checkbox switch class="me-n2">
         <span class="sr-only">Switch for previous text input</span>
       </b-form-checkbox>
     </b-input-group-append>

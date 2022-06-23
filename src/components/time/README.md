@@ -175,7 +175,7 @@ can be used to add buttons such as Now or Reset, etc.
       <b-button
         size="sm"
         variant="outline-primary"
-        class="ml-auto"
+        class="ms-auto"
         @click="setNow"
       >
         Set Now

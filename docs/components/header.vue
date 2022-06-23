@@ -1,7 +1,7 @@
 <template>
   <b-navbar tag="header" type="dark" class="bd-navbar flex-column flex-md-row">
     <b-navbar-brand
-      class="mr-0 mr-md-2"
+      class="me-0 me-md-2"
       to="/"
       exact
       active-class="active"
@@ -40,10 +40,10 @@
       </b-navbar-nav>
     </div>
 
-    <b-navbar-nav class="flex-row ml-md-auto d-none d-md-flex">
+    <b-navbar-nav class="flex-row ms-md-auto d-none d-md-flex">
       <b-nav-item-dropdown
         :text="dropdownText"
-        toggle-class="mr-md-2"
+        toggle-class="me-md-2"
         right
       >
         <template v-if="isPR || isDev || isLocal">

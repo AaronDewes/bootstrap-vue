@@ -699,7 +699,7 @@ font scaled by 125%).
 <template>
   <div>
     <b-button-toolbar>
-      <b-button-group class="mr-1">
+      <b-button-group class="me-1">
         <b-button title="Save file">
           <b-icon icon="cloud-upload" aria-hidden="true"></b-icon>
         </b-button>
@@ -710,7 +710,7 @@ font scaled by 125%).
           <b-icon icon="file-earmark" aria-hidden="true"></b-icon>
         </b-button>
       </b-button-group>
-      <b-button-group class="mr-1">
+      <b-button-group class="me-1">
         <b-button title="Align left">
           <b-icon icon="text-left" aria-hidden="true"></b-icon>
         </b-button>

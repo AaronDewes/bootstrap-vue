@@ -507,7 +507,7 @@ export const BTime = /*#__PURE__*/ Vue.extend({
     if (this.is12Hour) {
       // TODO:
       //   If locale is RTL, unshift this instead of push?
-      //   And switch class `ml-2` to `mr-2`
+      //   And switch class `ms-2` to `me-2`
       //   Note some LTR locales (i.e. zh) also place AM/PM to the left
       $spinners.push(
         makeSpinbutton(this.setAmpm, 'ampm', 'b-time-ampm', {

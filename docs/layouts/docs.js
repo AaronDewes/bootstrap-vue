@@ -39,12 +39,12 @@ export default {
       'b-col',
       {
         staticClass: 'bd-content',
-        class: ['pb-md-3', 'pl-md-5'],
+        class: ['pb-md-3', 'ps-md-5'],
         props: { cols: 12, md: 9, xl: 8 }
       },
       [
-        h(BVBreadcrumbs, { class: ['float-left', 'mt-2', 'mb-0', 'mb-lg-2'] }),
-        h(BVFeedback, { class: ['float-right', 'mt-2', 'mb-0', 'mb-lg-2'] }),
+        h(BVBreadcrumbs, { class: ['float-start', 'mt-2', 'mb-0', 'mb-lg-2'] }),
+        h(BVFeedback, { class: ['float-end', 'mt-2', 'mb-0', 'mb-lg-2'] }),
         h('div', { class: ['clearfix', 'd-block'], ref: 'clearfix' }),
         h('nuxt')
       ]

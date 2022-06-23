@@ -105,9 +105,9 @@ export const BImg = /*#__PURE__*/ Vue.extend({
       sizes = null
     }
     if (props.left) {
-      align = 'float-left'
+      align = 'float-start'
     } else if (props.right) {
-      align = 'float-right'
+      align = 'float-end'
     } else if (props.center) {
       align = 'mx-auto'
       block = true

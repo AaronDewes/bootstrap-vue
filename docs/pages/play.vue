@@ -69,11 +69,11 @@
         md="auto"
         class="mt-2 mt-md-0"
       >
-        <b class="d-block d-sm-inline-block mr-sm-2 mb-1 mb-sm-0">Export to</b>
+        <b class="d-block d-sm-inline-block me-sm-2 mb-1 mb-sm-0">Export to</b>
 
         <!-- Export to CodePen -->
         <b-form
-          class="d-inline-block mr-1 notranslate"
+          class="d-inline-block me-1 notranslate"
           translate="no"
           method="post"
           action="https://codepen.io/pen/define"
@@ -85,7 +85,7 @@
 
         <!-- Export to CodeSandbox -->
         <b-form
-          class="d-inline-block mr-1 notranslate"
+          class="d-inline-block me-1 notranslate"
           translate="no"
           method="post"
           action="https://codesandbox.io/api/v1/sandboxes/define"
@@ -245,7 +245,7 @@
                   :key="`console-${msg[2]}`"
                   class="py-2 d-flex"
                 >
-                  <b-badge :variant="msg[0]" class="mr-1" style="font-size:90%;">
+                  <b-badge :variant="msg[0]" class="me-1" style="font-size:90%;">
                     {{ msg[0] === 'danger' ? 'error' : msg[0] === 'warning' ? 'warn' : 'log' }}
                   </b-badge>
                   <span

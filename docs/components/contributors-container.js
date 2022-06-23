@@ -112,7 +112,7 @@ export default {
           'mx-n2',
           'text-center',
           'justify-content-center',
-          'font-weight-bold'
+          'fw-bold'
         ]
       }),
       contributors.map(contributor => renderContributor(contributor))

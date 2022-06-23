@@ -114,14 +114,14 @@ also be active. Scroll the area next to the navbar and watch the active class ch
           <b-nav pills vertical>
             <b-nav-item href="#item-1">Item 1</b-nav-item>
             <b-nav pills vertical>
-              <b-nav-item class="ml-3 my-1" href="#item-1-1">Item 1-1</b-nav-item>
-              <b-nav-item class="ml-3 my-1" href="#item-1-2">Item 1-2</b-nav-item>
+              <b-nav-item class="ms-3 my-1" href="#item-1-1">Item 1-1</b-nav-item>
+              <b-nav-item class="ms-3 my-1" href="#item-1-2">Item 1-2</b-nav-item>
             </b-nav>
             <b-nav-item href="#item-2">Item 2</b-nav-item>
             <b-nav-item href="#item-3">Item 3</b-nav-item>
             <b-nav pills vertical>
-              <b-nav-item class="ml-3 my-1" href="#item-3-1">Item 3-1</b-nav-item>
-              <b-nav-item class="ml-3 my-1" href="#item-3-2">Item 3-2</b-nav-item>
+              <b-nav-item class="ms-3 my-1" href="#item-3-1">Item 3-1</b-nav-item>
+              <b-nav-item class="ms-3 my-1" href="#item-3-2">Item 3-2</b-nav-item>
             </b-nav>
           </b-nav>
         </b-navbar>

@@ -58,7 +58,7 @@ In the following, we are swapping icons and text color depending on the hover st
     <div v-b-hover="handleHover" class="border rounded py-3 px-4">
       <b-icon v-if="isHovered" icon="battery-full" scale="2"></b-icon>
       <b-icon v-else icon="battery" scale="2"></b-icon>
-      <span class="ml-2" :class="isHovered ? 'text-danger' : ''">Hover this area</span>
+      <span class="ms-2" :class="isHovered ? 'text-danger' : ''">Hover this area</span>
     </div>
   </div>
 </template>

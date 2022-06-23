@@ -2222,6 +2222,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@popperjs/core@npm:^2.11.5":
+  version: 2.11.5
+  resolution: "@popperjs/core@npm:2.11.5"
+  checksum: fd7f9dca3fb716d7426332b6ee283f88d2724c0ab342fb678865a640bad403dfb9eeebd8204a406986162f7e2b33394f104320008b74d0e9066d7322f70ea35d
+  languageName: node
+  linkType: hard
+
 "@sinonjs/commons@npm:^1.7.0":
   version: 1.8.3
   resolution: "@sinonjs/commons@npm:1.8.3"
@@ -4433,6 +4440,7 @@ __metadata:
     "@nuxtjs/pwa": ^3.3.5
     "@nuxtjs/robots": ^2.5.0
     "@nuxtjs/sitemap": ^2.4.0
+    "@popperjs/core": ^2.11.5
     "@testing-library/jest-dom": ^5.12.0
     "@vue/compat": ^3.2.24
     "@vue/compiler-dom": ^3.2.24
@@ -4446,6 +4454,7 @@ __metadata:
     babel-plugin-istanbul: ^6.0.0
     bootstrap: ">=4.5.3 <5.0.0"
     bootstrap-icons: ^1.8.3
+    bootstrap5: "npm:bootstrap@5.1.3"
     bundlewatch: ^0.3.2
     clean-css-cli: ^4.3.0
     codemirror: ^5.61.0
@@ -4475,7 +4484,6 @@ __metadata:
     lodash: ^4.17.21
     marked: ^2.0.3
     nuxt: ^2.15.8
-    popper.js: ^1.16.1
     portal-vue: ^2.1.7
     postcss: ^8.2.15
     postcss-cli: ^8.3.1
@@ -4498,6 +4506,15 @@ __metadata:
     vue-test-utils-compat: 0.0.3
   languageName: unknown
   linkType: soft
+
+"bootstrap5@npm:bootstrap@5.1.3":
+  version: 5.1.3
+  resolution: "bootstrap@npm:5.1.3"
+  peerDependencies:
+    "@popperjs/core": ^2.10.2
+  checksum: 301b5ed872efba061104cf22ac93568e3837867fb5527ab9326a51510fb752bd4883e1d488225c8be72f86d9d3a55ef5b166aa7fa62c2fdd077c3f05b65752f8
+  languageName: node
+  linkType: hard
 
 "bootstrap@npm:>=4.5.3 <5.0.0":
   version: 4.6.0
@@ -14262,13 +14279,6 @@ __metadata:
   dependencies:
     ts-pnp: ^1.1.6
   checksum: 0606a63db96400b07f182300168298da9518727a843f9e10cf5045d2a102a4be06bb18c73dc481281e3e0f1ed8d04ef0d285a342b6dcd0eff1340e28e5d2328d
-  languageName: node
-  linkType: hard
-
-"popper.js@npm:^1.16.1":
-  version: 1.16.1
-  resolution: "popper.js@npm:1.16.1"
-  checksum: c56ae5001ec50a77ee297a8061a0221d99d25c7348d2e6bcd3e45a0d0f32a1fd81bca29d46cb0d4bdf13efb77685bd6a0ce93f9eb3c608311a461f945fffedbe
   languageName: node
   linkType: hard
 

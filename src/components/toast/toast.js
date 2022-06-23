@@ -348,13 +348,13 @@ export const BToast = /*#__PURE__*/ Vue.extend({
       if ($title) {
         $headerContent.push($title)
       } else if (title) {
-        $headerContent.push(h('strong', { staticClass: 'mr-2' }, title))
+        $headerContent.push(h('strong', { staticClass: 'me-2' }, title))
       }
 
       if (!this.noCloseButton) {
         $headerContent.push(
           h(BButtonClose, {
-            staticClass: 'ml-auto mb-1',
+            staticClass: 'ms-auto mb-1',
             on: {
               click: () => {
                 this.hide()

@@ -93,7 +93,7 @@ renderer.link = (href, title, text) => {
     // External links use the default link style
   } else if (href.indexOf('/') === 0 || href.indexOf('#') === 0) {
     // Internal docs links
-    classAttr = ' class="font-weight-bold"'
+    classAttr = ' class="fw-bold"'
   }
   return `<a href="${href}"${classAttr}${title}${target}${rel}>${text}</a>`
 }
@@ -330,7 +330,7 @@ module.exports = {
   css: [
     'highlight.js/styles/atom-one-light.css',
     'codemirror/lib/codemirror.css',
-    'bootstrap/dist/css/bootstrap.css',
+    'bootstrap5/dist/css/bootstrap.css',
     '../scripts/index.scss', // BootstrapVue SCSS
     '@assets/css/docs.min.css',
     '@assets/scss/styles.scss'

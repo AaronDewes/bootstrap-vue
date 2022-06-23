@@ -238,7 +238,7 @@ that can be used to close the sidebar.
     <b-sidebar id="sidebar-footer" aria-label="Sidebar with custom footer" no-header shadow>
       <template #footer="{ hide }">
        <div class="d-flex bg-dark text-light align-items-center px-3 py-2">
-        <strong class="mr-auto">Footer</strong>
+        <strong class="me-auto">Footer</strong>
         <b-button size="sm" @click="hide">Close</b-button>
        </div>
       </template>

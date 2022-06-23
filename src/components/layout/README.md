@@ -627,23 +627,23 @@ the offset to `0` at a larger breakpoint:
 ### Margin utilities on columns
 
 With the move to flexbox in Bootstrap v4, you can use
-[margin and spacing](/docs/reference/spacing-classes) utility classes like `.mr-auto` to force
+[margin and spacing](/docs/reference/spacing-classes) utility classes like `.me-auto` to force
 sibling columns away from one another.
 
 ```html
 <b-container fluid class="text-light text-center">
   <b-row class="mb-3">
     <b-col md="4" class="p-3 bg-info">md="4"</b-col>
-    <b-col md="4" class="ml-auto p-3 bg-info">md="4" .ml-auto</b-col>
+    <b-col md="4" class="ms-auto p-3 bg-info">md="4" .ms-auto</b-col>
   </b-row>
 
   <b-row class="mb-3">
-    <b-col md="3" class="ml-md-auto p-3 bg-info">md="3" .ml-md-auto</b-col>
-    <b-col md="3" class="ml-md-auto p-3 bg-info">md="3" .ml-md-auto</b-col>
+    <b-col md="3" class="ms-md-auto p-3 bg-info">md="3" .ms-md-auto</b-col>
+    <b-col md="3" class="ms-md-auto p-3 bg-info">md="3" .ms-md-auto</b-col>
   </b-row>
 
   <b-row>
-    <b-col cols="auto" class="mr-auto p-3 bg-info">cols="auto" .mr-auto</b-col>
+    <b-col cols="auto" class="me-auto p-3 bg-info">cols="auto" .me-auto</b-col>
     <b-col cols="auto" class="p-3 bg-info">cols="auto"</b-col>
   </b-row>
 </b-container>
@@ -779,8 +779,8 @@ extra [flexbox utilities](/docs/reference/utility-classes) for sizing, alignment
 Use the `margin` and `padding` [spacing utilities](/docs/reference/utility-classes) to control how
 elements and components are spaced and sized. Bootstrap 4 includes a five-level scale for spacing
 utilities, based on a `1rem` value default SASS `$spacer` variable. Choose values for all viewports
-(e.g., `.mr-3` for `margin-right: 1rem`), or pick responsive variants to target specific viewports
-(e.g., `.mr-md-3` for `margin-right: 1rem` starting at the `md` breakpoint).
+(e.g., `.me-3` for `margin-right: 1rem`), or pick responsive variants to target specific viewports
+(e.g., `.me-md-3` for `margin-right: 1rem` starting at the `md` breakpoint).
 
 ### Toggle `visibility`
 

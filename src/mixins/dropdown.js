@@ -1,4 +1,4 @@
-import Popper from 'popper.js'
+import { createPopper } from '@popperjs/core'
 import { Vue } from '../vue'
 import { NAME_DROPDOWN } from '../constants/components'
 import { HAS_TOUCH_SUPPORT } from '../constants/env'
@@ -202,7 +202,7 @@ export const dropdownMixin = Vue.extend({
 
       // Only instantiate Popper.js when dropdown is not in `<b-navbar>`
       if (!this.inNavbar) {
-        if (typeof Popper === 'undefined') {
+        if (typeof createPopper === 'undefined') {
           /* istanbul ignore next */
           warn('Popper.js not found. Falling back to CSS positioning', NAME_DROPDOWN)
         } else {
@@ -237,7 +237,7 @@ export const dropdownMixin = Vue.extend({
     },
     createPopper(element) {
       this.destroyPopper()
-      this.$_popper = new Popper(element, this.$refs.menu, this.getPopperConfig())
+      this.$_popper = createPopper(element, this.$refs.menu, this.getPopperConfig())
     },
     // Ensure popper event listeners are removed cleanly
     destroyPopper() {

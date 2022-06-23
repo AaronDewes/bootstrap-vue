@@ -72,10 +72,10 @@ input[type="color"].form-control:disabled {
 
   > .custom-range {
     &:not(:last-child) {
-      @include border-right-radius(0);
+      @include border-end-radius(0);
     }
     &:not(:first-child) {
-      @include border-left-radius(0);
+      @include border-start-radius(0);
     }
   }
 

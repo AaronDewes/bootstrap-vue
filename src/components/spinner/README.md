@@ -157,7 +157,7 @@ Using flex utility classes:
 
   <div class="d-flex align-items-center">
     <strong>Loading...</strong>
-    <b-spinner class="ml-auto"></b-spinner>
+    <b-spinner class="ms-auto"></b-spinner>
   </div>
 </div>
 

@@ -965,7 +965,7 @@ scoped field slot.
   }
 </script>
 
-<!-- b-table-html-data-slots.vue -->
+<!-- b-table-htms-data-slots.vue -->
 ```
 
 <p class="alert alert-danger">
@@ -1455,7 +1455,7 @@ initially showing.
   <div>
     <b-table :items="items" :fields="fields" striped responsive="sm">
       <template #cell(show_details)="row">
-        <b-button size="sm" @click="row.toggleDetails" class="mr-2">
+        <b-button size="sm" @click="row.toggleDetails" class="me-2">
           {{ row.detailsShowing ? 'Hide' : 'Show'}} Details
         </b-button>
 
@@ -3048,7 +3048,7 @@ your app handles the various inconsistencies with events.
       </template>
 
       <template #cell(actions)="row">
-        <b-button size="sm" @click="info(row.item, row.index, $event.target)" class="mr-1">
+        <b-button size="sm" @click="info(row.item, row.index, $event.target)" class="me-1">
           Info modal
         </b-button>
         <b-button size="sm" @click="row.toggleDetails">

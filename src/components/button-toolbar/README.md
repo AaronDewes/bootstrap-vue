@@ -32,7 +32,7 @@
 ```html
 <div>
   <b-button-toolbar aria-label="Toolbar with button groups and input groups">
-    <b-button-group size="sm" class="mr-1">
+    <b-button-group size="sm" class="me-1">
       <b-button>Save</b-button>
       <b-button>Cancel</b-button>
     </b-button-group>

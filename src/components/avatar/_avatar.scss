@@ -33,7 +33,7 @@
     }
 
     &:not(:disabled):not(.disabled) {
-      cursor: if($enable-pointer-cursor-for-buttons, pointer, null);
+      cursor: if($enable-button-pointers, pointer, null);
 
       &:hover {
         .b-avatar-img img {

@@ -368,7 +368,7 @@ slot can be used to add buttons such as `Select Today` or `Reset`, etc.
       <b-button
         size="sm"
         variant="outline-primary"
-        class="ml-auto"
+        class="ms-auto"
         @click="setToday"
       >
         Set Today
