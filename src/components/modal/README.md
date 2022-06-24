@@ -241,7 +241,7 @@ To prevent `<b-modal>` from closing (for example when validation fails). you can
     <div class="mt-3">
       Submitted Names:
       <div v-if="submittedNames.length === 0">--</div>
-      <ul v-else class="mb-0 pl-3">
+      <ul v-else class="mb-0 ps-3">
         <li v-for="name in submittedNames">{{ name }}</li>
       </ul>
     </div>

@@ -201,19 +201,19 @@ export const dropdownMixin = Vue.extend({
       }
 
       // Only instantiate Popper.js when dropdown is not in `<b-navbar>`
-      if (!this.inNavbar) {
-        if (typeof createPopper === 'undefined') {
-          /* istanbul ignore next */
-          warn('Popper.js not found. Falling back to CSS positioning', NAME_DROPDOWN)
-        } else {
-          // For dropup with alignment we use the parent element as popper container
-          let el = (this.dropup && this.right) || this.split ? this.$el : this.$refs.toggle
-          // Make sure we have a reference to an element, not a component!
-          el = el.$el || el
-          // Instantiate Popper.js
-          this.createPopper(el)
-        }
+      //if (!this.inNavbar) {
+      if (typeof createPopper === 'undefined') {
+        /* istanbul ignore next */
+        warn('Popper.js not found. Falling back to CSS positioning', NAME_DROPDOWN)
+      } else {
+        // For dropup with alignment we use the parent element as popper container
+        let el = (this.dropup && this.right) || this.split ? this.$el : this.$refs.toggle
+        // Make sure we have a reference to an element, not a component!
+        el = el.$el || el
+        // Instantiate Popper.js
+        this.createPopper(el)
       }
+      //}
 
       // Ensure other menus are closed
       this.emitOnRoot(ROOT_EVENT_NAME_SHOWN, this)
@@ -268,10 +268,10 @@ export const dropdownMixin = Vue.extend({
       }
       const popperConfig = {
         placement,
-        modifiers: {
-          offset: { offset: this.offset || 0 },
-          flip: { enabled: !this.noFlip },
-        },
+        modifiers: [
+          { name: 'offset', options: { offset: this.offset || 0 } },
+          { name: 'flip', options: { enabled: !this.noFlip } },
+        ],
       }
       const boundariesElement = this.boundary
       if (boundariesElement) {

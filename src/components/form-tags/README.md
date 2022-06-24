@@ -469,7 +469,7 @@ support.
             :id="`my-custom-tags-tag_${tag.replace(/\s/g, '_')}_`"
             tag="li"
             class="mt-1 me-1"
-            body-class="py-1 pr-2 text-nowrap"
+            body-class="py-1 pe-2 text-nowrap"
           >
             <strong>{{ tag }}</strong>
             <b-button

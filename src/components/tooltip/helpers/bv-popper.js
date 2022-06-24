@@ -105,18 +105,21 @@ export const BVPopper = /*#__PURE__*/ Vue.extend({
       const { placement } = this
       return {
         placement: this.getAttachment(placement),
-        modifiers: {
-          offset: { offset: this.getOffset(placement) },
-          flip: { behavior: this.fallbackPlacement },
+        modifiers: [
+          { name: 'offset', options: { offset: this.getOffset(placement) } },
+          { name: 'flip', options: { behavior: this.fallbackPlacement } },
           // `arrow.element` can also be a reference to an HTML Element
           // maybe we should make this a `$ref` in the templates?
-          arrow: { element: '.arrow' },
-          preventOverflow: {
-            padding: this.boundaryPadding,
-            boundariesElement: this.boundary,
+          { name: 'arrow', options: { element: '.arrow' } },
+          {
+            name: 'preventOverflow',
+            options: {
+              padding: this.boundaryPadding,
+              boundariesElement: this.boundary,
+            },
           },
-        },
-        onCreate: (data) => {
+        ],
+        onFirstUpdate: (data) => {
           // Handle flipping arrow classes
           if (data.originalPlacement !== data.placement) {
             /* istanbul ignore next: can't test in JSDOM */

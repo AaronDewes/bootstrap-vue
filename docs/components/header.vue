@@ -1,5 +1,5 @@
 <template>
-  <b-navbar tag="header" type="dark" class="bd-navbar flex-column flex-md-row">
+  <b-navbar tag="header" type="dark" class="bd-navbar flex-column flex-md-row ps-4 pe-2">
     <b-navbar-brand
       class="me-0 me-md-2"
       to="/"
@@ -40,28 +40,12 @@
       </b-navbar-nav>
     </div>
 
-    <b-navbar-nav class="flex-row ms-md-auto d-none d-md-flex">
-      <b-nav-item-dropdown :text="dropdownText" toggle-class="me-md-2" right>
-        <template v-if="isPR || isDev || isLocal">
-          <b-dropdown-item v-if="isPR" active href="/">
-            Pull Request {{ prId ? '#' + prId : '- ' + branchName }}
-          </b-dropdown-item>
-          <b-dropdown-item v-else-if="isLocal" active href="/"> Local copy </b-dropdown-item>
-          <b-dropdown-item :active="isDev" :href="devURL" rel="nofollow">
-            Development
-          </b-dropdown-item>
-          <b-dropdown-item :href="prodURL"> Latest (v{{ version }}) </b-dropdown-item>
-        </template>
-        <template v-else>
-          <b-dropdown-item active :href="prodURL"> Latest (v{{ version }}) </b-dropdown-item>
-          <b-dropdown-item :href="devURL" rel="nofollow"> Development </b-dropdown-item>
-        </template>
-      </b-nav-item-dropdown>
-
+    <b-navbar-nav class="flex-row ms-md-auto d-none d-md-flex align-items-center">
       <b-nav-item
         href="https://github.com/bootstrap-vue/bootstrap-vue"
         target="_blank"
         :link-attrs="{ 'aria-label': 'GitHub' }"
+        class="social"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -87,6 +71,7 @@
         href="https://twitter.com/BootstrapVue"
         target="_blank"
         :link-attrs="{ 'aria-label': 'Twitter' }"
+        class="social"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -110,6 +95,7 @@
         href="https://discord.gg/j2Mtcny"
         target="_blank"
         :link-attrs="{ 'aria-label': 'Discord' }"
+        class="social"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -136,6 +122,7 @@
         href="https://opencollective.com/bootstrap-vue/"
         target="_blank"
         :link-attrs="{ 'aria-label': 'Open Collective' }"
+        class="social"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -158,6 +145,27 @@
           />
         </svg>
       </b-nav-item>
+
+      <b-nav-item class="py-1">
+        <div class="vr d-none d-lg-flex h-100 mx-lg-2 text-white"></div>
+        <hr class="d-lg-none text-white-50" />
+      </b-nav-item>
+      <b-nav-item-dropdown :text="dropdownText" toggle-class="me-md-2" right>
+        <template v-if="isPR || isDev || isLocal">
+          <b-dropdown-item v-if="isPR" active href="/">
+            Pull Request {{ prId ? '#' + prId : '- ' + branchName }}
+          </b-dropdown-item>
+          <b-dropdown-item v-else-if="isLocal" active href="/"> Local copy </b-dropdown-item>
+          <b-dropdown-item :active="isDev" :href="devURL" rel="nofollow">
+            Development
+          </b-dropdown-item>
+          <b-dropdown-item :href="prodURL"> Latest (v{{ version }}) </b-dropdown-item>
+        </template>
+        <template v-else>
+          <b-dropdown-item active :href="prodURL"> Latest (v{{ version }}) </b-dropdown-item>
+          <b-dropdown-item :href="devURL" rel="nofollow"> Development </b-dropdown-item>
+        </template>
+      </b-nav-item-dropdown>
     </b-navbar-nav>
   </b-navbar>
 </template>
@@ -232,11 +240,23 @@ export default {
 }
 </script>
 
-<style scoped>
-.navbar-brand {
-  color: #cbbde2;
+<style>
+.social {
+  height: 32px;
 }
-.navbar-brand.active {
-  color: #fff;
+
+.bd-navbar .dropdown-menu {
+  --bs-dropdown-min-width: 12rem;
+  --bs-dropdown-link-hover-bg: rgba(var(--bd-violet-rgb), 0.1);
+  --bs-dropdown-font-size: 0.875rem;
+  box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 15%);
+}
+
+.bd-navbar .dropdown-item.active {
+  font-weight: 600;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23292b2c' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 1rem top 0.6rem;
+  background-size: 0.75rem 0.75rem;
 }
 </style>
