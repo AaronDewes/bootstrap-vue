@@ -4,7 +4,7 @@ import { pluginFactory } from '../../utils/plugins'
 
 const CollapsePlugin = /*#__PURE__*/ pluginFactory({
   components: { BCollapse },
-  plugins: { VBTogglePlugin }
+  plugins: { VBTogglePlugin },
 })
 
 export { CollapsePlugin, BCollapse }

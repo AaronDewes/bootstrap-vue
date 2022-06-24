@@ -12,7 +12,7 @@ const formProps = omit(BFormProps, ['inline'])
 export const props = makePropsConfigurable(
   sortKeys({
     ...formProps,
-    formClass: makeProp(PROP_TYPE_ARRAY_OBJECT_STRING)
+    formClass: makeProp(PROP_TYPE_ARRAY_OBJECT_STRING),
   }),
   NAME_NAV_FORM
 )
@@ -31,10 +31,10 @@ export const BNavForm = /*#__PURE__*/ Vue.extend({
         class: props.formClass,
         props: {
           ...pluckProps(formProps, props),
-          inline: true
+          inline: true,
         },
         attrs: data.attrs,
-        on: listeners
+        on: listeners,
       },
       children
     )
@@ -42,9 +42,9 @@ export const BNavForm = /*#__PURE__*/ Vue.extend({
     return h(
       'li',
       mergeData(omit(data, ['attrs', 'on']), {
-        staticClass: 'form-inline'
+        staticClass: 'form-inline',
       }),
       [$form]
     )
-  }
+  },
 })

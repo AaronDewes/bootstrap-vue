@@ -13,7 +13,7 @@ export const props = makePropsConfigurable(
     ...omit(BLinkProps, ['event', 'routerTag']),
     ariaCurrent: makeProp(PROP_TYPE_STRING, 'location'),
     html: makeProp(PROP_TYPE_STRING),
-    text: makeProp(PROP_TYPE_STRING)
+    text: makeProp(PROP_TYPE_STRING),
   }),
   NAME_BREADCRUMB_LINK
 )
@@ -31,7 +31,7 @@ export const BBreadcrumbLink = /*#__PURE__*/ Vue.extend({
 
     const componentData = {
       attrs: { 'aria-current': active ? suppliedProps.ariaCurrent : null },
-      props: pluckProps(props, suppliedProps)
+      props: pluckProps(props, suppliedProps),
     }
 
     if (!children) {
@@ -39,5 +39,5 @@ export const BBreadcrumbLink = /*#__PURE__*/ Vue.extend({
     }
 
     return h(tag, mergeData(data, componentData), children)
-  }
+  },
 })

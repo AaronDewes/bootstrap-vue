@@ -14,7 +14,7 @@ linkProps.to.default = undefined
 export const props = makePropsConfigurable(
   sortKeys({
     ...linkProps,
-    tag: makeProp(PROP_TYPE_STRING, 'div')
+    tag: makeProp(PROP_TYPE_STRING, 'div'),
   }),
   NAME_NAVBAR_BRAND
 )
@@ -34,9 +34,9 @@ export const BNavbarBrand = /*#__PURE__*/ Vue.extend({
       tag,
       mergeData(data, {
         staticClass: 'navbar-brand',
-        props: isLink ? pluckProps(linkProps, props) : {}
+        props: isLink ? pluckProps(linkProps, props) : {},
       }),
       children
     )
-  }
+  },
 })

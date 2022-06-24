@@ -16,7 +16,7 @@ const MODEL_EVENT_NAME_BUSY = MODEL_EVENT_NAME_PREFIX + MODEL_PROP_NAME_BUSY
 // --- Props ---
 
 export const props = {
-  [MODEL_PROP_NAME_BUSY]: makeProp(PROP_TYPE_BOOLEAN, false)
+  [MODEL_PROP_NAME_BUSY]: makeProp(PROP_TYPE_BOOLEAN, false),
 }
 
 // --- Mixin ---
@@ -26,20 +26,20 @@ export const busyMixin = Vue.extend({
   props,
   data() {
     return {
-      localBusy: false
+      localBusy: false,
     }
   },
   computed: {
     computedBusy() {
       return this[MODEL_PROP_NAME_BUSY] || this.localBusy
-    }
+    },
   },
   watch: {
     localBusy(newValue, oldValue) {
       if (newValue !== oldValue) {
         this.$emit(MODEL_EVENT_NAME_BUSY, newValue)
       }
-    }
+    },
   },
   methods: {
     // Event handler helper
@@ -65,17 +65,17 @@ export const busyMixin = Vue.extend({
             class: [
               isFunction(tbodyTrClass)
                 ? /* istanbul ignore next */ tbodyTrClass(null, SLOT_NAME_TABLE_BUSY)
-                : tbodyTrClass
+                : tbodyTrClass,
             ],
             attrs: isFunction(tbodyTrAttr)
               ? /* istanbul ignore next */ tbodyTrAttr(null, SLOT_NAME_TABLE_BUSY)
               : tbodyTrAttr,
-            key: 'table-busy-slot'
+            key: 'table-busy-slot',
           },
           [
             h(BTd, { props: { colspan: this.computedFields.length || null } }, [
-              this.normalizeSlot(SLOT_NAME_TABLE_BUSY)
-            ])
+              this.normalizeSlot(SLOT_NAME_TABLE_BUSY),
+            ]),
           ]
         )
       }
@@ -83,6 +83,6 @@ export const busyMixin = Vue.extend({
       // We return `null` here so that we can determine if we need to
       // render the table items rows or not
       return null
-    }
-  }
+    },
+  },
 })

@@ -5,5 +5,5 @@ import docsMixin from '~/plugins/docs-mixin'
 export default {
   name: 'BVDocsReferenceIndex',
   extends: SectionToc,
-  mixins: [docsMixin]
+  mixins: [docsMixin],
 }

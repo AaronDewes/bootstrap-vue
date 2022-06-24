@@ -13,7 +13,7 @@ import {
   isPlainObject,
   isString,
   isUndefined,
-  isUndefinedOrNull
+  isUndefinedOrNull,
 } from '../../utils/inspect'
 import { looseEqual } from '../../utils/loose-equal'
 import { toInteger } from '../../utils/number'
@@ -33,14 +33,15 @@ const validTriggers = {
   hover: true,
   click: true,
   blur: true,
-  manual: true
+  manual: true,
 }
 
 // Directive modifier test regular expressions. Pre-compile for performance
 const htmlRE = /^html$/i
 const noninteractiveRE = /^noninteractive$/i
 const noFadeRE = /^nofade$/i
-const placementRE = /^(auto|top(left|right)?|bottom(left|right)?|left(top|bottom)?|right(top|bottom)?)$/i
+const placementRE =
+  /^(auto|top(left|right)?|bottom(left|right)?|left(top|bottom)?|right(top|bottom)?)$/i
 const boundaryRE = /^(window|viewport|scrollParent)$/i
 const delayRE = /^d\d+$/i
 const delayShowRE = /^ds\d+$/i
@@ -69,7 +70,7 @@ const parseBindings = (bindings, vnode) => /* istanbul ignore next: not easy to 
     boundary: String(getComponentConfig(NAME_TOOLTIP, 'boundary', 'scrollParent')),
     boundaryPadding: toInteger(getComponentConfig(NAME_TOOLTIP, 'boundaryPadding', 5), 0),
     variant: getComponentConfig(NAME_TOOLTIP, 'variant'),
-    customClass: getComponentConfig(NAME_TOOLTIP, 'customClass')
+    customClass: getComponentConfig(NAME_TOOLTIP, 'customClass'),
   }
   // Process `bindings.value`
   if (isString(bindings.value) || isNumber(bindings.value)) {
@@ -94,7 +95,7 @@ const parseBindings = (bindings, vnode) => /* istanbul ignore next: not easy to 
   if (!isPlainObject(config.delay)) {
     config.delay = {
       show: toInteger(config.delay, 0),
-      hide: toInteger(config.delay, 0)
+      hide: toInteger(config.delay, 0),
     }
   }
 
@@ -106,7 +107,7 @@ const parseBindings = (bindings, vnode) => /* istanbul ignore next: not easy to 
   }
 
   // Process modifiers
-  keys(bindings.modifiers).forEach(mod => {
+  keys(bindings.modifiers).forEach((mod) => {
     if (htmlRE.test(mod)) {
       // Title allows HTML
       config.html = true
@@ -154,14 +155,14 @@ const parseBindings = (bindings, vnode) => /* istanbul ignore next: not easy to 
     .trim()
     .toLowerCase()
     .split(spacesRE)
-    .forEach(trigger => {
+    .forEach((trigger) => {
       if (validTriggers[trigger]) {
         selectedTriggers[trigger] = true
       }
     })
 
   // Parse modifiers for triggers
-  keys(bindings.modifiers).forEach(mod => {
+  keys(bindings.modifiers).forEach((mod) => {
     mod = mod.toLowerCase()
     if (validTriggers[mod]) {
       // If modifier is a valid trigger
@@ -195,14 +196,14 @@ const applyTooltip = (el, bindings, vnode) => {
     const parent = getInstanceFromDirective(vnode, bindings)
     el[BV_TOOLTIP] = createNewChildComponent(parent, BVTooltip, {
       // Add the parent's scoped style attribute data
-      _scopeId: getScopeId(parent, undefined)
+      _scopeId: getScopeId(parent, undefined),
     })
     el[BV_TOOLTIP].__bv_prev_data__ = {}
     el[BV_TOOLTIP].$on(EVENT_NAME_SHOW, () => /* istanbul ignore next: for now */ {
       // Before showing the tooltip, we update the title if it is a function
       if (isFunction(config.title)) {
         el[BV_TOOLTIP].updateData({
-          title: config.title(el)
+          title: config.title(el),
         })
       }
     })
@@ -222,16 +223,16 @@ const applyTooltip = (el, bindings, vnode) => {
     id: config.id,
     interactive: config.interactive,
     disabled: config.disabled,
-    html: config.html
+    html: config.html,
   }
   const oldData = el[BV_TOOLTIP].__bv_prev_data__
   el[BV_TOOLTIP].__bv_prev_data__ = data
   if (!looseEqual(data, oldData)) {
     // We only update the instance if data has changed
     const newData = {
-      target: el
+      target: el,
     }
-    keys(data).forEach(prop => {
+    keys(data).forEach((prop) => {
       // We only pass data properties that have changed
       if (data[prop] !== oldData[prop]) {
         // if title is a function, we execute it here
@@ -243,7 +244,7 @@ const applyTooltip = (el, bindings, vnode) => {
 }
 
 // Remove Tooltip on our element
-const removeTooltip = el => {
+const removeTooltip = (el) => {
   if (el[BV_TOOLTIP]) {
     el[BV_TOOLTIP].$destroy()
     el[BV_TOOLTIP] = null
@@ -266,5 +267,5 @@ export const VBTooltip = {
   },
   unbind(el) {
     removeTooltip(el)
-  }
+  },
 }

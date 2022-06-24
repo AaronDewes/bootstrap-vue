@@ -19,11 +19,11 @@ describe('b-toast', () => {
         static: true,
         noAutoHide: true,
         visible: true,
-        title: 'title'
+        title: 'title',
       },
       slots: {
-        default: 'content'
-      }
+        default: 'content',
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -75,11 +75,11 @@ describe('b-toast', () => {
         noAutoHide: true,
         visible: true,
         title: 'title',
-        headerTag: 'div'
+        headerTag: 'div',
       },
       slots: {
-        default: 'content'
-      }
+        default: 'content',
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -103,11 +103,11 @@ describe('b-toast', () => {
         noAutoHide: true,
         visible: false,
         title: 'title',
-        href: '#foobar'
+        href: '#foobar',
       },
       slots: {
-        default: 'content'
-      }
+        default: 'content',
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -170,11 +170,11 @@ describe('b-toast', () => {
         noAutoHide: true,
         visible: true,
         title: 'title',
-        href: '#foobar'
+        href: '#foobar',
       },
       slots: {
-        default: 'content'
-      }
+        default: 'content',
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -224,11 +224,11 @@ describe('b-toast', () => {
         static: true,
         noAutoHide: false,
         visible: true,
-        title: 'title'
+        title: 'title',
       },
       slots: {
-        default: 'content'
-      }
+        default: 'content',
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -268,11 +268,11 @@ describe('b-toast', () => {
         static: true,
         noAutoHide: false,
         visible: true,
-        title: 'title'
+        title: 'title',
       },
       slots: {
-        default: 'content'
-      }
+        default: 'content',
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -310,11 +310,11 @@ describe('b-toast', () => {
         noAutoHide: false,
         noHoverPause: true,
         visible: true,
-        title: 'title'
+        title: 'title',
       },
       slots: {
-        default: 'content'
-      }
+        default: 'content',
+      },
     })
 
     expect(wrapper.vm).toBeDefined()

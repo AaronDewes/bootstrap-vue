@@ -11,7 +11,7 @@ export default {
   head() {
     return {
       title: this.headTitle,
-      meta: this.headMeta
+      meta: this.headMeta,
     }
   },
   computed: {
@@ -33,36 +33,36 @@ export default {
     },
     headMeta() {
       const section = this.$route.name.split('-')[1]
-      const sectionMeta = section ? nav.find(n => n.base === `${section}/`) : null
+      const sectionMeta = section ? nav.find((n) => n.base === `${section}/`) : null
       const description =
         this.meta && this.meta.description
           ? this.meta.description
           : sectionMeta && sectionMeta.description
-            ? sectionMeta.description
-            : bvDescription
+          ? sectionMeta.description
+          : bvDescription
       const meta = [
         {
           hid: 'og:title',
           name: 'og:title',
           property: 'og:title',
-          content: this.headTitle
-        }
+          content: this.headTitle,
+        },
       ]
       if (description) {
         meta.push({
           hid: 'description',
           name: 'description',
-          content: description
+          content: description,
         })
         meta.push({
           hid: 'og:description',
           name: 'og:description',
           property: 'og:description',
-          content: description
+          content: description,
         })
       }
       return meta
-    }
+    },
   },
   created() {
     // Create private non-reactive props
@@ -122,6 +122,6 @@ export default {
           scrollTo(scroller, offsetTop(el) - 70, 100)
         }, 100)
       }
-    }
-  }
+    },
+  },
 }

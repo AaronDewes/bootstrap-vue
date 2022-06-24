@@ -13,7 +13,7 @@ export const props = makePropsConfigurable(
   sortKeys({
     ...linkProps,
     linkAttrs: makeProp(PROP_TYPE_OBJECT, {}),
-    linkClasses: makeProp(PROP_TYPE_ARRAY_OBJECT_STRING)
+    linkClasses: makeProp(PROP_TYPE_ARRAY_OBJECT_STRING),
   }),
   NAME_NAV_ITEM
 )
@@ -29,7 +29,7 @@ export const BNavItem = /*#__PURE__*/ Vue.extend({
     return h(
       'li',
       mergeData(omit(data, ['on']), {
-        staticClass: 'nav-item'
+        staticClass: 'nav-item',
       }),
       [
         h(
@@ -39,11 +39,11 @@ export const BNavItem = /*#__PURE__*/ Vue.extend({
             class: props.linkClasses,
             attrs: props.linkAttrs,
             props: pluckProps(linkProps, props),
-            on: listeners
+            on: listeners,
           },
           children
-        )
+        ),
       ]
     )
-  }
+  },
 })

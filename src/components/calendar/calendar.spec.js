@@ -8,7 +8,7 @@ import { formatYMD } from '../../utils/date'
 describe('calendar', () => {
   it('has expected base structure', async () => {
     const wrapper = mount(BCalendar, {
-      attachTo: document.body
+      attachTo: document.body,
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -44,8 +44,8 @@ describe('calendar', () => {
     const wrapper = mount(BCalendar, {
       attachTo: document.body,
       propsData: {
-        value: '2020-02-15' // Leap year
-      }
+        value: '2020-02-15', // Leap year
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -64,8 +64,8 @@ describe('calendar', () => {
     const wrapper = mount(BCalendar, {
       attachTo: document.body,
       propsData: {
-        value: '2020-01-01' // Leap year
-      }
+        value: '2020-01-01', // Leap year
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -75,7 +75,7 @@ describe('calendar', () => {
     expect(wrapper.vm.selectedYMD).toBe('2020-01-01')
 
     await wrapper.setProps({
-      value: '2020-01-15'
+      value: '2020-01-15',
     })
 
     await waitNT(wrapper.vm)
@@ -90,8 +90,8 @@ describe('calendar', () => {
     const wrapper = mount(BCalendar, {
       attachTo: document.body,
       propsData: {
-        value: '2020-01-01' // Leap year
-      }
+        value: '2020-01-01', // Leap year
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -125,8 +125,8 @@ describe('calendar', () => {
       attachTo: document.body,
       propsData: {
         showDecadeNav: true,
-        value: '2020-02-15' // Leap year
-      }
+        value: '2020-02-15', // Leap year
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -180,8 +180,8 @@ describe('calendar', () => {
     const wrapper = mount(BCalendar, {
       attachTo: document.body,
       propsData: {
-        value: '2020-02-15' // Leap year
-      }
+        value: '2020-02-15', // Leap year
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -213,8 +213,8 @@ describe('calendar', () => {
     const wrapper = mount(BCalendar, {
       attachTo: document.body,
       propsData: {
-        value: '2020-02-15' // Leap year
-      }
+        value: '2020-02-15', // Leap year
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -249,8 +249,8 @@ describe('calendar', () => {
       attachTo: document.body,
       propsData: {
         value: '2020-02-15', // Leap year,
-        headerTag: 'div'
-      }
+        headerTag: 'div',
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -268,8 +268,8 @@ describe('calendar', () => {
     const wrapper = mount(BCalendar, {
       attachTo: document.body,
       propsData: {
-        value: '2020-02-15' // Leap year
-      }
+        value: '2020-02-15', // Leap year
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -365,8 +365,8 @@ describe('calendar', () => {
       attachTo: document.body,
       propsData: {
         noKeyNav: true,
-        navButtonVariant: 'primary'
-      }
+        navButtonVariant: 'primary',
+      },
     })
 
     const $nav = wrapper.find('.b-calendar-nav')
@@ -383,8 +383,8 @@ describe('calendar', () => {
     const wrapper = mount(BCalendar, {
       attachTo: document.body,
       propsData: {
-        navButtonVariant: 'primary'
-      }
+        navButtonVariant: 'primary',
+      },
     })
 
     const $nav = wrapper.find('.b-calendar-nav')
@@ -405,8 +405,8 @@ describe('calendar', () => {
         value: '2020-01-01',
         dateDisabledFn(ymd) {
           return ymd === '2020-01-02'
-        }
-      }
+        },
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -438,8 +438,8 @@ describe('calendar', () => {
         value: '2020-01-01',
         dateInfoFn(ymd) {
           return ymd === '2020-01-02' ? 'my-info' : null
-        }
-      }
+        },
+      },
     })
 
     expect(wrapper.vm).toBeDefined()

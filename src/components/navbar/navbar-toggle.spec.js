@@ -11,8 +11,8 @@ describe('navbar-toggle', () => {
   it('default has tag "button"', async () => {
     const wrapper = mount(BNavbarToggle, {
       propsData: {
-        target: 'target-1'
-      }
+        target: 'target-1',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('BUTTON')
@@ -23,8 +23,8 @@ describe('navbar-toggle', () => {
   it('default has class "navbar-toggler"', async () => {
     const wrapper = mount(BNavbarToggle, {
       propsData: {
-        target: 'target-2'
-      }
+        target: 'target-2',
+      },
     })
 
     expect(wrapper.classes()).toContain('navbar-toggler')
@@ -38,8 +38,8 @@ describe('navbar-toggle', () => {
   it('default has default attributes', async () => {
     const wrapper = mount(BNavbarToggle, {
       propsData: {
-        target: 'target-3'
-      }
+        target: 'target-3',
+      },
     })
 
     expect(wrapper.attributes('type')).toBe('button')
@@ -53,8 +53,8 @@ describe('navbar-toggle', () => {
   it('default has inner button-close', async () => {
     const wrapper = mount(BNavbarToggle, {
       propsData: {
-        target: 'target-4'
-      }
+        target: 'target-4',
+      },
     })
 
     expect(wrapper.find('span.navbar-toggler-icon')).toBeDefined()
@@ -66,8 +66,8 @@ describe('navbar-toggle', () => {
     const wrapper = mount(BNavbarToggle, {
       propsData: {
         target: 'target-5',
-        label: 'foobar'
-      }
+        label: 'foobar',
+      },
     })
 
     expect(wrapper.attributes('aria-label')).toBe('foobar')
@@ -79,14 +79,14 @@ describe('navbar-toggle', () => {
     let scope = null
     const wrapper = mount(BNavbarToggle, {
       propsData: {
-        target: 'target-6'
+        target: 'target-6',
       },
       scopedSlots: {
         default(ctx) {
           scope = ctx
           return this.$createElement('div', 'foobar')
-        }
-      }
+        },
+      },
     })
 
     expect(scope).not.toBe(null)
@@ -108,8 +108,8 @@ describe('navbar-toggle', () => {
   it('emits click event', async () => {
     const wrapper = mount(BNavbarToggle, {
       propsData: {
-        target: 'target-7'
-      }
+        target: 'target-7',
+      },
     })
 
     await waitRAF()
@@ -136,8 +136,8 @@ describe('navbar-toggle', () => {
   it('sets aria-expanded when receives root emit for target', async () => {
     const wrapper = mount(BNavbarToggle, {
       propsData: {
-        target: 'target-8'
-      }
+        target: 'target-8',
+      },
     })
 
     // Private state event
@@ -173,8 +173,8 @@ describe('navbar-toggle', () => {
     const wrapper = mount(BNavbarToggle, {
       propsData: {
         target: 'target-9',
-        disabled: true
-      }
+        disabled: true,
+      },
     })
 
     expect(wrapper.emitted('click')).toBeUndefined()

@@ -14,15 +14,15 @@ describe('mixins/focus-in', () => {
       methods: {
         focusInHandler() {
           count++
-        }
+        },
       },
       render(h) {
         return h('div', [h('button', 'button')])
-      }
+      },
     }
 
     const wrapper = mount(App, {
-      attachTo: document.body
+      attachTo: document.body,
     })
 
     const focusinEvent = new FocusEvent('focusin')

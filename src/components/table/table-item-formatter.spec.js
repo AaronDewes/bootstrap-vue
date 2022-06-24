@@ -12,11 +12,11 @@ describe('table > field-formatter', () => {
             key: 'a',
             formatter(value, key, item) {
               return item.a + item.b
-            }
+            },
           },
-          'b'
-        ]
-      }
+          'b',
+        ],
+      },
     })
 
     expect(wrapper).toBeDefined()
@@ -34,13 +34,13 @@ describe('table > field-formatter', () => {
       wrapWithMethods(BTable, {
         formatter(value, key, item) {
           return item.a + item.b
-        }
+        },
       }),
       {
         propsData: {
           items: [{ a: 1, b: 2 }],
-          fields: [{ key: 'a', formatter: 'formatter' }, 'b']
-        }
+          fields: [{ key: 'a', formatter: 'formatter' }, 'b'],
+        },
       }
     )
 

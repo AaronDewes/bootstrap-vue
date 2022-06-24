@@ -5,7 +5,7 @@ import {
   PROP_TYPE_BOOLEAN,
   PROP_TYPE_OBJECT,
   PROP_TYPE_OBJECT_STRING,
-  PROP_TYPE_STRING
+  PROP_TYPE_STRING,
 } from '../../constants/props'
 import { SLOT_NAME_BUTTON_CONTENT, SLOT_NAME_DEFAULT } from '../../constants/slots'
 import { arrayIncludes } from '../../utils/array'
@@ -33,7 +33,7 @@ export const props = makePropsConfigurable(
     role: makeProp(PROP_TYPE_STRING, 'menu'),
     size: makeProp(PROP_TYPE_STRING),
     split: makeProp(PROP_TYPE_BOOLEAN, false),
-    splitButtonType: makeProp(PROP_TYPE_STRING, 'button', value => {
+    splitButtonType: makeProp(PROP_TYPE_STRING, 'button', (value) => {
       return arrayIncludes(['button', 'submit', 'reset'], value)
     }),
     splitClass: makeProp(PROP_TYPE_ARRAY_OBJECT_STRING),
@@ -46,7 +46,7 @@ export const props = makePropsConfigurable(
     toggleTag: makeProp(PROP_TYPE_STRING, 'button'),
     // TODO: This really should be `toggleLabel`
     toggleText: makeProp(PROP_TYPE_STRING, 'Toggle dropdown'),
-    variant: makeProp(PROP_TYPE_STRING, 'secondary')
+    variant: makeProp(PROP_TYPE_STRING, 'secondary'),
   }),
   NAME_DROPDOWN
 )
@@ -72,8 +72,8 @@ export const BDropdown = /*#__PURE__*/ Vue.extend({
           'btn-group': split || !block,
           // When `block` is enabled and we are in `split` mode the 'd-flex' class
           // needs to be applied to allow the buttons to stretch to full width
-          'd-flex': block && split
-        }
+          'd-flex': block && split,
+        },
       ]
     },
     menuClasses() {
@@ -81,8 +81,8 @@ export const BDropdown = /*#__PURE__*/ Vue.extend({
         this.menuClass,
         {
           'dropdown-menu-right': this.right,
-          show: this.visible
-        }
+          show: this.visible,
+        },
       ]
     },
     toggleClasses() {
@@ -91,10 +91,10 @@ export const BDropdown = /*#__PURE__*/ Vue.extend({
         this.toggleClass,
         {
           'dropdown-toggle-split': split,
-          'dropdown-toggle-no-caret': this.noCaret && !split
-        }
+          'dropdown-toggle-no-caret': this.noCaret && !split,
+        },
       ]
-    }
+    },
   },
   render(h) {
     const { visible, variant, size, block, disabled, split, role, hide, toggle } = this
@@ -110,7 +110,7 @@ export const BDropdown = /*#__PURE__*/ Vue.extend({
       const { splitTo, splitHref, splitButtonType } = this
       const btnProps = {
         ...commonProps,
-        variant: this.splitVariant || variant
+        variant: this.splitVariant || variant,
       }
 
       // We add these as needed due to <router-link> issues with
@@ -131,7 +131,7 @@ export const BDropdown = /*#__PURE__*/ Vue.extend({
           props: btnProps,
           domProps: buttonContentDomProps,
           on: { click: this.onSplitClick },
-          ref: 'button'
+          ref: 'button',
         },
         $buttonChildren
       )
@@ -153,20 +153,20 @@ export const BDropdown = /*#__PURE__*/ Vue.extend({
           // Must have attributes
           id: this.safeId('_BV_toggle_'),
           'aria-haspopup': ariaHasPopupRoles.includes(role) ? role : 'false',
-          'aria-expanded': toString(visible)
+          'aria-expanded': toString(visible),
         },
         props: {
           ...commonProps,
           tag: this.toggleTag,
-          block: block && !split
+          block: block && !split,
         },
         domProps: buttonContentDomProps,
         on: {
           mousedown: this.onMousedown,
           click: toggle,
-          keydown: toggle // Handle ENTER, SPACE and DOWN
+          keydown: toggle, // Handle ENTER, SPACE and DOWN
         },
-        ref: 'toggle'
+        ref: 'toggle',
       },
       $buttonChildren
     )
@@ -179,12 +179,12 @@ export const BDropdown = /*#__PURE__*/ Vue.extend({
         attrs: {
           role,
           tabindex: '-1',
-          'aria-labelledby': this.safeId(split ? '_BV_button_' : '_BV_toggle_')
+          'aria-labelledby': this.safeId(split ? '_BV_button_' : '_BV_toggle_'),
         },
         on: {
-          keydown: this.onKeydown // Handle UP, DOWN and ESC
+          keydown: this.onKeydown, // Handle UP, DOWN and ESC
         },
-        ref: 'menu'
+        ref: 'menu',
       },
       [!this.lazy || visible ? this.normalizeSlot(SLOT_NAME_DEFAULT, { hide }) : h()]
     )
@@ -194,9 +194,9 @@ export const BDropdown = /*#__PURE__*/ Vue.extend({
       {
         staticClass: 'dropdown b-dropdown',
         class: this.dropdownClasses,
-        attrs: { id: this.safeId() }
+        attrs: { id: this.safeId() },
       },
       [$split, $toggle, $menu]
     )
-  }
+  },
 })

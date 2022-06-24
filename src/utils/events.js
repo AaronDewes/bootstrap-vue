@@ -8,7 +8,7 @@ import { kebabCase } from './string'
 
 // Normalize event options based on support of passive option
 // Exported only for testing purposes
-export const parseEventOptions = options => {
+export const parseEventOptions = (options) => {
   /* istanbul ignore else: can't test in JSDOM, as it supports passive */
   if (HAS_PASSIVE_EVENT_SUPPORT) {
     return isObject(options) ? options : { capture: !!options || false }
@@ -58,7 +58,7 @@ export const stopEvent = (
 // Helper method to convert a component/directive name to a base event name
 // `getBaseEventName('BNavigationItem')` => 'navigation-item'
 // `getBaseEventName('BVToggle')` => 'toggle'
-const getBaseEventName = value => kebabCase(value.replace(RX_BV_PREFIX, ''))
+const getBaseEventName = (value) => kebabCase(value.replace(RX_BV_PREFIX, ''))
 
 // Get a root event name by component/directive and event name
 // `getBaseEventName('BModal', 'show')` => 'bv::modal::show'

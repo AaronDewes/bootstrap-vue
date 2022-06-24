@@ -23,9 +23,9 @@ and devices.
   export default {
     data() {
       return {
-        value: ''
+        value: '',
       }
-    }
+    },
   }
 </script>
 
@@ -50,10 +50,7 @@ allowing for tabbing between spinbuttons. The `v-model` will not be updated in t
 ```html
 <template>
   <div>
-    <b-form-group
-      label="Select time picker interactive state"
-      v-slot="{ ariaDescribedby }"
-    >
+    <b-form-group label="Select time picker interactive state" v-slot="{ ariaDescribedby }">
       <b-form-radio-group
         v-model="state"
         :aria-describedby="ariaDescribedby"
@@ -77,7 +74,7 @@ allowing for tabbing between spinbuttons. The `v-model` will not be updated in t
   export default {
     data() {
       return {
-        state: 'disabled'
+        state: 'disabled',
       }
     },
     computed: {
@@ -86,8 +83,8 @@ allowing for tabbing between spinbuttons. The `v-model` will not be updated in t
       },
       readonly() {
         return this.state === 'readonly'
-      }
-    }
+      },
+    },
   }
 </script>
 
@@ -137,9 +134,9 @@ set to `00`.
   export default {
     data() {
       return {
-        value: ''
+        value: '',
       }
-    }
+    },
   }
 </script>
 
@@ -175,7 +172,11 @@ a placeholder is not provided, the value of the `label-no-time-selected` prop is
 <template>
   <div>
     <label for="timepicker-placeholder">Time picker with placeholder</label>
-    <b-form-timepicker id="timepicker-placeholder" placeholder="Choose a time" locale="en"></b-form-timepicker>
+    <b-form-timepicker
+      id="timepicker-placeholder"
+      placeholder="Choose a time"
+      locale="en"
+    ></b-form-timepicker>
   </div>
 </template>
 
@@ -261,9 +262,9 @@ In the following simple example, we are placing the timepicker (button only mode
   export default {
     data() {
       return {
-        value: ''
+        value: '',
       }
-    }
+    },
   }
 </script>
 
@@ -314,7 +315,7 @@ supports `Intl` and the locales you will be using. Refer to the
       <p>Value: <b>'{{ value }}'</b></p>
       <p class="mb-0">Context:</p>
       <pre class="small">{{ context }}</pre>
-   </b-col>
+    </b-col>
   </b-row>
 </template>
 
@@ -329,7 +330,7 @@ supports `Intl` and the locales you will be using. Refer to the
           { value: 'en-US', text: 'English US (en-US)' },
           { value: 'de', text: 'German (de)' },
           { value: 'ar-EG', text: 'Arabic Egyptian (ar-EG)' },
-          { value: 'zh', text: 'Chinese (zh)' }
+          { value: 'zh', text: 'Chinese (zh)' },
         ],
         labels: {
           de: {
@@ -340,7 +341,7 @@ supports `Intl` and the locales you will be using. Refer to the
             labelDecrement: 'Verringern',
             labelSelected: 'Ausgewählte Zeit',
             labelNoTimeSelected: 'Keine Zeit ausgewählt',
-            labelCloseButton: 'Schließen'
+            labelCloseButton: 'Schließen',
           },
           'ar-EG': {
             labelHours: 'ساعات',
@@ -353,7 +354,7 @@ supports `Intl` and the locales you will be using. Refer to the
             labelDecrement: 'إنقاص',
             labelSelected: 'الوقت المحدد',
             labelNoTimeSelected: 'لا وقت المختار',
-            labelCloseButton: 'قريب'
+            labelCloseButton: 'قريب',
           },
           zh: {
             labelHours: '小时',
@@ -366,16 +367,16 @@ supports `Intl` and the locales you will be using. Refer to the
             labelDecrement: '减量',
             labelSelected: '选定时间',
             labelNoTimeSelected: '没有选择时间',
-            labelCloseButton: '关'
-          }
-        }
+            labelCloseButton: '关',
+          },
+        },
       }
     },
     methods: {
       onContext(ctx) {
         this.context = ctx
-      }
-    }
+      },
+    },
   }
 </script>
 

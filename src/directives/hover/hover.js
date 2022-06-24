@@ -12,8 +12,8 @@ const MOUSELEAVE = 'mouseleave'
 
 // --- Helper methods ---
 
-const createListener = handler => {
-  const listener = event => {
+const createListener = (handler) => {
+  const listener = (event) => {
     handler(event.type === MOUSEENTER, event)
   }
   listener.fn = handler
@@ -50,5 +50,5 @@ export const VBHover = {
   componentUpdated: directive,
   unbind(el) {
     directive(el, { value: null })
-  }
+  },
 }

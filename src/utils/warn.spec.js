@@ -20,8 +20,8 @@ describe('utils/warn', () => {
     beforeEach(() => {
       global.process = {
         env: {
-          BOOTSTRAP_VUE_NO_WARN: true
-        }
+          BOOTSTRAP_VUE_NO_WARN: true,
+        },
       }
     })
 

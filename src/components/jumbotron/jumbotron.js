@@ -4,7 +4,7 @@ import {
   PROP_TYPE_BOOLEAN,
   PROP_TYPE_BOOLEAN_STRING,
   PROP_TYPE_NUMBER_STRING,
-  PROP_TYPE_STRING
+  PROP_TYPE_STRING,
 } from '../../constants/props'
 import { SLOT_NAME_DEFAULT, SLOT_NAME_HEADER, SLOT_NAME_LEAD } from '../../constants/slots'
 import { htmlOrText } from '../../utils/html'
@@ -28,7 +28,7 @@ export const props = makePropsConfigurable(
     leadHtml: makeProp(PROP_TYPE_STRING),
     leadTag: makeProp(PROP_TYPE_STRING, 'p'),
     tag: makeProp(PROP_TYPE_STRING, 'div'),
-    textVariant: makeProp(PROP_TYPE_STRING)
+    textVariant: makeProp(PROP_TYPE_STRING),
   },
   NAME_JUMBOTRON
 )
@@ -55,7 +55,7 @@ export const BJumbotron = /*#__PURE__*/ Vue.extend({
         props.headerTag,
         {
           class: { [`display-${headerLevel}`]: headerLevel },
-          domProps: hasHeaderSlot ? {} : htmlOrText(headerHtml, header)
+          domProps: hasHeaderSlot ? {} : htmlOrText(headerHtml, header),
         },
         normalizeSlot(SLOT_NAME_HEADER, slotScope, $scopedSlots, $slots)
       )
@@ -68,7 +68,7 @@ export const BJumbotron = /*#__PURE__*/ Vue.extend({
         props.leadTag,
         {
           staticClass: 'lead',
-          domProps: hasLeadSlot ? {} : htmlOrText(leadHtml, lead)
+          domProps: hasLeadSlot ? {} : htmlOrText(leadHtml, lead),
         },
         normalizeSlot(SLOT_NAME_LEAD, slotScope, $scopedSlots, $slots)
       )
@@ -77,7 +77,7 @@ export const BJumbotron = /*#__PURE__*/ Vue.extend({
     let $children = [
       $header,
       $lead,
-      normalizeSlot(SLOT_NAME_DEFAULT, slotScope, $scopedSlots, $slots)
+      normalizeSlot(SLOT_NAME_DEFAULT, slotScope, $scopedSlots, $slots),
     ]
 
     // If fluid, wrap content in a container
@@ -94,10 +94,10 @@ export const BJumbotron = /*#__PURE__*/ Vue.extend({
           [`text-${textVariant}`]: textVariant,
           [`bg-${bgVariant}`]: bgVariant,
           [`border-${borderVariant}`]: borderVariant,
-          border: borderVariant
-        }
+          border: borderVariant,
+        },
       }),
       $children
     )
-  }
+  },
 })

@@ -4,7 +4,7 @@ import { scrollTargetIntoView } from '~/utils'
 // --- Utility methods ---
 
 // Convert local links to router push or scroll target into view
-const linkToRouter = event => {
+const linkToRouter = (event) => {
   if (!event || event.type !== 'click') {
     return
   }
@@ -43,12 +43,12 @@ export default {
   props: {
     tag: {
       type: String,
-      default: 'section'
+      default: 'section',
     },
     play: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   render(h, { props, data, children }) {
     const directives = []
@@ -61,10 +61,10 @@ export default {
         class: ['bd-content'],
         directives,
         on: {
-          click: linkToRouter
-        }
+          click: linkToRouter,
+        },
       }),
       [children]
     )
-  }
+  },
 }

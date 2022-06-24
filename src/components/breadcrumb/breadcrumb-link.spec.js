@@ -18,8 +18,8 @@ describe('breadcrumb-link', () => {
   it('has content from default slot', async () => {
     const wrapper = mount(BBreadcrumbLink, {
       slots: {
-        default: 'foobar'
-      }
+        default: 'foobar',
+      },
     })
 
     expect(wrapper.text()).toBe('foobar')
@@ -30,8 +30,8 @@ describe('breadcrumb-link', () => {
   it('has content from text prop', async () => {
     const wrapper = mount(BBreadcrumbLink, {
       propsData: {
-        text: 'foobar'
-      }
+        text: 'foobar',
+      },
     })
 
     expect(wrapper.text()).toBe('foobar')
@@ -42,8 +42,8 @@ describe('breadcrumb-link', () => {
   it('has content from html prop', async () => {
     const wrapper = mount(BBreadcrumbLink, {
       propsData: {
-        html: 'foobar'
-      }
+        html: 'foobar',
+      },
     })
 
     expect(wrapper.text()).toBe('foobar')
@@ -54,8 +54,8 @@ describe('breadcrumb-link', () => {
   it('has attribute aria-current when active', async () => {
     const wrapper = mount(BBreadcrumbLink, {
       propsData: {
-        active: true
-      }
+        active: true,
+      },
     })
 
     expect(wrapper.element.tagName).toBe('SPAN')
@@ -70,8 +70,8 @@ describe('breadcrumb-link', () => {
     const wrapper = mount(BBreadcrumbLink, {
       propsData: {
         active: true,
-        ariaCurrent: 'foobar'
-      }
+        ariaCurrent: 'foobar',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('SPAN')
@@ -85,8 +85,8 @@ describe('breadcrumb-link', () => {
   it('renders link when href is set', async () => {
     const wrapper = mount(BBreadcrumbLink, {
       propsData: {
-        href: '/foo/bar'
-      }
+        href: '/foo/bar',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('A')
@@ -102,8 +102,8 @@ describe('breadcrumb-link', () => {
     const wrapper = mount(BBreadcrumbLink, {
       propsData: {
         active: true,
-        href: '/foo/bar'
-      }
+        href: '/foo/bar',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('SPAN')

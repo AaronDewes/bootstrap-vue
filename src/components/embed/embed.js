@@ -15,9 +15,9 @@ export const props = makePropsConfigurable(
   {
     aspect: makeProp(PROP_TYPE_STRING, '16by9'),
     tag: makeProp(PROP_TYPE_STRING, 'div'),
-    type: makeProp(PROP_TYPE_STRING, 'iframe', value => {
+    type: makeProp(PROP_TYPE_STRING, 'iframe', (value) => {
       return arrayIncludes(TYPES, value)
-    })
+    }),
   },
   NAME_EMBED
 )
@@ -37,15 +37,15 @@ export const BEmbed = /*#__PURE__*/ Vue.extend({
       {
         staticClass: 'embed-responsive',
         class: { [`embed-responsive-${aspect}`]: aspect },
-        ref: data.ref
+        ref: data.ref,
       },
       [
         h(
           props.type,
           mergeData(omit(data, ['ref']), { staticClass: 'embed-responsive-item' }),
           children
-        )
+        ),
       ]
     )
-  }
+  },
 })

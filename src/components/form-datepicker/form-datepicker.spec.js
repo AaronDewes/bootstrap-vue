@@ -17,8 +17,8 @@ describe('form-date', () => {
       setEnd: () => {},
       commonAncestorContainer: {
         nodeName: 'BODY',
-        ownerDocument: document
-      }
+        ownerDocument: document,
+      },
     })
   })
 
@@ -31,8 +31,8 @@ describe('form-date', () => {
     const wrapper = mount(BFormDatepicker, {
       attachTo: document.body,
       propsData: {
-        id: 'test-base'
-      }
+        id: 'test-base',
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -75,8 +75,8 @@ describe('form-date', () => {
       attachTo: document.body,
       propsData: {
         id: 'test-button-only',
-        buttonOnly: true
-      }
+        buttonOnly: true,
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -120,8 +120,8 @@ describe('form-date', () => {
       attachTo: document.body,
       propsData: {
         value: '',
-        placeholder: 'FOOBAR'
-      }
+        placeholder: 'FOOBAR',
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -142,8 +142,8 @@ describe('form-date', () => {
       attachTo: document.body,
       propsData: {
         value: '',
-        name: 'foobar'
-      }
+        name: 'foobar',
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -174,8 +174,8 @@ describe('form-date', () => {
       attachTo: document.body,
       propsData: {
         value: '',
-        id: 'test-focus-blur'
-      }
+        id: 'test-focus-blur',
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -209,8 +209,8 @@ describe('form-date', () => {
       attachTo: document.body,
       propsData: {
         value: '',
-        id: 'test-hover'
-      }
+        id: 'test-hover',
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -251,8 +251,8 @@ describe('form-date', () => {
       attachTo: document.body,
       propsData: {
         value: '',
-        id: 'test-open'
-      }
+        id: 'test-open',
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -287,8 +287,8 @@ describe('form-date', () => {
       attachTo: document.body,
       propsData: {
         value: '',
-        id: 'test-emit-input'
-      }
+        id: 'test-emit-input',
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -344,8 +344,8 @@ describe('form-date', () => {
       propsData: {
         value: '',
         id: 'test-no-close',
-        noCloseOnSelect: true
-      }
+        noCloseOnSelect: true,
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -407,8 +407,8 @@ describe('form-date', () => {
         name: 'foobar',
         todayButton: true,
         resetButton: true,
-        closeButton: true
-      }
+        closeButton: true,
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -482,8 +482,8 @@ describe('form-date', () => {
         value: '2020-01-15',
         resetValue: '1900-01-01',
         name: 'foobar',
-        resetButton: true
-      }
+        resetButton: true,
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -537,11 +537,11 @@ describe('form-date', () => {
       attachTo: document.body,
       propsData: {
         id: 'test-button-slot',
-        value: '2020-01-15'
+        value: '2020-01-15',
       },
       slots: {
-        'button-content': 'foobar'
-      }
+        'button-content': 'foobar',
+      },
     })
 
     expect(wrapper.vm).toBeDefined()

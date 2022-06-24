@@ -6,14 +6,14 @@ import {
   EVENT_NAME_SLIDING_END,
   EVENT_NAME_SLIDING_START,
   EVENT_NAME_UNPAUSED,
-  EVENT_OPTIONS_NO_CAPTURE
+  EVENT_OPTIONS_NO_CAPTURE,
 } from '../../constants/events'
 import { CODE_ENTER, CODE_LEFT, CODE_RIGHT, CODE_SPACE } from '../../constants/key-codes'
 import {
   PROP_TYPE_BOOLEAN,
   PROP_TYPE_NUMBER,
   PROP_TYPE_NUMBER_STRING,
-  PROP_TYPE_STRING
+  PROP_TYPE_STRING,
 } from '../../constants/props'
 import {
   addClass,
@@ -22,7 +22,7 @@ import {
   removeClass,
   requestAF,
   selectAll,
-  setAttr
+  setAttr,
 } from '../../utils/dom'
 import { eventOn, eventOff, stopEvent } from '../../utils/events'
 import { isUndefined } from '../../utils/inspect'
@@ -42,22 +42,22 @@ const {
   mixin: modelMixin,
   props: modelProps,
   prop: MODEL_PROP_NAME,
-  event: MODEL_EVENT_NAME
+  event: MODEL_EVENT_NAME,
 } = makeModelMixin('value', {
   type: PROP_TYPE_NUMBER,
-  defaultValue: 0
+  defaultValue: 0,
 })
 
 // Slide directional classes
 const DIRECTION = {
   next: {
     dirClass: 'carousel-item-left',
-    overlayClass: 'carousel-item-next'
+    overlayClass: 'carousel-item-next',
   },
   prev: {
     dirClass: 'carousel-item-right',
-    overlayClass: 'carousel-item-prev'
-  }
+    overlayClass: 'carousel-item-prev',
+  },
 }
 
 // Fallback Transition duration (with a little buffer) in ms
@@ -72,7 +72,7 @@ const SWIPE_THRESHOLD = 40
 // PointerEvent pointer types
 const PointerType = {
   TOUCH: 'touch',
-  PEN: 'pen'
+  PEN: 'pen',
 }
 
 // Transition Event names
@@ -80,13 +80,13 @@ const TransitionEndEvents = {
   WebkitTransition: 'webkitTransitionEnd',
   MozTransition: 'transitionend',
   OTransition: 'otransitionend oTransitionEnd',
-  transition: 'transitionend'
+  transition: 'transitionend',
 }
 
 // --- Helper methods ---
 
 // Return the browser specific transitionEnd event name
-const getTransitionEndEvent = el => {
+const getTransitionEndEvent = (el) => {
   for (const name in TransitionEndEvents) {
     if (!isUndefined(el.style[name])) {
       return TransitionEndEvents[name]
@@ -124,7 +124,7 @@ export const props = makePropsConfigurable(
     // Sniffed by carousel-slide
     noTouch: makeProp(PROP_TYPE_BOOLEAN, false),
     // Disable wrapping/looping when start/end is reached
-    noWrap: makeProp(PROP_TYPE_BOOLEAN, false)
+    noWrap: makeProp(PROP_TYPE_BOOLEAN, false),
   }),
   NAME_CAROUSEL
 )
@@ -149,13 +149,13 @@ export const BCarousel = /*#__PURE__*/ Vue.extend({
       isPaused: !(toInteger(this.interval, 0) > 0),
       // Touch event handling values
       touchStartX: 0,
-      touchDeltaX: 0
+      touchDeltaX: 0,
     }
   },
   computed: {
     numSlides() {
       return this.slides.length
-    }
+    },
   },
   watch: {
     [MODEL_PROP_NAME](newValue, oldValue) {
@@ -188,7 +188,7 @@ export const BCarousel = /*#__PURE__*/ Vue.extend({
         return
       }
       this.doSlide(to, from)
-    }
+    },
   },
   created() {
     // Create private non-reactive props
@@ -234,7 +234,7 @@ export const BCarousel = /*#__PURE__*/ Vue.extend({
           subtree: false,
           childList: true,
           attributes: true,
-          attributeFilter: ['id']
+          attributeFilter: ['id'],
         })
       }
     },
@@ -271,10 +271,10 @@ export const BCarousel = /*#__PURE__*/ Vue.extend({
             ? numSlides - 1
             : 0
           : slide < 0
-            ? noWrap
-              ? 0
-              : numSlides - 1
-            : slide
+          ? noWrap
+            ? 0
+            : numSlides - 1
+          : slide
       // Ensure the v-model is synched up if no-wrap is enabled
       // and user tried to slide pass either ends
       if (noWrap && this.index !== slide && this.index !== this[MODEL_PROP_NAME]) {
@@ -360,7 +360,7 @@ export const BCarousel = /*#__PURE__*/ Vue.extend({
           /* istanbul ignore if: transition events cant be tested in JSDOM */
           if (this.transitionEndEvent) {
             const events = this.transitionEndEvent.split(/\s+/)
-            events.forEach(event =>
+            events.forEach((event) =>
               eventOff(nextSlide, event, onceTransEnd, EVENT_OPTIONS_NO_CAPTURE)
             )
           }
@@ -384,7 +384,9 @@ export const BCarousel = /*#__PURE__*/ Vue.extend({
         /* istanbul ignore if: transition events cant be tested in JSDOM */
         if (this.transitionEndEvent) {
           const events = this.transitionEndEvent.split(/\s+/)
-          events.forEach(event => eventOn(nextSlide, event, onceTransEnd, EVENT_OPTIONS_NO_CAPTURE))
+          events.forEach((event) =>
+            eventOn(nextSlide, event, onceTransEnd, EVENT_OPTIONS_NO_CAPTURE)
+          )
         }
         // Fallback to setTimeout()
         this.$_animationTimeout = setTimeout(onceTransEnd, TRANS_DURATION)
@@ -484,7 +486,7 @@ export const BCarousel = /*#__PURE__*/ Vue.extend({
         this.start,
         TOUCH_EVENT_COMPAT_WAIT + mathMax(1000, this.interval)
       )
-    }
+    },
   },
   render(h) {
     const {
@@ -498,7 +500,7 @@ export const BCarousel = /*#__PURE__*/ Vue.extend({
       pause,
       restart,
       touchStart,
-      touchEnd
+      touchEnd,
     } = this
     const idInner = this.safeId('__BV_inner_')
 
@@ -509,9 +511,9 @@ export const BCarousel = /*#__PURE__*/ Vue.extend({
         staticClass: 'carousel-inner',
         attrs: {
           id: idInner,
-          role: 'list'
+          role: 'list',
         },
-        ref: 'inner'
+        ref: 'inner',
       },
       [this.normalizeSlot()]
     )
@@ -520,7 +522,7 @@ export const BCarousel = /*#__PURE__*/ Vue.extend({
     let $controls = h()
     if (this.controls) {
       const makeControl = (direction, label, handler) => {
-        const handlerWrapper = event => {
+        const handlerWrapper = (event) => {
           /* istanbul ignore next */
           if (!isSliding) {
             this.handleClick(event, handler)
@@ -537,26 +539,26 @@ export const BCarousel = /*#__PURE__*/ Vue.extend({
               href: '#',
               role: 'button',
               'aria-controls': idInner,
-              'aria-disabled': isSliding ? 'true' : null
+              'aria-disabled': isSliding ? 'true' : null,
             },
             on: {
               click: handlerWrapper,
-              keydown: handlerWrapper
-            }
+              keydown: handlerWrapper,
+            },
           },
           [
             h('span', {
               staticClass: `carousel-control-${direction}-icon`,
-              attrs: { 'aria-hidden': 'true' }
+              attrs: { 'aria-hidden': 'true' },
             }),
-            h('span', { class: 'sr-only' }, [label])
+            h('span', { class: 'sr-only' }, [label]),
           ]
         )
       }
 
       $controls = [
         makeControl('prev', this.labelPrev, this.prev),
-        makeControl('next', this.labelNext, this.next)
+        makeControl('next', this.labelNext, this.next),
       ]
     }
 
@@ -570,11 +572,11 @@ export const BCarousel = /*#__PURE__*/ Vue.extend({
           id: this.safeId('__BV_indicators_'),
           'aria-hidden': indicators ? 'false' : 'true',
           'aria-label': this.labelIndicators,
-          'aria-owns': idInner
-        }
+          'aria-owns': idInner,
+        },
       },
       this.slides.map((slide, i) => {
-        const handler = event => {
+        const handler = (event) => {
           this.handleClick(event, () => {
             this.setSlide(i)
           })
@@ -589,13 +591,13 @@ export const BCarousel = /*#__PURE__*/ Vue.extend({
             'aria-current': i === index ? 'true' : 'false',
             'aria-label': `${this.labelGotoSlide} ${i + 1}`,
             'aria-describedby': slide.id || null,
-            'aria-controls': idInner
+            'aria-controls': idInner,
           },
           on: {
             click: handler,
-            keydown: handler
+            keydown: handler,
           },
-          key: `slide_${i}`
+          key: `slide_${i}`,
         })
       })
     )
@@ -605,7 +607,7 @@ export const BCarousel = /*#__PURE__*/ Vue.extend({
       mouseleave: noHoverPause ? noop : restart,
       focusin: pause,
       focusout: restart,
-      keydown: event => {
+      keydown: (event) => {
         /* istanbul ignore next */
         if (/input|textarea/i.test(event.target.tagName)) {
           return
@@ -615,7 +617,7 @@ export const BCarousel = /*#__PURE__*/ Vue.extend({
           stopEvent(event)
           this[keyCode === CODE_LEFT ? 'prev' : 'next']()
         }
-      }
+      },
     }
     // Touch support event handlers for environment
     if (HAS_TOUCH_SUPPORT && !noTouch) {
@@ -639,17 +641,17 @@ export const BCarousel = /*#__PURE__*/ Vue.extend({
         class: {
           slide: !noAnimation,
           'carousel-fade': !noAnimation && this.fade,
-          'pointer-event': HAS_TOUCH_SUPPORT && HAS_POINTER_EVENT_SUPPORT && !noTouch
+          'pointer-event': HAS_TOUCH_SUPPORT && HAS_POINTER_EVENT_SUPPORT && !noTouch,
         },
         style: { background },
         attrs: {
           role: 'region',
           id: this.safeId(),
-          'aria-busy': isSliding ? 'true' : 'false'
+          'aria-busy': isSliding ? 'true' : 'false',
         },
-        on
+        on,
       },
       [$inner, $controls, $indicators]
     )
-  }
+  },
 })

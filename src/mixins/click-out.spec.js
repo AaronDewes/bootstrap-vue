@@ -14,15 +14,15 @@ describe('utils/click-out', () => {
       methods: {
         clickOutHandler() {
           count++
-        }
+        },
       },
       render(h) {
         return h('div', [h('button', 'button')])
-      }
+      },
     }
 
     const wrapper = mount(App, {
-      attachTo: document.body
+      attachTo: document.body,
     })
 
     const clickEvent = new MouseEvent('click')

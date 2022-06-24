@@ -8,7 +8,7 @@ describe('v-b-modal directive', () => {
     const spy = jest.fn()
     const App = {
       directives: {
-        bModal: VBModal
+        bModal: VBModal,
       },
       mounted() {
         this.$root.$on(EVENT_SHOW, spy)
@@ -16,7 +16,7 @@ describe('v-b-modal directive', () => {
       beforeDestroy() {
         this.$root.$off(EVENT_SHOW, spy)
       },
-      template: '<button v-b-modal.test>button</button>'
+      template: '<button v-b-modal.test>button</button>',
     }
     const wrapper = mount(App)
 
@@ -38,11 +38,11 @@ describe('v-b-modal directive', () => {
     const spy = jest.fn()
     const App = {
       directives: {
-        bModal: VBModal
+        bModal: VBModal,
       },
       data() {
         return {
-          text: 'link'
+          text: 'link',
         }
       },
       mounted() {
@@ -51,7 +51,7 @@ describe('v-b-modal directive', () => {
       beforeDestroy() {
         this.$root.$off(EVENT_SHOW, spy)
       },
-      template: '<a href="#" v-b-modal.test>{{ text }}</a>'
+      template: '<a href="#" v-b-modal.test>{{ text }}</a>',
     }
     const wrapper = mount(App)
 
@@ -76,11 +76,11 @@ describe('v-b-modal directive', () => {
     const spy = jest.fn()
     const App = {
       directives: {
-        bModal: VBModal
+        bModal: VBModal,
       },
       data() {
         return {
-          text: 'span'
+          text: 'span',
         }
       },
       mounted() {
@@ -89,7 +89,7 @@ describe('v-b-modal directive', () => {
       beforeDestroy() {
         this.$root.$off(EVENT_SHOW, spy)
       },
-      template: '<span v-b-modal.test>{{ text }}</span>'
+      template: '<span v-b-modal.test>{{ text }}</span>',
     }
     const wrapper = mount(App)
 
@@ -108,7 +108,7 @@ describe('v-b-modal directive', () => {
 
     // Test updating component. should maintain role attribute
     await wrapper.setData({
-      text: 'foobar'
+      text: 'foobar',
     })
     expect(wrapper.find('span').text()).toBe('foobar')
     expect(wrapper.find('span').attributes('role')).toBe('button')
@@ -120,11 +120,11 @@ describe('v-b-modal directive', () => {
     const spy = jest.fn()
     const App = {
       directives: {
-        bModal: VBModal
+        bModal: VBModal,
       },
       data() {
         return {
-          text: 'span'
+          text: 'span',
         }
       },
       mounted() {
@@ -133,7 +133,7 @@ describe('v-b-modal directive', () => {
       beforeDestroy() {
         this.$root.$off(EVENT_SHOW, spy)
       },
-      template: '<span v-b-modal.test>{{ text }}</span>'
+      template: '<span v-b-modal.test>{{ text }}</span>',
     }
     const wrapper = mount(App)
 
@@ -157,11 +157,11 @@ describe('v-b-modal directive', () => {
     const spy = jest.fn()
     const App = {
       directives: {
-        bModal: VBModal
+        bModal: VBModal,
       },
       data() {
         return {
-          text: 'span'
+          text: 'span',
         }
       },
       mounted() {
@@ -170,7 +170,7 @@ describe('v-b-modal directive', () => {
       beforeDestroy() {
         this.$root.$off(EVENT_SHOW, spy)
       },
-      template: '<span tabindex="0" v-b-modal.test>{{ text }}</span>'
+      template: '<span tabindex="0" v-b-modal.test>{{ text }}</span>',
     }
     const wrapper = mount(App)
 

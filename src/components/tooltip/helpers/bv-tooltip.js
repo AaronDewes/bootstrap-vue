@@ -20,7 +20,7 @@ import {
   EVENT_NAME_SHOWN,
   EVENT_OPTIONS_NO_CAPTURE,
   HOOK_EVENT_NAME_BEFORE_DESTROY,
-  HOOK_EVENT_NAME_DESTROYED
+  HOOK_EVENT_NAME_DESTROYED,
 } from '../../../constants/events'
 import { useParentMixin } from '../../../mixins/use-parent'
 import { arrayIncludes, concat, from as arrayFrom } from '../../../utils/array'
@@ -39,14 +39,14 @@ import {
   removeAttr,
   requestAF,
   select,
-  setAttr
+  setAttr,
 } from '../../../utils/dom'
 import {
   eventOff,
   eventOn,
   eventOnOff,
   getRootActionEventName,
-  getRootEventName
+  getRootEventName,
 } from '../../../utils/events'
 import { getScopeId } from '../../../utils/get-scope-id'
 import { identity } from '../../../utils/identity'
@@ -56,7 +56,7 @@ import {
   isPlainObject,
   isString,
   isUndefined,
-  isUndefinedOrNull
+  isUndefinedOrNull,
 } from '../../../utils/inspect'
 import { looseEqual } from '../../../utils/loose-equal'
 import { mathMax } from '../../../utils/math'
@@ -134,7 +134,7 @@ const templateData = {
   // ID to use for tooltip/popover
   id: null,
   // Flag used by directives only, for HTML content
-  html: false
+  html: false,
 }
 
 // --- Main component ---
@@ -154,9 +154,9 @@ export const BVTooltip = /*#__PURE__*/ Vue.extend({
         // manual: false,
         hover: false,
         click: false,
-        focus: false
+        focus: false,
       },
-      localShow: false
+      localShow: false,
     }
   },
   computed: {
@@ -200,7 +200,7 @@ export const BVTooltip = /*#__PURE__*/ Vue.extend({
     computedTemplateData() {
       const { title, content, variant, customClass, noFade, interactive } = this
       return { title, content, variant, customClass, noFade, interactive }
-    }
+    },
   },
   watch: {
     computedTriggers(newTriggers, oldTriggers) {
@@ -211,7 +211,7 @@ export const BVTooltip = /*#__PURE__*/ Vue.extend({
           // Disable trigger listeners
           this.unListen()
           // Clear any active triggers that are no longer in the list of triggers
-          oldTriggers.forEach(trigger => {
+          oldTriggers.forEach((trigger) => {
             if (!arrayIncludes(newTriggers, trigger)) {
               if (this.activeTrigger[trigger]) {
                 this.activeTrigger[trigger] = false
@@ -240,7 +240,7 @@ export const BVTooltip = /*#__PURE__*/ Vue.extend({
       } else {
         this.enable()
       }
-    }
+    },
   },
   created() {
     // Create non-reactive properties
@@ -314,7 +314,7 @@ export const BVTooltip = /*#__PURE__*/ Vue.extend({
       // Method for updating popper/template data
       // We only update data if it exists, and has not changed
       let titleUpdated = false
-      keys(templateData).forEach(prop => {
+      keys(templateData).forEach((prop) => {
         if (!isUndefined(data[prop]) && this[prop] !== data[prop]) {
           this[prop] = data[prop]
           if (prop === 'title') {
@@ -346,8 +346,8 @@ export const BVTooltip = /*#__PURE__*/ Vue.extend({
           // Ensure the following are integers
           offset: toInteger(this.offset, 0),
           arrowPadding: toInteger(this.arrowPadding, 0),
-          boundaryPadding: toInteger(this.boundaryPadding, 0)
-        }
+          boundaryPadding: toInteger(this.boundaryPadding, 0),
+        },
       }))
       // We set the initial reactive data (values that can be changed while open)
       this.handleTemplateUpdate()
@@ -409,7 +409,7 @@ export const BVTooltip = /*#__PURE__*/ Vue.extend({
       if ($tip) {
         const props = ['title', 'content', 'variant', 'customClass', 'noFade', 'interactive']
         // Only update the values if they have changed
-        props.forEach(prop => {
+        props.forEach((prop) => {
           if ($tip[prop] !== this[prop]) {
             $tip[prop] = this[prop]
           }
@@ -581,8 +581,8 @@ export const BVTooltip = /*#__PURE__*/ Vue.extend({
       return container === false
         ? closest(CONTAINER_SELECTOR, target) || body
         : /*istanbul ignore next */ isString(container)
-          ? /*istanbul ignore next */ getById(container.replace(/^#/, '')) || body
-          : /*istanbul ignore next */ body
+        ? /*istanbul ignore next */ getById(container.replace(/^#/, '')) || body
+        : /*istanbul ignore next */ body
     },
     getBoundary() {
       return this.boundary ? this.boundary.$el || this.boundary : 'scrollParent'
@@ -618,11 +618,7 @@ export const BVTooltip = /*#__PURE__*/ Vue.extend({
       // Add aria-describedby on trigger element, without removing any other IDs
       const target = this.getTarget()
       let desc = getAttr(target, 'aria-describedby') || ''
-      desc = desc
-        .split(/\s+/)
-        .concat(this.computedId)
-        .join(' ')
-        .trim()
+      desc = desc.split(/\s+/).concat(this.computedId).join(' ').trim()
       // Update/add aria-described by
       setAttr(target, 'aria-describedby', desc)
     },
@@ -632,7 +628,7 @@ export const BVTooltip = /*#__PURE__*/ Vue.extend({
       let desc = getAttr(target, 'aria-describedby') || ''
       desc = desc
         .split(/\s+/)
-        .filter(d => d !== this.computedId)
+        .filter((d) => d !== this.computedId)
         .join(' ')
         .trim()
       // Update or remove aria-describedby
@@ -681,7 +677,7 @@ export const BVTooltip = /*#__PURE__*/ Vue.extend({
         componentId: this.computedId,
         vueTarget: this,
         // Add in option overrides
-        ...options
+        ...options,
       })
     },
     emitEvent(bvEvent) {
@@ -700,7 +696,7 @@ export const BVTooltip = /*#__PURE__*/ Vue.extend({
       // Listen for global show/hide events
       this.setRootListener(true)
       // Set up our listeners on the target trigger element
-      this.computedTriggers.forEach(trigger => {
+      this.computedTriggers.forEach((trigger) => {
         if (trigger === 'click') {
           eventOn(el, 'click', this.handleEvent, EVENT_OPTIONS_NO_CAPTURE)
         } else if (trigger === 'focus') {
@@ -726,7 +722,7 @@ export const BVTooltip = /*#__PURE__*/ Vue.extend({
       this.setRootListener(false)
 
       // Clear out any active target listeners
-      events.forEach(event => {
+      events.forEach((event) => {
         target && eventOff(target, event, this.handleEvent, EVENT_OPTIONS_NO_CAPTURE)
       }, this)
     },
@@ -779,7 +775,7 @@ export const BVTooltip = /*#__PURE__*/ Vue.extend({
       // Only needed because of broken event delegation on iOS
       // https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
       if ('ontouchstart' in document.documentElement) {
-        arrayFrom(document.body.children).forEach(el => {
+        arrayFrom(document.body.children).forEach((el) => {
           eventOnOff(on, el, 'mouseover', this.$_noop)
         })
       }
@@ -856,14 +852,14 @@ export const BVTooltip = /*#__PURE__*/ Vue.extend({
     },
     doHide(id) {
       // Programmatically hide tooltip or popover
-      if (!id || (this.getTargetId() === id || this.computedId === id)) {
+      if (!id || this.getTargetId() === id || this.computedId === id) {
         // Close all tooltips or popovers, or this specific tip (with ID)
         this.forceHide()
       }
     },
     doShow(id) {
       // Programmatically show tooltip or popover
-      if (!id || (this.getTargetId() === id || this.computedId === id)) {
+      if (!id || this.getTargetId() === id || this.computedId === id) {
         // Open all tooltips or popovers, or this specific tip (with ID)
         this.show()
       }
@@ -871,7 +867,7 @@ export const BVTooltip = /*#__PURE__*/ Vue.extend({
     /*istanbul ignore next: ignore for now */
     doDisable(id) /*istanbul ignore next: ignore for now */ {
       // Programmatically disable tooltip or popover
-      if (!id || (this.getTargetId() === id || this.computedId === id)) {
+      if (!id || this.getTargetId() === id || this.computedId === id) {
         // Disable all tooltips or popovers (no ID), or this specific tip (with ID)
         this.disable()
       }
@@ -879,7 +875,7 @@ export const BVTooltip = /*#__PURE__*/ Vue.extend({
     /*istanbul ignore next: ignore for now */
     doEnable(id) /*istanbul ignore next: ignore for now */ {
       // Programmatically enable tooltip or popover
-      if (!id || (this.getTargetId() === id || this.computedId === id)) {
+      if (!id || this.getTargetId() === id || this.computedId === id) {
         // Enable all tooltips or popovers (no ID), or this specific tip (with ID)
         this.enable()
       }
@@ -974,6 +970,6 @@ export const BVTooltip = /*#__PURE__*/ Vue.extend({
           }
         }, this.computedDelay.hide)
       }
-    }
-  }
+    },
+  },
 })

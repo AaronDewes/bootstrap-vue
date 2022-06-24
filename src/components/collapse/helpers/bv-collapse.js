@@ -14,7 +14,7 @@ import { makeProp } from '../../../utils/props'
 // --- Helper methods ---
 
 // Transition event handler helpers
-const onEnter = el => {
+const onEnter = (el) => {
   setStyle(el, 'height', 0)
   // In a `requestAF()` for `appear` to work
   requestAF(() => {
@@ -23,11 +23,11 @@ const onEnter = el => {
   })
 }
 
-const onAfterEnter = el => {
+const onAfterEnter = (el) => {
   removeStyle(el, 'height')
 }
 
-const onLeave = el => {
+const onLeave = (el) => {
   setStyle(el, 'height', 'auto')
   setStyle(el, 'display', 'block')
   setStyle(el, 'height', `${getBCR(el).height}px`)
@@ -35,7 +35,7 @@ const onLeave = el => {
   setStyle(el, 'height', 0)
 }
 
-const onAfterLeave = el => {
+const onAfterLeave = (el) => {
   removeStyle(el, 'height')
 }
 
@@ -50,7 +50,7 @@ const TRANSITION_PROPS = {
   enterToClass: 'collapse show',
   leaveClass: 'collapse show',
   leaveActiveClass: 'collapsing',
-  leaveToClass: 'collapse'
+  leaveToClass: 'collapse',
 }
 
 // Default transition handlers
@@ -59,14 +59,14 @@ const TRANSITION_HANDLERS = {
   enter: onEnter,
   afterEnter: onAfterEnter,
   leave: onLeave,
-  afterLeave: onAfterLeave
+  afterLeave: onAfterLeave,
 }
 
 // --- Main component ---
 
 export const props = {
   // // If `true` (and `visible` is `true` on mount), animate initially visible
-  appear: makeProp(PROP_TYPE_BOOLEAN, false)
+  appear: makeProp(PROP_TYPE_BOOLEAN, false),
 }
 
 // --- Main component ---
@@ -84,5 +84,5 @@ export const BVCollapse = /*#__PURE__*/ Vue.extend({
       // Note: `<transition>` supports a single root element only
       children
     )
-  }
+  },
 })

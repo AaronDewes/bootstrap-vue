@@ -18,7 +18,7 @@ export const DefaultTransition = /*#__PURE__*/ Vue.extend({
   data() {
     return {
       // Transition classes base name
-      name: 'b-toaster'
+      name: 'b-toaster',
     }
   },
   methods: {
@@ -31,18 +31,18 @@ export const DefaultTransition = /*#__PURE__*/ Vue.extend({
       requestAF(() => {
         removeClass(el, `${this.name}-enter-to`)
       })
-    }
+    },
   },
   render(h) {
     return h(
       'transition-group',
       {
         props: { tag: 'div', name: this.name },
-        on: { afterEnter: this.onAfterEnter }
+        on: { afterEnter: this.onAfterEnter },
       },
       this.normalizeSlot()
     )
-  }
+  },
 })
 
 // --- Props ---
@@ -54,7 +54,7 @@ export const props = makePropsConfigurable(
     ariaLive: makeProp(PROP_TYPE_STRING),
     name: makeProp(PROP_TYPE_STRING, undefined, true), // Required
     // Aria role
-    role: makeProp(PROP_TYPE_STRING)
+    role: makeProp(PROP_TYPE_STRING),
   },
   NAME_TOASTER
 )
@@ -72,7 +72,7 @@ export const BToaster = /*#__PURE__*/ Vue.extend({
       doRender: false,
       dead: false,
       // Toaster names cannot change once created
-      staticName: this.name
+      staticName: this.name,
     }
   },
   beforeMount() {
@@ -113,8 +113,8 @@ export const BToaster = /*#__PURE__*/ Vue.extend({
           tag: 'div',
           slim: false,
           // transition: this.transition || DefaultTransition
-          transition: DefaultTransition
-        }
+          transition: DefaultTransition,
+        },
       })
 
       $toaster = h(
@@ -127,13 +127,13 @@ export const BToaster = /*#__PURE__*/ Vue.extend({
             // Fallback to null to make sure attribute doesn't exist
             role: this.role || null,
             'aria-live': this.ariaLive,
-            'aria-atomic': this.ariaAtomic
-          }
+            'aria-atomic': this.ariaAtomic,
+          },
         },
         [$target]
       )
     }
 
     return $toaster
-  }
+  },
 })

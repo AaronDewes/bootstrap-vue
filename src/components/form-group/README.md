@@ -32,13 +32,13 @@
           return 'Enter at least 4 characters.'
         }
         return 'Please enter something.'
-      }
+      },
     },
     data() {
       return {
-        name: ''
+        name: '',
       }
-    }
+    },
   }
 </script>
 
@@ -191,12 +191,7 @@ of related form controls:
         <b-form-input id="nested-street"></b-form-input>
       </b-form-group>
 
-      <b-form-group
-        label="City:"
-        label-for="nested-city"
-        label-cols-sm="3"
-        label-align-sm="right"
-      >
+      <b-form-group label="City:" label-for="nested-city" label-cols-sm="3" label-align-sm="right">
         <b-form-input id="nested-city"></b-form-input>
       </b-form-group>
 

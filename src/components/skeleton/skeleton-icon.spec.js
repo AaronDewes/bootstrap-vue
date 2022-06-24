@@ -28,8 +28,8 @@ describe('skeleton-icon', () => {
   it('has class `b-skeleton-animate-fade` when `animation="fade"` is set', async () => {
     const wrapper = mount(BSkeletonIcon, {
       propsData: {
-        animation: 'fade'
-      }
+        animation: 'fade',
+      },
     })
 
     expect(wrapper).toBeDefined()
@@ -41,8 +41,8 @@ describe('skeleton-icon', () => {
   it('`icon` prop works', async () => {
     const wrapper = mount(BSkeletonIcon, {
       propsData: {
-        icon: 'heart'
-      }
+        icon: 'heart',
+      },
     })
 
     expect(wrapper).toBeDefined()
@@ -58,9 +58,9 @@ describe('skeleton-icon', () => {
         icon: 'heart',
         iconProps: {
           fontScale: 2,
-          variant: 'primary'
-        }
-      }
+          variant: 'primary',
+        },
+      },
     })
 
     expect(wrapper).toBeDefined()
@@ -74,8 +74,8 @@ describe('skeleton-icon', () => {
   it('accepts custom classes', async () => {
     const wrapper = mount(BSkeletonIcon, {
       context: {
-        class: ['foobar']
-      }
+        class: ['foobar'],
+      },
     })
 
     expect(wrapper.classes()).toContain('b-skeleton-icon-wrapper')

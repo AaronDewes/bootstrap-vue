@@ -6,7 +6,7 @@ import { NAME_FORM_BUTTON_LABEL_CONTROL } from '../../constants/components'
 import {
   PROP_TYPE_ARRAY_OBJECT_STRING,
   PROP_TYPE_BOOLEAN,
-  PROP_TYPE_STRING
+  PROP_TYPE_STRING,
 } from '../../constants/props'
 import { SLOT_NAME_BUTTON_CONTENT, SLOT_NAME_DEFAULT } from '../../constants/slots'
 import { attemptBlur, attemptFocus } from '../../utils/dom'
@@ -48,7 +48,7 @@ export const props = sortKeys({
   readonly: makeProp(PROP_TYPE_BOOLEAN, false),
   // Tri-state prop: `true`, `false` or `null`
   rtl: makeProp(PROP_TYPE_BOOLEAN, null),
-  value: makeProp(PROP_TYPE_STRING, '')
+  value: makeProp(PROP_TYPE_STRING, ''),
 })
 
 // --- Main component ---
@@ -57,14 +57,14 @@ export const props = sortKeys({
 export const BVFormBtnLabelControl = /*#__PURE__*/ Vue.extend({
   name: NAME_FORM_BUTTON_LABEL_CONTROL,
   directives: {
-    'b-hover': VBHover
+    'b-hover': VBHover,
   },
   mixins: [idMixin, formSizeMixin, formStateMixin, dropdownMixin, normalizeSlotMixin],
   props,
   data() {
     return {
       isHovered: false,
-      hasFocus: false
+      hasFocus: false,
     }
   },
   computed: {
@@ -82,7 +82,7 @@ export const BVFormBtnLabelControl = /*#__PURE__*/ Vue.extend({
     },
     computedDir() {
       return this.rtl === true ? 'rtl' : this.rtl === false ? 'ltr' : null
-    }
+    },
   },
   methods: {
     focus() {
@@ -100,7 +100,7 @@ export const BVFormBtnLabelControl = /*#__PURE__*/ Vue.extend({
     },
     handleHover(hovered) {
       this.isHovered = hovered
-    }
+    },
   },
   render(h) {
     const {
@@ -119,7 +119,7 @@ export const BVFormBtnLabelControl = /*#__PURE__*/ Vue.extend({
       hasFocus,
       labelSelected,
       buttonVariant,
-      buttonOnly
+      buttonOnly,
     } = this
     const value = toString(this.value) || ''
     const invalid = state === false || (required && !value)
@@ -136,7 +136,7 @@ export const BVFormBtnLabelControl = /*#__PURE__*/ Vue.extend({
           // `dropdown-toggle` is needed for proper
           // corner rounding in button only mode
           'dropdown-toggle': buttonOnly,
-          'dropdown-toggle-no-caret': buttonOnly
+          'dropdown-toggle-no-caret': buttonOnly,
         },
         attrs: {
           id: idButton,
@@ -145,7 +145,7 @@ export const BVFormBtnLabelControl = /*#__PURE__*/ Vue.extend({
           'aria-haspopup': 'dialog',
           'aria-expanded': visible ? 'true' : 'false',
           'aria-invalid': invalid ? 'true' : null,
-          'aria-required': required ? 'true' : null
+          'aria-required': required ? 'true' : null,
         },
         directives: [{ name: 'b-hover', value: this.handleHover }],
         on: {
@@ -153,14 +153,14 @@ export const BVFormBtnLabelControl = /*#__PURE__*/ Vue.extend({
           click: this.toggle,
           keydown: this.toggle, // Handle ENTER, SPACE and DOWN
           '!focus': this.setFocus,
-          '!blur': this.setFocus
+          '!blur': this.setFocus,
         },
-        ref: 'toggle'
+        ref: 'toggle',
       },
       [
         this.hasNormalizedSlot(SLOT_NAME_BUTTON_CONTENT)
           ? this.normalizeSlot(SLOT_NAME_BUTTON_CONTENT, btnScope)
-          : /* istanbul ignore next */ h(BIconChevronDown, { props: { scale: 1.25 } })
+          : /* istanbul ignore next */ h(BIconChevronDown, { props: { scale: 1.25 } }),
       ]
     )
 
@@ -172,8 +172,8 @@ export const BVFormBtnLabelControl = /*#__PURE__*/ Vue.extend({
           type: 'hidden',
           name: name || null,
           form: this.form || null,
-          value
-        }
+          value,
+        },
       })
     }
 
@@ -186,20 +186,20 @@ export const BVFormBtnLabelControl = /*#__PURE__*/ Vue.extend({
           this.menuClass,
           {
             show: visible,
-            'dropdown-menu-right': this.right
-          }
+            'dropdown-menu-right': this.right,
+          },
         ],
         attrs: {
           id: idMenu,
           role: 'dialog',
           tabindex: '-1',
           'aria-modal': 'false',
-          'aria-labelledby': idLabel
+          'aria-labelledby': idLabel,
         },
         on: {
-          keydown: this.onKeydown // Handle ESC
+          keydown: this.onKeydown, // Handle ESC
         },
-        ref: 'menu'
+        ref: 'menu',
       },
       [this.normalizeSlot(SLOT_NAME_DEFAULT, { opened: visible })]
     )
@@ -215,28 +215,28 @@ export const BVFormBtnLabelControl = /*#__PURE__*/ Vue.extend({
               // Mute the text if showing the placeholder
               { 'text-muted': !value },
               this.stateClass,
-              this.sizeFormClass
+              this.sizeFormClass,
             ],
         attrs: {
           id: idLabel,
           for: idButton,
           'aria-invalid': invalid ? 'true' : null,
-          'aria-required': required ? 'true' : null
+          'aria-required': required ? 'true' : null,
         },
         directives: [{ name: 'b-hover', value: this.handleHover }],
         on: {
           // Disable bubbling of the click event to
           // prevent menu from closing and re-opening
 
-          '!click': /* istanbul ignore next */ event => {
+          '!click': /* istanbul ignore next */ (event) => {
             stopEvent(event, { preventDefault: false })
-          }
-        }
+          },
+        },
       },
       [
         value ? this.formattedValue || value : this.placeholder || '',
         // Add the selected label for screen readers when a value is provided
-        value && labelSelected ? h('bdi', { staticClass: 'sr-only' }, labelSelected) : ''
+        value && labelSelected ? h('bdi', { staticClass: 'sr-only' }, labelSelected) : '',
       ]
     )
 
@@ -255,10 +255,10 @@ export const BVFormBtnLabelControl = /*#__PURE__*/ Vue.extend({
               focus: hasFocus && !buttonOnly,
               show: visible,
               'is-valid': state === true,
-              'is-invalid': state === false
+              'is-invalid': state === false,
             },
-            buttonOnly ? null : this.sizeFormClass
-          ]
+            buttonOnly ? null : this.sizeFormClass,
+          ],
         ],
         attrs: {
           id: idWrapper,
@@ -269,10 +269,10 @@ export const BVFormBtnLabelControl = /*#__PURE__*/ Vue.extend({
           'aria-readonly': readonly && !disabled,
           'aria-labelledby': idLabel,
           'aria-invalid': state === false || (required && !value) ? 'true' : null,
-          'aria-required': required ? 'true' : null
-        }
+          'aria-required': required ? 'true' : null,
+        },
       },
       [$button, $hidden, $menu, $label]
     )
-  }
+  },
 })

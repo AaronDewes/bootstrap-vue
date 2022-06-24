@@ -3,7 +3,7 @@ import { PROP_TYPE_BOOLEAN, PROP_TYPE_STRING } from '../../../constants/props'
 import {
   SLOT_NAME_EMPTY,
   SLOT_NAME_EMPTYFILTERED,
-  SLOT_NAME_TABLE_BUSY
+  SLOT_NAME_TABLE_BUSY,
 } from '../../../constants/slots'
 import { htmlOrText } from '../../../utils/html'
 import { isFunction } from '../../../utils/inspect'
@@ -19,7 +19,7 @@ export const props = {
   emptyFilteredText: makeProp(PROP_TYPE_STRING, 'There are no records matching your request'),
   emptyHtml: makeProp(PROP_TYPE_STRING),
   emptyText: makeProp(PROP_TYPE_STRING, 'There are no records to show'),
-  showEmpty: makeProp(PROP_TYPE_BOOLEAN, false)
+  showEmpty: makeProp(PROP_TYPE_BOOLEAN, false),
 }
 
 // --- Mixin ---
@@ -46,7 +46,7 @@ export const emptyMixin = Vue.extend({
           emptyFilteredText,
           emptyFilteredHtml,
           tbodyTrClass,
-          tbodyTrAttr
+          tbodyTrAttr,
         } = this
 
         $empty = this.normalizeSlot(isFiltered ? SLOT_NAME_EMPTYFILTERED : SLOT_NAME_EMPTY, {
@@ -56,7 +56,7 @@ export const emptyMixin = Vue.extend({
           emptyText,
           fields,
           // Not sure why this is included, as it will always be an empty array
-          items
+          items,
         })
 
         if (!$empty) {
@@ -64,7 +64,7 @@ export const emptyMixin = Vue.extend({
             class: ['text-center', 'my-2'],
             domProps: isFiltered
               ? htmlOrText(emptyFilteredHtml, emptyFilteredText)
-              : htmlOrText(emptyHtml, emptyText)
+              : htmlOrText(emptyHtml, emptyText),
           })
         }
 
@@ -74,11 +74,11 @@ export const emptyMixin = Vue.extend({
             {
               attrs: {
                 role: 'alert',
-                'aria-live': 'polite'
-              }
+                'aria-live': 'polite',
+              },
             },
             [$empty]
-          )
+          ),
         ])
 
         $empty = h(
@@ -88,18 +88,18 @@ export const emptyMixin = Vue.extend({
             class: [
               isFunction(tbodyTrClass)
                 ? /* istanbul ignore next */ tbodyTrClass(null, 'row-empty')
-                : tbodyTrClass
+                : tbodyTrClass,
             ],
             attrs: isFunction(tbodyTrAttr)
               ? /* istanbul ignore next */ tbodyTrAttr(null, 'row-empty')
               : tbodyTrAttr,
-            key: isFiltered ? 'b-empty-filtered-row' : 'b-empty-row'
+            key: isFiltered ? 'b-empty-filtered-row' : 'b-empty-row',
           },
           [$empty]
         )
       }
 
       return $empty
-    }
-  }
+    },
+  },
 })

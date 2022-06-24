@@ -163,7 +163,7 @@ const processFile = (file, data) =>
     const componentName = `BIcon${name}`
 
     fs.readFile(file, 'utf8')
-      .then(svg => {
+      .then((svg) => {
         const content = svg
           // Remove <svg ...> and </svg>
           .replace(/<svg[^>]+>/i, '')
@@ -181,25 +181,25 @@ const processFile = (file, data) =>
         // Resolve
         resolve()
       })
-      .catch(error => reject(error))
+      .catch((error) => reject(error))
   })
 
 // Method to generate the updated `package.json` content
-const updatePkgMeta = data => {
+const updatePkgMeta = (data) => {
   // Create a semi-deep clone of the current `package.json`
   const newPkg = { ...bvIconsPkg, meta: { ...bvIconsPkg.meta } }
   // Grab current component entries array and filter out auto-generated entries
-  const metaComponents = bvIconsPkg.meta.components.filter(c => !c['auto-gen'])
+  const metaComponents = bvIconsPkg.meta.components.filter((c) => !c['auto-gen'])
   // Grab the props definition array from `BIcon` and filter out `icon` prop
   const iconProps = metaComponents
-    .find(m => m.component === 'BIcon')
-    .props.filter(p => p.prop !== 'icon')
+    .find((m) => m.component === 'BIcon')
+    .props.filter((p) => p.prop !== 'icon')
   // Build the icon component entries
-  const iconMeta = data.componentNames.map(name => {
+  const iconMeta = data.componentNames.map((name) => {
     return {
       component: name,
       'auto-gen': `bootstrap-icons ${data.version}`,
-      props: iconProps
+      props: iconProps,
     }
   })
   // Update the package components meta info
@@ -220,7 +220,7 @@ const main = async () => {
     homepage: bsIconsPkg.homepage,
     created: today.toISOString(),
     componentNames: [],
-    icons: {}
+    icons: {},
   }
 
   console.log(`  Reading SVGs from bootstrap-icons version ${data.version}`)
@@ -229,7 +229,7 @@ const main = async () => {
   const files = await fs.readdir(bootstrapIconsDir)
 
   // Process the SVG Data for all files
-  await Promise.all(files.map(file => processFile(file, data)))
+  await Promise.all(files.map((file) => processFile(file, data)))
 
   // Sort the icon component names
   data.componentNames = data.componentNames.sort()

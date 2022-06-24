@@ -15,8 +15,8 @@ describe('alert', () => {
   it('hidden alert (show = "0") renders comment node', async () => {
     const wrapper = mount(BAlert, {
       propsData: {
-        show: '0'
-      }
+        show: '0',
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -28,8 +28,8 @@ describe('alert', () => {
   it('hidden alert (show = 0) renders comment node', async () => {
     const wrapper = mount(BAlert, {
       propsData: {
-        show: 0
-      }
+        show: 0,
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -41,8 +41,8 @@ describe('alert', () => {
   it('visible alert has default class names and attributes', async () => {
     const wrapper = mount(BAlert, {
       propsData: {
-        show: true
-      }
+        show: true,
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')
@@ -61,8 +61,8 @@ describe('alert', () => {
   it('visible alert (show = "") has default class names and attributes', async () => {
     const wrapper = mount(BAlert, {
       propsData: {
-        show: ''
-      }
+        show: '',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')
@@ -82,8 +82,8 @@ describe('alert', () => {
     const wrapper = mount(BAlert, {
       propsData: {
         show: true,
-        variant: 'success'
-      }
+        variant: 'success',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')
@@ -99,11 +99,11 @@ describe('alert', () => {
   it('renders content from default slot', async () => {
     const wrapper = mount(BAlert, {
       propsData: {
-        show: true
+        show: true,
       },
       slots: {
-        default: '<article>foobar</article>'
-      }
+        default: '<article>foobar</article>',
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -135,8 +135,8 @@ describe('alert', () => {
     const wrapper = mount(BAlert, {
       propsData: {
         show: true,
-        dismissible: true
-      }
+        dismissible: true,
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -152,8 +152,8 @@ describe('alert', () => {
     const wrapper = mount(BAlert, {
       propsData: {
         show: true,
-        dismissible: true
-      }
+        dismissible: true,
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -170,8 +170,8 @@ describe('alert', () => {
       propsData: {
         show: true,
         dismissible: true,
-        dismissLabel: 'foobar'
-      }
+        dismissLabel: 'foobar',
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -187,8 +187,8 @@ describe('alert', () => {
     const wrapper = mount(BAlert, {
       propsData: {
         show: true,
-        dismissible: true
-      }
+        dismissible: true,
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -215,8 +215,8 @@ describe('alert', () => {
     const wrapper = mount(BAlert, {
       propsData: {
         show: false,
-        fade: true
-      }
+        fade: true,
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -247,8 +247,8 @@ describe('alert', () => {
     jest.useFakeTimers()
     const wrapper = mount(BAlert, {
       propsData: {
-        show: 3
-      }
+        show: 3,
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -292,8 +292,8 @@ describe('alert', () => {
     jest.useFakeTimers()
     const wrapper = mount(BAlert, {
       propsData: {
-        show: '3'
-      }
+        show: '3',
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -337,8 +337,8 @@ describe('alert', () => {
     jest.useFakeTimers()
     const wrapper = mount(BAlert, {
       propsData: {
-        show: 2
-      }
+        show: 2,
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -400,8 +400,8 @@ describe('alert', () => {
     const wrapper = mount(BAlert, {
       propsData: {
         show: 2,
-        dismissible: true
-      }
+        dismissible: true,
+      },
     })
 
     expect(wrapper.vm).toBeDefined()

@@ -4,7 +4,7 @@ import { pluginFactory } from '../../utils/plugins'
 
 const TooltipPlugin = /*#__PURE__*/ pluginFactory({
   components: { BTooltip },
-  plugins: { VBTooltipPlugin }
+  plugins: { VBTooltipPlugin },
 })
 
 export { TooltipPlugin, BTooltip }

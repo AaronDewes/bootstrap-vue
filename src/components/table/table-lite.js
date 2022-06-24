@@ -27,7 +27,7 @@ export const props = makePropsConfigurable(
     ...tableRendererProps,
     ...tbodyProps,
     ...tfootProps,
-    ...theadProps
+    ...theadProps,
   }),
   NAME_TABLE_LITE
 )
@@ -55,9 +55,9 @@ export const BTableLite = /*#__PURE__*/ Vue.extend({
     // Table features mixins
     // These are pretty lightweight, and are useful for lightweight tables
     captionMixin,
-    colgroupMixin
+    colgroupMixin,
   ],
-  props
+  props,
 
   // Render function is provided by `tableRendererMixin`
 })

@@ -37,7 +37,7 @@ describe('tab', () => {
 
   it('has class disabled when disabled=true', async () => {
     const wrapper = mount(BTab, {
-      propsData: { disabled: true }
+      propsData: { disabled: true },
     })
 
     expect(wrapper.classes()).toContain('disabled')
@@ -50,7 +50,7 @@ describe('tab', () => {
 
   it('has class active when active=true', async () => {
     const wrapper = mount(BTab, {
-      propsData: { active: true }
+      propsData: { active: true },
     })
 
     expect(wrapper.classes()).toContain('active')
@@ -64,8 +64,8 @@ describe('tab', () => {
     const wrapper = mount(BTab, {
       propsData: {
         active: true,
-        disabled: true
-      }
+        disabled: true,
+      },
     })
 
     expect(wrapper.classes()).not.toContain('active')
@@ -105,7 +105,7 @@ describe('tab', () => {
 
     let called = false
     let value = null
-    wrapper.vm.$on('update:active', v => {
+    wrapper.vm.$on('update:active', (v) => {
       called = true
       value = v
     })
@@ -129,10 +129,10 @@ describe('tab', () => {
             fade: false,
             lazy: false,
             card: true,
-            noKeyNav: true
-          })
+            noKeyNav: true,
+          }),
         }
-      }
+      },
     })
 
     expect(wrapper.classes()).toContain('card-body')
@@ -151,13 +151,13 @@ describe('tab', () => {
             fade: false,
             lazy: false,
             card: true,
-            noKeyNav: true
-          })
+            noKeyNav: true,
+          }),
         }
       },
       propsData: {
-        noBody: true
-      }
+        noBody: true,
+      },
     })
 
     expect(wrapper.classes()).not.toContain('card-body')
@@ -183,13 +183,13 @@ describe('tab', () => {
               called = true
               vm = tab
               return true
-            }
-          })
+            },
+          }),
         }
       },
       slots: {
-        title: '<b>foobar</b>'
-      }
+        title: '<b>foobar</b>',
+      },
     })
 
     await wrapper.setData({ localActive: true })
@@ -225,10 +225,10 @@ describe('tab', () => {
               deactivateVm = tab
               tab.localActive = false
               return true
-            }
-          })
+            },
+          }),
         }
-      }
+      },
     })
 
     expect(activateCalled).toBe(false)
@@ -275,11 +275,11 @@ describe('tab', () => {
               activateVm = tab
               tab.localActive = true
               return true
-            }
-          })
+            },
+          }),
         }
       },
-      propsData: { disabled: true }
+      propsData: { disabled: true },
     })
 
     expect(activateCalled).toBe(false)
@@ -310,10 +310,10 @@ describe('tab', () => {
               deactivateVm = tab
               tab.localActive = false
               return true
-            }
-          })
+            },
+          }),
         }
-      }
+      },
     })
 
     expect(deactivateCalled).toBe(false)

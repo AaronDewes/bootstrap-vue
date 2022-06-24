@@ -16,8 +16,8 @@ describe('input-group > input-group-text', () => {
   it('has custom root element when prop tag set', async () => {
     const wrapper = mount(BInputGroupText, {
       propsData: {
-        tag: 'span'
-      }
+        tag: 'span',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('SPAN')
@@ -31,8 +31,8 @@ describe('input-group > input-group-text', () => {
   it('renders content of default slot', async () => {
     const wrapper = mount(BInputGroupText, {
       slots: {
-        default: 'foobar'
-      }
+        default: 'foobar',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')

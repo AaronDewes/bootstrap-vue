@@ -32,17 +32,17 @@ export const makeIcon = (name, content) => {
           // Defaults
           {
             props: { title: iconTitle },
-            attrs: { 'aria-label': iconTitle }
+            attrs: { 'aria-label': iconTitle },
           },
           // User data
           data,
           // Required data
           {
             staticClass: iconNameClass,
-            props: { ...props, content: svgContent }
+            props: { ...props, content: svgContent },
           }
         )
       )
-    }
+    },
   })
 }

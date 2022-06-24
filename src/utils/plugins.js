@@ -13,10 +13,10 @@ export const checkMultipleVue = (() => {
   const MULTIPLE_VUE_WARNING = [
     'Multiple instances of Vue detected!',
     'You may need to set up an alias for Vue in your bundler config.',
-    'See: https://bootstrap-vue.org/docs#using-module-bundlers'
+    'See: https://bootstrap-vue.org/docs#using-module-bundlers',
   ].join('\n')
 
-  return Vue => {
+  return (Vue) => {
     /* istanbul ignore next */
     if (!checkMultipleVueWarned && OurVue !== Vue && !IS_JSDOM) {
       warn(MULTIPLE_VUE_WARNING)
@@ -55,7 +55,7 @@ export const installFactory = ({ components, directives, plugins } = {}) => {
  * @returns {function} plugin install function
  */
 export const installFactoryNoConfig = ({ components, directives, plugins } = {}) => {
-  const install = Vue => {
+  const install = (Vue) => {
     if (install.installed) {
       /* istanbul ignore next */
       return
@@ -79,7 +79,7 @@ export const installFactoryNoConfig = ({ components, directives, plugins } = {})
  */
 export const pluginFactory = (options = {}, extend = {}) => ({
   ...extend,
-  install: installFactory(options)
+  install: installFactory(options),
 })
 
 /**
@@ -89,7 +89,7 @@ export const pluginFactory = (options = {}, extend = {}) => ({
  */
 export const pluginFactoryNoConfig = (options = {}, extend = {}) => ({
   ...extend,
-  install: installFactoryNoConfig(options)
+  install: installFactoryNoConfig(options),
 })
 
 /**
@@ -157,7 +157,7 @@ export const registerDirectives = (Vue, directives = {}) => {
  * Install plugin if window.Vue available
  * @param {object} Plugin definition
  */
-export const vueUse = VuePlugin => {
+export const vueUse = (VuePlugin) => {
   /* istanbul ignore next */
   if (HAS_WINDOW_SUPPORT && window.Vue) {
     window.Vue.use(VuePlugin)

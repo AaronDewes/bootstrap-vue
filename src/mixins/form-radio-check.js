@@ -21,7 +21,7 @@ const {
   mixin: modelMixin,
   props: modelProps,
   prop: MODEL_PROP_NAME,
-  event: MODEL_EVENT_NAME
+  event: MODEL_EVENT_NAME,
 } = makeModelMixin('checked', { defaultValue: null })
 
 export { MODEL_PROP_NAME, MODEL_EVENT_NAME }
@@ -43,7 +43,7 @@ export const props = makePropsConfigurable(
     // Only applicable when rendered with button style
     buttonVariant: makeProp(PROP_TYPE_STRING),
     inline: makeProp(PROP_TYPE_BOOLEAN, false),
-    value: makeProp(PROP_TYPE_ANY)
+    value: makeProp(PROP_TYPE_ANY),
   }),
   'formRadioCheckControls'
 )
@@ -60,14 +60,15 @@ export const formRadioCheckMixin = Vue.extend({
     formControlMixin,
     formSizeMixin,
     formStateMixin,
-    formCustomMixin
+    formCustomMixin,
   ],
   inheritAttrs: false,
   props,
   data() {
     return {
+      // eslint-disable-next-line vue/no-computed-properties-in-data
       localChecked: this.isGroup ? this.bvGroup[MODEL_PROP_NAME] : this[MODEL_PROP_NAME],
-      hasFocus: false
+      hasFocus: false,
     }
   },
   computed: {
@@ -81,7 +82,7 @@ export const formRadioCheckMixin = Vue.extend({
         } else {
           this.localChecked = value
         }
-      }
+      },
     },
     isChecked() {
       return looseEqual(this.value, this.computedLocalChecked)
@@ -108,8 +109,8 @@ export const formRadioCheckMixin = Vue.extend({
       return this.isBtnMode || this.isRadio || this.isPlain
         ? false
         : this.isGroup
-          ? this.bvGroup.switches
-          : this.switch
+        ? this.bvGroup.switches
+        : this.switch
     },
     isInline() {
       return this.isGroup ? this.bvGroup.inline : this.inline
@@ -160,8 +161,8 @@ export const formRadioCheckMixin = Vue.extend({
           // 'active' class makes "button" look pressed
           active: this.isChecked,
           // Focus class makes button look focused
-          focus: this.hasFocus
-        }
+          focus: this.hasFocus,
+        },
       ]
     },
     computedAttrs() {
@@ -177,9 +178,9 @@ export const formRadioCheckMixin = Vue.extend({
         required,
         'aria-required': required || null,
         'aria-label': this.ariaLabel || null,
-        'aria-labelledby': this.ariaLabelledby || null
+        'aria-labelledby': this.ariaLabelledby || null,
       }
-    }
+    },
   },
   watch: {
     [MODEL_PROP_NAME](...args) {
@@ -187,7 +188,7 @@ export const formRadioCheckMixin = Vue.extend({
     },
     computedLocalChecked(...args) {
       this.computedLocalCheckedWatcher(...args)
-    }
+    },
   },
   methods: {
     [`${MODEL_PROP_NAME}Watcher`](newValue) {
@@ -240,19 +241,11 @@ export const formRadioCheckMixin = Vue.extend({
       if (!this.isDisabled) {
         attemptBlur(this.$refs.input)
       }
-    }
+    },
   },
   render(h) {
-    const {
-      isRadio,
-      isBtnMode,
-      isPlain,
-      isCustom,
-      isInline,
-      isSwitch,
-      computedSize,
-      bvAttrs
-    } = this
+    const { isRadio, isBtnMode, isPlain, isCustom, isInline, isSwitch, computedSize, bvAttrs } =
+      this
     const $content = this.normalizeSlot()
 
     const $input = h('input', {
@@ -261,22 +254,22 @@ export const formRadioCheckMixin = Vue.extend({
           'form-check-input': isPlain,
           'custom-control-input': isCustom,
           // https://github.com/bootstrap-vue/bootstrap-vue/issues/2911
-          'position-static': isPlain && !$content
+          'position-static': isPlain && !$content,
         },
-        isBtnMode ? '' : this.stateClass
+        isBtnMode ? '' : this.stateClass,
       ],
       directives: [{ name: 'model', value: this.computedLocalChecked }],
       attrs: this.computedAttrs,
       domProps: {
         value: this.value,
-        checked: this.isChecked
+        checked: this.isChecked,
       },
       on: {
         change: this.handleChange,
-        ...(isBtnMode ? { focus: this.handleFocus, blur: this.handleFocus } : {})
+        ...(isBtnMode ? { focus: this.handleFocus, blur: this.handleFocus } : {}),
       },
       key: 'input',
-      ref: 'input'
+      ref: 'input',
     })
 
     if (isBtnMode) {
@@ -299,9 +292,9 @@ export const formRadioCheckMixin = Vue.extend({
         {
           class: {
             'form-check-label': isPlain,
-            'custom-control-label': isCustom
+            'custom-control-label': isCustom,
           },
-          attrs: { for: this.safeId() }
+          attrs: { for: this.safeId() },
         },
         $content
       )
@@ -320,13 +313,13 @@ export const formRadioCheckMixin = Vue.extend({
             'custom-switch': isSwitch,
             'custom-radio': isCustom && isRadio,
             // Temporary until Bootstrap v4 supports sizing (most likely in V5)
-            [`b-custom-control-${computedSize}`]: computedSize && !isBtnMode
+            [`b-custom-control-${computedSize}`]: computedSize && !isBtnMode,
           },
-          bvAttrs.class
+          bvAttrs.class,
         ],
-        style: bvAttrs.style
+        style: bvAttrs.style,
       },
       [$input, $label]
     )
-  }
+  },
 })

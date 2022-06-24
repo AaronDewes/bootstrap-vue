@@ -10,20 +10,20 @@ export default {
   props: {
     type: {
       type: String,
-      required: true
+      required: true,
     },
     contributors: {
       type: Array,
-      default: () => []
+      default: () => [],
     },
     showName: {
       type: Boolean,
-      default: true
+      default: true,
     },
     nofollow: {
       type: Boolean,
-      default: true
-    }
+      default: true,
+    },
   },
   render(h, { props, data }) {
     const { type, contributors, showName, nofollow } = props
@@ -32,7 +32,7 @@ export default {
       return h()
     }
 
-    const renderContributor = contributor => {
+    const renderContributor = (contributor) => {
       const { name, slug, imageUrl, website } = contributor
 
       const $image = h('b-img-lazy', {
@@ -40,8 +40,8 @@ export default {
           src: imageUrl,
           block: true,
           fluidGrow: true,
-          alt: 'Contributor image'
-        }
+          alt: 'Contributor image',
+        },
       })
 
       const $thumbnail = h(
@@ -54,8 +54,8 @@ export default {
             'flex-wrap',
             'align-items-center',
             'justify-content-center',
-            'overflow-hidden'
-          ]
+            'overflow-hidden',
+          ],
         },
         [$image]
       )
@@ -66,7 +66,7 @@ export default {
           'div',
           {
             staticClass: `${CONTRIBUTOR_CLASS_NAME}-name`,
-            class: ['mb-0', 'pt-1', 'text-break']
+            class: ['mb-0', 'pt-1', 'text-break'],
           },
           name
         )
@@ -83,8 +83,8 @@ export default {
               href: website,
               target: '_blank',
               // We exclude `nofollow` on sponsor website links
-              rel: nofollow ? 'noopener nofollow external' : 'noopener external'
-            }
+              rel: nofollow ? 'noopener nofollow external' : 'noopener external',
+            },
           },
           [$content]
         )
@@ -95,7 +95,7 @@ export default {
         {
           staticClass: CONTRIBUTOR_CLASS_NAME,
           class: ['m-1', 'position-relative'],
-          key: slug
+          key: slug,
         },
         [$content]
       )
@@ -112,10 +112,10 @@ export default {
           'mx-n2',
           'text-center',
           'justify-content-center',
-          'fw-bold'
-        ]
+          'fw-bold',
+        ],
       }),
-      contributors.map(contributor => renderContributor(contributor))
+      contributors.map((contributor) => renderContributor(contributor))
     )
-  }
+  },
 }

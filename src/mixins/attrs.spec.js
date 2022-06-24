@@ -12,19 +12,19 @@ describe('mixins > attrs', () => {
       inheritAttrs: false,
       render(h) {
         return h('section', [h('article', { attrs: this.bvAttrs })])
-      }
+      },
     }
     const App = {
       name: 'App',
       props: {
         attrs: {
           type: Object,
-          default: () => ({})
-        }
+          default: () => ({}),
+        },
       },
       render(h) {
         return h(BTest, { attrs: this.attrs })
-      }
+      },
     }
 
     const wrapper = mount(App)
@@ -53,7 +53,7 @@ describe('mixins > attrs', () => {
 
     // Correctly adds new attrs data
     await wrapper.setProps({
-      attrs: { foo: 'bar' }
+      attrs: { foo: 'bar' },
     })
 
     expect($section.attributes()).toEqual({})
@@ -63,7 +63,7 @@ describe('mixins > attrs', () => {
 
     // Correctly updates attrs data
     await wrapper.setProps({
-      attrs: { foo: 'bar', baz: 'biz' }
+      attrs: { foo: 'bar', baz: 'biz' },
     })
 
     expect($section.attributes()).toEqual({})
@@ -73,7 +73,7 @@ describe('mixins > attrs', () => {
 
     // Correctly removes attrs data
     await wrapper.setProps({
-      attrs: { foo: 'bar' }
+      attrs: { foo: 'bar' },
     })
 
     expect($section.attributes()).toEqual({})
@@ -103,9 +103,9 @@ describe('mixins > attrs', () => {
         return h('input', {
           attrs: { ...this.$attrs, value: this.value },
           domProps: { value: this.value },
-          on: { input: e => this.$emit('input', e.target.value) }
+          on: { input: (e) => this.$emit('input', e.target.value) },
         })
-      }
+      },
     }
     const Input2 = {
       props: ['value'],
@@ -115,9 +115,9 @@ describe('mixins > attrs', () => {
         return h('input', {
           attrs: { ...this.bvAttrs, value: this.value },
           domProps: { value: this.value },
-          on: { input: e => this.$emit('input', e.target.value) }
+          on: { input: (e) => this.$emit('input', e.target.value) },
         })
-      }
+      },
     }
 
     const App1 = {
@@ -126,7 +126,7 @@ describe('mixins > attrs', () => {
       template: `<div>
         <Input1 v-model="value1" />
         <Input1 v-model="value2" />
-      </div>`
+      </div>`,
     }
     const App2 = {
       components: { Input2 },
@@ -134,7 +134,7 @@ describe('mixins > attrs', () => {
       template: `<div>
         <Input2 v-model="value1" />
         <Input2 v-model="value2" />
-      </div>`
+      </div>`,
     }
 
     const wrapper1 = mount(App1)

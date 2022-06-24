@@ -7,8 +7,8 @@ const FormRadioPlugin = /*#__PURE__*/ pluginFactory({
     BFormRadio,
     BRadio: BFormRadio,
     BFormRadioGroup,
-    BRadioGroup: BFormRadioGroup
-  }
+    BRadioGroup: BFormRadioGroup,
+  },
 })
 
 export { FormRadioPlugin, BFormRadio, BFormRadioGroup }

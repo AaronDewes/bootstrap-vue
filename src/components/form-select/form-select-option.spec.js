@@ -5,8 +5,8 @@ describe('form-select-option', () => {
   it('has expected default structure', async () => {
     const wrapper = mount(BFormSelectOption, {
       propsData: {
-        value: 'foo'
-      }
+        value: 'foo',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('OPTION')
@@ -20,11 +20,11 @@ describe('form-select-option', () => {
   it('renders default slot content', async () => {
     const wrapper = mount(BFormSelectOption, {
       propsData: {
-        value: 'foo'
+        value: 'foo',
       },
       slots: {
-        default: 'foobar'
-      }
+        default: 'foobar',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('OPTION')
@@ -38,11 +38,11 @@ describe('form-select-option', () => {
   it('renders HTML as default slot content', async () => {
     const wrapper = mount(BFormSelectOption, {
       propsData: {
-        value: 'foo'
+        value: 'foo',
       },
       slots: {
-        default: '<b>Bold</b>'
-      }
+        default: '<b>Bold</b>',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('OPTION')
@@ -59,8 +59,8 @@ describe('form-select-option', () => {
     const wrapper = mount(BFormSelectOption, {
       propsData: {
         value: 'foo',
-        disabled: true
-      }
+        disabled: true,
+      },
     })
 
     expect(wrapper.element.tagName).toBe('OPTION')

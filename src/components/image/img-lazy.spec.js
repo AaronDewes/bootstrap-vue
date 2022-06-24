@@ -9,8 +9,8 @@ describe('img-lazy', () => {
     const wrapper = mount(BImgLazy, {
       attachTo: document.body,
       propsData: {
-        src
-      }
+        src,
+      },
     })
     expect(wrapper.element.tagName).toBe('IMG')
 
@@ -22,8 +22,8 @@ describe('img-lazy', () => {
       attachTo: document.body,
       propsData: {
         src,
-        show: true
-      }
+        show: true,
+      },
     })
     expect(wrapper.element.tagName).toBe('IMG')
 
@@ -38,8 +38,8 @@ describe('img-lazy', () => {
       attachTo: document.body,
       propsData: {
         src,
-        show: false
-      }
+        show: false,
+      },
     })
 
     expect(wrapper.element.tagName).toBe('IMG')
@@ -63,7 +63,7 @@ describe('img-lazy', () => {
     expect(wrapper.attributes('src')).toContain(src)
 
     await wrapper.setProps({
-      show: true
+      show: true,
     })
     await waitNT(wrapper.vm)
     await waitRAF()
@@ -78,7 +78,7 @@ describe('img-lazy', () => {
     // expect(observer).toBeUndefined()
 
     await wrapper.setProps({
-      show: false
+      show: false,
     })
     await waitNT(wrapper.vm)
     await waitRAF()

@@ -6,7 +6,7 @@ import {
   CALENDAR_NARROW,
   CALENDAR_SHORT,
   DATE_FORMAT_2_DIGIT,
-  DATE_FORMAT_NUMERIC
+  DATE_FORMAT_NUMERIC,
 } from '../../constants/date'
 import { EVENT_NAME_CONTEXT, EVENT_NAME_SELECTED } from '../../constants/events'
 import {
@@ -19,7 +19,7 @@ import {
   CODE_PAGEUP,
   CODE_RIGHT,
   CODE_SPACE,
-  CODE_UP
+  CODE_UP,
 } from '../../constants/key-codes'
 import {
   PROP_TYPE_ARRAY_STRING,
@@ -28,7 +28,7 @@ import {
   PROP_TYPE_FUNCTION,
   PROP_TYPE_NUMBER_STRING,
   PROP_TYPE_OBJECT,
-  PROP_TYPE_STRING
+  PROP_TYPE_STRING,
 } from '../../constants/props'
 import {
   SLOT_NAME_NAV_NEXT_DECADE,
@@ -37,7 +37,7 @@ import {
   SLOT_NAME_NAV_PEV_DECADE,
   SLOT_NAME_NAV_PEV_MONTH,
   SLOT_NAME_NAV_PEV_YEAR,
-  SLOT_NAME_NAV_THIS_MONTH
+  SLOT_NAME_NAV_THIS_MONTH,
 } from '../../constants/slots'
 import { arrayIncludes, concat } from '../../utils/array'
 import {
@@ -55,7 +55,7 @@ import {
   oneDecadeAgo,
   oneDecadeAhead,
   parseYMD,
-  resolveLocale
+  resolveLocale,
 } from '../../utils/date'
 import { attemptBlur, attemptFocus, requestAF } from '../../utils/dom'
 import { stopEvent } from '../../utils/events'
@@ -76,7 +76,7 @@ import {
   BIconChevronLeft,
   BIconChevronDoubleLeft,
   BIconChevronBarLeft,
-  BIconCircleFill
+  BIconCircleFill,
 } from '../../icons/icons'
 
 // --- Constants ---
@@ -85,7 +85,7 @@ const {
   mixin: modelMixin,
   props: modelProps,
   prop: MODEL_PROP_NAME,
-  event: MODEL_EVENT_NAME
+  event: MODEL_EVENT_NAME,
 } = makeModelMixin('value', { type: PROP_TYPE_DATE_STRING })
 
 // --- Props ---
@@ -103,7 +103,7 @@ export const props = makePropsConfigurable(
       year: DATE_FORMAT_NUMERIC,
       month: CALENDAR_LONG,
       day: DATE_FORMAT_NUMERIC,
-      weekday: CALENDAR_LONG
+      weekday: CALENDAR_LONG,
     }),
     // Function to set a class of (classes) on the date cell
     // if passed a string or an array
@@ -168,11 +168,11 @@ export const props = makePropsConfigurable(
     // `narrow` is typically a single letter
     // `long` is the full week day name
     // Although some locales may override this (i.e `ar`, etc.)
-    weekdayHeaderFormat: makeProp(PROP_TYPE_STRING, CALENDAR_SHORT, value => {
+    weekdayHeaderFormat: makeProp(PROP_TYPE_STRING, CALENDAR_SHORT, (value) => {
       return arrayIncludes([CALENDAR_LONG, CALENDAR_SHORT, CALENDAR_NARROW], value)
     }),
     // Has no effect if prop `block` is set
-    width: makeProp(PROP_TYPE_STRING, '270px')
+    width: makeProp(PROP_TYPE_STRING, '270px'),
   }),
   NAME_CALENDAR
 )
@@ -198,7 +198,7 @@ export const BCalendar = Vue.extend({
       gridHasFocus: false,
       // Flag to enable the `aria-live` region(s) after mount
       // to prevent screen reader "outbursts" when mounting
-      isLive: false
+      isLive: false,
     }
   },
   computed: {
@@ -331,7 +331,7 @@ export const BCalendar = Vue.extend({
         // Locales used in formatting dates
         locale: this.computedLocale,
         calendarLocale: this.calendarLocale,
-        rtl: this.isRTL
+        rtl: this.isRTL,
       }
     },
     // Computed props that return a function reference
@@ -341,7 +341,7 @@ export const BCalendar = Vue.extend({
       // We do this as we need to trigger the calendar computed prop
       // to update when these props update
       const { computedMin: min, computedMax: max } = this
-      return date => {
+      return (date) => {
         // Handle both `YYYY-MM-DD` and `Date` objects
         date = parseYMD(date)
         return (min && date < min) || (max && date > max)
@@ -355,7 +355,7 @@ export const BCalendar = Vue.extend({
       // to update when these props update
       const rangeFn = this.dateOutOfRange
       // Return the function ref
-      return date => {
+      return (date) => {
         // Handle both `YYYY-MM-DD` and `Date` objects
         date = parseYMD(date)
         const ymd = formatYMD(date)
@@ -380,7 +380,7 @@ export const BCalendar = Vue.extend({
         minute: undefined,
         second: undefined,
         // Ensure calendar is gregorian
-        calendar: CALENDAR_GREGORY
+        calendar: CALENDAR_GREGORY,
       })
     },
     formatYearMonth() {
@@ -388,14 +388,14 @@ export const BCalendar = Vue.extend({
       return createDateFormatter(this.calendarLocale, {
         year: DATE_FORMAT_NUMERIC,
         month: CALENDAR_LONG,
-        calendar: CALENDAR_GREGORY
+        calendar: CALENDAR_GREGORY,
       })
     },
     formatWeekdayName() {
       // Long weekday name for weekday header aria-label
       return createDateFormatter(this.calendarLocale, {
         weekday: CALENDAR_LONG,
-        calendar: CALENDAR_GREGORY
+        calendar: CALENDAR_GREGORY,
       })
     },
     formatWeekdayNameShort() {
@@ -403,7 +403,7 @@ export const BCalendar = Vue.extend({
       // defaults to 'short' 3 letter days, where possible
       return createDateFormatter(this.calendarLocale, {
         weekday: this.weekdayHeaderFormat || CALENDAR_SHORT,
-        calendar: CALENDAR_GREGORY
+        calendar: CALENDAR_GREGORY,
       })
     },
     formatDay() {
@@ -415,10 +415,10 @@ export const BCalendar = Vue.extend({
         minimumIntegerDigits: 1,
         minimumFractionDigits: 0,
         maximumFractionDigits: 0,
-        notation: 'standard'
+        notation: 'standard',
       })
       // Return a formatter function instance
-      return date => nf.format(date.getDate())
+      return (date) => nf.format(date.getDate())
     },
     // Disabled states for the nav buttons
     prevDecadeDisabled() {
@@ -477,8 +477,8 @@ export const BCalendar = Vue.extend({
             isString(dateInfo) || isArray(dateInfo)
               ? /* istanbul ignore next */ { class: dateInfo }
               : isPlainObject(dateInfo)
-                ? { class: '', ...dateInfo }
-                : /* istanbul ignore next */ { class: '' }
+              ? { class: '', ...dateInfo }
+              : /* istanbul ignore next */ { class: '' }
           matrix[week].push({
             ymd: dayYMD,
             // Cell content
@@ -488,20 +488,20 @@ export const BCalendar = Vue.extend({
             isThisMonth: month === calendarMonth,
             isDisabled: dayDisabled,
             // TODO: Handle other dateInfo properties such as notes/events
-            info: dateInfo
+            info: dateInfo,
           })
         }
       }
       return matrix
     },
     calendarHeadings() {
-      return this.calendar[0].map(d => {
+      return this.calendar[0].map((d) => {
         return {
           text: this.formatWeekdayNameShort(parseYMD(d.ymd)),
-          label: this.formatWeekdayName(parseYMD(d.ymd))
+          label: this.formatWeekdayName(parseYMD(d.ymd)),
         }
       })
-    }
+    },
   },
   watch: {
     [MODEL_PROP_NAME](newValue, oldValue) {
@@ -532,7 +532,7 @@ export const BCalendar = Vue.extend({
         formatYMD(this[MODEL_PROP_NAME] || this.constrainDate(this.initialDate || this.getToday()))
       // Enable/disable the live regions
       this.setLive(!newValue)
-    }
+    },
   },
   created() {
     this.$nextTick(() => {
@@ -616,7 +616,7 @@ export const BCalendar = Vue.extend({
             CODE_LEFT,
             CODE_UP,
             CODE_RIGHT,
-            CODE_DOWN
+            CODE_DOWN,
           ],
           keyCode
         )
@@ -743,7 +743,7 @@ export const BCalendar = Vue.extend({
         this.activeYMD = this.selectedYMD || formatYMD(this.getToday())
         this.focus()
       }
-    }
+    },
   },
   render(h) {
     // If `hidden` prop is set, render just a placeholder node
@@ -765,7 +765,7 @@ export const BCalendar = Vue.extend({
       isRTL,
       activeYMD,
       selectedYMD,
-      safeId
+      safeId,
     } = this
     const hideDecadeNav = !this.showDecadeNav
     const todayYMD = formatYMD(this.getToday())
@@ -788,21 +788,21 @@ export const BCalendar = Vue.extend({
           // We wait until after mount to enable `aria-live`
           // to prevent initial announcement on page render
           'aria-live': isLive ? 'polite' : 'off',
-          'aria-atomic': isLive ? 'true' : null
+          'aria-atomic': isLive ? 'true' : null,
         },
         on: {
           // Transfer focus/click to focus grid
           // and focus active date (or today if no selection)
           click: this.onHeaderClick,
-          focus: this.onHeaderClick
-        }
+          focus: this.onHeaderClick,
+        },
       },
       this.selectedDate
         ? [
             // We use `bdi` elements here in case the label doesn't match the locale
             // Although IE 11 does not deal with <BDI> at all (equivalent to a span)
             h('bdi', { staticClass: 'sr-only' }, ` (${toString(this.labelSelected)}) `),
-            h('bdi', this.formatDateString(this.selectedDate))
+            h('bdi', this.formatDateString(this.selectedDate)),
           ]
         : this.labelNoDateSelected || '\u00a0' // '&nbsp;'
     )
@@ -811,7 +811,7 @@ export const BCalendar = Vue.extend({
       {
         staticClass: 'b-calendar-header',
         class: { 'sr-only': this.hideHeader },
-        attrs: { title: this.selectedDate ? this.labelSelected || null : null }
+        attrs: { title: this.selectedDate ? this.labelSelected || null : null },
       },
       [$header]
     )
@@ -856,9 +856,9 @@ export const BCalendar = Vue.extend({
             tabindex: noKeyNav ? '-1' : null,
             'aria-label': label || null,
             'aria-disabled': btnDisabled ? 'true' : null,
-            'aria-keyshortcuts': shortcut || null
+            'aria-keyshortcuts': shortcut || null,
           },
-          on: btnDisabled ? {} : { click: handler }
+          on: btnDisabled ? {} : { click: handler },
         },
         [h('div', { attrs: { 'aria-hidden': 'true' } }, [content])]
       )
@@ -875,8 +875,8 @@ export const BCalendar = Vue.extend({
           tabindex: noKeyNav ? '-1' : null,
           'aria-hidden': disabled ? 'true' : null,
           'aria-label': this.labelNav || null,
-          'aria-controls': gridId
-        }
+          'aria-controls': gridId,
+        },
       },
       [
         hideDecadeNav
@@ -931,7 +931,7 @@ export const BCalendar = Vue.extend({
               this.gotoNextDecade,
               this.nextDecadeDisabled,
               'Ctrl+Alt+PageUp'
-            )
+            ),
       ]
     )
 
@@ -944,9 +944,9 @@ export const BCalendar = Vue.extend({
         attrs: {
           id: gridCaptionId,
           'aria-live': isLive ? 'polite' : null,
-          'aria-atomic': isLive ? 'true' : null
+          'aria-atomic': isLive ? 'true' : null,
         },
-        key: 'grid-caption'
+        key: 'grid-caption',
       },
       this.formatYearMonth(this.calendarFirstDay)
     )
@@ -956,7 +956,7 @@ export const BCalendar = Vue.extend({
       'div',
       {
         staticClass: 'b-calendar-grid-weekdays row no-gutters border-bottom',
-        attrs: { 'aria-hidden': 'true' }
+        attrs: { 'aria-hidden': 'true' },
       },
       this.calendarHeadings.map((d, idx) => {
         return h(
@@ -966,9 +966,9 @@ export const BCalendar = Vue.extend({
             class: { 'text-muted': disabled },
             attrs: {
               title: d.label === d.text ? null : d.label,
-              'aria-label': d.label
+              'aria-label': d.label,
             },
-            key: idx
+            key: idx,
           },
           d.text
         )
@@ -976,7 +976,7 @@ export const BCalendar = Vue.extend({
     )
 
     // Calendar day grid
-    let $gridBody = this.calendar.map(week => {
+    let $gridBody = this.calendar.map((week) => {
       const $cells = week.map((day, dIndex) => {
         const isSelected = day.ymd === selectedYMD
         const isActive = day.ymd === activeYMD
@@ -1006,9 +1006,9 @@ export const BCalendar = Vue.extend({
               'text-muted': !day.isThisMonth && !isSelected,
               'text-dark':
                 !(isToday && highlightToday) && !isSelected && !isActive && day.isThisMonth,
-              'fw-bold': (isSelected || day.isThisMonth) && !day.isDisabled
+              'fw-bold': (isSelected || day.isThisMonth) && !day.isDisabled,
             },
-            on: { click: () => this.onClickDay(day) }
+            on: { click: () => this.onClickDay(day) },
           },
           day.day
         )
@@ -1027,7 +1027,7 @@ export const BCalendar = Vue.extend({
               'aria-label': [
                 day.label,
                 isSelected ? `(${this.labelSelected})` : null,
-                isToday ? `(${this.labelToday})` : null
+                isToday ? `(${this.labelToday})` : null,
               ]
                 .filter(identity)
                 .join(' '),
@@ -1035,9 +1035,9 @@ export const BCalendar = Vue.extend({
               // ChromeVox doesn't convey `aria-current`, but does `aria-selected`,
               // so we set both attributes for robustness
               'aria-selected': isSelected ? 'true' : null,
-              'aria-current': isSelected ? 'date' : null
+              'aria-current': isSelected ? 'date' : null,
             },
-            key: dIndex
+            key: dIndex,
           },
           [$btn]
         )
@@ -1049,7 +1049,7 @@ export const BCalendar = Vue.extend({
         'div',
         {
           staticClass: 'row no-gutters',
-          key: week[0].ymd
+          key: week[0].ymd,
         },
         $cells
       )
@@ -1059,7 +1059,7 @@ export const BCalendar = Vue.extend({
       {
         // A key is only required on the body if we add in transition support
         staticClass: 'b-calendar-grid-body',
-        style: disabled ? { pointerEvents: 'none' } : {}
+        style: disabled ? { pointerEvents: 'none' } : {},
         // key: this.activeYMD.slice(0, -3)
       },
       $gridBody
@@ -1070,8 +1070,8 @@ export const BCalendar = Vue.extend({
       {
         staticClass: 'b-calendar-grid-help border-top small text-muted text-center bg-light',
         attrs: {
-          id: gridHelpId
-        }
+          id: gridHelpId,
+        },
       },
       [h('div', { staticClass: 'small' }, this.labelHelp)]
     )
@@ -1092,14 +1092,14 @@ export const BCalendar = Vue.extend({
           // https://www.w3.org/TR/wai-aria-1.1/#aria-readonly
           // 'aria-readonly': this.readonly && !disabled ? 'true' : null,
           'aria-disabled': disabled ? 'true' : null,
-          'aria-activedescendant': activeId
+          'aria-activedescendant': activeId,
         },
         on: {
           keydown: this.onKeydownGrid,
           focus: this.setGridFocusFlag,
-          blur: this.setGridFocusFlag
+          blur: this.setGridFocusFlag,
         },
-        ref: 'grid'
+        ref: 'grid',
       },
       [$gridCaption, $gridWeekDays, $gridBody, $gridHelp]
     )
@@ -1128,19 +1128,19 @@ export const BCalendar = Vue.extend({
             // Or should this attr be a prop?
             this.bvAttrs['aria-describedby'],
             valueId,
-            gridHelpId
+            gridHelpId,
           ]
             .filter(identity)
-            .join(' ')
+            .join(' '),
         },
         on: {
-          keydown: this.onKeydownWrapper
-        }
+          keydown: this.onKeydownWrapper,
+        },
       },
       [$header, $nav, $grid, $slot]
     )
 
     // Wrap in an outer div that can be styled
     return h('div', { staticClass: 'b-calendar', class: { 'd-block': this.block } }, [$widget])
-  }
+  },
 })

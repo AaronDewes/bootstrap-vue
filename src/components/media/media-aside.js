@@ -9,7 +9,7 @@ export const props = makePropsConfigurable(
   {
     right: makeProp(PROP_TYPE_BOOLEAN, false),
     tag: makeProp(PROP_TYPE_STRING, 'div'),
-    verticalAlign: makeProp(PROP_TYPE_STRING, 'top')
+    verticalAlign: makeProp(PROP_TYPE_STRING, 'top'),
   },
   NAME_MEDIA_ASIDE
 )
@@ -27,8 +27,8 @@ export const BMediaAside = /*#__PURE__*/ Vue.extend({
       verticalAlign === 'top'
         ? 'start'
         : verticalAlign === 'bottom'
-          ? 'end'
-          : /* istanbul ignore next */ verticalAlign
+        ? 'end'
+        : /* istanbul ignore next */ verticalAlign
 
     return h(
       props.tag,
@@ -36,10 +36,10 @@ export const BMediaAside = /*#__PURE__*/ Vue.extend({
         staticClass: 'media-aside',
         class: {
           'media-aside-right': props.right,
-          [`align-self-${align}`]: align
-        }
+          [`align-self-${align}`]: align,
+        },
       }),
       children
     )
-  }
+  },
 })

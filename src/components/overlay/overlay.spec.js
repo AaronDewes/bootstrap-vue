@@ -6,8 +6,8 @@ describe('overlay', () => {
   it('has expected default structure', async () => {
     const wrapper = mount(BOverlay, {
       slots: {
-        default: '<span>foobar</span>'
-      }
+        default: '<span>foobar</span>',
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -30,11 +30,11 @@ describe('overlay', () => {
   it('has expected default structure when `show` prop is true', async () => {
     const wrapper = mount(BOverlay, {
       propsData: {
-        show: true
+        show: true,
       },
       slots: {
-        default: '<span>foobar</span>'
-      }
+        default: '<span>foobar</span>',
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -62,12 +62,7 @@ describe('overlay', () => {
 
     expect($children.at(1).classes()).toContain('position-absolute')
     expect($children.at(1).classes()).not.toContain('bg-light')
-    expect(
-      $children
-        .at(1)
-        .find('.spinner-border')
-        .exists()
-    ).toBe(true)
+    expect($children.at(1).find('.spinner-border').exists()).toBe(true)
 
     wrapper.destroy()
   })
@@ -76,11 +71,11 @@ describe('overlay', () => {
     const wrapper = mount(BOverlay, {
       attachTo: document.body,
       propsData: {
-        show: false
+        show: false,
       },
       slots: {
-        default: '<span>foobar</span>'
-      }
+        default: '<span>foobar</span>',
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -101,7 +96,7 @@ describe('overlay', () => {
     expect(wrapper.emitted('hidden')).toBeUndefined()
 
     await wrapper.setProps({
-      show: true
+      show: true,
     })
     await waitNT(wrapper.vm)
     await waitRAF()
@@ -121,7 +116,7 @@ describe('overlay', () => {
     expect(wrapper.emitted('shown').length).toBe(1)
 
     await wrapper.setProps({
-      show: false
+      show: false,
     })
     await waitNT(wrapper.vm)
     await waitRAF()
@@ -141,7 +136,7 @@ describe('overlay', () => {
     expect(wrapper.emitted('hidden').length).toBe(1)
 
     await wrapper.setProps({
-      show: true
+      show: true,
     })
     await waitNT(wrapper.vm)
     await waitRAF()
@@ -152,7 +147,7 @@ describe('overlay', () => {
     expect(wrapper.emitted('hidden').length).toBe(1)
 
     await wrapper.setProps({
-      show: false
+      show: false,
     })
     await waitNT(wrapper.vm)
     await waitRAF()
@@ -168,11 +163,11 @@ describe('overlay', () => {
   it('emits event when overlay clicked', async () => {
     const wrapper = mount(BOverlay, {
       propsData: {
-        show: true
+        show: true,
       },
       slots: {
-        default: '<span>foobar</span>'
-      }
+        default: '<span>foobar</span>',
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -201,8 +196,8 @@ describe('overlay', () => {
   it('has expected default structure when `no-wrap` is set', async () => {
     const wrapper = mount(BOverlay, {
       propsData: {
-        noWrap: true
-      }
+        noWrap: true,
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -220,8 +215,8 @@ describe('overlay', () => {
     const wrapper = mount(BOverlay, {
       propsData: {
         noWrap: true,
-        show: true
-      }
+        show: true,
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -245,12 +240,7 @@ describe('overlay', () => {
 
     expect($children.at(1).classes()).toContain('position-absolute')
     expect($children.at(1).classes()).not.toContain('bg-light')
-    expect(
-      $children
-        .at(1)
-        .find('.spinner-border')
-        .exists()
-    ).toBe(true)
+    expect($children.at(1).find('.spinner-border').exists()).toBe(true)
 
     wrapper.destroy()
   })

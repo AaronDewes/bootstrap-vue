@@ -23,8 +23,8 @@ export const props = makePropsConfigurable(
       'noCaret',
       'role',
       'text',
-      'toggleClass'
-    ])
+      'toggleClass',
+    ]),
   }),
   NAME_NAV_ITEM_DROPDOWN
 )
@@ -51,13 +51,13 @@ export const BNavItemDropdown = /*#__PURE__*/ Vue.extend({
         this.menuClass,
         {
           'dropdown-menu-right': this.right,
-          show: this.visible
-        }
+          show: this.visible,
+        },
       ]
     },
     toggleClasses() {
       return [this.toggleClass, { 'dropdown-toggle-no-caret': this.noCaret }]
-    }
+    },
   },
   render(h) {
     const { toggleId, menuId, visible, hide } = this
@@ -69,26 +69,26 @@ export const BNavItemDropdown = /*#__PURE__*/ Vue.extend({
         class: this.toggleClasses,
         props: {
           href: `#${this.id || ''}`,
-          disabled: this.disabled
+          disabled: this.disabled,
         },
         attrs: {
           id: toggleId,
           role: 'button',
           'aria-haspopup': 'true',
           'aria-expanded': visible ? 'true' : 'false',
-          'aria-controls': menuId
+          'aria-controls': menuId,
         },
         on: {
           mousedown: this.onMousedown,
           click: this.toggle,
-          keydown: this.toggle // Handle ENTER, SPACE and DOWN
+          keydown: this.toggle, // Handle ENTER, SPACE and DOWN
         },
-        ref: 'toggle'
+        ref: 'toggle',
       },
       [
         // TODO: The `text` slot is deprecated in favor of the `button-content` slot
         this.normalizeSlot([SLOT_NAME_BUTTON_CONTENT, SLOT_NAME_TEXT]) ||
-          h('span', { domProps: htmlOrText(this.html, this.text) })
+          h('span', { domProps: htmlOrText(this.html, this.text) }),
       ]
     )
 
@@ -100,12 +100,12 @@ export const BNavItemDropdown = /*#__PURE__*/ Vue.extend({
         attrs: {
           tabindex: '-1',
           'aria-labelledby': toggleId,
-          id: menuId
+          id: menuId,
         },
         on: {
-          keydown: this.onKeydown // Handle UP, DOWN and ESC
+          keydown: this.onKeydown, // Handle UP, DOWN and ESC
         },
-        ref: 'menu'
+        ref: 'menu',
       },
       !this.lazy || visible ? this.normalizeSlot(SLOT_NAME_DEFAULT, { hide }) : [h()]
     )
@@ -115,9 +115,9 @@ export const BNavItemDropdown = /*#__PURE__*/ Vue.extend({
       {
         staticClass: 'nav-item b-nav-dropdown dropdown',
         class: this.dropdownClasses,
-        attrs: { id: this.safeId() }
+        attrs: { id: this.safeId() },
       },
       [$toggle, $menu]
     )
-  }
+  },
 })

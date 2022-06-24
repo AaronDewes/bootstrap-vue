@@ -17,7 +17,7 @@ export const props = makePropsConfigurable(
     ...linkProps,
     pill: makeProp(PROP_TYPE_BOOLEAN, false),
     tag: makeProp(PROP_TYPE_STRING, 'span'),
-    variant: makeProp(PROP_TYPE_STRING, 'secondary')
+    variant: makeProp(PROP_TYPE_STRING, 'secondary'),
   }),
   NAME_BADGE
 )
@@ -44,12 +44,12 @@ export const BBadge = /*#__PURE__*/ Vue.extend({
           {
             'badge-pill': props.pill,
             active,
-            disabled
-          }
+            disabled,
+          },
         ],
-        props: link ? pluckProps(linkProps, props) : {}
+        props: link ? pluckProps(linkProps, props) : {},
       }),
       children
     )
-  }
+  },
 })

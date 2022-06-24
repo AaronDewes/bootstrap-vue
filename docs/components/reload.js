@@ -5,7 +5,7 @@ export default {
   name: 'BVReload',
   render(h) {
     const $heading = h('h1', [
-      h('span', { staticClass: 'bd-content-title' }, 'Updated documentation')
+      h('span', { staticClass: 'bd-content-title' }, 'Updated documentation'),
     ])
     const $lead = h(
       'p',
@@ -19,11 +19,11 @@ export default {
         on: {
           click: () => {
             window.location.reload(true)
-          }
-        }
+          },
+        },
       },
       'Reload page'
     )
     return h(Section, [$heading, $lead, h('p', [$button])])
-  }
+  },
 }

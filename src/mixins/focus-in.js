@@ -6,7 +6,7 @@ import { eventOn, eventOff } from '../utils/events'
 export const focusInMixin = Vue.extend({
   data() {
     return {
-      listenForFocusIn: false
+      listenForFocusIn: false,
     }
   },
   watch: {
@@ -17,7 +17,7 @@ export const focusInMixin = Vue.extend({
           eventOn(this.focusInElement, 'focusin', this._focusInHandler, EVENT_OPTIONS_NO_CAPTURE)
         }
       }
-    }
+    },
   },
   beforeCreate() {
     // Declare non-reactive properties
@@ -39,6 +39,6 @@ export const focusInMixin = Vue.extend({
       if (this.focusInHandler) {
         this.focusInHandler(event)
       }
-    }
-  }
+    },
+  },
 })

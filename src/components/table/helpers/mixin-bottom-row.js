@@ -30,15 +30,15 @@ export const bottomRowMixin = Vue.extend({
           class: [
             isFunction(tbodyTrClass)
               ? /* istanbul ignore next */ tbodyTrClass(null, 'row-bottom')
-              : tbodyTrClass
+              : tbodyTrClass,
           ],
           attrs: isFunction(tbodyTrAttr)
             ? /* istanbul ignore next */ tbodyTrAttr(null, 'row-bottom')
             : tbodyTrAttr,
-          key: 'b-bottom-row'
+          key: 'b-bottom-row',
         },
         this.normalizeSlot(SLOT_NAME_BOTTOM_ROW, { columns: fields.length, fields })
       )
-    }
-  }
+    },
+  },
 })

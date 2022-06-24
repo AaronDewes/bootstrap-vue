@@ -9,7 +9,7 @@ import { safeVueInstance } from '../../../utils/safe-vue-instance'
 
 export const props = {
   currentPage: makeProp(PROP_TYPE_NUMBER_STRING, 1),
-  perPage: makeProp(PROP_TYPE_NUMBER_STRING, 0)
+  perPage: makeProp(PROP_TYPE_NUMBER_STRING, 0),
 }
 
 // --- Mixin ---
@@ -33,6 +33,6 @@ export const paginationMixin = Vue.extend({
       }
       // Return the items to display in the table
       return items
-    }
-  }
+    },
+  },
 })

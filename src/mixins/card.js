@@ -10,7 +10,7 @@ export const props = makePropsConfigurable(
     bgVariant: makeProp(PROP_TYPE_STRING),
     borderVariant: makeProp(PROP_TYPE_STRING),
     tag: makeProp(PROP_TYPE_STRING, 'div'),
-    textVariant: makeProp(PROP_TYPE_STRING)
+    textVariant: makeProp(PROP_TYPE_STRING),
   },
   NAME_CARD
 )
@@ -19,5 +19,5 @@ export const props = makePropsConfigurable(
 
 // @vue/component
 export const cardMixin = Vue.extend({
-  props
+  props,
 })

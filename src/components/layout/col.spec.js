@@ -17,8 +17,8 @@ describe('layout > col', () => {
   it('renders custom root element when tag prop set', async () => {
     const wrapper = mount(BCol, {
       propsData: {
-        tag: 'span'
-      }
+        tag: 'span',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('SPAN')
@@ -37,8 +37,8 @@ describe('layout > col', () => {
         sm: 5,
         md: 4,
         lg: 3,
-        xl: 2
-      }
+        xl: 2,
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')
@@ -55,8 +55,8 @@ describe('layout > col', () => {
   it('should not have class "col" when only single breakpoint prop specified', async () => {
     const wrapper = mount(BCol, {
       propsData: {
-        sm: 5
-      }
+        sm: 5,
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')
@@ -73,8 +73,8 @@ describe('layout > col', () => {
         offsetSm: 5,
         offsetMd: 4,
         offsetLg: 3,
-        offsetXl: 2
-      }
+        offsetXl: 2,
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')
@@ -96,8 +96,8 @@ describe('layout > col', () => {
         orderSm: 5,
         orderMd: 4,
         orderLg: 3,
-        orderXl: 2
-      }
+        orderXl: 2,
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')
@@ -119,8 +119,8 @@ describe('layout > col', () => {
         sm: true,
         md: true,
         lg: true,
-        xl: true
-      }
+        xl: true,
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')
@@ -140,8 +140,8 @@ describe('layout > col', () => {
         sm: '',
         md: '',
         lg: '',
-        xl: ''
-      }
+        xl: '',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')
@@ -157,8 +157,8 @@ describe('layout > col', () => {
   it('should apply ".align-self-*" class with "align-self" prop', async () => {
     const wrapper = mount(BCol, {
       propsData: {
-        alignSelf: 'center'
-      }
+        alignSelf: 'center',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')

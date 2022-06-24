@@ -16,8 +16,8 @@ describe('form-input', () => {
   it('has class form-control-lg when size=lg and plane=false', async () => {
     const wrapper = mount(BFormInput, {
       propsData: {
-        size: 'lg'
-      }
+        size: 'lg',
+      },
     })
 
     const $input = wrapper.find('input')
@@ -29,8 +29,8 @@ describe('form-input', () => {
   it('has class form-control-sm when size=lg and plain=false', async () => {
     const wrapper = mount(BFormInput, {
       propsData: {
-        size: 'sm'
-      }
+        size: 'sm',
+      },
     })
 
     const $input = wrapper.find('input')
@@ -52,8 +52,8 @@ describe('form-input', () => {
   it('has class form-control-plaintext when plaintext=true', async () => {
     const wrapper = mount(BFormInput, {
       propsData: {
-        plaintext: true
-      }
+        plaintext: true,
+      },
     })
 
     const $input = wrapper.find('input')
@@ -65,8 +65,8 @@ describe('form-input', () => {
   it('has attribute read-only when plaintext=true', async () => {
     const wrapper = mount(BFormInput, {
       propsData: {
-        plaintext: true
-      }
+        plaintext: true,
+      },
     })
 
     const $input = wrapper.find('input')
@@ -79,8 +79,8 @@ describe('form-input', () => {
   it('has class custom-range instead of form-control when type=range', async () => {
     const wrapper = mount(BFormInput, {
       propsData: {
-        type: 'range'
-      }
+        type: 'range',
+      },
     })
 
     const $input = wrapper.find('input')
@@ -94,8 +94,8 @@ describe('form-input', () => {
     const wrapper = mount(BFormInput, {
       propsData: {
         type: 'range',
-        plaintext: true
-      }
+        plaintext: true,
+      },
     })
 
     const $input = wrapper.find('input')
@@ -110,8 +110,8 @@ describe('form-input', () => {
     const wrapper = mount(BFormInput, {
       propsData: {
         type: 'color',
-        plaintext: true
-      }
+        plaintext: true,
+      },
     })
 
     const $input = wrapper.find('input')
@@ -125,8 +125,8 @@ describe('form-input', () => {
   it('has user supplied id', async () => {
     const wrapper = mount(BFormInput, {
       propsData: {
-        id: 'foobar'
-      }
+        id: 'foobar',
+      },
     })
 
     const $input = wrapper.find('input')
@@ -137,7 +137,7 @@ describe('form-input', () => {
 
   it('has safeId after mount when no id provided', async () => {
     const wrapper = mount(BFormInput, {
-      attachTo: document.body
+      attachTo: document.body,
     })
 
     // We need to wait a tick for `safeId` to be generated
@@ -152,8 +152,8 @@ describe('form-input', () => {
   it('has form attribute when form prop set', async () => {
     const wrapper = mount(BFormInput, {
       propsData: {
-        form: 'foobar'
-      }
+        form: 'foobar',
+      },
     })
 
     const $input = wrapper.find('input')
@@ -174,8 +174,8 @@ describe('form-input', () => {
   it('has list attribute when list prop set', async () => {
     const wrapper = mount(BFormInput, {
       propsData: {
-        list: 'foobar'
-      }
+        list: 'foobar',
+      },
     })
 
     const $input = wrapper.find('input')
@@ -188,8 +188,8 @@ describe('form-input', () => {
     const wrapper = mount(BFormInput, {
       propsData: {
         list: 'foobar',
-        type: 'password'
-      }
+        type: 'password',
+      },
     })
 
     const $input = wrapper.find('input')
@@ -210,8 +210,8 @@ describe('form-input', () => {
   it('renders number input when type set to number', async () => {
     const wrapper = mount(BFormInput, {
       propsData: {
-        type: 'number'
-      }
+        type: 'number',
+      },
     })
 
     const $input = wrapper.find('input')
@@ -226,8 +226,8 @@ describe('form-input', () => {
 
     const wrapper = mount(BFormInput, {
       propsData: {
-        type: 'foobar'
-      }
+        type: 'foobar',
+      },
     })
 
     const $input = wrapper.find('input')
@@ -252,8 +252,8 @@ describe('form-input', () => {
   it('has class is-valid when state=true', async () => {
     const wrapper = mount(BFormInput, {
       propsData: {
-        state: true
-      }
+        state: true,
+      },
     })
 
     const $input = wrapper.find('input')
@@ -266,8 +266,8 @@ describe('form-input', () => {
   it('has class is-invalid when state=false', async () => {
     const wrapper = mount(BFormInput, {
       propsData: {
-        state: false
-      }
+        state: false,
+      },
     })
 
     const $input = wrapper.find('input')
@@ -288,8 +288,8 @@ describe('form-input', () => {
   it('does not have aria-invalid attribute when state is true', async () => {
     const wrapper = mount(BFormInput, {
       propsData: {
-        state: true
-      }
+        state: true,
+      },
     })
 
     expect(wrapper.attributes('aria-invalid')).toBeUndefined()
@@ -300,8 +300,8 @@ describe('form-input', () => {
   it('has aria-invalid attribute when state=false', async () => {
     const wrapper = mount(BFormInput, {
       propsData: {
-        state: false
-      }
+        state: false,
+      },
     })
 
     const $input = wrapper.find('input')
@@ -313,8 +313,8 @@ describe('form-input', () => {
   it('has aria-invalid attribute when aria-invalid="true"', async () => {
     const wrapper = mount(BFormInput, {
       propsData: {
-        ariaInvalid: 'true'
-      }
+        ariaInvalid: 'true',
+      },
     })
 
     const $input = wrapper.find('input')
@@ -326,8 +326,8 @@ describe('form-input', () => {
   it('has aria-invalid attribute when aria-invalid=true', async () => {
     const wrapper = mount(BFormInput, {
       propsData: {
-        ariaInvalid: true
-      }
+        ariaInvalid: true,
+      },
     })
 
     const $input = wrapper.find('input')
@@ -339,8 +339,8 @@ describe('form-input', () => {
   it('has aria-invalid attribute when aria-invalid="spelling"', async () => {
     const wrapper = mount(BFormInput, {
       propsData: {
-        ariaInvalid: 'spelling'
-      }
+        ariaInvalid: 'spelling',
+      },
     })
 
     const $input = wrapper.find('input')
@@ -352,8 +352,8 @@ describe('form-input', () => {
   it('is disabled when disabled=true', async () => {
     const wrapper = mount(BFormInput, {
       propsData: {
-        disabled: true
-      }
+        disabled: true,
+      },
     })
 
     const $input = wrapper.find('input')
@@ -366,8 +366,8 @@ describe('form-input', () => {
   it('is not disabled when disabled=false', async () => {
     const wrapper = mount(BFormInput, {
       propsData: {
-        disabled: false
-      }
+        disabled: false,
+      },
     })
 
     const $input = wrapper.find('input')
@@ -396,8 +396,8 @@ describe('form-input', () => {
     const wrapper = mount(BFormInput, {
       attachTo: document.body,
       listeners: {
-        focus: spy
-      }
+        focus: spy,
+      },
     })
 
     const $input = wrapper.find('input')
@@ -412,8 +412,8 @@ describe('form-input', () => {
   it('emits a blur event with native event as only arg', async () => {
     const wrapper = mount(BFormInput, {
       propsData: {
-        value: 'TEST'
-      }
+        value: 'TEST',
+      },
     })
 
     const $input = wrapper.find('input')
@@ -432,9 +432,9 @@ describe('form-input', () => {
       propsData: {
         formatter(value) {
           return value.toLowerCase()
-        }
+        },
       },
-      attachTo: document.body
+      attachTo: document.body,
     })
 
     const $input = wrapper.find('input')
@@ -458,9 +458,9 @@ describe('form-input', () => {
         formatter(value) {
           return value.toLowerCase()
         },
-        lazyFormatter: true
+        lazyFormatter: true,
       },
-      attachTo: document.body
+      attachTo: document.body,
     })
 
     const $input = wrapper.findComponent('input')
@@ -486,9 +486,9 @@ describe('form-input', () => {
         formatter(value) {
           return value.toLowerCase()
         },
-        lazyFormatter: true
+        lazyFormatter: true,
       },
-      attachTo: document.body
+      attachTo: document.body,
     })
 
     const $input = wrapper.findComponent('input')
@@ -522,9 +522,9 @@ describe('form-input', () => {
         value: 'TEST',
         formatter(value) {
           return String(value).toLowerCase()
-        }
+        },
       },
-      attachTo: document.body
+      attachTo: document.body,
     })
 
     const $input = wrapper.findComponent('input')
@@ -543,9 +543,9 @@ describe('form-input', () => {
         value: '',
         formatter(value) {
           return value.toLowerCase()
-        }
+        },
       },
-      attachTo: document.body
+      attachTo: document.body,
     })
 
     const $input = wrapper.find('input')
@@ -567,9 +567,9 @@ describe('form-input', () => {
         formatter(value) {
           return value.toLowerCase()
         },
-        lazyFormatter: true
+        lazyFormatter: true,
       },
-      attachTo: document.body
+      attachTo: document.body,
     })
 
     const $input = wrapper.find('input')
@@ -590,9 +590,9 @@ describe('form-input', () => {
         value: 'abc',
         formatter() {
           return false
-        }
+        },
       },
-      attachTo: document.body
+      attachTo: document.body,
     })
 
     const $input = wrapper.find('input')
@@ -617,12 +617,12 @@ describe('form-input', () => {
       propsData: {
         noWheel: true,
         type: 'number',
-        value: '123'
+        value: '123',
       },
       listeners: {
-        blur: spy
+        blur: spy,
       },
-      attachTo: document.body
+      attachTo: document.body,
     })
 
     expect(wrapper.element.type).toBe('number')
@@ -644,12 +644,12 @@ describe('form-input', () => {
       propsData: {
         noWheel: false,
         type: 'number',
-        value: '123'
+        value: '123',
       },
       listeners: {
-        blur: spy
+        blur: spy,
       },
-      attachTo: document.body
+      attachTo: document.body,
     })
 
     expect(wrapper.element.type).toBe('number')
@@ -674,11 +674,11 @@ describe('form-input', () => {
       propsData: {
         noWheel: false,
         type: 'number',
-        value: '123'
+        value: '123',
       },
       listeners: {
-        blur: spy
-      }
+        blur: spy,
+      },
     })
 
     expect(wrapper.element.type).toBe('number')
@@ -713,8 +713,8 @@ describe('form-input', () => {
     const wrapper = mount(BFormInput, {
       propsData: {
         type: 'text',
-        number: true
-      }
+        number: true,
+      },
     })
 
     const $input = wrapper.find('input')
@@ -756,8 +756,8 @@ describe('form-input', () => {
     const wrapper = mount(BFormInput, {
       propsData: {
         type: 'text',
-        lazy: true
-      }
+        lazy: true,
+      },
     })
 
     const $input = wrapper.find('input')
@@ -809,8 +809,8 @@ describe('form-input', () => {
       propsData: {
         type: 'text',
         value: '',
-        debounce: 100
-      }
+        debounce: 100,
+      },
     })
 
     const $input = wrapper.find('input')
@@ -905,7 +905,7 @@ describe('form-input', () => {
 
   it('focus() and blur() methods work', async () => {
     const wrapper = mount(BFormInput, {
-      attachTo: document.body
+      attachTo: document.body,
     })
 
     const $input = wrapper.find('input')
@@ -934,7 +934,7 @@ describe('form-input', () => {
         top: 0,
         left: 0,
         bottom: 0,
-        right: 0
+        right: 0,
       }))
     })
 
@@ -947,8 +947,8 @@ describe('form-input', () => {
       const wrapper = mount(BFormInput, {
         attachTo: document.body,
         propsData: {
-          autofocus: true
-        }
+          autofocus: true,
+        },
       })
 
       expect(wrapper.vm).toBeDefined()
@@ -967,8 +967,8 @@ describe('form-input', () => {
       const wrapper = mount(BFormInput, {
         attachTo: document.body,
         propsData: {
-          autofocus: false
-        }
+          autofocus: false,
+        },
       })
 
       expect(wrapper.vm).toBeDefined()

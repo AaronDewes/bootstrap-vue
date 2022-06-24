@@ -12,7 +12,7 @@ export const props = makePropsConfigurable(
   sortKeys({
     ...formOptionsProps,
     labelField: makeProp(PROP_TYPE_STRING, 'label'),
-    optionsField: makeProp(PROP_TYPE_STRING, 'options')
+    optionsField: makeProp(PROP_TYPE_STRING, 'options'),
   }),
   'formOptions'
 )
@@ -34,7 +34,7 @@ export const optionsMixin = Vue.extend({
         if (!isNull(options)) {
           return {
             label: String(get(option, this.labelField) || text),
-            options: this.normalizeOptions(options)
+            options: this.normalizeOptions(options),
           }
         }
         // Otherwise create an `<option>` object
@@ -42,15 +42,15 @@ export const optionsMixin = Vue.extend({
           value: isUndefined(value) ? key || text : value,
           text: String(isUndefined(text) ? key : text),
           html: get(option, this.htmlField),
-          disabled: Boolean(get(option, this.disabledField))
+          disabled: Boolean(get(option, this.disabledField)),
         }
       }
       // Otherwise create an `<option>` object from the given value
       return {
         value: key || option,
         text: String(option),
-        disabled: false
+        disabled: false,
       }
-    }
-  }
+    },
+  },
 })

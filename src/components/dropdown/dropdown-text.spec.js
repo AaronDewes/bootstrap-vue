@@ -27,8 +27,8 @@ describe('dropdown-text', () => {
   it('renders with tag "div" when tag=div', async () => {
     const wrapper = mount(BDropdownText, {
       context: {
-        props: { tag: 'div' }
-      }
+        props: { tag: 'div' },
+      },
     })
 
     expect(wrapper.element.tagName).toBe('LI')
@@ -43,8 +43,8 @@ describe('dropdown-text', () => {
   it('adds classes from `text-class` prop to child', async () => {
     const wrapper = mount(BDropdownText, {
       context: {
-        props: { textClass: 'some-custom-class' }
-      }
+        props: { textClass: 'some-custom-class' },
+      },
     })
 
     expect(wrapper.element.tagName).toBe('LI')

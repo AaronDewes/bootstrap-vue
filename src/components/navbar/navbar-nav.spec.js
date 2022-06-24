@@ -22,8 +22,8 @@ describe('navbar-nav', () => {
   it('accepts custom tag', async () => {
     const wrapper = mount(BNavbarNav, {
       context: {
-        props: { tag: 'div' }
-      }
+        props: { tag: 'div' },
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')
@@ -36,8 +36,8 @@ describe('navbar-nav', () => {
   it('has class "nav-fill" when fill=true', async () => {
     const wrapper = mount(BNavbarNav, {
       context: {
-        props: { fill: true }
-      }
+        props: { fill: true },
+      },
     })
 
     expect(wrapper.classes()).toContain('nav-fill')
@@ -50,8 +50,8 @@ describe('navbar-nav', () => {
   it('has class "nav-justified" when justified=true', async () => {
     const wrapper = mount(BNavbarNav, {
       context: {
-        props: { justified: true }
-      }
+        props: { justified: true },
+      },
     })
 
     expect(wrapper.classes()).toContain('nav-justified')
@@ -64,8 +64,8 @@ describe('navbar-nav', () => {
   it('applies alignment correctly', async () => {
     const wrapper = mount(BNavbarNav, {
       context: {
-        props: { align: 'center' }
-      }
+        props: { align: 'center' },
+      },
     })
 
     expect(wrapper.classes()).toContain('justify-content-center')
@@ -78,8 +78,8 @@ describe('navbar-nav', () => {
   it('has class "small" when small=true', async () => {
     const wrapper = mount(BNavbarNav, {
       context: {
-        props: { small: true }
-      }
+        props: { small: true },
+      },
     })
 
     expect(wrapper.classes()).toContain('small')
@@ -92,8 +92,8 @@ describe('navbar-nav', () => {
   it('has class "small" when small=true', async () => {
     const wrapper = mount(BNavbarNav, {
       context: {
-        props: { small: true }
-      }
+        props: { small: true },
+      },
     })
 
     expect(wrapper.classes()).toContain('small')

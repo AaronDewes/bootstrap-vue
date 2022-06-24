@@ -7,8 +7,8 @@ const ButtonPlugin = /*#__PURE__*/ pluginFactory({
     BButton,
     BBtn: BButton,
     BButtonClose,
-    BBtnClose: BButtonClose
-  }
+    BBtnClose: BButtonClose,
+  },
 })
 
 export { ButtonPlugin, BButton, BButtonClose }

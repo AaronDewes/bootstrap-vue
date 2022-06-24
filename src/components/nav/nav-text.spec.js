@@ -16,8 +16,8 @@ describe('nav > nav-text', () => {
   it('renders default slot content', async () => {
     const wrapper = mount(BNavText, {
       slots: {
-        default: 'foobar'
-      }
+        default: 'foobar',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('LI')

@@ -32,9 +32,9 @@ export const makeProp = (
     ...(required
       ? { required }
       : isUndefined(value)
-        ? {}
-        : { default: isObject(value) ? () => value : value }),
-    ...(isUndefined(validator) ? {} : { validator })
+      ? {}
+      : { default: isObject(value) ? () => value : value }),
+    ...(isUndefined(validator) ? {} : { validator }),
   }
 }
 
@@ -75,7 +75,7 @@ export const makePropConfigurable = (prop, key, componentKey) => ({
   default: function bvConfigurablePropDefault() {
     const value = getComponentConfig(componentKey, key, prop.default)
     return isFunction(value) ? value() : value
-  }
+  },
 })
 
 // Make a props object configurable by global configuration
@@ -94,5 +94,5 @@ const configurablePropDefaultFnName = makePropConfigurable({}, '', '').default.n
 
 // Detect wether the given value is currently a function
 // and isn't the props default function
-export const hasPropFunction = fn =>
+export const hasPropFunction = (fn) =>
   isFunction(fn) && fn.name && fn.name !== configurablePropDefaultFnName

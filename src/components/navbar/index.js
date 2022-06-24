@@ -13,13 +13,13 @@ const NavbarPlugin = /*#__PURE__*/ pluginFactory({
     BNavbarNav,
     BNavbarBrand,
     BNavbarToggle,
-    BNavToggle: BNavbarToggle
+    BNavToggle: BNavbarToggle,
   },
   plugins: {
     NavPlugin,
     CollapsePlugin,
-    DropdownPlugin
-  }
+    DropdownPlugin,
+  },
 })
 
 export { NavbarPlugin, BNavbar, BNavbarNav, BNavbarBrand, BNavbarToggle }

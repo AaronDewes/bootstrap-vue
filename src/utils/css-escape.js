@@ -1,10 +1,10 @@
 import { toString } from './string'
 
-const escapeChar = value => '\\' + value
+const escapeChar = (value) => '\\' + value
 
 // The `cssEscape()` util is based on this `CSS.escape()` polyfill:
 // https://github.com/mathiasbynens/CSS.escape
-export const cssEscape = value => {
+export const cssEscape = (value) => {
   value = toString(value)
 
   const length = value.length

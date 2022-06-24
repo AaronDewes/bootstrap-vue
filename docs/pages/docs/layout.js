@@ -3,5 +3,5 @@
 export default {
   fetch({ redirect }) {
     redirect(301, '/docs/components/layout')
-  }
+  },
 }

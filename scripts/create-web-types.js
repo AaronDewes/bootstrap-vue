@@ -37,36 +37,36 @@ const webTypes = {
       // Components get placed here
       tags: [],
       // Directives get placed in here
-      attributes: []
-    }
-  }
+      attributes: [],
+    },
+  },
 }
 
 // Import metadata from a directory glob `package.json` files
-const importAll = r => {
+const importAll = (r) => {
   const obj = {}
   r.keys()
     .map(r)
-    .map(m => m.meta || m)
-    .map(m => ({
+    .map((m) => m.meta || m)
+    .map((m) => ({
       slug:
         typeof m.slug !== 'undefined' ? m.slug : (m.title || '').replace(' ', '-').toLowerCase(),
-      ...m
+      ...m,
     }))
     .sort((a, b) => {
       if (a.slug < b.slug) return -1
       else if (a.slug > b.slug) return 1
       return 0
     })
-    .forEach(m => {
+    .forEach((m) => {
       if (m.components) {
         // Normalize `meta.components` to array of objects form
-        m.components = m.components.map(c => (typeof c === 'string' ? { component: c } : c))
+        m.components = m.components.map((c) => (typeof c === 'string' ? { component: c } : c))
       }
       if (m.directives) {
         // Normalize `meta.directives` to array of objects form
         // Applicable to component group `package.json`
-        m.directives = m.directives.map(d => (typeof d === 'string' ? { directive: d } : d))
+        m.directives = m.directives.map((d) => (typeof d === 'string' ? { directive: d } : d))
       }
       obj[m.slug] = m
     })
@@ -82,7 +82,7 @@ const computePropType = ({ type }) => {
   type = type || Object
   if (Array.isArray(type)) {
     // Array of types
-    return type.map(t => computePropType({ type: t })).join('|')
+    return type.map((t) => computePropType({ type: t })).join('|')
   }
   if (typeof type === 'undefined') {
     return 'any'
@@ -139,24 +139,24 @@ const processComponentMeta = (meta, groupRef, groupDescription, docUrl) => {
     name: componentName,
     source: {
       module: libraryName,
-      symbol: componentName
+      symbol: componentName,
     },
     'doc-url': docUrl,
     description: groupDescription,
-    attributes: []
+    attributes: [],
   }
 
   // Add v-model information
   if ($model && $model.prop && $model.event) {
     tag['vue-model'] = {
       prop: $model.prop,
-      event: $model.event
+      event: $model.event,
     }
   }
 
   // Add props
   if (Object.keys($props).length) {
-    tag.attributes = Object.keys($props).map(propName => {
+    tag.attributes = Object.keys($props).map((propName) => {
       const $prop = $props[propName]
       const $propExtra = $propsExtra[propName] || {}
       const $propFallbackExtra = commonPropsMeta[propName] || {}
@@ -165,10 +165,10 @@ const processComponentMeta = (meta, groupRef, groupDescription, docUrl) => {
         name: propName,
         value: {
           kind: 'expression',
-          type
+          type,
         },
         default: computePropDefault($prop),
-        'doc-url': docUrl
+        'doc-url': docUrl,
       }
       // Add required prop is required
       if ($prop.required) {
@@ -201,10 +201,10 @@ const processComponentMeta = (meta, groupRef, groupDescription, docUrl) => {
 
   // Add events
   if ($events.length) {
-    tag.events = $events.map(eventObj => {
+    tag.events = $events.map((eventObj) => {
       const event = {
         name: eventObj.event,
-        'doc-url': docUrl
+        'doc-url': docUrl,
       }
       if (eventObj.description) {
         event.description = eventObj.description
@@ -215,7 +215,7 @@ const processComponentMeta = (meta, groupRef, groupDescription, docUrl) => {
           const name = arg.arg || (arg.type ? computePropType(arg) : undefined) || 'arg' + index
           const argument = {
             name: name.charAt(0).toLowerCase() + name.slice(1),
-            'doc-url': docUrl
+            'doc-url': docUrl,
           }
           if (arg.description) {
             argument.description = arg.description
@@ -232,10 +232,10 @@ const processComponentMeta = (meta, groupRef, groupDescription, docUrl) => {
 
   // Add slots
   if ($slots.length) {
-    tag.slots = $slots.map(slotObj => {
+    tag.slots = $slots.map((slotObj) => {
       const slot = {
         name: slotObj.name,
-        'doc-url': docUrl
+        'doc-url': docUrl,
       }
       if (slotObj.description) {
         slot.description = slotObj.description
@@ -248,10 +248,10 @@ const processComponentMeta = (meta, groupRef, groupDescription, docUrl) => {
         // for auto positioning the cursor to fill in the name
       }
       if (Array.isArray(slotObj.scope)) {
-        slot['vue-properties'] = slotObj.scope.map(propDef => {
+        slot['vue-properties'] = slotObj.scope.map((propDef) => {
           const property = {
             name: propDef.prop,
-            'doc-url': docUrl
+            'doc-url': docUrl,
           }
           if (propDef.description) {
             property.description = propDef.description
@@ -272,7 +272,7 @@ const processComponentMeta = (meta, groupRef, groupDescription, docUrl) => {
   // Add in any component alias tags
   if ($aliases.length) {
     // Add the aliases
-    $aliases.forEach(alias => {
+    $aliases.forEach((alias) => {
       const aliasTag = { ...tag, name: alias, source: { ...tag.source, symbol: alias } }
       aliasTag.description = `${tag.description}\n\n*Alias for ${tag.name}*`
       webTypes.contributions.html.tags.push(aliasTag)
@@ -297,11 +297,11 @@ const processDirectiveMeta = (directiveMeta, directiveDescription, docUrl) => {
     name: kebabCase(name),
     source: {
       module: libraryName,
-      symbol: name
+      symbol: name,
     },
     required: false,
     description: directiveDescription,
-    'doc-url': docUrl
+    'doc-url': docUrl,
   }
 
   // Add in argument details
@@ -310,16 +310,16 @@ const processDirectiveMeta = (directiveMeta, directiveDescription, docUrl) => {
       // RegExpr string pattern for argument
       pattern: arg.pattern,
       description: arg.description,
-      required: arg.required
+      required: arg.required,
     }
   }
 
   // Add in any modifier details
   if (modifiers) {
-    attribute['vue-modifiers'] = modifiers.map(mod => {
+    attribute['vue-modifiers'] = modifiers.map((mod) => {
       const modifier = {
         name: mod.name,
-        'doc-url': docUrl
+        'doc-url': docUrl,
       }
       if (mod.pattern) {
         modifier.pattern = mod.pattern
@@ -335,7 +335,7 @@ const processDirectiveMeta = (directiveMeta, directiveDescription, docUrl) => {
   if (expression) {
     attribute.value = {
       kind: 'expression',
-      type: computePropType({ type: expression })
+      type: computePropType({ type: expression }),
     }
   }
 
@@ -344,7 +344,7 @@ const processDirectiveMeta = (directiveMeta, directiveDescription, docUrl) => {
 }
 
 // Create tag entries for each component in a component group
-const processComponentGroup = groupSlug => {
+const processComponentGroup = (groupSlug) => {
   // Array of components in the group
   const groupMeta = componentGroups[groupSlug] || {}
   const componentsMeta = groupMeta.components || []
@@ -357,19 +357,19 @@ const processComponentGroup = groupSlug => {
   const groupRef = require(path.resolve(baseDir, 'esm/components/' + (groupSlug || '')))
 
   // Process each component
-  componentsMeta.forEach(meta => {
+  componentsMeta.forEach((meta) => {
     processComponentMeta(meta, groupRef, groupMeta.description, docUrl)
   })
 
   // Process any directives provided in the meta
   // These directives do not have their own `package.json` files
-  directivesMeta.forEach(directiveMeta => {
+  directivesMeta.forEach((directiveMeta) => {
     processDirectiveMeta(directiveMeta, groupMeta.description, docUrl)
   })
 }
 
 // Create tag entries for each component in a component group
-const processIconGroup = groupSlug => {
+const processIconGroup = (groupSlug) => {
   // Array of components in the group
   const groupMeta = iconGroups[groupSlug] || {}
   const iconsMeta = groupMeta.components || []
@@ -381,13 +381,13 @@ const processIconGroup = groupSlug => {
   const groupRef = require(path.resolve(baseDir, 'esm/icons'))
 
   // Process each icon component
-  iconsMeta.forEach(meta => {
+  iconsMeta.forEach((meta) => {
     processComponentMeta(meta, groupRef, groupMeta.description, docUrl)
   })
 }
 
 // Create attribute entries for each directive
-const processDirectiveGroup = groupSlug => {
+const processDirectiveGroup = (groupSlug) => {
   // Directives only have a single entry in their Meta for `directive`
   const directiveMeta = directiveGroups[groupSlug] || {}
   const docUrl = `${baseDocs}/docs/directives/${groupSlug}/`
@@ -431,7 +431,7 @@ try {
   const veturTags = {}
   const veturAttributes = {}
   // Add component specific info
-  Object.keys(webTypes.contributions.html.tags).forEach(component => {
+  Object.keys(webTypes.contributions.html.tags).forEach((component) => {
     const def = webTypes.contributions.html.tags[component]
     const tag = kebabCase(def.name)
     // Component tag
@@ -440,24 +440,24 @@ try {
       // we do not have a way of populating this at the moment
       // subtags: [],
       description: def.description,
-      attributes: def.attributes.map(attrObj => kebabCase(attrObj.name))
+      attributes: def.attributes.map((attrObj) => kebabCase(attrObj.name)),
     }
     // Component props
-    def.attributes.forEach(attrObj => {
+    def.attributes.forEach((attrObj) => {
       const type = (attrObj.value || { type: 'any' }).type
       veturAttributes[`${tag}/${kebabCase(attrObj.name)}`] = {
         description: attrObj.description || `One of: ${type.split('|').join(' or ')}`,
-        type
+        type,
       }
     })
   })
   // Add global directive "attributes"
-  Object.keys(webTypes.contributions.html.attributes).forEach(directive => {
+  Object.keys(webTypes.contributions.html.attributes).forEach((directive) => {
     const def = webTypes.contributions.html.attributes[directive]
     const attr = kebabCase(def.name)
     veturAttributes[attr] = {
       global: true,
-      description: def.description
+      description: def.description,
     }
   })
 

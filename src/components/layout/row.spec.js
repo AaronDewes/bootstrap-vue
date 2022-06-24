@@ -14,8 +14,8 @@ describe('layout > row', () => {
   it('renders custom root element when prop tag is set', async () => {
     const wrapper = mount(BRow, {
       propsData: {
-        tag: 'p'
-      }
+        tag: 'p',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('P')
@@ -27,8 +27,8 @@ describe('layout > row', () => {
   it('renders default slot content', async () => {
     const wrapper = mount(BRow, {
       slots: {
-        default: 'foobar'
-      }
+        default: 'foobar',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')
@@ -40,8 +40,8 @@ describe('layout > row', () => {
   it('has class no-gutters when prop no-gutters is set', async () => {
     const wrapper = mount(BRow, {
       propsData: {
-        noGutters: true
-      }
+        noGutters: true,
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')
@@ -53,8 +53,8 @@ describe('layout > row', () => {
   it('has vertical align class when prop align-v is set', async () => {
     const wrapper = mount(BRow, {
       propsData: {
-        alignV: 'baseline'
-      }
+        alignV: 'baseline',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')
@@ -66,8 +66,8 @@ describe('layout > row', () => {
   it('has horizontal align class when prop align-h is set', async () => {
     const wrapper = mount(BRow, {
       propsData: {
-        alignH: 'center'
-      }
+        alignH: 'center',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')
@@ -79,8 +79,8 @@ describe('layout > row', () => {
   it('has content align class when prop align-content is set', async () => {
     const wrapper = mount(BRow, {
       propsData: {
-        alignContent: 'stretch'
-      }
+        alignContent: 'stretch',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')
@@ -92,8 +92,8 @@ describe('layout > row', () => {
   it('has class row-cols-6 when prop cols is set to 6', async () => {
     const wrapper = mount(BRow, {
       propsData: {
-        cols: 6
-      }
+        cols: 6,
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')
@@ -105,8 +105,8 @@ describe('layout > row', () => {
   it('has class row-cols-md-3 when prop cols-md is set to 3', async () => {
     const wrapper = mount(BRow, {
       propsData: {
-        colsMd: '3'
-      }
+        colsMd: '3',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')
@@ -122,8 +122,8 @@ describe('layout > row', () => {
         colsSm: 2,
         colsMd: 3,
         colsLg: 4,
-        colsXl: 5
-      }
+        colsXl: 5,
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')

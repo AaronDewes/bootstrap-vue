@@ -30,7 +30,7 @@ export const props = makePropsConfigurable(
     squared: makeProp(PROP_TYPE_BOOLEAN, false),
     tag: makeProp(PROP_TYPE_STRING, 'button'),
     type: makeProp(PROP_TYPE_STRING, 'button'),
-    variant: makeProp(PROP_TYPE_STRING, 'secondary')
+    variant: makeProp(PROP_TYPE_STRING, 'secondary'),
   }),
   NAME_BUTTON
 )
@@ -39,7 +39,7 @@ export const props = makePropsConfigurable(
 
 // Focus handler for toggle buttons
 // Needs class of 'focus' when focused
-const handleFocus = event => {
+const handleFocus = (event) => {
   if (event.type === 'focusin') {
     addClass(event.target, 'focus')
   } else if (event.type === 'focusout') {
@@ -49,19 +49,19 @@ const handleFocus = event => {
 
 // Is the requested button a link?
 // If tag prop is set to `a`, we use a <b-link> to get proper disabled handling
-const isLink = props => isLinkStrict(props) || isTag(props.tag, 'a')
+const isLink = (props) => isLinkStrict(props) || isTag(props.tag, 'a')
 
 // Is the button to be a toggle button?
-const isToggle = props => isBoolean(props.pressed)
+const isToggle = (props) => isBoolean(props.pressed)
 
 // Is the button "really" a button?
-const isButton = props => !(isLink(props) || (props.tag && !isTag(props.tag, 'button')))
+const isButton = (props) => !(isLink(props) || (props.tag && !isTag(props.tag, 'button')))
 
 // Is the requested tag not a button or link?
-const isNonStandardTag = props => !isLink(props) && !isButton(props)
+const isNonStandardTag = (props) => !isLink(props) && !isButton(props)
 
 // Compute required classes (non static classes)
-const computeClass = props => [
+const computeClass = (props) => [
   `btn-${props.variant || 'secondary'}`,
   {
     [`btn-${props.size}`]: props.size,
@@ -69,12 +69,12 @@ const computeClass = props => [
     'rounded-pill': props.pill,
     'rounded-0': props.squared && !props.pill,
     disabled: props.disabled,
-    active: props.pressed
-  }
+    active: props.pressed,
+  },
 ]
 
 // Compute the link props to pass to b-link (if required)
-const computeLinkProps = props => (isLink(props) ? pluckProps(linkProps, props) : {})
+const computeLinkProps = (props) => (isLink(props) ? pluckProps(linkProps, props) : {})
 
 // Compute the attributes for a button
 const computeAttrs = (props, data) => {
@@ -108,7 +108,7 @@ const computeAttrs = (props, data) => {
     // Links are tabbable, but don't allow disabled, while non buttons or links
     // are not tabbable, so we mimic that functionality by disabling tabbing
     // when disabled, and adding a `tabindex="0"` to non buttons or non links
-    tabindex: props.disabled && !button ? '-1' : tabindex
+    tabindex: props.disabled && !button ? '-1' : tabindex,
   }
 }
 
@@ -148,13 +148,13 @@ export const BButton = /*#__PURE__*/ Vue.extend({
           // Send `.sync` updates to any "pressed" prop (if `.sync` listeners)
           // `concat()` will normalize the value to an array without
           // double wrapping an array value in an array
-          concat(listeners['update:pressed']).forEach(fn => {
+          concat(listeners['update:pressed']).forEach((fn) => {
             if (isFunction(fn)) {
               fn(!props.pressed)
             }
           })
         }
-      }
+      },
     }
 
     if (toggle) {
@@ -167,9 +167,9 @@ export const BButton = /*#__PURE__*/ Vue.extend({
       class: computeClass(props),
       props: computeLinkProps(props),
       attrs: computeAttrs(props, data),
-      on
+      on,
     }
 
     return h(link ? BLink : props.tag, mergeData(data, componentData), children)
-  }
+  },
 })

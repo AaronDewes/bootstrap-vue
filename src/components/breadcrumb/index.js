@@ -4,7 +4,7 @@ import { BBreadcrumbLink } from './breadcrumb-link'
 import { pluginFactory } from '../../utils/plugins'
 
 const BreadcrumbPlugin = /*#__PURE__*/ pluginFactory({
-  components: { BBreadcrumb, BBreadcrumbItem, BBreadcrumbLink }
+  components: { BBreadcrumb, BBreadcrumbItem, BBreadcrumbLink },
 })
 
 export { BreadcrumbPlugin, BBreadcrumb, BBreadcrumbItem, BBreadcrumbLink }

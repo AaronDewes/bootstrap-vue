@@ -5,7 +5,7 @@ import {
   PROP_TYPE_ARRAY_OBJECT_STRING,
   PROP_TYPE_BOOLEAN,
   PROP_TYPE_OBJECT,
-  PROP_TYPE_STRING
+  PROP_TYPE_STRING,
 } from '../../constants/props'
 import { SLOT_NAME_TITLE } from '../../constants/slots'
 import { sortKeys } from '../../utils/object'
@@ -35,7 +35,7 @@ export const props = makePropsConfigurable(
     titleItemClass: makeProp(PROP_TYPE_ARRAY_OBJECT_STRING),
     titleLinkAttributes: makeProp(PROP_TYPE_OBJECT),
     // Sniffed by `<b-tabs>` and added to nav `a.nav-link`
-    titleLinkClass: makeProp(PROP_TYPE_ARRAY_OBJECT_STRING)
+    titleLinkClass: makeProp(PROP_TYPE_ARRAY_OBJECT_STRING),
   }),
   NAME_TAB
 )
@@ -48,13 +48,13 @@ export const BTab = /*#__PURE__*/ Vue.extend({
   mixins: [idMixin, normalizeSlotMixin],
   inject: {
     getBvTabs: {
-      default: () => () => ({})
-    }
+      default: () => () => ({}),
+    },
   },
   props,
   data() {
     return {
-      localActive: this[MODEL_PROP_NAME_ACTIVE] && !this.disabled
+      localActive: this[MODEL_PROP_NAME_ACTIVE] && !this.disabled,
     }
   },
   computed: {
@@ -72,10 +72,10 @@ export const BTab = /*#__PURE__*/ Vue.extend({
         {
           active,
           disabled,
-          'card-body': this.bvTabs.card && !this.noBody
+          'card-body': this.bvTabs.card && !this.noBody,
         },
         // Apply <b-tabs> `activeTabClass` styles when this tab is active
-        active ? this.bvTabs.activeTabClass : null
+        active ? this.bvTabs.activeTabClass : null,
       ]
     },
     controlledBy() {
@@ -86,7 +86,7 @@ export const BTab = /*#__PURE__*/ Vue.extend({
     },
     computedLazy() {
       return this.bvTabs.lazy || this.lazy
-    }
+    },
   },
   watch: {
     [MODEL_PROP_NAME_ACTIVE](newValue, oldValue) {
@@ -116,7 +116,7 @@ export const BTab = /*#__PURE__*/ Vue.extend({
     localActive(newValue) {
       // Make `active` prop work with `.sync` modifier
       this.$emit(MODEL_EVENT_NAME_ACTIVE, newValue)
-    }
+    },
   },
   mounted() {
     // Inform `<b-tabs>` of our presence
@@ -160,7 +160,7 @@ export const BTab = /*#__PURE__*/ Vue.extend({
       // Not inside a `<b-tabs>` component or not active to begin with
       const { deactivateTab } = this.bvTabs
       return deactivateTab && this.localActive ? deactivateTab(this) : false
-    }
+    },
   },
   render(h) {
     const { localActive } = this
@@ -175,9 +175,9 @@ export const BTab = /*#__PURE__*/ Vue.extend({
           role: 'tabpanel',
           id: this.safeId(),
           'aria-hidden': localActive ? 'false' : 'true',
-          'aria-labelledby': this.controlledBy || null
+          'aria-labelledby': this.controlledBy || null,
         },
-        ref: 'panel'
+        ref: 'panel',
       },
       // Render content lazily if requested
       [localActive || !this.computedLazy ? this.normalizeSlot() : h()]
@@ -188,10 +188,10 @@ export const BTab = /*#__PURE__*/ Vue.extend({
       {
         props: {
           mode: 'out-in',
-          noFade: this.computedNoFade
-        }
+          noFade: this.computedNoFade,
+        },
       },
       [$content]
     )
-  }
+  },
 })

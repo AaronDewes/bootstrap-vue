@@ -12,9 +12,9 @@ import { toInteger } from './number'
 export const createDate = (...args) => new Date(...args)
 
 // Parse a date sting, or Date object, into a Date object (with no time information)
-export const parseYMD = date => {
+export const parseYMD = (date) => {
   if (isString(date) && RX_DATE.test(date.trim())) {
-    const [year, month, day] = date.split(RX_DATE_SPLIT).map(v => toInteger(v, 1))
+    const [year, month, day] = date.split(RX_DATE_SPLIT).map((v) => toInteger(v, 1))
     return createDate(year, month - 1, day)
   } else if (isDate(date)) {
     return createDate(date.getFullYear(), date.getMonth(), date.getDate())
@@ -23,7 +23,7 @@ export const parseYMD = date => {
 }
 
 // Format a date object as `YYYY-MM-DD` format
-export const formatYMD = date => {
+export const formatYMD = (date) => {
   date = parseYMD(date)
   if (!date) {
     return null
@@ -56,13 +56,13 @@ export const datesEqual = (date1, date2) => {
 
 // --- Date "math" utility methods (for BCalendar component mainly) ---
 
-export const firstDateOfMonth = date => {
+export const firstDateOfMonth = (date) => {
   date = createDate(date)
   date.setDate(1)
   return date
 }
 
-export const lastDateOfMonth = date => {
+export const lastDateOfMonth = (date) => {
   date = createDate(date)
   date.setMonth(date.getMonth() + 1)
   date.setDate(0)
@@ -80,7 +80,7 @@ export const addYears = (date, numberOfYears) => {
   return date
 }
 
-export const oneMonthAgo = date => {
+export const oneMonthAgo = (date) => {
   date = createDate(date)
   const month = date.getMonth()
   date.setMonth(month - 1)
@@ -91,7 +91,7 @@ export const oneMonthAgo = date => {
   return date
 }
 
-export const oneMonthAhead = date => {
+export const oneMonthAhead = (date) => {
   date = createDate(date)
   const month = date.getMonth()
   date.setMonth(month + 1)
@@ -102,19 +102,19 @@ export const oneMonthAhead = date => {
   return date
 }
 
-export const oneYearAgo = date => {
+export const oneYearAgo = (date) => {
   return addYears(date, -1)
 }
 
-export const oneYearAhead = date => {
+export const oneYearAhead = (date) => {
   return addYears(date, 1)
 }
 
-export const oneDecadeAgo = date => {
+export const oneDecadeAgo = (date) => {
   return addYears(date, -10)
 }
 
-export const oneDecadeAhead = date => {
+export const oneDecadeAhead = (date) => {
   return addYears(date, 10)
 }
 

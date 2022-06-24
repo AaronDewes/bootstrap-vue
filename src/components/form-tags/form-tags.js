@@ -8,7 +8,7 @@ import {
   EVENT_NAME_FOCUSIN,
   EVENT_NAME_FOCUSOUT,
   EVENT_NAME_TAG_STATE,
-  EVENT_OPTIONS_PASSIVE
+  EVENT_OPTIONS_PASSIVE,
 } from '../../constants/events'
 import { CODE_BACKSPACE, CODE_DELETE, CODE_ENTER } from '../../constants/key-codes'
 import {
@@ -19,7 +19,7 @@ import {
   PROP_TYPE_FUNCTION,
   PROP_TYPE_NUMBER,
   PROP_TYPE_OBJECT,
-  PROP_TYPE_STRING
+  PROP_TYPE_STRING,
 } from '../../constants/props'
 import { RX_SPACES } from '../../constants/regex'
 import { SLOT_NAME_DEFAULT, SLOT_NAME_ADD_BUTTON_TEXT } from '../../constants/slots'
@@ -51,10 +51,10 @@ const {
   mixin: modelMixin,
   props: modelProps,
   prop: MODEL_PROP_NAME,
-  event: MODEL_EVENT_NAME
+  event: MODEL_EVENT_NAME,
 } = makeModelMixin('value', {
   type: PROP_TYPE_ARRAY,
-  defaultValue: []
+  defaultValue: [],
 })
 
 // Supported input types (for built in input)
@@ -67,17 +67,17 @@ const DEFAULT_INPUT_FOCUS_SELECTOR = ['.b-form-tag', 'button', 'input', 'select'
 
 // Escape special chars in string and replace
 // contiguous spaces with a whitespace match
-const escapeRegExpChars = str => escapeRegExp(str).replace(RX_SPACES, '\\s')
+const escapeRegExpChars = (str) => escapeRegExp(str).replace(RX_SPACES, '\\s')
 
 // Remove leading/trailing spaces from array of tags and remove duplicates
-const cleanTags = tags => {
+const cleanTags = (tags) => {
   return concat(tags)
-    .map(tag => trim(toString(tag)))
+    .map((tag) => trim(toString(tag)))
     .filter((tag, index, arr) => tag.length > 0 && arr.indexOf(tag) === index)
 }
 
 // Processes an input/change event, normalizing string or event argument
-const processEventValue = event =>
+const processEventValue = (event) =>
   isString(event) ? event : isEvent(event) ? event.target.value || '' : ''
 
 // Returns a fresh empty `tagsState` object
@@ -85,7 +85,7 @@ const cleanTagsState = () => ({
   all: [],
   valid: [],
   invalid: [],
-  duplicate: []
+  duplicate: [],
 })
 
 // --- Props ---
@@ -111,7 +111,7 @@ const props = makePropsConfigurable(
     inputAttrs: makeProp(PROP_TYPE_OBJECT, {}),
     inputClass: makeProp(PROP_TYPE_ARRAY_OBJECT_STRING),
     inputId: makeProp(PROP_TYPE_STRING),
-    inputType: makeProp(PROP_TYPE_STRING, 'text', value => {
+    inputType: makeProp(PROP_TYPE_STRING, 'text', (value) => {
       return arrayIncludes(TYPES, value)
     }),
     invalidTagText: makeProp(PROP_TYPE_STRING, 'Invalid tag(s)'),
@@ -133,7 +133,7 @@ const props = makePropsConfigurable(
     tagRemoveLabel: makeProp(PROP_TYPE_STRING, 'Remove tag'),
     tagRemovedLabel: makeProp(PROP_TYPE_STRING, 'Tag removed'),
     tagValidator: makeProp(PROP_TYPE_FUNCTION),
-    tagVariant: makeProp(PROP_TYPE_STRING, 'secondary')
+    tagVariant: makeProp(PROP_TYPE_STRING, 'secondary'),
   }),
   NAME_FORM_TAGS
 )
@@ -150,7 +150,7 @@ export const BFormTags = /*#__PURE__*/ Vue.extend({
     formControlMixin,
     formSizeMixin,
     formStateMixin,
-    normalizeSlotMixin
+    normalizeSlotMixin,
   ],
   props,
   data() {
@@ -162,7 +162,7 @@ export const BFormTags = /*#__PURE__*/ Vue.extend({
       removedTags: [],
       // Populated when tags are parsed
       tagsState: cleanTagsState(),
-      focusState: null
+      focusState: null,
     }
   },
   computed: {
@@ -183,7 +183,7 @@ export const BFormTags = /*#__PURE__*/ Vue.extend({
         id: this.computedInputId,
         value: this.newTag,
         disabled,
-        form
+        form,
       }
     },
     computedInputHandlers() {
@@ -194,15 +194,12 @@ export const BFormTags = /*#__PURE__*/ Vue.extend({
         focus: this.onInputFocus,
         input: this.onInputInput,
         keydown: this.onInputKeydown,
-        reset: this.reset
+        reset: this.reset,
       }
     },
     computedSeparator() {
       // Merge the array into a string
-      return concat(this.separator)
-        .filter(isString)
-        .filter(identity)
-        .join('')
+      return concat(this.separator).filter(isString).filter(identity).join('')
     },
     computedSeparatorRegExp() {
       // We use a computed prop here to precompile the RegExp
@@ -223,10 +220,7 @@ export const BFormTags = /*#__PURE__*/ Vue.extend({
     },
     computeIgnoreInputFocusSelector() {
       // Normalize to an single selector with selectors separated by `,`
-      return concat(this.ignoreInputFocusSelector)
-        .filter(identity)
-        .join(',')
-        .trim()
+      return concat(this.ignoreInputFocusSelector).filter(identity).join(',').trim()
     },
     disableAddButton() {
       // If 'Add' button should be disabled
@@ -235,7 +229,7 @@ export const BFormTags = /*#__PURE__*/ Vue.extend({
       const newTag = trim(this.newTag)
       return (
         newTag === '' ||
-        !this.splitTags(newTag).some(t => !arrayIncludes(this.tags, t) && this.validateTag(t))
+        !this.splitTags(newTag).some((t) => !arrayIncludes(this.tags, t) && this.validateTag(t))
       )
     },
     duplicateTags() {
@@ -253,7 +247,7 @@ export const BFormTags = /*#__PURE__*/ Vue.extend({
     isLimitReached() {
       const { limit } = this
       return isNumber(limit) && limit >= 0 && this.tags.length >= limit
-    }
+    },
   },
   watch: {
     [MODEL_PROP_NAME](newValue) {
@@ -267,7 +261,7 @@ export const BFormTags = /*#__PURE__*/ Vue.extend({
       if (!looseEqual(newValue, oldValue)) {
         newValue = concat(newValue).filter(identity)
         oldValue = concat(oldValue).filter(identity)
-        this.removedTags = oldValue.filter(old => !arrayIncludes(newValue, old))
+        this.removedTags = oldValue.filter((old) => !arrayIncludes(newValue, old))
       }
     },
     tagsState(newValue, oldValue) {
@@ -275,7 +269,7 @@ export const BFormTags = /*#__PURE__*/ Vue.extend({
       if (!looseEqual(newValue, oldValue)) {
         this.$emit(EVENT_NAME_TAG_STATE, newValue.valid, newValue.invalid, newValue.duplicate)
       }
-    }
+    },
   },
   created() {
     // We do this in created to make sure an input event emits
@@ -316,7 +310,7 @@ export const BFormTags = /*#__PURE__*/ Vue.extend({
         } else {
           const invalidAndDuplicates = [...parsed.invalid, ...parsed.duplicate]
           this.newTag = parsed.all
-            .filter(tag => arrayIncludes(invalidAndDuplicates, tag))
+            .filter((tag) => arrayIncludes(invalidAndDuplicates, tag))
             .join(this.computedJoiner)
             .concat(invalidAndDuplicates.length > 0 ? this.computedJoiner.charAt(0) : '')
         }
@@ -342,7 +336,7 @@ export const BFormTags = /*#__PURE__*/ Vue.extend({
       //   Add `onRemoveTag(tag)` user method, which if returns `false`
       //   will prevent the tag from being removed (i.e. confirmation)
       //   Or emit cancelable `BvEvent`
-      this.tags = this.tags.filter(t => t !== tag)
+      this.tags = this.tags.filter((t) => t !== tag)
     },
     reset() {
       this.newTag = ''
@@ -495,10 +489,10 @@ export const BFormTags = /*#__PURE__*/ Vue.extend({
         all: tags,
         valid: [],
         invalid: [],
-        duplicate: []
+        duplicate: [],
       }
       // Parse the unique tags
-      tags.forEach(tag => {
+      tags.forEach((tag) => {
         if (arrayIncludes(this.tags, tag) || arrayIncludes(parsed.valid, tag)) {
           // Unique duplicate tags
           if (!arrayIncludes(parsed.duplicate, tag)) {
@@ -549,12 +543,12 @@ export const BFormTags = /*#__PURE__*/ Vue.extend({
       tagPills,
       tagRemoveLabel,
       tagVariant,
-      tags
+      tags,
     }) {
       const h = this.$createElement
 
       // Make the list of tags
-      const $tags = tags.map(tag => {
+      const $tags = tags.map((tag) => {
         tag = toString(tag)
 
         return h(
@@ -570,10 +564,10 @@ export const BFormTags = /*#__PURE__*/ Vue.extend({
               removeLabel: tagRemoveLabel,
               tag: 'li',
               title: tag,
-              variant: tagVariant
+              variant: tagVariant,
             },
             on: { remove: () => removeTag(tag) },
-            key: `tags_${tag}`
+            key: `tags_${tag}`,
           },
           tag
         )
@@ -592,7 +586,7 @@ export const BFormTags = /*#__PURE__*/ Vue.extend({
         inputAttrs['aria-describedby'],
         invalidFeedbackId,
         duplicateFeedbackId,
-        limitFeedbackId
+        limitFeedbackId,
       ]
         .filter(identity)
         .join(' ')
@@ -606,13 +600,13 @@ export const BFormTags = /*#__PURE__*/ Vue.extend({
           ...inputAttrs,
           'aria-describedby': ariaDescribedby || null,
           type: inputType,
-          placeholder: placeholder || null
+          placeholder: placeholder || null,
         },
         domProps: { value: inputAttrs.value },
         on: inputHandlers,
         // Directive needed to get `event.target.composing` set (if needed)
         directives: [{ name: 'model', value: inputAttrs.value }],
-        ref: 'input'
+        ref: 'input',
       })
 
       // Add button
@@ -625,15 +619,15 @@ export const BFormTags = /*#__PURE__*/ Vue.extend({
             // We use the `invisible` class instead of not rendering
             // the button, so that we maintain layout to prevent
             // the user input from jumping around
-            invisible: disableAddButton
+            invisible: disableAddButton,
           },
           style: { fontSize: '90%' },
           props: {
             disabled: disableAddButton || isLimitReached,
-            variant: addButtonVariant
+            variant: addButtonVariant,
           },
           on: { click: () => addTag() },
-          ref: 'button'
+          ref: 'button',
         },
         [this.normalizeSlot(SLOT_NAME_ADD_BUTTON_TEXT) || addButtonText]
       )
@@ -652,19 +646,19 @@ export const BFormTags = /*#__PURE__*/ Vue.extend({
           attrs: {
             role: 'none',
             'aria-live': 'off',
-            'aria-controls': tagListId
+            'aria-controls': tagListId,
           },
-          key: 'tags_field'
+          key: 'tags_field',
         },
         [
           h(
             'div',
             {
               staticClass: 'd-flex',
-              attrs: { role: 'group' }
+              attrs: { role: 'group' },
             },
             [$input, $button]
-          )
+          ),
         ]
       )
 
@@ -674,7 +668,7 @@ export const BFormTags = /*#__PURE__*/ Vue.extend({
         {
           staticClass: 'b-form-tags-list list-unstyled mb-0 d-flex flex-wrap align-items-center',
           attrs: { id: tagListId },
-          key: 'tags_list'
+          key: 'tags_list',
         },
         [$tags, $field]
       )
@@ -695,9 +689,9 @@ export const BFormTags = /*#__PURE__*/ Vue.extend({
               props: {
                 id: invalidFeedbackId,
                 ariaLive,
-                forceShow: true
+                forceShow: true,
               },
-              key: 'tags_invalid_feedback'
+              key: 'tags_invalid_feedback',
             },
             [this.invalidTagText, ': ', this.invalidTags.join(joiner)]
           )
@@ -711,9 +705,9 @@ export const BFormTags = /*#__PURE__*/ Vue.extend({
             {
               props: {
                 id: duplicateFeedbackId,
-                ariaLive
+                ariaLive,
               },
-              key: 'tags_duplicate_feedback'
+              key: 'tags_duplicate_feedback',
             },
             [this.duplicateTagText, ': ', this.duplicateTags.join(joiner)]
           )
@@ -727,9 +721,9 @@ export const BFormTags = /*#__PURE__*/ Vue.extend({
             {
               props: {
                 id: limitFeedbackId,
-                ariaLive
+                ariaLive,
               },
-              key: 'tags_limit_feedback'
+              key: 'tags_limit_feedback',
             },
             [limitTagsText]
           )
@@ -740,9 +734,9 @@ export const BFormTags = /*#__PURE__*/ Vue.extend({
           {
             attrs: {
               'aria-live': 'polite',
-              'aria-atomic': 'true'
+              'aria-atomic': 'true',
             },
-            key: 'tags_feedback'
+            key: 'tags_feedback',
           },
           [$invalid, $duplicate, $limit]
         )
@@ -750,7 +744,7 @@ export const BFormTags = /*#__PURE__*/ Vue.extend({
 
       // Return the content
       return [$ul, $feedback]
-    }
+    },
   },
   render(h) {
     const { name, disabled, required, form, tags, computedInputId, hasFocus, noOuterFocus } = this
@@ -799,8 +793,8 @@ export const BFormTags = /*#__PURE__*/ Vue.extend({
         'tagClass',
         'tagPills',
         'tagRemoveLabel',
-        'tagVariant'
-      ])
+        'tagVariant',
+      ]),
     }
 
     // Generate the user interface
@@ -817,8 +811,8 @@ export const BFormTags = /*#__PURE__*/ Vue.extend({
           for: computedInputId,
           'aria-live': hasFocus ? 'polite' : 'off',
           'aria-atomic': 'true',
-          'aria-relevant': 'additions text'
-        }
+          'aria-relevant': 'additions text',
+        },
       },
       this.tags.join(', ')
     )
@@ -832,8 +826,8 @@ export const BFormTags = /*#__PURE__*/ Vue.extend({
           id: this.safeId('__removed_tags__'),
           role: 'status',
           'aria-live': hasFocus ? 'assertive' : 'off',
-          'aria-atomic': 'true'
-        }
+          'aria-atomic': 'true',
+        },
       },
       this.removedTags.length > 0 ? `(${this.tagRemovedLabel}) ${this.removedTags.join(', ')}` : ''
     )
@@ -845,7 +839,7 @@ export const BFormTags = /*#__PURE__*/ Vue.extend({
       // When there are currently no tags, a visually hidden input
       // with empty value is rendered for proper required handling
       const hasTags = tags.length > 0
-      $hidden = (hasTags ? tags : ['']).map(tag => {
+      $hidden = (hasTags ? tags : ['']).map((tag) => {
         return h('input', {
           class: { 'sr-only': !hasTags },
           attrs: {
@@ -853,9 +847,9 @@ export const BFormTags = /*#__PURE__*/ Vue.extend({
             value: tag,
             required,
             name,
-            form
+            form,
           },
-          key: `tag_input_${tag}`
+          key: `tag_input_${tag}`,
         })
       })
     }
@@ -868,24 +862,24 @@ export const BFormTags = /*#__PURE__*/ Vue.extend({
         class: [
           {
             focus: hasFocus && !noOuterFocus && !disabled,
-            disabled
+            disabled,
           },
           this.sizeFormClass,
-          this.stateClass
+          this.stateClass,
         ],
         attrs: {
           id: this.safeId(),
           role: 'group',
           tabindex: disabled || noOuterFocus ? null : '-1',
-          'aria-describedby': this.safeId('__selected_tags__')
+          'aria-describedby': this.safeId('__selected_tags__'),
         },
         on: {
           click: this.onClick,
           focusin: this.onFocusin,
-          focusout: this.onFocusout
-        }
+          focusout: this.onFocusout,
+        },
       },
       [$output, $removed, $content, $hidden]
     )
-  }
+  },
 })

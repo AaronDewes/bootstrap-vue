@@ -31,8 +31,8 @@ describe('icons > b-iconstack', () => {
   it('b-iconstack variant works', async () => {
     const wrapper = mount(BIconstack, {
       propsData: {
-        variant: 'danger'
-      }
+        variant: 'danger',
+      },
     })
 
     expect(wrapper.exists()).toBe(true)
@@ -54,8 +54,8 @@ describe('icons > b-iconstack', () => {
   it('b-iconstack font-scale prop works', async () => {
     const wrapper = mount(BIconstack, {
       propsData: {
-        fontScale: '1.25'
-      }
+        fontScale: '1.25',
+      },
     })
 
     expect(wrapper.exists()).toBe(true)
@@ -78,8 +78,8 @@ describe('icons > b-iconstack', () => {
   it('b-icons rotate prop works', async () => {
     const wrapper = mount(BIconstack, {
       propsData: {
-        rotate: '45'
-      }
+        rotate: '45',
+      },
     })
 
     expect(wrapper.exists()).toBe(true)
@@ -100,8 +100,8 @@ describe('icons > b-iconstack', () => {
   it('b-iconstack scale prop works', async () => {
     const wrapper = mount(BIconstack, {
       propsData: {
-        scale: '1.5'
-      }
+        scale: '1.5',
+      },
     })
 
     expect(wrapper.exists()).toBe(true)
@@ -123,8 +123,8 @@ describe('icons > b-iconstack', () => {
     const wrapper = mount(BIconstack, {
       propsData: {
         icon: 'circle-fill',
-        title: 'Circle'
-      }
+        title: 'Circle',
+      },
     })
 
     expect(wrapper.exists()).toBe(true)
@@ -143,8 +143,8 @@ describe('icons > b-iconstack', () => {
   it('b-iconstack <title> should not render when title is undefined', async () => {
     const wrapper = mount(BIconstack, {
       propsData: {
-        icon: 'circle-fill'
-      }
+        icon: 'circle-fill',
+      },
     })
 
     expect(wrapper.exists()).toBe(true)

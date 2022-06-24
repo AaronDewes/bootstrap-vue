@@ -16,11 +16,11 @@ describe('utils/events', () => {
       expect(parseEventOptions({})).toEqual({})
       expect(parseEventOptions({ capture: false, foobar: true })).toEqual({
         capture: false,
-        foobar: true
+        foobar: true,
       })
       expect(parseEventOptions({ capture: true, foobar: false })).toEqual({
         capture: true,
-        foobar: false
+        foobar: false,
       })
     } else {
       // Converts non object to boolean

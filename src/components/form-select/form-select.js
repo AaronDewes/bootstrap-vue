@@ -4,7 +4,7 @@ import { EVENT_NAME_CHANGE } from '../../constants/events'
 import {
   PROP_TYPE_BOOLEAN,
   PROP_TYPE_BOOLEAN_STRING,
-  PROP_TYPE_NUMBER
+  PROP_TYPE_NUMBER,
 } from '../../constants/props'
 import { SLOT_NAME_FIRST } from '../../constants/slots'
 import { from as arrayFrom } from '../../utils/array'
@@ -22,7 +22,7 @@ import {
   MODEL_EVENT_NAME,
   MODEL_PROP_NAME,
   modelMixin,
-  props as modelProps
+  props as modelProps,
 } from '../../mixins/model'
 import { normalizeSlotMixin } from '../../mixins/normalize-slot'
 import { optionsMixin } from './helpers/mixin-options'
@@ -43,7 +43,7 @@ export const props = makePropsConfigurable(
     multiple: makeProp(PROP_TYPE_BOOLEAN, false),
     // Browsers default size to `0`, which shows 4 rows in most browsers in multiple mode
     // Size of `1` can bork out Firefox
-    selectSize: makeProp(PROP_TYPE_NUMBER, 0)
+    selectSize: makeProp(PROP_TYPE_NUMBER, 0),
   }),
   NAME_FORM_SELECT
 )
@@ -61,12 +61,12 @@ export const BFormSelect = /*#__PURE__*/ Vue.extend({
     formStateMixin,
     formCustomMixin,
     optionsMixin,
-    normalizeSlotMixin
+    normalizeSlotMixin,
   ],
   props,
   data() {
     return {
-      localValue: this[MODEL_PROP_NAME]
+      localValue: this[MODEL_PROP_NAME],
     }
   },
   computed: {
@@ -80,9 +80,9 @@ export const BFormSelect = /*#__PURE__*/ Vue.extend({
         this.plain ? 'form-control' : 'custom-select',
         this.size && this.plain ? `form-control-${this.size}` : null,
         this.size && !this.plain ? `custom-select-${this.size}` : null,
-        this.stateClass
+        this.stateClass,
       ]
-    }
+    },
   },
   watch: {
     value(newValue) {
@@ -90,7 +90,7 @@ export const BFormSelect = /*#__PURE__*/ Vue.extend({
     },
     localValue() {
       this.$emit(MODEL_EVENT_NAME, this.localValue)
-    }
+    },
   },
   methods: {
     focus() {
@@ -102,15 +102,15 @@ export const BFormSelect = /*#__PURE__*/ Vue.extend({
     onChange(event) {
       const { target } = event
       const selectedValue = arrayFrom(target.options)
-        .filter(o => o.selected)
-        .map(o => ('_value' in o ? o._value : o.value))
+        .filter((o) => o.selected)
+        .map((o) => ('_value' in o ? o._value : o.value))
 
       this.localValue = target.multiple ? selectedValue : selectedValue[0]
 
       this.$nextTick(() => {
         this.$emit(EVENT_NAME_CHANGE, this.localValue)
       })
-    }
+    },
   },
   render(h) {
     const { name, disabled, required, computedSelectSize: size, localValue: value } = this
@@ -124,7 +124,7 @@ export const BFormSelect = /*#__PURE__*/ Vue.extend({
         : h(BFormSelectOption, {
             props: { value, disabled },
             domProps: htmlOrText(option.html, option.text),
-            key
+            key,
           })
     })
 
@@ -141,13 +141,13 @@ export const BFormSelect = /*#__PURE__*/ Vue.extend({
           disabled,
           required,
           'aria-required': required ? 'true' : null,
-          'aria-invalid': this.computedAriaInvalid
+          'aria-invalid': this.computedAriaInvalid,
         },
         on: { change: this.onChange },
         directives: [{ name: 'model', value }],
-        ref: 'input'
+        ref: 'input',
       },
       [this.normalizeSlot(SLOT_NAME_FIRST), $options, this.normalizeSlot()]
     )
-  }
+  },
 })

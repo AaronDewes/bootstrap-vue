@@ -18,16 +18,16 @@ const PLUGIN_NAME_MAP = { image: 'img' }
 const UNPREFIXED_PLUGINS = ['layout', 'tabs']
 const IGNORED_COMPONENTS = ['breadcrumb-link']
 
-const getPluginName = p => PLUGIN_NAME_MAP[p] || p
+const getPluginName = (p) => PLUGIN_NAME_MAP[p] || p
 
-const isComponentModule = f => f !== 'index.js' && f.endsWith('.js') && !f.includes('.spec.')
+const isComponentModule = (f) => f !== 'index.js' && f.endsWith('.js') && !f.includes('.spec.')
 
-const getComponentName = n => `B${startCase(n.replace(/-/g, '_')).replace(/ /g, '')}`
+const getComponentName = (n) => `B${startCase(n.replace(/-/g, '_')).replace(/ /g, '')}`
 
-const getComponentModuleName = n =>
+const getComponentModuleName = (n) =>
   n.replace(/([A-Z])/g, (str, $1) => `-${$1.toLowerCase()}`).substr(3)
 
-const checkPluginMeta = async plugin => {
+const checkPluginMeta = async (plugin) => {
   const pluginDir = path.resolve(componentsDir, plugin)
   const stats = await stat(pluginDir)
 
@@ -37,12 +37,14 @@ const checkPluginMeta = async plugin => {
 
   const pluginName = getPluginName(plugin)
   const files = await readDir(pluginDir)
-  const componentModules = files.filter(f => isComponentModule(f)).map(file => {
-    if (verbose && !UNPREFIXED_PLUGINS.includes(pluginName) && !file.startsWith(pluginName)) {
-      console.warn(`Found unexpected unprefixed module ${file} for plugin ${plugin}`)
-    }
-    return file.replace(/\.js/, '')
-  })
+  const componentModules = files
+    .filter((f) => isComponentModule(f))
+    .map((file) => {
+      if (verbose && !UNPREFIXED_PLUGINS.includes(pluginName) && !file.startsWith(pluginName)) {
+        console.warn(`Found unexpected unprefixed module ${file} for plugin ${plugin}`)
+      }
+      return file.replace(/\.js/, '')
+    })
 
   const { private: isPrivate, meta } = await import(`${pluginDir}/package.json`)
   if (isPrivate || !meta) {
@@ -54,11 +56,11 @@ const checkPluginMeta = async plugin => {
   const components = meta.components || []
   if (componentModules.length > 1) {
     componentModules
-      .filter(c => c !== plugin && !IGNORED_COMPONENTS.includes(c))
-      .forEach(component => {
+      .filter((c) => c !== plugin && !IGNORED_COMPONENTS.includes(c))
+      .forEach((component) => {
         const componentName = getComponentName(component)
         const componentMeta = components.find(
-          c => c === componentName || c.component === componentName
+          (c) => c === componentName || c.component === componentName
         )
 
         assert.ok(
@@ -71,7 +73,7 @@ const checkPluginMeta = async plugin => {
   // Check if for all components defined in the plugin's
   // package.json a module exists
   if (components.length) {
-    components.forEach(component => {
+    components.forEach((component) => {
       const componentName = typeof component === 'string' ? component : component.component
 
       const moduleName = getComponentModuleName(componentName)
@@ -85,10 +87,10 @@ const checkPluginMeta = async plugin => {
 
 async function main() {
   const plugins = await readDir(componentsDir)
-  await Promise.all(plugins.map(plugin => checkPluginMeta(plugin)))
+  await Promise.all(plugins.map((plugin) => checkPluginMeta(plugin)))
 }
 
-main().catch(e => {
+main().catch((e) => {
   console.error(`${e.name}: ${e.message}`)
   process.exitCode = 1
 })

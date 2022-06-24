@@ -8,7 +8,7 @@ import {
   EVENT_NAME_HIDDEN,
   EVENT_NAME_HIDE,
   EVENT_NAME_SHOW,
-  HOOK_EVENT_NAME_DESTROYED
+  HOOK_EVENT_NAME_DESTROYED,
 } from '../../../constants/events'
 import { useParentMixin } from '../../../mixins/use-parent'
 import { concat } from '../../../utils/array'
@@ -23,7 +23,7 @@ import {
   hasOwnProperty,
   keys,
   omit,
-  readonlyDescriptor
+  readonlyDescriptor,
 } from '../../../utils/object'
 import { pluginFactory } from '../../../utils/plugins'
 import { warn, warnNotClient } from '../../../utils/warn'
@@ -45,13 +45,13 @@ const BASE_PROPS = ['id', ...keys(omit(toastProps, ['static', 'visible']))]
 // Map prop names to toast slot names
 const propsToSlots = {
   toastContent: 'default',
-  title: 'toast-title'
+  title: 'toast-title',
 }
 
 // --- Helper methods ---
 
 // Method to filter only recognized props that are not undefined
-const filterOptions = options => {
+const filterOptions = (options) => {
   return BASE_PROPS.reduce((memo, key) => {
     if (!isUndefined(options[key])) {
       memo[key] = options[key]
@@ -61,7 +61,7 @@ const filterOptions = options => {
 }
 
 // Method to install `$bvToast` VM injection
-const plugin = Vue => {
+const plugin = (Vue) => {
   // Create a private sub-component constructor that
   // extends BToast and self-destructs after hidden
   // @vue/component
@@ -97,13 +97,13 @@ const plugin = Vue => {
       // Self destruct after hidden
       this.$once(EVENT_NAME_HIDDEN, handleDestroy)
       // Self destruct when toaster is destroyed
-      this.listenOnRoot(getRootEventName(NAME_TOASTER, EVENT_NAME_DESTROYED), toaster => {
+      this.listenOnRoot(getRootEventName(NAME_TOASTER, EVENT_NAME_DESTROYED), (toaster) => {
         /* istanbul ignore next: hard to test */
         if (toaster === this.toaster) {
           handleDestroy()
         }
       })
-    }
+    },
   })
 
   // Private method to generate the on-demand toast
@@ -122,11 +122,11 @@ const plugin = Vue => {
         ...omit(props, keys(propsToSlots)),
         // Props that can't be overridden
         static: false,
-        visible: true
-      }
+        visible: true,
+      },
     })
     // Convert certain props to slots
-    keys(propsToSlots).forEach(prop => {
+    keys(propsToSlots).forEach((prop) => {
       let value = props[prop]
       if (!isUndefined(value)) {
         // Can be a string, or array of VNodes
@@ -151,7 +151,7 @@ const plugin = Vue => {
       // Set these properties as read-only and non-enumerable
       defineProperties(this, {
         _vm: readonlyDescriptor(),
-        _root: readonlyDescriptor()
+        _root: readonlyDescriptor(),
       })
     }
 
@@ -185,7 +185,7 @@ const plugin = Vue => {
       // Because we need access to `$root` for `$emits`, and VM for parenting,
       // we have to create a fresh instance of `BvToast` for each VM
       this[PROP_NAME_PRIV] = new BvToast(this)
-    }
+    },
   })
 
   // Define our read-only `$bvToast` instance property
@@ -198,11 +198,11 @@ const plugin = Vue => {
           warn(`"${PROP_NAME}" must be accessed from a Vue instance "this" context.`, NAME_TOAST)
         }
         return this[PROP_NAME_PRIV]
-      }
+      },
     })
   }
 }
 
 export const BVToastPlugin = /*#__PURE__*/ pluginFactory({
-  plugins: { plugin }
+  plugins: { plugin },
 })

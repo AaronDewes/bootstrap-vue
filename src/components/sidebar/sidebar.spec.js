@@ -14,8 +14,8 @@ describe('sidebar', () => {
       attachTo: document.body,
       propsData: {
         id: 'test-1',
-        visible: true
-      }
+        visible: true,
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -67,8 +67,8 @@ describe('sidebar', () => {
         id: 'test-backdrop',
         noCloseOnBackdrop: true,
         visible: true,
-        backdrop: true
-      }
+        backdrop: true,
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -109,8 +109,8 @@ describe('sidebar', () => {
         noCloseOnBackdrop: true,
         visible: true,
         backdrop: true,
-        backdropVariant: 'transparent'
-      }
+        backdropVariant: 'transparent',
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -147,8 +147,8 @@ describe('sidebar', () => {
     const wrapper = mount(BSidebar, {
       attachTo: document.body,
       propsData: {
-        id: 'test-toggle'
-      }
+        id: 'test-toggle',
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -186,8 +186,8 @@ describe('sidebar', () => {
     const wrapper = mount(BSidebar, {
       attachTo: document.body,
       propsData: {
-        id: 'test-esc'
-      }
+        id: 'test-esc',
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -231,8 +231,8 @@ describe('sidebar', () => {
       attachTo: document.body,
       propsData: {
         id: 'test-sync',
-        visible: true
-      }
+        visible: true,
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -265,8 +265,8 @@ describe('sidebar', () => {
       propsData: {
         id: 'test-2',
         visible: true,
-        noHeader: true
-      }
+        noHeader: true,
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -284,8 +284,8 @@ describe('sidebar', () => {
       propsData: {
         id: 'test-3',
         visible: true,
-        noHeaderClose: true
-      }
+        noHeaderClose: true,
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -304,8 +304,8 @@ describe('sidebar', () => {
       propsData: {
         id: 'test-4',
         visible: false,
-        lazy: true
-      }
+        lazy: true,
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -332,11 +332,11 @@ describe('sidebar', () => {
         id: 'sidebar-header-slot',
         visible: true,
         title: 'TITLE',
-        headerTag: 'div'
+        headerTag: 'div',
       },
       slots: {
-        header: 'Custom header'
-      }
+        header: 'Custom header',
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -361,11 +361,11 @@ describe('sidebar', () => {
       propsData: {
         id: 'test-5',
         visible: true,
-        footerTag: 'div'
+        footerTag: 'div',
       },
       slots: {
-        footer: '<span>FOOTER</span>'
-      }
+        footer: '<span>FOOTER</span>',
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -388,8 +388,8 @@ describe('sidebar', () => {
       propsData: {
         id: 'test-title',
         visible: true,
-        title: 'TITLE'
-      }
+        title: 'TITLE',
+      },
     })
 
     expect(wrapper.vm).toBeDefined()

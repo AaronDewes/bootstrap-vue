@@ -9,14 +9,14 @@ const NAME = 'BootstrapVue'
 const install = /*#__PURE__*/ installFactory({
   plugins: {
     componentsPlugin,
-    directivesPlugin
-  }
+    directivesPlugin,
+  },
 })
 
 // --- BootstrapVue plugin ---
 const BootstrapVue = /*#__PURE__*/ {
   install,
-  NAME
+  NAME,
 }
 
 // --- Named exports for BvConfigPlugin ---
@@ -35,7 +35,7 @@ export {
   // so we add an alias to the shorter name for backwards compat
   BVConfigPlugin as BVConfig,
   // Main BootstrapVue plugin
-  BootstrapVue
+  BootstrapVue,
 }
 
 // --- Export named injection plugins ---

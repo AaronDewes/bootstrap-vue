@@ -14,7 +14,7 @@ export const props = makePropsConfigurable(
     noBody: makeProp(PROP_TYPE_BOOLEAN, false),
     rightAlign: makeProp(PROP_TYPE_BOOLEAN, false),
     tag: makeProp(PROP_TYPE_STRING, 'div'),
-    verticalAlign: makeProp(PROP_TYPE_STRING, 'top')
+    verticalAlign: makeProp(PROP_TYPE_STRING, 'top'),
   },
   NAME_MEDIA
 )
@@ -48,5 +48,5 @@ export const BMedia = /*#__PURE__*/ Vue.extend({
     }
 
     return h(props.tag, mergeData(data, { staticClass: 'media' }), $children)
-  }
+  },
 })

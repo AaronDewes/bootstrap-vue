@@ -24,7 +24,7 @@ export const props = makePropsConfigurable(
     action: makeProp(PROP_TYPE_BOOLEAN, false),
     button: makeProp(PROP_TYPE_BOOLEAN, false),
     tag: makeProp(PROP_TYPE_STRING, 'div'),
-    variant: makeProp(PROP_TYPE_STRING)
+    variant: makeProp(PROP_TYPE_STRING),
   }),
   NAME_LIST_GROUP_ITEM
 )
@@ -67,10 +67,10 @@ export const BListGroupItem = /*#__PURE__*/ Vue.extend({
           [`list-group-item-${variant}`]: variant,
           'list-group-item-action': action,
           active,
-          disabled
-        }
+          disabled,
+        },
       }),
       children
     )
-  }
+  },
 })

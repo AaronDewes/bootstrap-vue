@@ -7,6 +7,6 @@ export const useParentMixin = Vue.extend({
   computed: {
     bvParent() {
       return this.$parent || (this.$root === this && this.$options.bvParent)
-    }
-  }
+    },
+  },
 })

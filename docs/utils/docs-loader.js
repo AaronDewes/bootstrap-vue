@@ -22,7 +22,7 @@ const stripQuotes = (str = '') => str.replace(RX_DOUBLE_QUOTES, '')
 
 // Splits an HTML README into two parts: 'Title + Lead' and 'Body'
 // So that we can place content (e.g. ads) after the lead section
-const parseReadme = readme => {
+const parseReadme = (readme) => {
   const parts = (readme || '').match(RX_TITLE_LEAD_BODY) || []
   const title = parts[1] || ''
   const lead = parts[2] || ''
@@ -30,12 +30,12 @@ const parseReadme = readme => {
   const hasTitleLead = title || lead
   return {
     titleLead: (hasTitleLead ? `${title} ${lead}` : '').trim(),
-    body: (hasTitleLead ? body : readme || '').trim()
+    body: (hasTitleLead ? body : readme || '').trim(),
   }
 }
 
 // Generate a base TOC structure from readme HTML
-const makeBaseTOC = readme => {
+const makeBaseTOC = (readme) => {
   if (!readme) {
     return {}
   }
@@ -58,9 +58,9 @@ const makeBaseTOC = readme => {
   // Process the `<h2>` and `<h3>` headings into a TOC structure
   headings
     // Create a match `[value, tag, id, content]`
-    .map(heading => heading.match(RX_HEADING_H2H3))
+    .map((heading) => heading.match(RX_HEADING_H2H3))
     // Filter out unmatched values
-    .filter(v => Array.isArray(v))
+    .filter((v) => Array.isArray(v))
     // Create TOC structure
     .forEach(([, tag, id, content]) => {
       const href = `#${stripQuotes(id)}`
@@ -82,7 +82,7 @@ const makeBaseTOC = readme => {
 }
 
 // --- docs-loader export ---
-module.exports = function(html) {
+module.exports = function (html) {
   // Make results cacheable
   this.cacheable()
   // If we place 'html-loader' before this loader, we need to

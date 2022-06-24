@@ -109,9 +109,9 @@ values:
   export default {
     data() {
       return {
-        mainProps: { blank: true, blankColor: '#777', width: 75, height: 75, class: 'm1' }
+        mainProps: { blank: true, blankColor: '#777', width: 75, height: 75, class: 'm1' },
       }
-    }
+    },
   }
 </script>
 
@@ -181,9 +181,9 @@ The default `blank-color` is `transparent`.
   export default {
     data() {
       return {
-        mainProps: { blank: true, width: 75, height: 75, class: 'm1' }
+        mainProps: { blank: true, width: 75, height: 75, class: 'm1' },
       }
-    }
+    },
   }
 </script>
 
@@ -289,16 +289,16 @@ removed.
           blankColor: '#bbb',
           width: 600,
           height: 400,
-          class: 'my-5'
-        }
+          class: 'my-5',
+        },
       }
     },
     methods: {
       getImageUrl(imageId) {
         const { width, height } = this.mainProps
         return `https://picsum.photos/${width}/${height}/?image=${imageId}`
-      }
-    }
+      },
+    },
   }
 </script>
 

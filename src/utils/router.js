@@ -8,12 +8,12 @@ import { toString } from './string'
 const ANCHOR_TAG = 'a'
 
 // Method to replace reserved chars
-const encodeReserveReplacer = c => '%' + c.charCodeAt(0).toString(16)
+const encodeReserveReplacer = (c) => '%' + c.charCodeAt(0).toString(16)
 
 // Fixed encodeURIComponent which is more conformant to RFC3986:
 // - escapes [!'()*]
 // - preserve commas
-const encode = str =>
+const encode = (str) =>
   encodeURIComponent(toString(str))
     .replace(RX_ENCODE_REVERSE, encodeReserveReplacer)
     .replace(RX_ENCODED_COMMA, ',')
@@ -22,13 +22,13 @@ const decode = decodeURIComponent
 
 // Stringifies an object of query parameters
 // See: https://github.com/vuejs/vue-router/blob/dev/src/util/query.js
-export const stringifyQueryObj = obj => {
+export const stringifyQueryObj = (obj) => {
   if (!isPlainObject(obj)) {
     return ''
   }
 
   const query = keys(obj)
-    .map(key => {
+    .map((key) => {
       const value = obj[key]
       if (isUndefined(value)) {
         return ''
@@ -51,23 +51,21 @@ export const stringifyQueryObj = obj => {
       return encode(key) + '=' + encode(value)
     })
     /* must check for length, as we only want to filter empty strings, not things that look falsey! */
-    .filter(x => x.length > 0)
+    .filter((x) => x.length > 0)
     .join('&')
 
   return query ? `?${query}` : ''
 }
 
-export const parseQuery = query => {
+export const parseQuery = (query) => {
   const parsed = {}
-  query = toString(query)
-    .trim()
-    .replace(RX_QUERY_START, '')
+  query = toString(query).trim().replace(RX_QUERY_START, '')
 
   if (!query) {
     return parsed
   }
 
-  query.split('&').forEach(param => {
+  query.split('&').forEach((param) => {
     const parts = param.replace(RX_PLUS, ' ').split('=')
     const key = decode(parts.shift())
     const value = parts.length > 0 ? decode(parts.join('=')) : null
@@ -84,9 +82,9 @@ export const parseQuery = query => {
   return parsed
 }
 
-export const isLink = props => !!(props.href || props.to)
+export const isLink = (props) => !!(props.href || props.to)
 
-export const isRouterLink = tag => !!(tag && !isTag(tag, 'a'))
+export const isRouterLink = (tag) => !!(tag && !isTag(tag, 'a'))
 
 export const computeTag = ({ to, disabled, routerComponentName }, thisOrParent) => {
   const hasRouter = !!safeVueInstance(thisOrParent).$router

@@ -9,7 +9,7 @@ export const FIELD_KEY_SHOW_DETAILS = '_showDetails'
 export const IGNORED_FIELD_KEYS = [
   FIELD_KEY_CELL_VARIANT,
   FIELD_KEY_ROW_VARIANT,
-  FIELD_KEY_SHOW_DETAILS
+  FIELD_KEY_SHOW_DETAILS,
 ].reduce((result, key) => ({ ...result, [key]: true }), {})
 
 // Filter CSS selector for click/dblclick/etc. events
@@ -26,5 +26,5 @@ export const EVENT_FILTER = [
   '[role="link"] *',
   '[role="button"]',
   '[role="button"] *',
-  '[tabindex]:not(.disabled):not([disabled])'
+  '[tabindex]:not(.disabled):not([disabled])',
 ].join(',')

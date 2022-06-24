@@ -16,7 +16,7 @@ export const warn = (message, source = null) => /* istanbul ignore next */ {
  * @param {string} source
  * @returns {boolean} warned
  */
-export const warnNotClient = source => {
+export const warnNotClient = (source) => {
   /* istanbul ignore else */
   if (IS_BROWSER) {
     return false
@@ -31,7 +31,7 @@ export const warnNotClient = source => {
  * @param {string} source
  * @returns {boolean} warned
  */
-export const warnNoPromiseSupport = source => {
+export const warnNoPromiseSupport = (source) => {
   /* istanbul ignore else */
   if (HAS_PROMISE_SUPPORT) {
     return false
@@ -46,7 +46,7 @@ export const warnNoPromiseSupport = source => {
  * @param {string} source
  * @returns {boolean} warned
  */
-export const warnNoMutationObserverSupport = source => {
+export const warnNoMutationObserverSupport = (source) => {
   /* istanbul ignore else */
   if (HAS_MUTATION_OBSERVER_SUPPORT) {
     return false

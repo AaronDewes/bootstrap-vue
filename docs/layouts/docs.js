@@ -11,11 +11,11 @@ export default {
   name: 'BVDocsLayout',
   data() {
     return {
-      hasToc: false
+      hasToc: false,
     }
   },
   created() {
-    this.$root.$on('docs-set-toc', toc => {
+    this.$root.$on('docs-set-toc', (toc) => {
       // Only needed so we can set/clear aria-hidden on the TOC nav wrapper
       this.hasToc = Boolean(toc && toc.toc)
     })
@@ -29,7 +29,7 @@ export default {
       'b-col',
       {
         staticClass: 'bd-sidebar border-bottom-0',
-        props: { cols: 12, md: 3, xl: 2 }
+        props: { cols: 12, md: 3, xl: 2 },
       },
       [h(BVSearch), h(BVSidebar)]
     )
@@ -40,13 +40,13 @@ export default {
       {
         staticClass: 'bd-content',
         class: ['pb-md-3', 'ps-md-5'],
-        props: { cols: 12, md: 9, xl: 8 }
+        props: { cols: 12, md: 9, xl: 8 },
       },
       [
         h(BVBreadcrumbs, { class: ['float-start', 'mt-2', 'mb-0', 'mb-lg-2'] }),
         h(BVFeedback, { class: ['float-end', 'mt-2', 'mb-0', 'mb-lg-2'] }),
         h('div', { class: ['clearfix', 'd-block'], ref: 'clearfix' }),
-        h('nuxt')
+        h('nuxt'),
       ]
     )
 
@@ -59,15 +59,15 @@ export default {
         props: { tag: 'nav', xl: 2 },
         attrs: {
           'aria-label': 'Secondary navigation',
-          'aria-hidden': this.hasToc ? null : 'true'
-        }
+          'aria-hidden': this.hasToc ? null : 'true',
+        },
       },
       [h(BVToc)]
     )
 
     // Container
     const $container = h('b-container', { props: { fluid: true } }, [
-      h('b-row', { class: ['flex-xl-nowrap2'] }, [$sidebarCol, $contentCol, $tocCol])
+      h('b-row', { class: ['flex-xl-nowrap2'] }, [$sidebarCol, $contentCol, $tocCol]),
     ])
 
     // Footer
@@ -83,23 +83,23 @@ export default {
         {
           hid: 'canonical',
           rel: 'canonical',
-          href: `${BASE_URL}${this.$route.path}`
-        }
+          href: `${BASE_URL}${this.$route.path}`,
+        },
       ],
       meta: [
         // Add GWT site verification for *.bootstrap-vue.org
         {
           hid: 'google-site-verification-bv-org',
           name: 'google-site-verification',
-          content: GWT_BV_ORG
+          content: GWT_BV_ORG,
         },
         // Add GWT site verification for bootstrap-vue.js.org
         {
           hid: 'google-site-verification-js-org',
           name: 'google-site-verification',
-          content: GWT_JS_ORG
-        }
-      ]
+          content: GWT_JS_ORG,
+        },
+      ],
     }
-  }
+  },
 }

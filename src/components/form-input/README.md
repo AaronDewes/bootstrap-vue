@@ -15,9 +15,9 @@
   export default {
     data() {
       return {
-        text: ''
+        text: '',
       }
-    }
+    },
   }
 </script>
 
@@ -59,10 +59,10 @@ native browser HTML5 types: `text`, `password`, `email`, `number`, `url`, `tel`,
           'date',
           'time',
           'range',
-          'color'
-        ]
+          'color',
+        ],
       }
-    }
+    },
   }
 </script>
 
@@ -125,9 +125,9 @@ new values for those using the `min` and `max` props.
   export default {
     data() {
       return {
-        value: '2'
+        value: '2',
       }
-    }
+    },
   }
 </script>
 
@@ -141,7 +141,14 @@ In the example below, we double the number of steps by using step="0.5".
 <template>
   <div>
     <label for="range-2">Example range with step value</label>
-    <b-form-input id="range-2" v-model="value" type="range" min="0" max="5" step="0.5"></b-form-input>
+    <b-form-input
+      id="range-2"
+      v-model="value"
+      type="range"
+      min="0"
+      max="5"
+      step="0.5"
+    ></b-form-input>
     <div class="mt-2">Value: {{ value }}</div>
   </div>
 </template>
@@ -150,9 +157,9 @@ In the example below, we double the number of steps by using step="0.5".
   export default {
     data() {
       return {
-        value: '2'
+        value: '2',
       }
-    }
+    },
   }
 </script>
 
@@ -291,13 +298,13 @@ invalid), `true` (for valid), or `null` (no validation state).
     computed: {
       nameState() {
         return this.name.length > 2 ? true : false
-      }
+      },
     },
     data() {
       return {
-        name: ''
+        name: '',
       }
-    }
+    },
   }
 </script>
 
@@ -390,14 +397,14 @@ Formatting does not occur if a `formatter` is not provided.
     data() {
       return {
         text1: '',
-        text2: ''
+        text2: '',
       }
     },
     methods: {
       formatter(value) {
         return value.toLowerCase()
-      }
-    }
+      },
+    },
   }
 </script>
 
@@ -453,9 +460,9 @@ chosen, or new values to be entered.
   export default {
     data() {
       return {
-        sizes: ['Small', 'Medium', 'Large', 'Extra Large']
+        sizes: ['Small', 'Medium', 'Large', 'Extra Large'],
       }
-    }
+    },
   }
 </script>
 
@@ -521,9 +528,9 @@ Note: debouncing will _not_ occur if the `lazy` prop is set.
   export default {
     data() {
       return {
-        value: ''
+        value: '',
       }
-    }
+    },
   }
 </script>
 
@@ -590,8 +597,8 @@ If you just need a simple input with basic Bootstrap styling, you can simply use
 ```html
 <template>
   <div>
-    <input v-model="value" type="text" class="form-control">
-    <br>
+    <input v-model="value" type="text" class="form-control" />
+    <br />
     <p>Value: "{{ value }}"</p>
   </div>
 </template>
@@ -600,9 +607,9 @@ If you just need a simple input with basic Bootstrap styling, you can simply use
   export default {
     data() {
       return {
-        value: ''
+        value: '',
       }
-    }
+    },
   }
 </script>
 

@@ -17,7 +17,7 @@ import { safeVueInstance } from '../utils/safe-vue-instance'
 export const props = makePropsConfigurable(
   {
     // Tri-state prop: true, false, null (or undefined)
-    state: makeProp(PROP_TYPE_BOOLEAN, null)
+    state: makeProp(PROP_TYPE_BOOLEAN, null),
   },
   'formState'
 )
@@ -42,6 +42,6 @@ export const formStateMixin = Vue.extend({
         return 'true'
       }
       return this.computedState === false ? 'true' : ariaInvalid
-    }
-  }
+    },
+  },
 })

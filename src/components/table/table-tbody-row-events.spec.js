@@ -3,7 +3,11 @@ import { isVue3 } from '../../vue'
 import { waitNT } from '../../../tests/utils'
 import { BTable } from './table'
 
-const testItems = [{ a: 1, b: 2, c: 3 }, { a: 5, b: 5, c: 6 }, { a: 7, b: 8, c: 9 }]
+const testItems = [
+  { a: 1, b: 2, c: 3 },
+  { a: 5, b: 5, c: 6 },
+  { a: 7, b: 8, c: 9 },
+]
 const testFields = ['a', 'b', 'c']
 
 describe('table > tbody row events', () => {
@@ -11,12 +15,12 @@ describe('table > tbody row events', () => {
     const wrapper = mount(BTable, {
       propsData: {
         fields: testFields,
-        items: testItems
+        items: testItems,
       },
       listeners: {
         // Row-clicked will only occur if there is a registered listener
-        'row-clicked': () => {}
-      }
+        'row-clicked': () => {},
+      },
     })
     expect(wrapper).toBeDefined()
     const $rows = wrapper.findAll('tbody > tr')
@@ -37,12 +41,12 @@ describe('table > tbody row events', () => {
       propsData: {
         fields: testFields,
         items: testItems,
-        busy: true
+        busy: true,
       },
       listeners: {
         // Row-clicked will only occur if there is a registered listener
-        'row-clicked': () => {}
-      }
+        'row-clicked': () => {},
+      },
     })
     expect(wrapper).toBeDefined()
     expect(wrapper.element.tagName).toBe('TABLE')
@@ -59,19 +63,19 @@ describe('table > tbody row events', () => {
     const wrapper = mount(BTable, {
       propsData: {
         fields: testFields,
-        items: testItems
+        items: testItems,
       },
       listeners: {
         // Row-clicked will only occur if there is a registered listener
-        'row-clicked': () => {}
-      }
+        'row-clicked': () => {},
+      },
     })
     expect(wrapper).toBeDefined()
     const $rows = wrapper.findAll('tbody > tr')
     expect($rows.length).toBe(3)
     expect(wrapper.emitted('row-clicked')).toBeUndefined()
     await wrapper.setData({
-      localBusy: true
+      localBusy: true,
     })
     await $rows.at(1).trigger('click')
     expect(wrapper.emitted('row-clicked')).toBeUndefined()
@@ -83,12 +87,12 @@ describe('table > tbody row events', () => {
     const wrapper = mount(BTable, {
       propsData: {
         fields: testFields,
-        items: testItems
+        items: testItems,
       },
       listeners: {
         // Row-dblclicked will only occur if there is a registered listener
-        'row-dblclicked': () => {}
-      }
+        'row-dblclicked': () => {},
+      },
     })
     expect(wrapper).toBeDefined()
     const $rows = wrapper.findAll('tbody > tr')
@@ -109,12 +113,12 @@ describe('table > tbody row events', () => {
       propsData: {
         fields: testFields,
         items: testItems,
-        busy: true
+        busy: true,
       },
       listeners: {
         // Row-dblclicked will only occur if there is a registered listener
-        'row-dblclicked': () => {}
-      }
+        'row-dblclicked': () => {},
+      },
     })
     expect(wrapper).toBeDefined()
     const $rows = wrapper.findAll('tbody > tr')
@@ -130,12 +134,12 @@ describe('table > tbody row events', () => {
     const wrapper = mount(BTable, {
       propsData: {
         fields: testFields,
-        items: testItems
+        items: testItems,
       },
       listeners: {
         // Row-middle-clicked will only occur if there is a registered listener
-        'row-middle-clicked': () => {}
-      }
+        'row-middle-clicked': () => {},
+      },
     })
     expect(wrapper).toBeDefined()
     const $rows = wrapper.findAll('tbody > tr')
@@ -156,12 +160,12 @@ describe('table > tbody row events', () => {
       propsData: {
         fields: testFields,
         items: testItems,
-        busy: true
+        busy: true,
       },
       listeners: {
         // Row-middle-clicked will only occur if there is a registered listener
-        'row-middle-clicked': () => {}
-      }
+        'row-middle-clicked': () => {},
+      },
     })
     expect(wrapper).toBeDefined()
     const $rows = wrapper.findAll('tbody > tr')
@@ -177,12 +181,12 @@ describe('table > tbody row events', () => {
     const wrapper = mount(BTable, {
       propsData: {
         fields: testFields,
-        items: testItems
+        items: testItems,
       },
       listeners: {
         // Row-contextmenu will only occur if there is a registered listener
-        'row-contextmenu': () => {}
-      }
+        'row-contextmenu': () => {},
+      },
     })
     expect(wrapper).toBeDefined()
     const $rows = wrapper.findAll('tbody > tr')
@@ -203,12 +207,12 @@ describe('table > tbody row events', () => {
       propsData: {
         fields: testFields,
         items: testItems,
-        busy: true
+        busy: true,
       },
       listeners: {
         // Row-contextmenu will only occur if there is a registered listener
-        'row-contextmenu': () => {}
-      }
+        'row-contextmenu': () => {},
+      },
     })
     expect(wrapper).toBeDefined()
     const $rows = wrapper.findAll('tbody > tr')
@@ -224,12 +228,12 @@ describe('table > tbody row events', () => {
     const wrapper = mount(BTable, {
       propsData: {
         fields: testFields,
-        items: testItems
+        items: testItems,
       },
       listeners: {
         // Row-hovered will only occur if there is a registered listener
-        'row-hovered': () => {}
-      }
+        'row-hovered': () => {},
+      },
     })
     expect(wrapper).toBeDefined()
     const $rows = wrapper.findAll('tbody > tr')
@@ -254,8 +258,8 @@ describe('table > tbody row events', () => {
     const wrapper = mount(BTable, {
       propsData: {
         fields: testFields,
-        items: testItems
-      }
+        items: testItems,
+      },
     })
     expect(wrapper).toBeDefined()
     const $rows = wrapper.findAll('tbody > tr')
@@ -272,12 +276,12 @@ describe('table > tbody row events', () => {
       propsData: {
         fields: testFields,
         items: testItems,
-        busy: true
+        busy: true,
       },
       listeners: {
         // Row-hovered will only occur if there is a registered listener
-        'row-hovered': () => {}
-      }
+        'row-hovered': () => {},
+      },
     })
     expect(wrapper).toBeDefined()
     const $rows = wrapper.findAll('tbody > tr')
@@ -293,12 +297,12 @@ describe('table > tbody row events', () => {
     const wrapper = mount(BTable, {
       propsData: {
         fields: testFields,
-        items: testItems
+        items: testItems,
       },
       listeners: {
         // Row-unhovered will only occur if there is a registered listener
-        'row-unhovered': () => {}
-      }
+        'row-unhovered': () => {},
+      },
     })
     expect(wrapper).toBeDefined()
     const $rows = wrapper.findAll('tbody > tr')
@@ -323,8 +327,8 @@ describe('table > tbody row events', () => {
     const wrapper = mount(BTable, {
       propsData: {
         fields: testFields,
-        items: testItems
-      }
+        items: testItems,
+      },
     })
     expect(wrapper).toBeDefined()
     const $rows = wrapper.findAll('tbody > tr')
@@ -341,12 +345,12 @@ describe('table > tbody row events', () => {
       propsData: {
         fields: testFields,
         items: testItems,
-        busy: true
+        busy: true,
       },
       listeners: {
         // Row-unhovered will only occur if there is a registered listener
-        'row-unhovered': () => {}
-      }
+        'row-unhovered': () => {},
+      },
     })
     expect(wrapper).toBeDefined()
     const $rows = wrapper.findAll('tbody > tr')
@@ -362,13 +366,13 @@ describe('table > tbody row events', () => {
     const wrapper = mount(BTable, {
       propsData: {
         fields: testFields,
-        items: testItems
+        items: testItems,
       },
       listeners: {
         // Rows will only have tabindex=0 when a row-clicked listener present
-        'row-clicked': () => {}
+        'row-clicked': () => {},
       },
-      attachTo: document.body
+      attachTo: document.body,
     })
     expect(wrapper).toBeDefined()
     const $rows = wrapper.findAll('tbody > tr')
@@ -393,12 +397,12 @@ describe('table > tbody row events', () => {
       propsData: {
         fields: testFields,
         items: testItems,
-        busy: true
+        busy: true,
       },
       listeners: {
         // Row-clicked will only occur if there is a registered listener
-        'row-clicked': () => {}
-      }
+        'row-clicked': () => {},
+      },
     })
     expect(wrapper).toBeDefined()
     const $rows = wrapper.findAll('tbody > tr')
@@ -418,7 +422,7 @@ describe('table > tbody row events', () => {
         // Add extra virtual columns
         fields: [].concat(testFields, ['d', 'e', 'f']),
         // We just use a single row for testing
-        items: [testItems[0]]
+        items: [testItems[0]],
       },
       slots: {
         // In Vue 2.6x, slots get translated into scopedSlots
@@ -428,12 +432,12 @@ describe('table > tbody row events', () => {
         'cell(d)':
           '<div class="dropdown-menu"><div id="d" class="dropdown-item">dropdown</div></div>',
         'cell(e)': '<label for="e">label</label><input id="e">',
-        'cell(f)': '<label class="f-label"><input id="e"></label>'
+        'cell(f)': '<label class="f-label"><input id="e"></label>',
       },
       listeners: {
         // Row-clicked will only occur if there is a registered listener
-        'row-clicked': () => {}
-      }
+        'row-clicked': () => {},
+      },
     })
     expect(wrapper).toBeDefined()
     expect(wrapper.element.tagName).toBe('TABLE')
@@ -478,19 +482,19 @@ describe('table > tbody row events', () => {
     const wrapper = mount(BTable, {
       propsData: {
         fields: testFields,
-        items: testItems
+        items: testItems,
       },
       listeners: {
         // Tabindex will only be set if there is a row-clicked listener
-        'row-clicked': () => {}
+        'row-clicked': () => {},
       },
-      attachTo: document.body
+      attachTo: document.body,
     })
     expect(wrapper).toBeDefined()
     await waitNT(wrapper.vm)
     const $rows = wrapper.findAll('tbody > tr')
     expect($rows.length).toBe(3)
-    expect($rows.wrappers.every(w => w.attributes('tabindex') === '0')).toBe(true)
+    expect($rows.wrappers.every((w) => w.attributes('tabindex') === '0')).toBe(true)
 
     expect(document.activeElement).not.toBe($rows.at(0).element)
     expect(document.activeElement).not.toBe($rows.at(1).element)
@@ -518,10 +522,7 @@ describe('table > tbody row events', () => {
     expect(document.activeElement).toBe($rows.at(0).element)
 
     // Should only move focus if TR was target
-    await $rows
-      .at(0)
-      .find('td')
-      .trigger('keydown.down')
+    await $rows.at(0).find('td').trigger('keydown.down')
     expect(document.activeElement).toBe($rows.at(0).element)
 
     wrapper.destroy()

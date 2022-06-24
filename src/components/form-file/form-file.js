@@ -6,12 +6,12 @@ import {
   PROP_TYPE_ARRAY,
   PROP_TYPE_BOOLEAN,
   PROP_TYPE_FUNCTION,
-  PROP_TYPE_STRING
+  PROP_TYPE_STRING,
 } from '../../constants/props'
 import {
   SLOT_NAME_DROP_PLACEHOLDER,
   SLOT_NAME_FILE_NAME,
-  SLOT_NAME_PLACEHOLDER
+  SLOT_NAME_PLACEHOLDER,
 } from '../../constants/slots'
 import { RX_EXTENSION, RX_STAR } from '../../constants/regex'
 import { File } from '../../constants/safe-types'
@@ -41,18 +41,18 @@ const {
   mixin: modelMixin,
   props: modelProps,
   prop: MODEL_PROP_NAME,
-  event: MODEL_EVENT_NAME
+  event: MODEL_EVENT_NAME,
 } = makeModelMixin('value', {
   type: [PROP_TYPE_ARRAY, File],
   defaultValue: null,
-  validator: value => {
+  validator: (value) => {
     /* istanbul ignore next */
     if (value === '') {
       warn(VALUE_EMPTY_DEPRECATED_MSG, NAME_FORM_FILE)
       return true
     }
     return isUndefinedOrNull(value) || isValidValue(value)
-  }
+  },
 })
 
 const VALUE_EMPTY_DEPRECATED_MSG =
@@ -60,31 +60,32 @@ const VALUE_EMPTY_DEPRECATED_MSG =
 
 // --- Helper methods ---
 
-const isValidValue = value => isFile(value) || (isArray(value) && value.every(v => isValidValue(v)))
+const isValidValue = (value) =>
+  isFile(value) || (isArray(value) && value.every((v) => isValidValue(v)))
 
 // Helper method to "safely" get the entry from a data-transfer item
 /* istanbul ignore next: not supported in JSDOM */
-const getDataTransferItemEntry = item =>
+const getDataTransferItemEntry = (item) =>
   isFunction(item.getAsEntry)
     ? item.getAsEntry()
     : isFunction(item.webkitGetAsEntry)
-      ? item.webkitGetAsEntry()
-      : null
+    ? item.webkitGetAsEntry()
+    : null
 
 // Drop handler function to get all files
 /* istanbul ignore next: not supported in JSDOM */
 const getAllFileEntries = (dataTransferItemList, traverseDirectories = true) =>
   Promise.all(
     arrayFrom(dataTransferItemList)
-      .filter(item => item.kind === 'file')
-      .map(item => {
+      .filter((item) => item.kind === 'file')
+      .map((item) => {
         const entry = getDataTransferItemEntry(item)
         if (entry) {
           if (entry.isDirectory && traverseDirectories) {
             return getAllFileEntriesInDirectory(entry.createReader(), `${entry.name}/`)
           } else if (entry.isFile) {
-            return new Promise(resolve => {
-              entry.file(file => {
+            return new Promise((resolve) => {
+              entry.file((file) => {
                 file.$path = ''
                 resolve(file)
               })
@@ -99,17 +100,17 @@ const getAllFileEntries = (dataTransferItemList, traverseDirectories = true) =>
 // Get all the file entries (recursive) in a directory
 /* istanbul ignore next: not supported in JSDOM */
 const getAllFileEntriesInDirectory = (directoryReader, path = '') =>
-  new Promise(resolve => {
+  new Promise((resolve) => {
     const entryPromises = []
     const readDirectoryEntries = () => {
-      directoryReader.readEntries(entries => {
+      directoryReader.readEntries((entries) => {
         if (entries.length === 0) {
-          resolve(Promise.all(entryPromises).then(entries => flatten(entries)))
+          resolve(Promise.all(entryPromises).then((entries) => flatten(entries)))
         } else {
           entryPromises.push(
             Promise.all(
               entries
-                .map(entry => {
+                .map((entry) => {
                   if (entry) {
                     if (entry.isDirectory) {
                       return getAllFileEntriesInDirectory(
@@ -117,8 +118,8 @@ const getAllFileEntriesInDirectory = (directoryReader, path = '') =>
                         `${path}${entry.name}/`
                       )
                     } else if (entry.isFile) {
-                      return new Promise(resolve => {
-                        entry.file(file => {
+                      return new Promise((resolve) => {
+                        entry.file((file) => {
                           file.$path = `${path}${file.name}`
                           resolve(file)
                         })
@@ -168,7 +169,7 @@ const props = makePropsConfigurable(
     //   See: https://bugs.chromium.org/p/chromium/issues/detail?id=138987
     //   See: https://bugzilla.mozilla.org/show_bug.cgi?id=1326031
     noTraverse: makeProp(PROP_TYPE_BOOLEAN, false),
-    placeholder: makeProp(PROP_TYPE_STRING, 'No file chosen')
+    placeholder: makeProp(PROP_TYPE_STRING, 'No file chosen'),
   }),
   NAME_FORM_FILE
 )
@@ -186,7 +187,7 @@ export const BFormFile = /*#__PURE__*/ Vue.extend({
     formControlMixin,
     formStateMixin,
     formCustomMixin,
-    normalizeSlotMixin
+    normalizeSlotMixin,
   ],
   inheritAttrs: false,
   props,
@@ -198,7 +199,7 @@ export const BFormFile = /*#__PURE__*/ Vue.extend({
       // so we handle it ourselves as well
       // https://stackoverflow.com/a/46915971/2744776
       dropAllowed: !this.noDrop,
-      hasFocus: false
+      hasFocus: false,
     }
   },
   computed: {
@@ -215,7 +216,7 @@ export const BFormFile = /*#__PURE__*/ Vue.extend({
         return null
       }
 
-      return accept.map(extOrType => {
+      return accept.map((extOrType) => {
         let prop = 'name'
         let startMatch = '^'
         let endMatch = '$'
@@ -256,7 +257,7 @@ export const BFormFile = /*#__PURE__*/ Vue.extend({
         multiple,
         directory,
         webkitdirectory: directory,
-        'aria-required': required ? 'true' : null
+        'aria-required': required ? 'true' : null,
       }
     },
     computedFileNameFormatter() {
@@ -270,7 +271,7 @@ export const BFormFile = /*#__PURE__*/ Vue.extend({
       return flattenDeep(this.files)
     },
     fileNames() {
-      return this.flattenedFiles.map(file => file.name)
+      return this.flattenedFiles.map((file) => file.name)
     },
     labelContent() {
       // Draging active
@@ -297,12 +298,12 @@ export const BFormFile = /*#__PURE__*/ Vue.extend({
         return this.normalizeSlot(SLOT_NAME_FILE_NAME, {
           files: flattenedFiles,
           filesTraversed: clonedFiles,
-          names: fileNames
+          names: fileNames,
         })
       }
 
       return computedFileNameFormatter(flattenedFiles, clonedFiles, fileNames)
-    }
+    },
   },
   watch: {
     [MODEL_PROP_NAME](newValue) {
@@ -316,7 +317,7 @@ export const BFormFile = /*#__PURE__*/ Vue.extend({
         const files = !multiple || noTraverse ? flattenDeep(newValue) : newValue
         this.$emit(MODEL_EVENT_NAME, multiple ? files : files[0] || null)
       }
-    }
+    },
   },
   created() {
     // Create private non-reactive props
@@ -342,10 +343,12 @@ export const BFormFile = /*#__PURE__*/ Vue.extend({
         return false
       }
       const accept = this.computedAccept
-      return accept ? accept.some(a => a.rx.test(file[a.prop])) : true
+      return accept ? accept.some((a) => a.rx.test(file[a.prop])) : true
     },
     isFilesArrayValid(files) {
-      return isArray(files) ? files.every(file => this.isFileValid(file)) : this.isFileValid(files)
+      return isArray(files)
+        ? files.every((file) => this.isFileValid(file))
+        : this.isFileValid(files)
     },
     defaultFileNameFormatter(flattenedFiles, clonedFiles, fileNames) {
       return fileNames.join(', ')
@@ -370,7 +373,7 @@ export const BFormFile = /*#__PURE__*/ Vue.extend({
         // Firefox < 62 workaround exploiting https://bugzilla.mozilla.org/show_bug.cgi?id=1422655
         const dataTransfer = new ClipboardEvent('').clipboardData || new DataTransfer()
         // Add flattened files to temp `dataTransfer` object to get a true `FileList` array
-        flattenDeep(cloneDeep(files)).forEach(file => {
+        flattenDeep(cloneDeep(files)).forEach((file) => {
           // Make sure to remove the custom `$path` attribute
           delete file.$path
           dataTransfer.items.add(file)
@@ -430,11 +433,11 @@ export const BFormFile = /*#__PURE__*/ Vue.extend({
         // Drop handling for modern browsers
         // Supports nested directory structures in `directory` mode
         /* istanbul ignore next: not supported in JSDOM */
-        getAllFileEntries(items, this.directory).then(files => this.handleFiles(files, isDrop))
+        getAllFileEntries(items, this.directory).then((files) => this.handleFiles(files, isDrop))
       } else {
         // Standard file input handling (native file input change event),
         // or fallback drop mode (IE 11 / Opera) which don't support `directory` mode
-        const files = arrayFrom(target.files || dataTransfer.files || []).map(file => {
+        const files = arrayFrom(target.files || dataTransfer.files || []).map((file) => {
           // Add custom `$path` property to each file (to be consistent with drop mode)
           file.$path = file.webkitRelativePath || ''
           return file
@@ -495,7 +498,7 @@ export const BFormFile = /*#__PURE__*/ Vue.extend({
         return
       }
       this.onChange(event)
-    }
+    },
   },
   render(h) {
     const { custom, plain, size, dragging, stateClass, bvAttrs } = this
@@ -506,9 +509,9 @@ export const BFormFile = /*#__PURE__*/ Vue.extend({
         {
           'form-control-file': plain,
           'custom-file-input': custom,
-          focus: custom && this.hasFocus
+          focus: custom && this.hasFocus,
         },
-        stateClass
+        stateClass,
       ],
       // With IE 11, the input gets in the "way" of the drop events,
       // so we move it out of the way by putting it behind the label
@@ -519,9 +522,9 @@ export const BFormFile = /*#__PURE__*/ Vue.extend({
         change: this.onChange,
         focusin: this.focusHandler,
         focusout: this.focusHandler,
-        reset: this.reset
+        reset: this.reset,
       },
-      ref: 'input'
+      ref: 'input',
     })
 
     if (plain) {
@@ -537,8 +540,8 @@ export const BFormFile = /*#__PURE__*/ Vue.extend({
         attrs: {
           for: this.safeId(),
           // This goes away in Bootstrap v5
-          'data-browse': this.browseText || null
-        }
+          'data-browse': this.browseText || null,
+        },
       },
       [
         h(
@@ -547,10 +550,10 @@ export const BFormFile = /*#__PURE__*/ Vue.extend({
             staticClass: 'd-block form-file-text',
             // `pointer-events: none` is used to make sure
             // the drag events fire only on the label
-            style: { pointerEvents: 'none' }
+            style: { pointerEvents: 'none' },
           },
           [this.labelContent]
-        )
+        ),
       ]
     )
 
@@ -566,10 +569,10 @@ export const BFormFile = /*#__PURE__*/ Vue.extend({
           dragenter: this.onDragenter,
           dragover: this.onDragover,
           dragleave: this.onDragleave,
-          drop: this.onDrop
-        }
+          drop: this.onDrop,
+        },
       },
       [$input, $label]
     )
-  }
+  },
 })

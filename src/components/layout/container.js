@@ -9,7 +9,7 @@ export const props = makePropsConfigurable(
   {
     // String breakpoint name new in Bootstrap v4.4.x
     fluid: makeProp(PROP_TYPE_BOOLEAN_STRING, false),
-    tag: makeProp(PROP_TYPE_STRING, 'div')
+    tag: makeProp(PROP_TYPE_STRING, 'div'),
   },
   NAME_CONTAINER
 )
@@ -31,10 +31,10 @@ export const BContainer = /*#__PURE__*/ Vue.extend({
           container: !(fluid || fluid === ''),
           'container-fluid': fluid === true || fluid === '',
           // Bootstrap v4.4+ responsive containers
-          [`container-${fluid}`]: fluid && fluid !== true
-        }
+          [`container-${fluid}`]: fluid && fluid !== true,
+        },
       }),
       children
     )
-  }
+  },
 })

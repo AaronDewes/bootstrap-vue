@@ -13,7 +13,7 @@ export const listenOnRootMixin = Vue.extend({
   computed: {
     bvEventRoot() {
       return getEventRoot(this)
-    }
+    },
   },
   created() {
     // Define non-reactive property
@@ -23,8 +23,8 @@ export const listenOnRootMixin = Vue.extend({
   },
   beforeDestroy() {
     // Unregister all registered listeners
-    keys(this[PROP] || {}).forEach(event => {
-      this[PROP][event].forEach(callback => {
+    keys(this[PROP] || {}).forEach((event) => {
+      this[PROP][event].forEach((callback) => {
         this.listenOffRoot(event, callback)
       })
     })
@@ -42,7 +42,7 @@ export const listenOnRootMixin = Vue.extend({
     },
     unregisterRootListener(event, callback) {
       if (this[PROP] && this[PROP][event]) {
-        this[PROP][event] = this[PROP][event].filter(cb => cb !== callback)
+        this[PROP][event] = this[PROP][event].filter((cb) => cb !== callback)
       }
     },
 
@@ -83,7 +83,7 @@ export const listenOnRootMixin = Vue.extend({
       if (this.bvEventRoot) {
         const _callback = (...args) => {
           this.unregisterRootListener(_callback)
-          // eslint-disable-next-line node/no-callback-literal
+          // eslint-disable-next-line n/no-callback-literal
           callback(...args)
         }
 
@@ -116,6 +116,6 @@ export const listenOnRootMixin = Vue.extend({
       if (this.bvEventRoot) {
         this.bvEventRoot.$emit(event, ...args)
       }
-    }
-  }
+    },
+  },
 })

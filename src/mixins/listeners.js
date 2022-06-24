@@ -6,19 +6,19 @@ const listenersMixinVue2 = makePropCacheMixin('$listeners', 'bvListeners')
 const listenersMixinVue3 = Vue.extend({
   data() {
     return {
-      bvListeners: {}
+      bvListeners: {},
     }
   },
   created() {
     this.bvListeners = {
-      ...this.$listeners
+      ...this.$listeners,
     }
   },
   beforeUpdate() {
     this.bvListeners = {
-      ...this.$listeners
+      ...this.$listeners,
     }
-  }
+  },
 })
 
 export const listenersMixin = isVue3 ? listenersMixinVue3 : listenersMixinVue2

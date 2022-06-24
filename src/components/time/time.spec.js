@@ -44,8 +44,8 @@ describe('time', () => {
         locale: 'en',
         hour12: false,
         showSeconds: true,
-        value: '13:14:15'
-      }
+        value: '13:14:15',
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -72,8 +72,8 @@ describe('time', () => {
       propsData: {
         locale: 'en',
         hour12: true,
-        value: '01:02:00'
-      }
+        value: '01:02:00',
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -100,8 +100,8 @@ describe('time', () => {
       propsData: {
         locale: 'en',
         hour12: false,
-        value: '01:02:00'
-      }
+        value: '01:02:00',
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -127,8 +127,8 @@ describe('time', () => {
         locale: 'en',
         hour12: false,
         showSeconds: true,
-        value: '01:02:03'
-      }
+        value: '01:02:03',
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -149,8 +149,8 @@ describe('time', () => {
     const wrapper = mount(BTime, {
       attachTo: document.body,
       propsData: {
-        headerTag: 'div'
-      }
+        headerTag: 'div',
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -168,11 +168,11 @@ describe('time', () => {
     const wrapper = mount(BTime, {
       attachTo: document.body,
       propsData: {
-        footerTag: 'div'
+        footerTag: 'div',
       },
       slots: {
-        default: 'text'
-      }
+        default: 'text',
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -192,8 +192,8 @@ describe('time', () => {
         showSeconds: true,
         value: '00:00:00',
         // force to 12 hour mode
-        hour12: true
-      }
+        hour12: true,
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -246,7 +246,7 @@ describe('time', () => {
 
   it('blur and focus methods work', async () => {
     const wrapper = mount(BTime, {
-      attachTo: document.body
+      attachTo: document.body,
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -280,8 +280,8 @@ describe('time', () => {
         showSeconds: true,
         value: '00:00:00',
         // force to 12 hour mode
-        hour12: true
-      }
+        hour12: true,
+      },
     })
 
     expect(wrapper.vm).toBeDefined()

@@ -38,8 +38,8 @@ describe('button-toolbar', () => {
   it('toolbar should have class "justify-content-between" when justify set', async () => {
     const wrapper = mount(BButtonToolbar, {
       propsData: {
-        justify: true
-      }
+        justify: true,
+      },
     })
     expect(wrapper.classes()).toContain('justify-content-between')
     expect(wrapper.classes()).toContain('btn-toolbar')
@@ -49,8 +49,8 @@ describe('button-toolbar', () => {
   it('toolbar should have tabindex when key-nav set', async () => {
     const wrapper = mount(BButtonToolbar, {
       propsData: {
-        keyNav: true
-      }
+        keyNav: true,
+      },
     })
     expect(wrapper.attributes('tabindex')).toBeDefined()
     expect(wrapper.attributes('tabindex')).toBe('0')
@@ -71,7 +71,7 @@ describe('button-toolbar', () => {
         top: 0,
         left: 0,
         bottom: 0,
-        right: 0
+        right: 0,
       }))
     })
 
@@ -86,14 +86,14 @@ describe('button-toolbar', () => {
         return h(BButtonToolbar, { props: { keyNav: true } }, [
           h(BButtonGroup, [h(BButton, 'a'), h(BButton, 'b')]),
           h(BButtonGroup, [h(BButton, { props: { disabled: true } }, 'c'), h(BButton, 'd')]),
-          h(BButtonGroup, [h(BButton, 'e'), h(BButton, 'f')])
+          h(BButtonGroup, [h(BButton, 'e'), h(BButton, 'f')]),
         ])
-      }
+      },
     }
 
     it('has correct structure', async () => {
       const wrapper = mount(App, {
-        attachTo: document.body
+        attachTo: document.body,
       })
 
       await waitNT(wrapper.vm)
@@ -108,49 +108,19 @@ describe('button-toolbar', () => {
       const $btns = wrapper.findAll('button')
       expect($btns).toBeDefined()
       expect($btns.length).toBe(6)
-      expect(
-        $btns
-          .at(0)
-          .find('button[tabindex="-1"')
-          .exists()
-      ).toBe(true)
-      expect(
-        $btns
-          .at(1)
-          .find('button[tabindex="-1"')
-          .exists()
-      ).toBe(true)
-      expect(
-        $btns
-          .at(2)
-          .find('button[tabindex="-1"')
-          .exists()
-      ).toBe(false) // Disabled button
-      expect(
-        $btns
-          .at(3)
-          .find('button[tabindex="-1"')
-          .exists()
-      ).toBe(true)
-      expect(
-        $btns
-          .at(4)
-          .find('button[tabindex="-1"')
-          .exists()
-      ).toBe(true)
-      expect(
-        $btns
-          .at(5)
-          .find('button[tabindex="-1"')
-          .exists()
-      ).toBe(true)
+      expect($btns.at(0).find('button[tabindex="-1"').exists()).toBe(true)
+      expect($btns.at(1).find('button[tabindex="-1"').exists()).toBe(true)
+      expect($btns.at(2).find('button[tabindex="-1"').exists()).toBe(false) // Disabled button
+      expect($btns.at(3).find('button[tabindex="-1"').exists()).toBe(true)
+      expect($btns.at(4).find('button[tabindex="-1"').exists()).toBe(true)
+      expect($btns.at(5).find('button[tabindex="-1"').exists()).toBe(true)
 
       wrapper.destroy()
     })
 
     it('focuses first button when tabbed into', async () => {
       const wrapper = mount(App, {
-        attachTo: document.body
+        attachTo: document.body,
       })
 
       await waitNT(wrapper.vm)
@@ -173,7 +143,7 @@ describe('button-toolbar', () => {
 
     it('keyboard navigation works', async () => {
       const wrapper = mount(App, {
-        attachTo: document.body
+        attachTo: document.body,
       })
 
       await waitNT(wrapper.vm)

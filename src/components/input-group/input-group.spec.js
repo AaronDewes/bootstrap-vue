@@ -19,8 +19,8 @@ describe('input-group', () => {
   it('should render custom root element when prop tag is set', async () => {
     const wrapper = mount(BInputGroup, {
       propsData: {
-        tag: 'span'
-      }
+        tag: 'span',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('SPAN')
@@ -36,8 +36,8 @@ describe('input-group', () => {
   it('should apply size class when when prop size is set', async () => {
     const wrapper = mount(BInputGroup, {
       propsData: {
-        size: 'lg'
-      }
+        size: 'lg',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')
@@ -51,8 +51,8 @@ describe('input-group', () => {
   it('should render default slot content', async () => {
     const wrapper = mount(BInputGroup, {
       slots: {
-        default: 'foobar'
-      }
+        default: 'foobar',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')
@@ -68,11 +68,11 @@ describe('input-group', () => {
     const wrapper = mount(BInputGroup, {
       propsData: {
         prepend: 'foo',
-        append: 'bar'
+        append: 'bar',
       },
       slots: {
-        default: 'foobar'
-      }
+        default: 'foobar',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')
@@ -97,11 +97,11 @@ describe('input-group', () => {
     const wrapper = mount(BInputGroup, {
       propsData: {
         prependHtml: '<i>foo</i>',
-        appendHtml: '<b>bar</b>'
+        appendHtml: '<b>bar</b>',
       },
       slots: {
-        default: 'baz'
-      }
+        default: 'baz',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')
@@ -127,8 +127,8 @@ describe('input-group', () => {
       slots: {
         default: 'foobar',
         prepend: '<button>foo</button>',
-        append: '<button>bar</button><button>baz</button>'
-      }
+        append: '<button>bar</button><button>baz</button>',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')

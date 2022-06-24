@@ -11,8 +11,8 @@ const SkeletonPlugin = /*#__PURE__*/ pluginFactory({
     BSkeletonIcon,
     BSkeletonImg,
     BSkeletonTable,
-    BSkeletonWrapper
-  }
+    BSkeletonWrapper,
+  },
 })
 
 export { SkeletonPlugin, BSkeleton, BSkeletonIcon, BSkeletonImg, BSkeletonTable, BSkeletonWrapper }

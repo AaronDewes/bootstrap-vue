@@ -5,7 +5,7 @@ import { makePropsConfigurable } from '../../utils/props'
 import {
   MODEL_EVENT_NAME,
   formRadioCheckMixin,
-  props as formRadioCheckProps
+  props as formRadioCheckProps,
 } from '../../mixins/form-radio-check'
 
 // --- Props ---
@@ -21,20 +21,20 @@ export const BFormRadio = /*#__PURE__*/ Vue.extend({
   inject: {
     getBvGroup: {
       from: 'getBvRadioGroup',
-      default: () => () => null
-    }
+      default: () => () => null,
+    },
   },
   props,
   computed: {
     bvGroup() {
       return this.getBvGroup()
-    }
+    },
   },
   watch: {
     computedLocalChecked(newValue, oldValue) {
       if (!looseEqual(newValue, oldValue)) {
         this.$emit(MODEL_EVENT_NAME, newValue)
       }
-    }
-  }
+    },
+  },
 })

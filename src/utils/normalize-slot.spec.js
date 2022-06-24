@@ -5,10 +5,10 @@ describe('utils/normalizeSlot', () => {
     const $scoped = {
       default(slotScope) {
         return 'foo' + (slotScope.a || '')
-      }
+      },
     }
     const $slots = {
-      default: 'bar'
+      default: 'bar',
     }
     expect(typeof normalizeSlot).toBe('function')
 

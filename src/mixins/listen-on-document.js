@@ -21,8 +21,8 @@ export const listenOnDocumentMixin = Vue.extend({
   },
   beforeDestroy() {
     // Unregister all registered listeners
-    keys(this[PROP] || {}).forEach(event => {
-      this[PROP][event].forEach(callback => {
+    keys(this[PROP] || {}).forEach((event) => {
+      this[PROP][event].forEach((callback) => {
         this.listenOffDocument(event, callback)
       })
     })
@@ -40,7 +40,7 @@ export const listenOnDocumentMixin = Vue.extend({
     },
     unregisterDocumentListener(event, callback) {
       if (this[PROP] && this[PROP][event]) {
-        this[PROP][event] = this[PROP][event].filter(cb => cb !== callback)
+        this[PROP][event] = this[PROP][event].filter((cb) => cb !== callback)
       }
     },
 
@@ -59,6 +59,6 @@ export const listenOnDocumentMixin = Vue.extend({
       }
 
       this.unregisterDocumentListener(event, callback)
-    }
-  }
+    },
+  },
 })

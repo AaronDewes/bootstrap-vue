@@ -3,7 +3,11 @@ import { isVue3 } from '../../vue'
 import { BTable } from './table'
 
 const testItems = [{ a: 1, b: 2, c: 3 }]
-const testFields = [{ key: 'a', label: 'A' }, { key: 'b', label: 'B' }, { key: 'c', label: 'C' }]
+const testFields = [
+  { key: 'a', label: 'A' },
+  { key: 'b', label: 'B' },
+  { key: 'c', label: 'C' },
+]
 
 describe('table > thead events', () => {
   it('should not emit head-clicked event when a head cell is clicked and no head-clicked listener', async () => {
@@ -14,9 +18,9 @@ describe('table > thead events', () => {
     const wrapper = mount(BTable, {
       propsData: {
         fields: testFields,
-        items: testItems
+        items: testItems,
       },
-      listeners: {}
+      listeners: {},
     })
     expect(wrapper).toBeDefined()
     const $rows = wrapper.findAll('thead > tr')
@@ -36,12 +40,12 @@ describe('table > thead events', () => {
     const wrapper = mount(BTable, {
       propsData: {
         fields: testFields,
-        items: testItems
+        items: testItems,
       },
       listeners: {
         // Head-clicked will only be emitted if there is a registered listener
-        'head-clicked': () => {}
-      }
+        'head-clicked': () => {},
+      },
     })
     expect(wrapper).toBeDefined()
     const $rows = wrapper.findAll('thead > tr')
@@ -72,12 +76,12 @@ describe('table > thead events', () => {
       propsData: {
         fields: testFields,
         items: testItems,
-        busy: true
+        busy: true,
       },
       listeners: {
         // Head-clicked will only be emitted if there is a registered listener
-        'head-clicked': () => {}
-      }
+        'head-clicked': () => {},
+      },
     })
     expect(wrapper).toBeDefined()
     const $ths = wrapper.findAll('thead > tr > th')
@@ -93,15 +97,15 @@ describe('table > thead events', () => {
     const wrapper = mount(BTable, {
       propsData: {
         fields: testFields,
-        items: testItems
+        items: testItems,
       },
       listeners: {
         // Head-clicked will only be emitted if there is a registered listener
-        'head-clicked': () => {}
-      }
+        'head-clicked': () => {},
+      },
     })
     await wrapper.setData({
-      localBusy: true
+      localBusy: true,
     })
     expect(wrapper).toBeDefined()
     const $ths = wrapper.findAll('thead > tr > th')
@@ -117,18 +121,18 @@ describe('table > thead events', () => {
     const wrapper = mount(BTable, {
       propsData: {
         fields: testFields,
-        items: testItems
+        items: testItems,
       },
       listeners: {
         // Head-clicked will only be emitted if there is a registered listener
-        'head-clicked': () => {}
+        'head-clicked': () => {},
       },
       slots: {
         // In Vue 2.6x, slots get translated into scopedSlots
         'head(a)': '<button id="a">button</button>',
         'head(b)': '<input id="b">',
-        'head(c)': '<a href="#" id="c">link</a>'
-      }
+        'head(c)': '<a href="#" id="c">link</a>',
+      },
     })
     expect(wrapper).toBeDefined()
     const $ths = wrapper.findAll('thead > tr > th')

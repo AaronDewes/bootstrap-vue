@@ -10,7 +10,7 @@ export const props = makePropsConfigurable(
     id: makeProp(PROP_TYPE_STRING),
     inline: makeProp(PROP_TYPE_BOOLEAN, false),
     tag: makeProp(PROP_TYPE_STRING, 'small'),
-    textVariant: makeProp(PROP_TYPE_STRING, 'muted')
+    textVariant: makeProp(PROP_TYPE_STRING, 'muted'),
   },
   NAME_FORM_TEXT
 )
@@ -28,13 +28,13 @@ export const BFormText = /*#__PURE__*/ Vue.extend({
       mergeData(data, {
         class: {
           'form-text': !props.inline,
-          [`text-${props.textVariant}`]: props.textVariant
+          [`text-${props.textVariant}`]: props.textVariant,
         },
         attrs: {
-          id: props.id
-        }
+          id: props.id,
+        },
       }),
       children
     )
-  }
+  },
 })

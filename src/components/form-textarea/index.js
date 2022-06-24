@@ -4,8 +4,8 @@ import { pluginFactory } from '../../utils/plugins'
 const FormTextareaPlugin = /*#__PURE__*/ pluginFactory({
   components: {
     BFormTextarea,
-    BTextarea: BFormTextarea
-  }
+    BTextarea: BFormTextarea,
+  },
 })
 
 export { FormTextareaPlugin, BFormTextarea }

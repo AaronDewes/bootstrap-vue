@@ -1,4 +1,4 @@
-module.exports = api => {
+module.exports = (api) => {
   const isDocs = api.env('docs')
 
   const presets = []
@@ -10,14 +10,14 @@ module.exports = api => {
     presets,
     env: {
       es: {
-        plugins: [['@babel/plugin-transform-modules-commonjs', { loose: true }]]
+        plugins: [['@babel/plugin-transform-modules-commonjs', { loose: true }]],
       },
       esm: {
-        presets: [['@babel/env', { modules: false }]]
+        presets: [['@babel/env', { modules: false }]],
       },
       test: {
-        presets: [['@babel/env', { targets: { node: 'current' } }]]
-      }
-    }
+        presets: [['@babel/env', { targets: { node: 'current' } }]],
+      },
+    },
   }
 }

@@ -5,7 +5,7 @@ import Section from '~/components/section'
 import docsMixin from '~/plugins/docs-mixin'
 import { directives as directivesMeta } from '~/content'
 
-const getReadmeData = name => {
+const getReadmeData = (name) => {
   try {
     return import(`~/../src/directives/${name}/README.md` /* webpackChunkName: "docs/directives" */)
   } catch {
@@ -33,7 +33,7 @@ export default {
       // Heading
       h(AnchoredHeading, { props: { id: 'directive-reference' } }, 'Directive reference'),
       // Directive importing information
-      h(Importdoc, { props: { meta: this.meta } })
+      h(Importdoc, { props: { meta: this.meta } }),
     ])
 
     return h(
@@ -44,10 +44,10 @@ export default {
           meta: this.meta,
           titleLead: this.titleLead,
           body: this.body,
-          loadError: this.loadError
-        }
+          loadError: this.loadError,
+        },
       },
       [$referenceSection]
     )
-  }
+  },
 }

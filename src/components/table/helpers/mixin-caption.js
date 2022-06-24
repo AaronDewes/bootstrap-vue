@@ -8,7 +8,7 @@ import { makeProp } from '../../../utils/props'
 
 export const props = {
   caption: makeProp(PROP_TYPE_STRING),
-  captionHtml: makeProp(PROP_TYPE_STRING)
+  captionHtml: makeProp(PROP_TYPE_STRING),
   // `caption-top` is part of table-render mixin (styling)
   // captionTop: makeProp(PROP_TYPE_BOOLEAN, false)
 }
@@ -21,7 +21,7 @@ export const captionMixin = Vue.extend({
   computed: {
     captionId() {
       return this.isStacked ? this.safeId('_caption_') : null
-    }
+    },
   },
   methods: {
     renderCaption() {
@@ -37,13 +37,13 @@ export const captionMixin = Vue.extend({
             attrs: { id: this.captionId },
             domProps: hasCaptionSlot ? {} : htmlOrText(captionHtml, caption),
             key: 'caption',
-            ref: 'caption'
+            ref: 'caption',
           },
           this.normalizeSlot(SLOT_NAME_TABLE_CAPTION)
         )
       }
 
       return $caption
-    }
-  }
+    },
+  },
 })

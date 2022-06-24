@@ -10,8 +10,8 @@ const FormSelectPlugin = /*#__PURE__*/ pluginFactory({
     BFormSelectOptionGroup,
     BSelect: BFormSelect,
     BSelectOption: BFormSelectOption,
-    BSelectOptionGroup: BFormSelectOptionGroup
-  }
+    BSelectOptionGroup: BFormSelectOptionGroup,
+  },
 })
 
 export { FormSelectPlugin, BFormSelect, BFormSelectOption, BFormSelectOptionGroup }

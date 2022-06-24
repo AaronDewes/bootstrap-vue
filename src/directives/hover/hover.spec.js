@@ -9,11 +9,11 @@ describe('v-b-hover directive', () => {
       data() {
         return {
           text: 'FOO',
-          changeHandler: false
+          changeHandler: false,
         }
       },
       directives: {
-        BHover: VBHover
+        BHover: VBHover,
       },
       methods: {
         handleHover1(isHovered) {
@@ -21,9 +21,9 @@ describe('v-b-hover directive', () => {
         },
         handleHover2(isHovered) {
           hovered2 = isHovered
-        }
+        },
       },
-      template: `<div v-b-hover="changeHandler ? handleHover2 : handleHover1"><span>{{ text }}</span></div>`
+      template: `<div v-b-hover="changeHandler ? handleHover2 : handleHover1"><span>{{ text }}</span></div>`,
     }
     const wrapper = mount(App)
 

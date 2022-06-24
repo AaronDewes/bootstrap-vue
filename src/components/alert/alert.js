@@ -4,7 +4,7 @@ import { EVENT_NAME_DISMISSED, EVENT_NAME_DISMISS_COUNT_DOWN } from '../../const
 import {
   PROP_TYPE_BOOLEAN,
   PROP_TYPE_BOOLEAN_NUMBER_STRING,
-  PROP_TYPE_STRING
+  PROP_TYPE_STRING,
 } from '../../constants/props'
 import { SLOT_NAME_DISMISS } from '../../constants/slots'
 import { requestAF } from '../../utils/dom'
@@ -23,16 +23,16 @@ const {
   mixin: modelMixin,
   props: modelProps,
   prop: MODEL_PROP_NAME,
-  event: MODEL_EVENT_NAME
+  event: MODEL_EVENT_NAME,
 } = makeModelMixin('show', {
   type: PROP_TYPE_BOOLEAN_NUMBER_STRING,
-  defaultValue: false
+  defaultValue: false,
 })
 
 // --- Helper methods ---
 
 // Convert `show` value to a number
-const parseCountDown = show => {
+const parseCountDown = (show) => {
   if (show === '' || isBoolean(show)) {
     return 0
   }
@@ -41,7 +41,7 @@ const parseCountDown = show => {
 }
 
 // Convert `show` value to a boolean
-const parseShow = show => {
+const parseShow = (show) => {
   if (show === '' || show === true) {
     return true
   }
@@ -60,7 +60,7 @@ export const props = makePropsConfigurable(
     dismissLabel: makeProp(PROP_TYPE_STRING, 'Close'),
     dismissible: makeProp(PROP_TYPE_BOOLEAN, false),
     fade: makeProp(PROP_TYPE_BOOLEAN, false),
-    variant: makeProp(PROP_TYPE_STRING, 'info')
+    variant: makeProp(PROP_TYPE_STRING, 'info'),
   }),
   NAME_ALERT
 )
@@ -76,7 +76,7 @@ export const BAlert = /*#__PURE__*/ Vue.extend({
     return {
       countDown: 0,
       // If initially shown, we need to set these for SSR
-      localShow: parseShow(this[MODEL_PROP_NAME])
+      localShow: parseShow(this[MODEL_PROP_NAME]),
     }
   },
   watch: {
@@ -119,7 +119,7 @@ export const BAlert = /*#__PURE__*/ Vue.extend({
       if (!isNumeric(show) && show !== newValue) {
         this.$emit(MODEL_EVENT_NAME, newValue)
       }
-    }
+    },
   },
   created() {
     // Create private non-reactive props
@@ -141,7 +141,7 @@ export const BAlert = /*#__PURE__*/ Vue.extend({
     clearCountDownInterval() {
       clearTimeout(this.$_countDownTimeout)
       this.$_countDownTimeout = null
-    }
+    },
   },
   render(h) {
     let $alert = h()
@@ -155,7 +155,7 @@ export const BAlert = /*#__PURE__*/ Vue.extend({
           BButtonClose,
           {
             attrs: { 'aria-label': this.dismissLabel },
-            on: { click: this.dismiss }
+            on: { click: this.dismiss },
           },
           [this.normalizeSlot(SLOT_NAME_DISMISS)]
         )
@@ -167,19 +167,19 @@ export const BAlert = /*#__PURE__*/ Vue.extend({
           staticClass: 'alert',
           class: {
             'alert-dismissible': dismissible,
-            [`alert-${variant}`]: variant
+            [`alert-${variant}`]: variant,
           },
           attrs: {
             role: 'alert',
             'aria-live': 'polite',
-            'aria-atomic': true
+            'aria-atomic': true,
           },
-          key: this[COMPONENT_UID_KEY]
+          key: this[COMPONENT_UID_KEY],
         },
         [$dismissButton, this.normalizeSlot()]
       )
     }
 
     return h(BVTransition, { props: { noFade: !this.fade } }, [$alert])
-  }
+  },
 })

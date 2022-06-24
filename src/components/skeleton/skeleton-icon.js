@@ -10,7 +10,7 @@ export const props = makePropsConfigurable(
   {
     animation: makeProp(PROP_TYPE_STRING, 'wave'),
     icon: makeProp(PROP_TYPE_STRING),
-    iconProps: makeProp(PROP_TYPE_OBJECT, {})
+    iconProps: makeProp(PROP_TYPE_OBJECT, {}),
   },
   NAME_SKELETON_ICON
 )
@@ -29,17 +29,17 @@ export const BSkeletonIcon = /*#__PURE__*/ Vue.extend({
       staticClass: 'b-skeleton-icon',
       props: {
         ...props.iconProps,
-        icon
-      }
+        icon,
+      },
     })
 
     return h(
       'div',
       mergeData(data, {
         staticClass: 'b-skeleton-icon-wrapper position-relative d-inline-block overflow-hidden',
-        class: { [`b-skeleton-animate-${animation}`]: animation }
+        class: { [`b-skeleton-animate-${animation}`]: animation },
       }),
       [$icon]
     )
-  }
+  },
 })

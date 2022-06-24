@@ -26,8 +26,8 @@ describe('card', () => {
   it('should not contain "card-body" if prop no-body set', async () => {
     const wrapper = mount(BCard, {
       propsData: {
-        noBody: true
-      }
+        noBody: true,
+      },
     })
 
     // Outer div
@@ -47,8 +47,8 @@ describe('card', () => {
     const wrapper = mount(BCard, {
       propsData: {
         tag: 'article',
-        noBody: true
-      }
+        noBody: true,
+      },
     })
 
     // Outer div
@@ -66,8 +66,8 @@ describe('card', () => {
         noBody: true,
         bgVariant: 'info',
         borderVariant: 'danger',
-        textVariant: 'dark'
-      }
+        textVariant: 'dark',
+      },
     })
 
     // Outer div
@@ -86,8 +86,8 @@ describe('card', () => {
     const wrapper = mount(BCard, {
       propsData: {
         noBody: true,
-        align: 'right'
-      }
+        align: 'right',
+      },
     })
 
     // Outer div
@@ -103,19 +103,19 @@ describe('card', () => {
   it('should have content from default slot', async () => {
     const wrapperBody = mount(BCard, {
       propsData: {
-        noBody: false
+        noBody: false,
       },
       slots: {
-        default: 'foobar'
-      }
+        default: 'foobar',
+      },
     })
     const wrapperNoBody = mount(BCard, {
       propsData: {
-        noBody: true
+        noBody: true,
       },
       slots: {
-        default: 'foobar'
-      }
+        default: 'foobar',
+      },
     })
 
     // With body
@@ -136,8 +136,8 @@ describe('card', () => {
     const wrapper = mount(BCard, {
       propsData: {
         noBody: true,
-        imgLeft: true
-      }
+        imgLeft: true,
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')
@@ -152,8 +152,8 @@ describe('card', () => {
     const wrapper = mount(BCard, {
       propsData: {
         noBody: true,
-        imgRight: true
-      }
+        imgRight: true,
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')
@@ -169,8 +169,8 @@ describe('card', () => {
       propsData: {
         noBody: true,
         imgLeft: true,
-        imgRight: true
-      }
+        imgRight: true,
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')
@@ -186,11 +186,11 @@ describe('card', () => {
     const wrapper = mount(BCard, {
       propsData: {
         header: 'foo',
-        footer: 'bar'
+        footer: 'bar',
       },
       slots: {
-        default: 'fizzle'
-      }
+        default: 'fizzle',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')
@@ -214,8 +214,8 @@ describe('card', () => {
       propsData: {
         imgSrc: '/foo/bar',
         imgAlt: 'foobar',
-        imgTop: true
-      }
+        imgTop: true,
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')
@@ -240,8 +240,8 @@ describe('card', () => {
       propsData: {
         imgSrc: '/foo/bar',
         imgAlt: 'foobar',
-        imgBottom: true
-      }
+        imgBottom: true,
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')
@@ -266,8 +266,8 @@ describe('card', () => {
       propsData: {
         imgSrc: '/foo/bar',
         imgAlt: 'foobar',
-        overlay: true
-      }
+        overlay: true,
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')

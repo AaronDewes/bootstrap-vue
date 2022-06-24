@@ -15,7 +15,7 @@ describe('utils/props', () => {
     const props = {
       a: { type: String, default: 'foobar' },
       b: { type: [Object, Array], default: null },
-      c: 'c'
+      c: 'c',
     }
 
     expect(copyProps(props)).toEqual(props)
@@ -68,14 +68,14 @@ describe('utils/props', () => {
     expect(makeProp(Object, undefined, true)).toEqual({ type: Object, required: true })
     expect(makeProp(String, undefined, true)).toEqual({ type: String, required: true })
 
-    const validator = value => !!value
+    const validator = (value) => !!value
     expect(makeProp(String, '', undefined)).toEqual({ type: String, default: '' })
     expect(makeProp(String, '', validator)).toEqual({ type: String, default: '', validator })
     expect(makeProp(String, undefined, validator)).toEqual({ type: String, validator })
     expect(makeProp(String, '', true, validator)).toEqual({
       type: String,
       required: true,
-      validator
+      validator,
     })
   })
 
@@ -84,18 +84,18 @@ describe('utils/props', () => {
     const props = {
       text: {
         type: String,
-        default: 'foo'
-      }
+        default: 'foo',
+      },
     }
     const config = {
-      [NAME]: { text: 'bar' }
+      [NAME]: { text: 'bar' },
     }
     const ConfigurableComponent = {
       name: NAME,
       props: makePropsConfigurable(props, NAME),
       render(h) {
         return h('div', this.text)
-      }
+      },
     }
 
     setConfig(config)

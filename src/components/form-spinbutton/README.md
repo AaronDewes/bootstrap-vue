@@ -26,9 +26,9 @@ Similar to [range type inputs](/docs/components/form-input#range-type-input), Bo
   export default {
     data() {
       return {
-        value: 50
+        value: 50,
       }
-    }
+    },
   }
 </script>
 
@@ -76,9 +76,9 @@ When `step` is set, the value will always be a multiple of the step size plus th
   export default {
     data() {
       return {
-        value: 0
+        value: 0,
       }
-    }
+    },
   }
 </script>
 
@@ -143,9 +143,9 @@ As with other form controls, `<b-form-spinbutton>` supports small and large sizi
   export default {
     data() {
       return {
-        value: 50
+        value: 50,
       }
-    }
+    },
   }
 </script>
 
@@ -162,7 +162,7 @@ Spinbuttons can be oriented in vertical mode:
 ```html
 <template>
   <div>
-    <label for="sb-vertical">Vertical spin button</label><br>
+    <label for="sb-vertical">Vertical spin button</label><br />
     <b-form-spinbutton id="sb-vertical" v-model="value" vertical></b-form-spinbutton>
   </div>
 </template>
@@ -171,9 +171,9 @@ Spinbuttons can be oriented in vertical mode:
   export default {
     data() {
       return {
-        value: 50
+        value: 50,
       }
-    }
+    },
   }
 </script>
 
@@ -234,10 +234,10 @@ the presentation of the value to the user, and does not affect the `v-model`.
           { value: 'de', text: 'German' },
           { value: 'fr-CA', text: 'French (Canadian)' },
           { value: 'fa', text: 'Persian' },
-          { value: 'ar-EG', text: 'Arabic (Egyptian)' }
-        ]
+          { value: 'ar-EG', text: 'Arabic (Egyptian)' },
+        ],
       }
-    }
+    },
   }
 </script>
 
@@ -273,14 +273,14 @@ displayed to the user and does not affect the `v-model`.
     data() {
       return {
         value: 0,
-        days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+        days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
       }
     },
     methods: {
       dayFormatter(value) {
         return this.days[value]
-      }
-    }
+      },
+    },
   }
 </script>
 
@@ -311,9 +311,9 @@ by the user).
   export default {
     data() {
       return {
-        value: 50
+        value: 50,
       }
-    }
+    },
   }
 </script>
 
@@ -372,9 +372,9 @@ hold the increment or decrement button (or use the up/down arrow keys).
     data() {
       return {
         value1: 0,
-        value2: null
+        value2: null,
       }
-    }
+    },
   }
 </script>
 

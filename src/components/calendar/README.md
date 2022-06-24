@@ -32,14 +32,14 @@ If you need a date picker as a custom form control input, use the
     data() {
       return {
         value: '',
-        context: null
+        context: null,
       }
     },
     methods: {
       onContext(ctx) {
         this.context = ctx
-      }
-    }
+      },
+    },
   }
 </script>
 <!-- b-calendar.vue -->
@@ -83,11 +83,7 @@ For disabling specific dates or setting minimum and maximum date limits, refer t
       </b-form-radio-group>
     </b-form-group>
 
-    <b-calendar
-      id="ex-disabled-readonly"
-      :disabled="disabled"
-      :readonly="readonly"
-    ></b-calendar>
+    <b-calendar id="ex-disabled-readonly" :disabled="disabled" :readonly="readonly"></b-calendar>
   </div>
 </template>
 
@@ -95,7 +91,7 @@ For disabling specific dates or setting minimum and maximum date limits, refer t
   export default {
     data() {
       return {
-        state: 'disabled'
+        state: 'disabled',
       }
     },
     computed: {
@@ -104,8 +100,8 @@ For disabling specific dates or setting minimum and maximum date limits, refer t
       },
       readonly() {
         return this.state === 'readonly'
-      }
-    }
+      },
+    },
   }
 </script>
 
@@ -143,9 +139,9 @@ format of `YYYY-MM-DD` or a `Date` object.
       return {
         value: '',
         min: minDate,
-        max: maxDate
+        max: maxDate,
       }
-    }
+    },
   }
 </script>
 
@@ -175,7 +171,7 @@ return a value as quickly as possible.
   export default {
     data() {
       return {
-        value: ''
+        value: '',
       }
     },
     methods: {
@@ -186,8 +182,8 @@ return a value as quickly as possible.
         const day = date.getDate()
         // Return `true` if the date should be disabled
         return weekday === 0 || weekday === 6 || day === 13
-      }
-    }
+      },
+    },
   }
 </script>
 
@@ -357,20 +353,10 @@ slot can be used to add buttons such as `Select Today` or `Reset`, etc.
 <template>
   <b-calendar v-model="value" value-as-date locale="en">
     <div class="d-flex" dir="ltr">
-      <b-button
-        size="sm"
-        variant="outline-danger"
-        v-if="value"
-        @click="clearDate"
-      >
+      <b-button size="sm" variant="outline-danger" v-if="value" @click="clearDate">
         Clear date
       </b-button>
-      <b-button
-        size="sm"
-        variant="outline-primary"
-        class="ms-auto"
-        @click="setToday"
-      >
+      <b-button size="sm" variant="outline-primary" class="ms-auto" @click="setToday">
         Set Today
       </b-button>
     </div>
@@ -381,7 +367,7 @@ slot can be used to add buttons such as `Select Today` or `Reset`, etc.
   export default {
     data() {
       return {
-        value: null
+        value: null,
       }
     },
     methods: {
@@ -391,8 +377,8 @@ slot can be used to add buttons such as `Select Today` or `Reset`, etc.
       },
       clearDate() {
         this.value = ''
-      }
-    }
+      },
+    },
   }
 </script>
 
@@ -451,15 +437,15 @@ colors.
   export default {
     data() {
       return {
-        value: ''
+        value: '',
       }
     },
     methods: {
       dateClass(ymd, date) {
         const day = date.getDate()
         return day >= 10 && day <= 20 ? 'table-info' : ''
-      }
-    }
+      },
+    },
   }
 </script>
 
@@ -583,7 +569,7 @@ the same locale as requested, depending on the supported locales of `Intl`).
       <p>Value: <b>'{{ value }}'</b></p>
       <p class="mb-0">Context:</p>
       <pre class="small">{{ context }}</pre>
-   </b-col>
+    </b-col>
   </b-row>
 </template>
 
@@ -600,13 +586,13 @@ the same locale as requested, depending on the supported locales of `Intl`).
           { value: 'en-US', text: 'English US (en-US)' },
           { value: 'de', text: 'German (de)' },
           { value: 'ar-EG', text: 'Arabic Egyptian (ar-EG)' },
-          { value: 'zh', text: 'Chinese (zh)' }
+          { value: 'zh', text: 'Chinese (zh)' },
         ],
         weekday: 0,
         weekdays: [
           { value: 0, text: 'Sunday' },
           { value: 1, text: 'Monday' },
-          { value: 6, text: 'Saturday' }
+          { value: 6, text: 'Saturday' },
         ],
         labels: {
           de: {
@@ -622,7 +608,7 @@ the same locale as requested, depending on the supported locales of `Intl`).
             labelNoDateSelected: 'Kein Datum gewählt',
             labelCalendar: 'Kalender',
             labelNav: 'Kalendernavigation',
-            labelHelp: 'Mit den Pfeiltasten durch den Kalender navigieren'
+            labelHelp: 'Mit den Pfeiltasten durch den Kalender navigieren',
           },
           'ar-EG': {
             weekdayHeaderFormat: 'narrow',
@@ -638,7 +624,7 @@ the same locale as requested, depending on the supported locales of `Intl`).
             labelNoDateSelected: 'لم يتم اختيار تاريخ',
             labelCalendar: 'التقويم',
             labelNav: 'الملاحة التقويم',
-            labelHelp: 'استخدم مفاتيح المؤشر للتنقل في التواريخ'
+            labelHelp: 'استخدم مفاتيح المؤشر للتنقل في التواريخ',
           },
           zh: {
             weekdayHeaderFormat: 'narrow',
@@ -654,16 +640,16 @@ the same locale as requested, depending on the supported locales of `Intl`).
             labelNoDateSelected: '未选择日期',
             labelCalendar: '日历',
             labelNav: '日历导航',
-            labelHelp: '使用光标键浏览日期'
-          }
-        }
+            labelHelp: '使用光标键浏览日期',
+          },
+        },
       }
     },
     methods: {
       onContext(ctx) {
         this.context = ctx
-      }
-    }
+      },
+    },
   }
 </script>
 

@@ -90,9 +90,7 @@ Both methods return immediately after being called.
   <b-button id="show-btn" @click="$bvModal.show('bv-modal-example')">Open Modal</b-button>
 
   <b-modal id="bv-modal-example" hide-footer>
-    <template #modal-title>
-      Using <code>$bvModal</code> Methods
-    </template>
+    <template #modal-title> Using <code>$bvModal</code> Methods </template>
     <div class="d-block text-center">
       <h3>Hello From This Modal!</h3>
     </div>
@@ -121,7 +119,9 @@ methods.
         <h3>Hello From My Modal!</h3>
       </div>
       <b-button class="mt-3" variant="outline-danger" block @click="hideModal">Close Me</b-button>
-      <b-button class="mt-2" variant="outline-warning" block @click="toggleModal">Toggle Me</b-button>
+      <b-button class="mt-2" variant="outline-warning" block @click="toggleModal"
+        >Toggle Me</b-button
+      >
     </b-modal>
   </div>
 </template>
@@ -139,8 +139,8 @@ methods.
         // We pass the ID of the button that we want to return focus to
         // when the modal has hidden
         this.$refs['my-modal'].toggle('#toggle-btn')
-      }
-    }
+      },
+    },
   }
 </script>
 
@@ -171,9 +171,9 @@ show/hide using `v-model`.
   export default {
     data() {
       return {
-        modalShow: false
+        modalShow: false,
       }
-    }
+    },
   }
 </script>
 
@@ -218,8 +218,8 @@ export default {
     },
     toggleModal() {
       this.$root.$emit('bv::toggle::modal', 'modal-1', '#btnToggle')
-    }
-  }
+    },
+  },
 }
 ```
 
@@ -261,12 +261,7 @@ To prevent `<b-modal>` from closing (for example when validation fails). you can
           invalid-feedback="Name is required"
           :state="nameState"
         >
-          <b-form-input
-            id="name-input"
-            v-model="name"
-            :state="nameState"
-            required
-          ></b-form-input>
+          <b-form-input id="name-input" v-model="name" :state="nameState" required></b-form-input>
         </b-form-group>
       </form>
     </b-modal>
@@ -279,7 +274,7 @@ To prevent `<b-modal>` from closing (for example when validation fails). you can
       return {
         name: '',
         nameState: null,
-        submittedNames: []
+        submittedNames: [],
       }
     },
     methods: {
@@ -309,8 +304,8 @@ To prevent `<b-modal>` from closing (for example when validation fails). you can
         this.$nextTick(() => {
           this.$bvModal.hide('modal-prevent-closing')
         })
-      }
-    }
+      },
+    },
   }
 </script>
 
@@ -429,8 +424,8 @@ itself. Try the demo below to see what we mean.
 
   <b-modal id="modal-tall" title="Overflowing Content">
     <p class="my-4" v-for="i in 20" :key="i">
-      Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis
-      in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
+      Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in,
+      egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
     </p>
   </b-modal>
 </div>
@@ -447,8 +442,8 @@ prop `scrollable` to `true`.
 
   <b-modal id="modal-scrollable" scrollable title="Scrollable Content">
     <p class="my-4" v-for="i in 20" :key="i">
-      Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis
-      in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
+      Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in,
+      egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
     </p>
   </b-modal>
 </div>
@@ -509,48 +504,30 @@ the `header-border-variant` and `footer-border-variant` props respectively.
         <b-row class="mb-1">
           <b-col cols="3">Header</b-col>
           <b-col>
-            <b-form-select
-              v-model="headerBgVariant"
-              :options="variants"
-            ></b-form-select>
+            <b-form-select v-model="headerBgVariant" :options="variants"></b-form-select>
           </b-col>
           <b-col>
-            <b-form-select
-              v-model="headerTextVariant"
-              :options="variants"
-            ></b-form-select>
+            <b-form-select v-model="headerTextVariant" :options="variants"></b-form-select>
           </b-col>
         </b-row>
 
         <b-row class="mb-1">
           <b-col cols="3">Body</b-col>
           <b-col>
-            <b-form-select
-              v-model="bodyBgVariant"
-              :options="variants"
-            ></b-form-select>
+            <b-form-select v-model="bodyBgVariant" :options="variants"></b-form-select>
           </b-col>
           <b-col>
-            <b-form-select
-              v-model="bodyTextVariant"
-              :options="variants"
-            ></b-form-select>
+            <b-form-select v-model="bodyTextVariant" :options="variants"></b-form-select>
           </b-col>
         </b-row>
 
         <b-row>
           <b-col cols="3">Footer</b-col>
           <b-col>
-            <b-form-select
-              v-model="footerBgVariant"
-              :options="variants"
-            ></b-form-select>
+            <b-form-select v-model="footerBgVariant" :options="variants"></b-form-select>
           </b-col>
           <b-col>
-            <b-form-select
-              v-model="footerTextVariant"
-              :options="variants"
-            ></b-form-select>
+            <b-form-select v-model="footerTextVariant" :options="variants"></b-form-select>
           </b-col>
         </b-row>
       </b-container>
@@ -558,12 +535,7 @@ the `header-border-variant` and `footer-border-variant` props respectively.
       <template #modal-footer>
         <div class="w-100">
           <p class="float-left">Modal Footer Content</p>
-          <b-button
-            variant="primary"
-            size="sm"
-            class="float-right"
-            @click="show=false"
-          >
+          <b-button variant="primary" size="sm" class="float-right" @click="show=false">
             Close
           </b-button>
         </div>
@@ -583,9 +555,9 @@ the `header-border-variant` and `footer-border-variant` props respectively.
         bodyBgVariant: 'light',
         bodyTextVariant: 'dark',
         footerBgVariant: 'warning',
-        footerTextVariant: 'dark'
+        footerTextVariant: 'dark',
       }
-    }
+    },
   }
 </script>
 
@@ -692,9 +664,7 @@ The scope available to the slots that support optional scoping are:
   <b-modal id="modal-scoped">
     <template #modal-header="{ close }">
       <!-- Emulate built in modal header close button action -->
-      <b-button size="sm" variant="outline-danger" @click="close()">
-        Close Modal
-      </b-button>
+      <b-button size="sm" variant="outline-danger" @click="close()"> Close Modal </b-button>
       <h5>Modal Header</h5>
     </template>
 
@@ -706,16 +676,10 @@ The scope available to the slots that support optional scoping are:
     <template #modal-footer="{ ok, cancel, hide }">
       <b>Custom Footer</b>
       <!-- Emulate built in modal footer ok and cancel button actions -->
-      <b-button size="sm" variant="success" @click="ok()">
-        OK
-      </b-button>
-      <b-button size="sm" variant="danger" @click="cancel()">
-        Cancel
-      </b-button>
+      <b-button size="sm" variant="success" @click="ok()"> OK </b-button>
+      <b-button size="sm" variant="danger" @click="cancel()"> Cancel </b-button>
       <!-- Button with custom close trigger value -->
-      <b-button size="sm" variant="outline-secondary" @click="hide('forget')">
-        Forget it
-      </b-button>
+      <b-button size="sm" variant="outline-secondary" @click="hide('forget')"> Forget it </b-button>
     </template>
   </b-modal>
 </template>
@@ -792,12 +756,12 @@ Example OK Message boxes
 <template>
   <div>
     <div class="mb-2">
-     <b-button @click="showMsgBoxOne">Simple msgBoxOk</b-button>
-     Return value: {{ String(boxOne) }}
+      <b-button @click="showMsgBoxOne">Simple msgBoxOk</b-button>
+      Return value: {{ String(boxOne) }}
     </div>
     <div class="mb-1">
-     <b-button @click="showMsgBoxTwo">msgBoxOk with options</b-button>
-     Return value: {{ String(boxTwo) }}
+      <b-button @click="showMsgBoxTwo">msgBoxOk with options</b-button>
+      Return value: {{ String(boxTwo) }}
     </div>
   </div>
 </template>
@@ -807,39 +771,41 @@ Example OK Message boxes
     data() {
       return {
         boxOne: '',
-        boxTwo: ''
+        boxTwo: '',
       }
     },
     methods: {
       showMsgBoxOne() {
         this.boxOne = ''
-        this.$bvModal.msgBoxOk('Action completed')
-          .then(value => {
+        this.$bvModal
+          .msgBoxOk('Action completed')
+          .then((value) => {
             this.boxOne = value
           })
-          .catch(err => {
+          .catch((err) => {
             // An error occurred
           })
       },
       showMsgBoxTwo() {
         this.boxTwo = ''
-        this.$bvModal.msgBoxOk('Data was submitted successfully', {
-          title: 'Confirmation',
-          size: 'sm',
-          buttonSize: 'sm',
-          okVariant: 'success',
-          headerClass: 'p-2 border-bottom-0',
-          footerClass: 'p-2 border-top-0',
-          centered: true
-        })
-          .then(value => {
+        this.$bvModal
+          .msgBoxOk('Data was submitted successfully', {
+            title: 'Confirmation',
+            size: 'sm',
+            buttonSize: 'sm',
+            okVariant: 'success',
+            headerClass: 'p-2 border-bottom-0',
+            footerClass: 'p-2 border-top-0',
+            centered: true,
+          })
+          .then((value) => {
             this.boxTwo = value
           })
-          .catch(err => {
+          .catch((err) => {
             // An error occurred
           })
-      }
-    }
+      },
+    },
   }
 </script>
 
@@ -854,12 +820,12 @@ Example Confirm Message boxes
 <template>
   <div>
     <div class="mb-2">
-     <b-button @click="showMsgBoxOne">Simple msgBoxConfirm</b-button>
-     Return value: {{ String(boxOne) }}
+      <b-button @click="showMsgBoxOne">Simple msgBoxConfirm</b-button>
+      Return value: {{ String(boxOne) }}
     </div>
     <div class="mb-1">
-     <b-button @click="showMsgBoxTwo">msgBoxConfirm with options</b-button>
-     Return value: {{ String(boxTwo) }}
+      <b-button @click="showMsgBoxTwo">msgBoxConfirm with options</b-button>
+      Return value: {{ String(boxTwo) }}
     </div>
   </div>
 </template>
@@ -869,41 +835,43 @@ Example Confirm Message boxes
     data() {
       return {
         boxOne: '',
-        boxTwo: ''
+        boxTwo: '',
       }
     },
     methods: {
       showMsgBoxOne() {
         this.boxOne = ''
-        this.$bvModal.msgBoxConfirm('Are you sure?')
-          .then(value => {
+        this.$bvModal
+          .msgBoxConfirm('Are you sure?')
+          .then((value) => {
             this.boxOne = value
           })
-          .catch(err => {
+          .catch((err) => {
             // An error occurred
           })
       },
       showMsgBoxTwo() {
         this.boxTwo = ''
-        this.$bvModal.msgBoxConfirm('Please confirm that you want to delete everything.', {
-          title: 'Please Confirm',
-          size: 'sm',
-          buttonSize: 'sm',
-          okVariant: 'danger',
-          okTitle: 'YES',
-          cancelTitle: 'NO',
-          footerClass: 'p-2',
-          hideHeaderClose: false,
-          centered: true
-        })
-          .then(value => {
+        this.$bvModal
+          .msgBoxConfirm('Please confirm that you want to delete everything.', {
+            title: 'Please Confirm',
+            size: 'sm',
+            buttonSize: 'sm',
+            okVariant: 'danger',
+            okTitle: 'YES',
+            cancelTitle: 'NO',
+            footerClass: 'p-2',
+            hideHeaderClose: false,
+            centered: true,
+          })
+          .then((value) => {
             this.boxTwo = value
           })
-          .catch(err => {
+          .catch((err) => {
             // An error occurred
           })
-      }
-    }
+      },
+    },
   }
 </script>
 
@@ -970,29 +938,27 @@ method to generate VNodes.
         const titleVNode = h('div', { domProps: { innerHTML: 'Title from <i>HTML<i> string' } })
         // More complex structure
         const messageVNode = h('div', { class: ['foobar'] }, [
-          h('p', { class: ['text-center'] }, [
-            ' Flashy ',
-            h('strong', 'msgBoxOk'),
-            ' message ',
-          ]),
+          h('p', { class: ['text-center'] }, [' Flashy ', h('strong', 'msgBoxOk'), ' message ']),
           h('p', { class: ['text-center'] }, [h('b-spinner')]),
           h('b-img', {
             props: {
               src: 'https://picsum.photos/id/20/250/250',
               thumbnail: true,
               center: true,
-              fluid: true, rounded: 'circle'
-            }
-          })
+              fluid: true,
+              rounded: 'circle',
+            },
+          }),
         ])
         // We must pass the generated VNodes as arrays
         this.$bvModal.msgBoxOk([messageVNode], {
           title: [titleVNode],
           buttonSize: 'sm',
-          centered: true, size: 'sm'
+          centered: true,
+          size: 'sm',
         })
-      }
-    }
+      },
+    },
   }
 </script>
 
@@ -1009,7 +975,7 @@ export default {
     this.$root.$on('bv::modal::show', (bvEvent, modalId) => {
       console.log('Modal is about to be shown', bvEvent, modalId)
     })
-  }
+  },
 }
 ```
 
@@ -1076,8 +1042,8 @@ export default {
   methods: {
     focusMyElement() {
       this.$refs.focusThis.focus()
-    }
-  }
+    },
+  },
 }
 ```
 

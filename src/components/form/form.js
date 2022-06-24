@@ -10,7 +10,7 @@ export const props = makePropsConfigurable(
     id: makeProp(PROP_TYPE_STRING),
     inline: makeProp(PROP_TYPE_BOOLEAN, false),
     novalidate: makeProp(PROP_TYPE_BOOLEAN, false),
-    validated: makeProp(PROP_TYPE_BOOLEAN, false)
+    validated: makeProp(PROP_TYPE_BOOLEAN, false),
   },
   NAME_FORM
 )
@@ -28,14 +28,14 @@ export const BForm = /*#__PURE__*/ Vue.extend({
       mergeData(data, {
         class: {
           'form-inline': props.inline,
-          'was-validated': props.validated
+          'was-validated': props.validated,
         },
         attrs: {
           id: props.id,
-          novalidate: props.novalidate
-        }
+          novalidate: props.novalidate,
+        },
       }),
       children
     )
-  }
+  },
 })

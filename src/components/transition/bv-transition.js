@@ -19,13 +19,13 @@ const NO_FADE_PROPS = {
   enterToClass: 'show',
   leaveClass: 'show',
   leaveActiveClass: '',
-  leaveToClass: ''
+  leaveToClass: '',
 }
 
 const FADE_PROPS = {
   ...NO_FADE_PROPS,
   enterActiveClass: 'fade',
-  leaveActiveClass: 'fade'
+  leaveActiveClass: 'fade',
 }
 
 // --- Props ---
@@ -39,7 +39,7 @@ export const props = {
   // Has no effect if `trans-props` provided
   noFade: makeProp(PROP_TYPE_BOOLEAN, false),
   // For user supplied transitions (if needed)
-  transProps: makeProp(PROP_TYPE_OBJECT)
+  transProps: makeProp(PROP_TYPE_OBJECT),
 }
 
 // --- Main component ---
@@ -60,7 +60,7 @@ export const BVTransition = /*#__PURE__*/ Vue.extend({
           appear: true,
           appearClass: transProps.enterClass,
           appearActiveClass: transProps.enterActiveClass,
-          appearToClass: transProps.enterToClass
+          appearToClass: transProps.enterToClass,
         }
       }
     }
@@ -68,7 +68,7 @@ export const BVTransition = /*#__PURE__*/ Vue.extend({
       mode: props.mode,
       ...transProps,
       // We always need `css` true
-      css: true
+      css: true,
     }
 
     const dataCopy = { ...data }
@@ -79,5 +79,5 @@ export const BVTransition = /*#__PURE__*/ Vue.extend({
       mergeData(dataCopy, { props: transProps }),
       children
     )
-  }
+  },
 })

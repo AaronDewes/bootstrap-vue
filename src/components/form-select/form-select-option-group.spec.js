@@ -9,8 +9,8 @@ describe('form-select-option-group', () => {
   it('has expected default structure', async () => {
     const wrapper = mount(BFormSelectOptionGroup, {
       propsData: {
-        label: 'foo'
-      }
+        label: 'foo',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('OPTGROUP')
@@ -25,8 +25,8 @@ describe('form-select-option-group', () => {
     const wrapper = mount(BFormSelectOptionGroup, {
       propsData: {
         label: 'foo',
-        options: ['one', 'two', 'three']
-      }
+        options: ['one', 'two', 'three'],
+      },
     })
 
     expect(wrapper.element.tagName).toBe('OPTGROUP')
@@ -41,7 +41,7 @@ describe('form-select-option-group', () => {
     expect($options.at(0).attributes('value')).toBe('one')
     expect($options.at(1).attributes('value')).toBe('two')
     expect($options.at(2).attributes('value')).toBe('three')
-    expect($options.wrappers.every(o => o.find('[disabled]').exists())).toBe(false)
+    expect($options.wrappers.every((o) => o.find('[disabled]').exists())).toBe(false)
 
     wrapper.destroy()
   })
@@ -53,9 +53,9 @@ describe('form-select-option-group', () => {
         options: [
           { text: 'one', value: 1 },
           { text: 'two', value: 2, disabled: true },
-          { text: 'three', value: 3 }
-        ]
-      }
+          { text: 'three', value: 3 },
+        ],
+      },
     })
 
     expect(wrapper.element.tagName).toBe('OPTGROUP')
@@ -70,24 +70,9 @@ describe('form-select-option-group', () => {
     expect($options.at(0).attributes('value')).toBe('1')
     expect($options.at(1).attributes('value')).toBe('2')
     expect($options.at(2).attributes('value')).toBe('3')
-    expect(
-      $options
-        .at(0)
-        .find('[disabled]')
-        .exists()
-    ).toBe(false)
-    expect(
-      $options
-        .at(1)
-        .find('[disabled]')
-        .exists()
-    ).toBe(true)
-    expect(
-      $options
-        .at(2)
-        .find('[disabled]')
-        .exists()
-    ).toBe(false)
+    expect($options.at(0).find('[disabled]').exists()).toBe(false)
+    expect($options.at(1).find('[disabled]').exists()).toBe(true)
+    expect($options.at(2).find('[disabled]').exists()).toBe(false)
 
     wrapper.destroy()
   })
@@ -97,8 +82,8 @@ describe('form-select-option-group', () => {
     const wrapper = mount(BFormSelectOptionGroup, {
       propsData: {
         label: 'foo',
-        options: { one: 1, two: { value: 2, text: 'Two' }, three: 'three' }
-      }
+        options: { one: 1, two: { value: 2, text: 'Two' }, three: 'three' },
+      },
     })
 
     expect(wrapper.element.tagName).toBe('OPTGROUP')
@@ -124,15 +109,15 @@ describe('form-select-option-group', () => {
   it('has option elements from default slot', async () => {
     const wrapper = mount(BFormSelectOptionGroup, {
       propsData: {
-        label: 'foo'
+        label: 'foo',
       },
       slots: {
         default: [
           '<option value="1">one</option>',
           '<option value="2">two</option>',
-          '<option value="3">three</option>'
-        ]
-      }
+          '<option value="3">three</option>',
+        ],
+      },
     })
 
     expect(wrapper.element.tagName).toBe('OPTGROUP')

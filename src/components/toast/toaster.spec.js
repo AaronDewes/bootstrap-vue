@@ -9,8 +9,8 @@ describe('b-toaster', () => {
     const wrapper = mount(BToaster, {
       attachTo: document.body,
       propsData: {
-        name: 'foo'
-      }
+        name: 'foo',
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -47,8 +47,8 @@ describe('b-toaster', () => {
         name: 'bar',
         ariaLive: 'assertive',
         ariaAtomic: 'true',
-        role: 'alert'
-      }
+        role: 'alert',
+      },
     })
 
     expect(wrapper.vm).toBeDefined()

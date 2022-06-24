@@ -7,7 +7,7 @@ import {
   PROP_TYPE_BOOLEAN_NUMBER,
   PROP_TYPE_FUNCTION,
   PROP_TYPE_NUMBER_STRING,
-  PROP_TYPE_STRING
+  PROP_TYPE_STRING,
 } from '../../constants/props'
 import {
   CODE_DOWN,
@@ -15,7 +15,7 @@ import {
   CODE_HOME,
   CODE_PAGEUP,
   CODE_UP,
-  CODE_PAGEDOWN
+  CODE_PAGEDOWN,
 } from '../../constants/key-codes'
 import { SLOT_NAME_DECREMENT, SLOT_NAME_INCREMENT } from '../../constants/slots'
 import { arrayIncludes, concat } from '../../utils/array'
@@ -44,10 +44,10 @@ const {
   mixin: modelMixin,
   props: modelProps,
   prop: MODEL_PROP_NAME,
-  event: MODEL_EVENT_NAME
+  event: MODEL_EVENT_NAME,
 } = makeModelMixin('value', {
   // Should this really be String, to match native number inputs?
-  type: PROP_TYPE_BOOLEAN_NUMBER
+  type: PROP_TYPE_BOOLEAN_NUMBER,
 })
 
 // Default for spin button range and step
@@ -92,7 +92,7 @@ export const props = makePropsConfigurable(
     repeatThreshold: makeProp(PROP_TYPE_NUMBER_STRING, DEFAULT_REPEAT_THRESHOLD),
     step: makeProp(PROP_TYPE_NUMBER_STRING, DEFAULT_STEP),
     vertical: makeProp(PROP_TYPE_BOOLEAN, false),
-    wrap: makeProp(PROP_TYPE_BOOLEAN, false)
+    wrap: makeProp(PROP_TYPE_BOOLEAN, false),
   }),
   NAME_FORM_SPINBUTTON
 )
@@ -109,7 +109,7 @@ export const BFormSpinbutton = /*#__PURE__*/ Vue.extend({
   data() {
     return {
       localValue: toFloat(this[MODEL_PROP_NAME], null),
-      hasFocus: false
+      hasFocus: false,
     }
   },
   computed: {
@@ -184,7 +184,7 @@ export const BFormSpinbutton = /*#__PURE__*/ Vue.extend({
         minimumIntegerDigits: 1,
         minimumFractionDigits: precision,
         maximumFractionDigits: precision,
-        notation: 'standard'
+        notation: 'standard',
       })
       // Return the format method reference
       return nf.format
@@ -199,7 +199,7 @@ export const BFormSpinbutton = /*#__PURE__*/ Vue.extend({
         role: 'group',
         lang: this.computedLocale,
         tabindex: this.disabled ? null : '-1',
-        title: this.ariaLabel
+        title: this.ariaLabel,
       }
     },
     computedSpinAttrs() {
@@ -209,7 +209,7 @@ export const BFormSpinbutton = /*#__PURE__*/ Vue.extend({
         computedRequired: required,
         disabled,
         state,
-        computedFormatter
+        computedFormatter,
       } = this
       const hasValue = !isNull(value)
 
@@ -231,9 +231,9 @@ export const BFormSpinbutton = /*#__PURE__*/ Vue.extend({
         // These should be `null` if the value is out of range
         // They must also be non-existent attrs if the value is out of range or `null`
         'aria-valuenow': hasValue ? value : null,
-        'aria-valuetext': hasValue ? computedFormatter(value) : null
+        'aria-valuetext': hasValue ? computedFormatter(value) : null,
       }
-    }
+    },
   },
   watch: {
     [MODEL_PROP_NAME](value) {
@@ -251,7 +251,7 @@ export const BFormSpinbutton = /*#__PURE__*/ Vue.extend({
       if (readonly) {
         this.clearRepeat()
       }
-    }
+    },
   },
   created() {
     // Create non reactive properties
@@ -432,7 +432,7 @@ export const BFormSpinbutton = /*#__PURE__*/ Vue.extend({
       this.resetTimers()
       this.setMouseup(false)
       this.$_keyIsDown = false
-    }
+    },
   },
   render(h) {
     const {
@@ -442,17 +442,17 @@ export const BFormSpinbutton = /*#__PURE__*/ Vue.extend({
       computedReadonly: readonly,
       vertical,
       disabled,
-      computedFormatter
+      computedFormatter,
     } = this
     const hasValue = !isNull(value)
 
     const makeButton = (stepper, label, IconCmp, keyRef, shortcut, btnDisabled, slotName) => {
       const $icon = h(IconCmp, {
         props: { scale: this.hasFocus ? 1.5 : 1.25 },
-        attrs: { 'aria-hidden': 'true' }
+        attrs: { 'aria-hidden': 'true' },
       })
       const scope = { hasFocus: this.hasFocus }
-      const handler = event => {
+      const handler = (event) => {
         if (!disabled && !readonly) {
           stopEvent(event, { propagation: false })
           this.setMouseup(true)
@@ -473,14 +473,14 @@ export const BFormSpinbutton = /*#__PURE__*/ Vue.extend({
             'aria-disabled': disabled || readonly || btnDisabled ? 'true' : null,
             'aria-controls': spinId,
             'aria-label': label || null,
-            'aria-keyshortcuts': shortcut || null
+            'aria-keyshortcuts': shortcut || null,
           },
           on: {
             mousedown: handler,
-            touchstart: handler
+            touchstart: handler,
           },
           key: keyRef || null,
-          ref: keyRef
+          ref: keyRef,
         },
         [this.normalizeSlot(slotName, scope) || $icon]
       )
@@ -513,9 +513,9 @@ export const BFormSpinbutton = /*#__PURE__*/ Vue.extend({
           name: this.name,
           form: this.form || null,
           // TODO: Should this be set to '' if value is out of range?
-          value: this.valueAsFixed
+          value: this.valueAsFixed,
         },
-        key: 'hidden'
+        key: 'hidden',
       })
     }
 
@@ -531,11 +531,11 @@ export const BFormSpinbutton = /*#__PURE__*/ Vue.extend({
           'border-top': vertical,
           'border-bottom': vertical,
           'border-left': !vertical,
-          'border-right': !vertical
+          'border-right': !vertical,
         },
         attrs: this.computedSpinAttrs,
         key: 'output',
-        ref: 'spinner'
+        ref: 'spinner',
       },
       [h('bdi', hasValue ? computedFormatter(value) : this.placeholder || '')]
     )
@@ -552,10 +552,10 @@ export const BFormSpinbutton = /*#__PURE__*/ Vue.extend({
             'd-inline-flex': inline || vertical,
             'd-flex': !inline && !vertical,
             'align-items-stretch': !vertical,
-            'flex-column': vertical
+            'flex-column': vertical,
           },
           this.sizeFormClass,
-          this.stateClass
+          this.stateClass,
         ],
         attrs: this.computedAttrs,
         on: {
@@ -563,10 +563,10 @@ export const BFormSpinbutton = /*#__PURE__*/ Vue.extend({
           keyup: this.onKeyup,
           // We use capture phase (`!` prefix) since focus and blur do not bubble
           '!focus': this.onFocusBlur,
-          '!blur': this.onFocusBlur
-        }
+          '!blur': this.onFocusBlur,
+        },
       },
       vertical ? [$increment, $hidden, $spin, $decrement] : [$decrement, $hidden, $spin, $increment]
     )
-  }
+  },
 })

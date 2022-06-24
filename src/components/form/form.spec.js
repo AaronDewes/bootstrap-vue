@@ -15,8 +15,8 @@ describe('form', () => {
   it('renders default slot content', async () => {
     const wrapper = mount(BForm, {
       slots: {
-        default: 'foobar'
-      }
+        default: 'foobar',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('FORM')
@@ -31,8 +31,8 @@ describe('form', () => {
   it('has class form-inline when prop inline set', async () => {
     const wrapper = mount(BForm, {
       propsData: {
-        inline: true
-      }
+        inline: true,
+      },
     })
 
     expect(wrapper.element.tagName).toBe('FORM')
@@ -48,8 +48,8 @@ describe('form', () => {
   it('has class was-validation when prop validated set', async () => {
     const wrapper = mount(BForm, {
       propsData: {
-        validated: true
-      }
+        validated: true,
+      },
     })
 
     expect(wrapper.element.tagName).toBe('FORM')
@@ -65,8 +65,8 @@ describe('form', () => {
   it('has user supplied id', async () => {
     const wrapper = mount(BForm, {
       propsData: {
-        id: 'foo'
-      }
+        id: 'foo',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('FORM')
@@ -82,8 +82,8 @@ describe('form', () => {
   it('has attribute novalidate when prop novalidate set', async () => {
     const wrapper = mount(BForm, {
       propsData: {
-        novalidate: true
-      }
+        novalidate: true,
+      },
     })
 
     expect(wrapper.element.tagName).toBe('FORM')

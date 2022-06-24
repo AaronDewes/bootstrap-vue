@@ -7,12 +7,12 @@ export default {
   props: {
     id: {
       type: String,
-      default: ''
+      default: '',
     },
     level: {
       type: [Number, String],
-      default: 2
-    }
+      default: 2,
+    },
   },
   render(h, { props, data, children }) {
     const $anchor = h(
@@ -22,8 +22,8 @@ export default {
         props: { to: { hash: `#${props.id}` } },
         attrs: {
           'aria-labelledby': props.id || null,
-          'aria-label': props.id ? null : 'Anchor'
-        }
+          'aria-label': props.id ? null : 'Anchor',
+        },
       },
       [h()]
     )
@@ -34,10 +34,10 @@ export default {
         staticClass: 'bv-no-focus-ring',
         attrs: {
           id: props.id,
-          tabindex: '-1'
-        }
+          tabindex: '-1',
+        },
       }),
       [$content]
     )
-  }
+  },
 }

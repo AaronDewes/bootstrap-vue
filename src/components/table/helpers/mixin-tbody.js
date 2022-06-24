@@ -3,7 +3,7 @@ import {
   EVENT_NAME_ROW_CLICKED,
   EVENT_NAME_ROW_CONTEXTMENU,
   EVENT_NAME_ROW_DBLCLICKED,
-  EVENT_NAME_ROW_MIDDLE_CLICKED
+  EVENT_NAME_ROW_MIDDLE_CLICKED,
 } from '../../../constants/events'
 import {
   CODE_DOWN,
@@ -11,7 +11,7 @@ import {
   CODE_ENTER,
   CODE_HOME,
   CODE_SPACE,
-  CODE_UP
+  CODE_UP,
 } from '../../../constants/key-codes'
 import { PROP_TYPE_ARRAY_OBJECT_STRING } from '../../../constants/props'
 import { arrayIncludes, from as arrayFrom } from '../../../utils/array'
@@ -27,14 +27,14 @@ import { tbodyRowMixin, props as tbodyRowProps } from './mixin-tbody-row'
 
 // --- Helper methods ---
 
-const getCellSlotName = value => `cell(${value || ''})`
+const getCellSlotName = (value) => `cell(${value || ''})`
 
 // --- Props ---
 
 export const props = sortKeys({
   ...BTbodyProps,
   ...tbodyRowProps,
-  tbodyClass: makeProp(PROP_TYPE_ARRAY_OBJECT_STRING)
+  tbodyClass: makeProp(PROP_TYPE_ARRAY_OBJECT_STRING),
 })
 
 // --- Mixin ---
@@ -54,9 +54,9 @@ export const tbodyMixin = Vue.extend({
     getTbodyTrs() {
       const { $refs } = this
       const tbody = $refs.tbody ? $refs.tbody.$el || $refs.tbody : null
-      const trs = ($refs['item-rows'] || []).map(tr => tr.$el || tr)
+      const trs = ($refs['item-rows'] || []).map((tr) => tr.$el || tr)
       return tbody && tbody.children && tbody.children.length > 0 && trs && trs.length > 0
-        ? arrayFrom(tbody.children).filter(tr => arrayIncludes(trs, tr))
+        ? arrayFrom(tbody.children).filter((tr) => arrayIncludes(trs, tr))
         : /* istanbul ignore next */ []
     },
     // Returns index of a particular TBODY item TR
@@ -164,7 +164,7 @@ export const tbodyMixin = Vue.extend({
         renderTopRow,
         renderEmpty,
         renderBottomRow,
-        hasSelectableRowClick
+        hasSelectableRowClick,
       } = safeVueInstance(this)
       const h = this.$createElement
       const hasRowClickHandler = this.hasListener(EVENT_NAME_ROW_CLICKED) || hasSelectableRowClick
@@ -187,15 +187,15 @@ export const tbodyMixin = Vue.extend({
         const cache = {}
         let defaultSlotName = getCellSlotName()
         defaultSlotName = this.hasNormalizedSlot(defaultSlotName) ? defaultSlotName : null
-        this.computedFields.forEach(field => {
+        this.computedFields.forEach((field) => {
           const { key } = field
           const slotName = getCellSlotName(key)
           const lowercaseSlotName = getCellSlotName(key.toLowerCase())
           cache[key] = this.hasNormalizedSlot(slotName)
             ? slotName
             : this.hasNormalizedSlot(lowercaseSlotName)
-              ? /* istanbul ignore next */ lowercaseSlotName
-              : defaultSlotName
+            ? /* istanbul ignore next */ lowercaseSlotName
+            : defaultSlotName
         })
         // Created as a non-reactive property so to not trigger component updates
         // Must be a fresh object each render
@@ -228,7 +228,7 @@ export const tbodyMixin = Vue.extend({
         //   `row-contextmenu` listener registered
         contextmenu: this.onTbodyRowContextmenu,
         // The following event(s) is not considered A11Y friendly
-        dblclick: this.onTbodyRowDblClicked
+        dblclick: this.onTbodyRowDblClicked,
         // Hover events (`mouseenter`/`mouseleave`) are handled by `tbody-row` mixin
       }
       // Add in click/keydown listeners if needed
@@ -246,13 +246,13 @@ export const tbodyMixin = Vue.extend({
           // BTbody transfers all native event listeners to the root element
           // TODO: Only set the handlers if the table is not busy
           on: handlers,
-          ref: 'tbody'
+          ref: 'tbody',
         },
         $rows
       )
 
       // Return the assembled tbody
       return $tbody
-    }
-  }
+    },
+  },
 })

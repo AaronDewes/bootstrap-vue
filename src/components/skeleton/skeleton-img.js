@@ -15,7 +15,7 @@ export const props = makePropsConfigurable(
     height: makeProp(PROP_TYPE_STRING),
     noAspect: makeProp(PROP_TYPE_BOOLEAN, false),
     variant: makeProp(PROP_TYPE_STRING),
-    width: makeProp(PROP_TYPE_STRING)
+    width: makeProp(PROP_TYPE_STRING),
   },
   NAME_SKELETON_IMG
 )
@@ -38,12 +38,12 @@ export const BSkeletonImg = /*#__PURE__*/ Vue.extend({
           width,
           height,
           animation,
-          variant
+          variant,
         },
-        class: { [`card-img-${cardImg}`]: cardImg }
+        class: { [`card-img-${cardImg}`]: cardImg },
       })
     )
 
     return props.noAspect ? $img : h(BAspect, { props: { aspect } }, [$img])
-  }
+  },
 })

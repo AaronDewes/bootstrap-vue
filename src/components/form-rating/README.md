@@ -28,9 +28,9 @@ _whole number_ increments.
   export default {
     data() {
       return {
-        value: null
+        value: null,
       }
-    }
+    },
   }
 </script>
 
@@ -53,9 +53,9 @@ Readonly mode is used for displaying an aggregated rating, and supports `half` s
   export default {
     data() {
       return {
-        value: 2.567
+        value: 2.567,
       }
-    }
+    },
   }
 </script>
 
@@ -85,9 +85,9 @@ The default is to use the default form control text color.
   export default {
     data() {
       return {
-        value: 3
+        value: 3,
       }
-    }
+    },
   }
 </script>
 
@@ -112,9 +112,9 @@ value (`#...`) or RGB/RGBA (`rgb(...)`/`rgba(...)`) color value:
   export default {
     data() {
       return {
-        value: null
+        value: null,
       }
-    }
+    },
   }
 </script>
 
@@ -151,7 +151,7 @@ By default, `<b-form-rating>` defaults to `5` stars. You can change the number o
         value10: null,
         value7: null,
       }
-    }
+    },
   }
 </script>
 
@@ -177,9 +177,9 @@ decimal) simply set the `precision` prop to the number of digits after the decim
   export default {
     data() {
       return {
-        value: 4
+        value: 4,
       }
-    }
+    },
   }
 </script>
 
@@ -200,9 +200,9 @@ decimal) simply set the `precision` prop to the number of digits after the decim
   export default {
     data() {
       return {
-        value: 3.555
+        value: 3.555,
       }
-    }
+    },
   }
 </script>
 
@@ -218,13 +218,7 @@ Optionally show the maximum rating possible by also setting the prop `show-value
 ```html
 <template>
   <div>
-    <b-form-rating
-      v-model="value"
-      readonly
-      show-value
-      show-value-max
-      precision="2"
-    ></b-form-rating>
+    <b-form-rating v-model="value" readonly show-value show-value-max precision="2"></b-form-rating>
     <p class="mt-2">Value: {{ value }}</p>
   </div>
 </template>
@@ -233,9 +227,9 @@ Optionally show the maximum rating possible by also setting the prop `show-value
   export default {
     data() {
       return {
-        value: 3.555
+        value: 3.555,
       }
-    }
+    },
   }
 </script>
 
@@ -267,9 +261,9 @@ respectively.
   export default {
     data() {
       return {
-        value: null
+        value: null,
       }
-    }
+    },
   }
 </script>
 
@@ -318,9 +312,9 @@ form-control border, simply set the `no-border` prop to `true`.
   export default {
     data() {
       return {
-        value: null
+        value: null,
       }
-    }
+    },
   }
 </script>
 
@@ -388,9 +382,9 @@ clear icon is clicked.
   export default {
     data() {
       return {
-        value: 2.5
+        value: 2.5,
       }
-    }
+    },
   }
 </script>
 
@@ -460,9 +454,9 @@ The following is an example of placing `<b-form-rating>` in an input group:
   export default {
     data() {
       return {
-        value: null
+        value: null,
       }
-    }
+    },
   }
 </script>
 
@@ -494,11 +488,11 @@ optional displayed value and the left-to-right or right-to-left orientation of t
         locales: [
           { text: 'English US (en-US)', value: 'en-US' },
           { text: 'French (fr)', value: 'fr' },
-          { text: 'Persian (fa)', value: 'fa'},
-          { text: 'Arabic Egyptian (ar-EG)', value: 'ar-EG' }
-        ]
+          { text: 'Persian (fa)', value: 'fa' },
+          { text: 'Arabic Egyptian (ar-EG)', value: 'ar-EG' },
+        ],
       }
-    }
+    },
   }
 </script>
 

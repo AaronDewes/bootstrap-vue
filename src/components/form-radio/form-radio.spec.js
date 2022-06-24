@@ -9,11 +9,11 @@ describe('form-radio', () => {
     const wrapper = mount(BFormRadio, {
       propsData: {
         checked: '',
-        value: 'a'
+        value: 'a',
       },
       slots: {
-        default: 'foobar'
-      }
+        default: 'foobar',
+      },
     })
     expect(wrapper).toBeDefined()
     expect(wrapper.element.tagName).toBe('DIV')
@@ -29,11 +29,11 @@ describe('form-radio', () => {
     const wrapper = mount(BFormRadio, {
       propsData: {
         checked: '',
-        value: 'a'
+        value: 'a',
       },
       slots: {
-        default: 'foobar'
-      }
+        default: 'foobar',
+      },
     })
     expect(wrapper.classes().length).toEqual(2)
     expect(wrapper.classes()).toContain('custom-control')
@@ -46,11 +46,11 @@ describe('form-radio', () => {
     const wrapper = mount(BFormRadio, {
       propsData: {
         checked: '',
-        value: 'a'
+        value: 'a',
       },
       slots: {
-        default: 'foobar'
-      }
+        default: 'foobar',
+      },
     })
     const input = wrapper.find('input')
     expect(input.attributes('type')).toBeDefined()
@@ -63,11 +63,11 @@ describe('form-radio', () => {
     const wrapper = mount(BFormRadio, {
       propsData: {
         checked: '',
-        value: 'a'
+        value: 'a',
       },
       slots: {
-        default: 'foobar'
-      }
+        default: 'foobar',
+      },
     })
     const input = wrapper.find('input')
     expect(input.classes().length).toEqual(1)
@@ -80,11 +80,11 @@ describe('form-radio', () => {
     const wrapper = mount(BFormRadio, {
       propsData: {
         checked: '',
-        value: 'a'
+        value: 'a',
       },
       slots: {
-        default: 'foobar'
-      }
+        default: 'foobar',
+      },
     })
     const input = wrapper.find('label')
     expect(input.classes().length).toEqual(1)
@@ -97,11 +97,11 @@ describe('form-radio', () => {
     const wrapper = mount(BFormRadio, {
       propsData: {
         checked: '',
-        value: 'a'
+        value: 'a',
       },
       slots: {
-        default: 'foobar'
-      }
+        default: 'foobar',
+      },
     })
     const label = wrapper.find('label')
     expect(label.text()).toEqual('foobar')
@@ -113,11 +113,11 @@ describe('form-radio', () => {
     const wrapper = mount(BFormRadio, {
       propsData: {
         checked: '',
-        value: 'a'
+        value: 'a',
       },
       slots: {
-        default: 'foobar'
-      }
+        default: 'foobar',
+      },
     })
     const input = wrapper.find('input')
     expect(input.attributes('disabled')).toBeUndefined()
@@ -130,11 +130,11 @@ describe('form-radio', () => {
       propsData: {
         checked: '',
         value: 'a',
-        disabled: true
+        disabled: true,
       },
       slots: {
-        default: 'foobar'
-      }
+        default: 'foobar',
+      },
     })
     const input = wrapper.find('input')
     expect(input.attributes('disabled')).toBeDefined()
@@ -146,11 +146,11 @@ describe('form-radio', () => {
     const wrapper = mount(BFormRadio, {
       propsData: {
         checked: '',
-        value: 'a'
+        value: 'a',
       },
       slots: {
-        default: 'foobar'
-      }
+        default: 'foobar',
+      },
     })
     const input = wrapper.find('input')
     expect(input.attributes('required')).toBeUndefined()
@@ -163,11 +163,11 @@ describe('form-radio', () => {
       propsData: {
         checked: '',
         value: 'a',
-        required: true
+        required: true,
       },
       slots: {
-        default: 'foobar'
-      }
+        default: 'foobar',
+      },
     })
     const input = wrapper.find('input')
     expect(input.attributes('required')).toBeUndefined()
@@ -181,11 +181,11 @@ describe('form-radio', () => {
         checked: '',
         value: 'a',
         name: 'test',
-        required: true
+        required: true,
       },
       slots: {
-        default: 'foobar'
-      }
+        default: 'foobar',
+      },
     })
     const input = wrapper.find('input')
     expect(input.attributes('required')).toBeDefined()
@@ -197,11 +197,11 @@ describe('form-radio', () => {
     const wrapper = mount(BFormRadio, {
       propsData: {
         checked: '',
-        value: 'a'
+        value: 'a',
       },
       slots: {
-        default: 'foobar'
-      }
+        default: 'foobar',
+      },
     })
     const input = wrapper.find('input')
     expect(input.attributes('name')).toBeUndefined()
@@ -214,11 +214,11 @@ describe('form-radio', () => {
       propsData: {
         checked: '',
         value: 'a',
-        name: 'test'
+        name: 'test',
       },
       slots: {
-        default: 'foobar'
-      }
+        default: 'foobar',
+      },
     })
     const input = wrapper.find('input')
     expect(input.attributes('name')).toBeDefined()
@@ -231,11 +231,11 @@ describe('form-radio', () => {
     const wrapper = mount(BFormRadio, {
       propsData: {
         checked: '',
-        value: 'a'
+        value: 'a',
       },
       slots: {
-        default: 'foobar'
-      }
+        default: 'foobar',
+      },
     })
     const input = wrapper.find('input')
     expect(input.attributes('form')).toBeUndefined()
@@ -248,11 +248,11 @@ describe('form-radio', () => {
       propsData: {
         checked: '',
         value: 'a',
-        form: 'test'
+        form: 'test',
       },
       slots: {
-        default: 'foobar'
-      }
+        default: 'foobar',
+      },
     })
     const input = wrapper.find('input')
     expect(input.attributes('form')).toBeDefined()
@@ -265,8 +265,8 @@ describe('form-radio', () => {
     const wrapper = mount(BFormRadio, {
       propsData: {
         id: 'foo',
-        foo: 'bar'
-      }
+        foo: 'bar',
+      },
     })
     const input = wrapper.find('input')
     expect(input.attributes('foo')).toBeDefined()
@@ -280,11 +280,11 @@ describe('form-radio', () => {
       propsData: {
         checked: '',
         value: 'a',
-        inline: true
+        inline: true,
       },
       slots: {
-        default: 'foobar'
-      }
+        default: 'foobar',
+      },
     })
     expect(wrapper.classes().length).toEqual(3)
     expect(wrapper.classes()).toContain('custom-radio')
@@ -298,11 +298,11 @@ describe('form-radio', () => {
     const wrapper = mount(BFormRadio, {
       propsData: {
         checked: '',
-        value: 'a'
+        value: 'a',
       },
       slots: {
-        default: 'foobar'
-      }
+        default: 'foobar',
+      },
     })
     const input = wrapper.find('input')
     expect(input).toBeDefined()
@@ -317,11 +317,11 @@ describe('form-radio', () => {
       propsData: {
         state: null,
         checked: '',
-        value: 'a'
+        value: 'a',
       },
       slots: {
-        default: 'foobar'
-      }
+        default: 'foobar',
+      },
     })
     const input = wrapper.find('input')
     expect(input).toBeDefined()
@@ -336,11 +336,11 @@ describe('form-radio', () => {
       propsData: {
         state: true,
         checked: '',
-        value: 'a'
+        value: 'a',
       },
       slots: {
-        default: 'foobar'
-      }
+        default: 'foobar',
+      },
     })
     const input = wrapper.find('input')
     expect(input).toBeDefined()
@@ -355,11 +355,11 @@ describe('form-radio', () => {
       propsData: {
         state: false,
         checked: '',
-        value: 'a'
+        value: 'a',
       },
       slots: {
-        default: 'foobar'
-      }
+        default: 'foobar',
+      },
     })
     const input = wrapper.find('input')
     expect(input).toBeDefined()
@@ -376,11 +376,11 @@ describe('form-radio', () => {
       propsData: {
         plain: true,
         checked: '',
-        value: 'a'
+        value: 'a',
       },
       slots: {
-        default: 'foobar'
-      }
+        default: 'foobar',
+      },
     })
     expect(wrapper).toBeDefined()
     expect(wrapper.element.tagName).toBe('DIV')
@@ -397,11 +397,11 @@ describe('form-radio', () => {
       propsData: {
         plain: true,
         checked: '',
-        value: 'a'
+        value: 'a',
       },
       slots: {
-        default: 'foobar'
-      }
+        default: 'foobar',
+      },
     })
     expect(wrapper.classes().length).toEqual(1)
     expect(wrapper.classes()).toContain('form-check')
@@ -414,11 +414,11 @@ describe('form-radio', () => {
       propsData: {
         plain: true,
         checked: '',
-        value: 'a'
+        value: 'a',
       },
       slots: {
-        default: 'foobar'
-      }
+        default: 'foobar',
+      },
     })
     const input = wrapper.find('input')
     expect(input.attributes('type')).toBeDefined()
@@ -432,11 +432,11 @@ describe('form-radio', () => {
       propsData: {
         plain: true,
         checked: '',
-        value: 'a'
+        value: 'a',
       },
       slots: {
-        default: 'foobar'
-      }
+        default: 'foobar',
+      },
     })
     const input = wrapper.find('input')
     expect(input.classes().length).toEqual(1)
@@ -450,11 +450,11 @@ describe('form-radio', () => {
       propsData: {
         plain: true,
         checked: '',
-        value: 'a'
+        value: 'a',
       },
       slots: {
-        default: 'foobar'
-      }
+        default: 'foobar',
+      },
     })
     const input = wrapper.find('label')
     expect(input.classes().length).toEqual(1)
@@ -468,11 +468,11 @@ describe('form-radio', () => {
       propsData: {
         plain: true,
         checked: '',
-        value: 'a'
+        value: 'a',
       },
       slots: {
-        default: 'foobar'
-      }
+        default: 'foobar',
+      },
     })
     const label = wrapper.find('label')
     expect(label.text()).toEqual('foobar')
@@ -485,11 +485,11 @@ describe('form-radio', () => {
       propsData: {
         plain: true,
         checked: '',
-        value: 'a'
+        value: 'a',
       },
       slots: {
-        default: 'foobar'
-      }
+        default: 'foobar',
+      },
     })
     const input = wrapper.find('input')
     expect(input).toBeDefined()
@@ -505,11 +505,11 @@ describe('form-radio', () => {
         state: null,
         plain: true,
         checked: '',
-        value: 'a'
+        value: 'a',
       },
       slots: {
-        default: 'foobar'
-      }
+        default: 'foobar',
+      },
     })
     const input = wrapper.find('input')
     expect(input).toBeDefined()
@@ -525,11 +525,11 @@ describe('form-radio', () => {
         state: true,
         plain: true,
         checked: '',
-        value: 'a'
+        value: 'a',
       },
       slots: {
-        default: 'foobar'
-      }
+        default: 'foobar',
+      },
     })
     const input = wrapper.find('input')
     expect(input).toBeDefined()
@@ -545,11 +545,11 @@ describe('form-radio', () => {
         state: false,
         plain: true,
         checked: '',
-        value: 'a'
+        value: 'a',
       },
       slots: {
-        default: 'foobar'
-      }
+        default: 'foobar',
+      },
     })
     const input = wrapper.find('input')
     expect(input).toBeDefined()
@@ -566,11 +566,11 @@ describe('form-radio', () => {
       propsData: {
         button: true,
         checked: '',
-        value: 'a'
+        value: 'a',
       },
       slots: {
-        default: 'foobar'
-      }
+        default: 'foobar',
+      },
     })
     expect(wrapper).toBeDefined()
     expect(wrapper.element.tagName).toBe('DIV')
@@ -589,11 +589,11 @@ describe('form-radio', () => {
       propsData: {
         button: true,
         checked: '',
-        value: 'a'
+        value: 'a',
       },
       slots: {
-        default: 'foobar'
-      }
+        default: 'foobar',
+      },
     })
     expect(wrapper.classes().length).toEqual(2)
     expect(wrapper.classes()).toContain('btn-group-toggle')
@@ -607,11 +607,11 @@ describe('form-radio', () => {
       propsData: {
         button: true,
         checked: '',
-        value: 'a'
+        value: 'a',
       },
       slots: {
-        default: 'foobar'
-      }
+        default: 'foobar',
+      },
     })
     const label = wrapper.find('label')
     expect(label).toBeDefined()
@@ -629,11 +629,11 @@ describe('form-radio', () => {
       propsData: {
         button: true,
         checked: 'a',
-        value: 'a'
+        value: 'a',
       },
       slots: {
-        default: 'foobar'
-      }
+        default: 'foobar',
+      },
     })
     const label = wrapper.find('label')
     expect(label).toBeDefined()
@@ -651,11 +651,11 @@ describe('form-radio', () => {
       propsData: {
         button: true,
         checked: '',
-        value: 'a'
+        value: 'a',
       },
       slots: {
-        default: 'foobar'
-      }
+        default: 'foobar',
+      },
     })
     const label = wrapper.find('label')
     expect(label).toBeDefined()
@@ -681,11 +681,11 @@ describe('form-radio', () => {
       propsData: {
         button: true,
         checked: '',
-        value: 'a'
+        value: 'a',
       },
       slots: {
-        default: 'foobar'
-      }
+        default: 'foobar',
+      },
     })
 
     const label = wrapper.find('label')
@@ -716,11 +716,11 @@ describe('form-radio', () => {
         button: true,
         buttonVariant: 'primary',
         checked: '',
-        value: 'a'
+        value: 'a',
       },
       slots: {
-        default: 'foobar'
-      }
+        default: 'foobar',
+      },
     })
     const label = wrapper.find('label')
     expect(label).toBeDefined()
@@ -740,11 +740,11 @@ describe('form-radio', () => {
     const wrapper = mount(BFormRadio, {
       propsData: {
         checked: '',
-        value: 'a'
+        value: 'a',
       },
       slots: {
-        default: 'foobar'
-      }
+        default: 'foobar',
+      },
     })
     expect(wrapper.vm).toBeDefined()
     expect(wrapper.vm.localChecked).toBeDefined()
@@ -757,11 +757,11 @@ describe('form-radio', () => {
     const wrapper = mount(BFormRadio, {
       propsData: {
         value: 'bar',
-        checked: 'bar'
+        checked: 'bar',
       },
       slots: {
-        default: 'foobar'
-      }
+        default: 'foobar',
+      },
     })
     expect(wrapper.vm).toBeDefined()
     expect(wrapper.vm.localChecked).toBeDefined()
@@ -774,17 +774,17 @@ describe('form-radio', () => {
     const wrapper = mount(BFormRadio, {
       propsData: {
         checked: '',
-        value: 'bar'
+        value: 'bar',
       },
       slots: {
-        default: 'foobar'
-      }
+        default: 'foobar',
+      },
     })
     expect(wrapper.vm).toBeDefined()
     expect(wrapper.vm.localChecked).toBeDefined()
     expect(wrapper.vm.localChecked).toBe('')
     await wrapper.setProps({
-      checked: 'bar'
+      checked: 'bar',
     })
     expect(wrapper.vm.localChecked).toEqual('bar')
     expect(wrapper.emitted('input')).toBeDefined()
@@ -800,11 +800,11 @@ describe('form-radio', () => {
       attachTo: document.body,
       propsData: {
         checked: '',
-        value: 'bar'
+        value: 'bar',
       },
       slots: {
-        default: 'foobar'
-      }
+        default: 'foobar',
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -828,11 +828,11 @@ describe('form-radio', () => {
       attachTo: document.body,
       propsData: {
         value: { bar: 1, baz: 2 },
-        checked: ''
+        checked: '',
       },
       slots: {
-        default: 'foobar'
-      }
+        default: 'foobar',
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -852,11 +852,11 @@ describe('form-radio', () => {
     const wrapper = mount(BFormRadio, {
       attachTo: document.body,
       propsData: {
-        checked: false
+        checked: false,
       },
       slots: {
-        default: 'foobar'
-      }
+        default: 'foobar',
+      },
     })
     expect(wrapper.vm).toBeDefined()
 
@@ -895,7 +895,7 @@ describe('form-radio', () => {
         top: 0,
         left: 0,
         bottom: 0,
-        right: 0
+        right: 0,
       }))
     })
 
@@ -909,11 +909,11 @@ describe('form-radio', () => {
         attachTo: document.body,
         propsData: {
           checked: false,
-          autofocus: true
+          autofocus: true,
         },
         slots: {
-          default: 'foobar'
-        }
+          default: 'foobar',
+        },
       })
       expect(wrapper.vm).toBeDefined()
       await waitNT(wrapper.vm)
@@ -931,11 +931,11 @@ describe('form-radio', () => {
       const wrapper = mount(BFormRadio, {
         attachTo: document.body,
         propsData: {
-          checked: false
+          checked: false,
         },
         slots: {
-          default: 'foobar'
-        }
+          default: 'foobar',
+        },
       })
       expect(wrapper.vm).toBeDefined()
       await waitNT(wrapper.vm)

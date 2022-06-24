@@ -9,20 +9,20 @@ export const makeModelMixin = (
     type = PROP_TYPE_ANY,
     defaultValue = undefined,
     validator = undefined,
-    event = EVENT_NAME_INPUT
+    event = EVENT_NAME_INPUT,
   } = {}
 ) => {
   const props = {
-    [prop]: makeProp(type, defaultValue, validator)
+    [prop]: makeProp(type, defaultValue, validator),
   }
 
   // @vue/component
   const mixin = Vue.extend({
     model: {
       prop,
-      event
+      event,
     },
-    props
+    props,
   })
 
   return { mixin, props, prop, event }

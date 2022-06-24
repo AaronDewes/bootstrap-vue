@@ -15,29 +15,29 @@ export default {
         {
           hid: 'canonical',
           rel: 'canonical',
-          href: `${BASE_URL}${this.$route.path}`
-        }
+          href: `${BASE_URL}${this.$route.path}`,
+        },
       ],
       meta: [
         // Add GWT site verification for *.bootstrap-vue.org
         {
           hid: 'google-site-verification-bv-org',
           name: 'google-site-verification',
-          content: GWT_BV_ORG
+          content: GWT_BV_ORG,
         },
         // Add GWT site verification for bootstrap-vue.js.org (legacy)
         {
           hid: 'google-site-verification-js-org',
           name: 'google-site-verification',
-          content: GWT_JS_ORG
+          content: GWT_JS_ORG,
         },
         // Add GWT site verification for bootstrap-vue.netlify.app (legacy)
         {
           hid: 'google-site-verification-netlify',
           name: 'google-site-verification',
-          content: GWT_BV_NETLIFY
-        }
-      ]
+          content: GWT_BV_NETLIFY,
+        },
+      ],
     }
-  }
+  },
 }

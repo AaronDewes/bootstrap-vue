@@ -6,7 +6,7 @@ import { makeProp, makePropsConfigurable } from '../utils/props'
 
 export const props = makePropsConfigurable(
   {
-    plain: makeProp(PROP_TYPE_BOOLEAN, false)
+    plain: makeProp(PROP_TYPE_BOOLEAN, false),
   },
   'formControls'
 )
@@ -19,6 +19,6 @@ export const formCustomMixin = Vue.extend({
   computed: {
     custom() {
       return !this.plain
-    }
-  }
+    },
+  },
 })

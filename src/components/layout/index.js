@@ -9,8 +9,8 @@ const LayoutPlugin = /*#__PURE__*/ pluginFactory({
     BContainer,
     BRow,
     BCol,
-    BFormRow
-  }
+    BFormRow,
+  },
 })
 
 export { LayoutPlugin, BContainer, BRow, BCol, BFormRow }

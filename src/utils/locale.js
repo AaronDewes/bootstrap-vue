@@ -18,16 +18,13 @@ const RTL_LANGS = [
   'te',
   'ug',
   'ur',
-  'yi'
-].map(locale => locale.toLowerCase())
+  'yi',
+].map((locale) => locale.toLowerCase())
 
 // Returns true if the locale is RTL
-export const isLocaleRTL = locale => {
+export const isLocaleRTL = (locale) => {
   // Determines if the locale is RTL (only single locale supported)
-  const parts = toString(locale)
-    .toLowerCase()
-    .replace(RX_STRIP_LOCALE_MODS, '')
-    .split('-')
+  const parts = toString(locale).toLowerCase().replace(RX_STRIP_LOCALE_MODS, '').split('-')
   const locale1 = parts.slice(0, 2).join('-')
   const locale2 = parts[0]
   return arrayIncludes(RTL_LANGS, locale1) || arrayIncludes(RTL_LANGS, locale2)

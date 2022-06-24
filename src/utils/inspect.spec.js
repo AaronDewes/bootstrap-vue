@@ -14,7 +14,7 @@ import {
   isDate,
   isEvent,
   isRegExp,
-  isPromise
+  isPromise,
 } from './inspect'
 
 describe('utils/inspect', () => {

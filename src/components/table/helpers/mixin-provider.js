@@ -4,7 +4,7 @@ import { EVENT_NAME_REFRESH, EVENT_NAME_REFRESHED } from '../../../constants/eve
 import {
   PROP_TYPE_ARRAY_FUNCTION,
   PROP_TYPE_BOOLEAN,
-  PROP_TYPE_STRING
+  PROP_TYPE_STRING,
 } from '../../../constants/props'
 import { getRootActionEventName, getRootEventName } from '../../../utils/events'
 import { isArray, isFunction, isPromise } from '../../../utils/inspect'
@@ -30,7 +30,7 @@ export const props = {
   items: makeProp(PROP_TYPE_ARRAY_FUNCTION, []),
   noProviderFiltering: makeProp(PROP_TYPE_BOOLEAN, false),
   noProviderPaging: makeProp(PROP_TYPE_BOOLEAN, false),
-  noProviderSorting: makeProp(PROP_TYPE_BOOLEAN, false)
+  noProviderSorting: makeProp(PROP_TYPE_BOOLEAN, false),
 }
 
 // --- Mixin ---
@@ -54,7 +54,7 @@ export const providerMixin = Vue.extend({
         sortBy: null,
         sortDesc: null,
         perPage: null,
-        currentPage: null
+        currentPage: null,
       }
       if (!this.noProviderFiltering) {
         // Either a string, or could be an object or array.
@@ -69,7 +69,7 @@ export const providerMixin = Vue.extend({
         ctx.currentPage = this.currentPage
       }
       return clone(ctx)
-    }
+    },
   },
   watch: {
     // Provider update triggering
@@ -84,7 +84,7 @@ export const providerMixin = Vue.extend({
       if (!looseEqual(newValue, oldValue)) {
         this.$nextTick(this._providerUpdate)
       }
-    }
+    },
   },
   mounted() {
     // Call the items provider if necessary
@@ -93,7 +93,7 @@ export const providerMixin = Vue.extend({
       this._providerUpdate()
     }
     // Listen for global messages to tell us to force refresh the table
-    this.listenOnRoot(ROOT_ACTION_EVENT_NAME_REFRESH, id => {
+    this.listenOnRoot(ROOT_ACTION_EVENT_NAME_REFRESH, (id) => {
       if (id === this.id || id === this) {
         this.refresh()
       }
@@ -154,7 +154,7 @@ export const providerMixin = Vue.extend({
           const data = this.items(this.context, this._providerSetLocal)
           if (isPromise(data)) {
             // Provider returned Promise
-            data.then(items => {
+            data.then((items) => {
               // Provider resolved with items
               this._providerSetLocal(items)
             })
@@ -183,6 +183,6 @@ export const providerMixin = Vue.extend({
           this.$off(EVENT_NAME_REFRESHED, this.refresh)
         }
       })
-    }
-  }
+    },
+  },
 })

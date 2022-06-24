@@ -11,7 +11,7 @@ import { normalizeSlotMixin } from '../../mixins/normalize-slot'
 export const props = makePropsConfigurable(
   {
     tbodyTransitionHandlers: makeProp(PROP_TYPE_OBJECT),
-    tbodyTransitionProps: makeProp(PROP_TYPE_OBJECT)
+    tbodyTransitionProps: makeProp(PROP_TYPE_OBJECT),
   },
   NAME_TBODY
 )
@@ -27,14 +27,14 @@ export const BTbody = /*#__PURE__*/ Vue.extend({
   mixins: [attrsMixin, listenersMixin, normalizeSlotMixin],
   provide() {
     return {
-      getBvTableRowGroup: () => this
+      getBvTableRowGroup: () => this,
     }
   },
   inject: {
     // Sniffed by `<b-tr>` / `<b-td>` / `<b-th>`
     getBvTable: {
-      default: /* istanbul ignore next */ () => () => ({})
-    }
+      default: /* istanbul ignore next */ () => () => ({}),
+    },
   },
   inheritAttrs: false,
   props,
@@ -82,12 +82,12 @@ export const BTbody = /*#__PURE__*/ Vue.extend({
     tbodyProps() {
       const { tbodyTransitionProps } = this
       return tbodyTransitionProps ? { ...tbodyTransitionProps, tag: 'tbody' } : {}
-    }
+    },
   },
   render(h) {
     const data = {
       props: this.tbodyProps,
-      attrs: this.tbodyAttrs
+      attrs: this.tbodyAttrs,
     }
     if (this.isTransitionGroup) {
       // We use native listeners if a transition group for any delegated events
@@ -99,5 +99,5 @@ export const BTbody = /*#__PURE__*/ Vue.extend({
     }
 
     return h(this.isTransitionGroup ? 'transition-group' : 'tbody', data, this.normalizeSlot())
-  }
+  },
 })

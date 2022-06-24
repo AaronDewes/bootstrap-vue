@@ -9,6 +9,6 @@ export const scopedStyleMixin = Vue.extend({
     scopedStyleAttrs() {
       const scopeId = getScopeId(this.bvParent)
       return scopeId ? { [scopeId]: '' } : {}
-    }
-  }
+    },
+  },
 })

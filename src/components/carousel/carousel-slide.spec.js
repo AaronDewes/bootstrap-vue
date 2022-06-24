@@ -47,8 +47,8 @@ describe('carousel-slide', () => {
   it('renders default slot inside "carousel-caption"', async () => {
     const wrapper = mount(BCarouselSlide, {
       slots: {
-        default: 'foobar'
-      }
+        default: 'foobar',
+      },
     })
 
     expect(wrapper.find('.carousel-caption').exists()).toBe(true)
@@ -60,8 +60,8 @@ describe('carousel-slide', () => {
   it('has caption tag "h3" when prop "caption" is set', async () => {
     const wrapper = mount(BCarouselSlide, {
       propsData: {
-        caption: 'foobar'
-      }
+        caption: 'foobar',
+      },
     })
 
     const content = wrapper.find('.carousel-caption')
@@ -74,8 +74,8 @@ describe('carousel-slide', () => {
   it('has text tag "p" when prop "text" is set', async () => {
     const wrapper = mount(BCarouselSlide, {
       propsData: {
-        text: 'foobar'
-      }
+        text: 'foobar',
+      },
     })
 
     const content = wrapper.find('.carousel-caption')
@@ -88,11 +88,11 @@ describe('carousel-slide', () => {
   it('has custom content tag when prop "content-tag" is set', async () => {
     const wrapper = mount(BCarouselSlide, {
       propsData: {
-        contentTag: 'span'
+        contentTag: 'span',
       },
       slots: {
-        default: 'foobar'
-      }
+        default: 'foobar',
+      },
     })
 
     expect(wrapper.find('.carousel-caption').exists()).toBe(true)
@@ -104,11 +104,11 @@ describe('carousel-slide', () => {
   it('has display classes on "carousel-caption" when prop "content-visible-up" is set', async () => {
     const wrapper = mount(BCarouselSlide, {
       propsData: {
-        contentVisibleUp: 'lg'
+        contentVisibleUp: 'lg',
       },
       slots: {
-        default: 'foobar'
-      }
+        default: 'foobar',
+      },
     })
 
     expect(wrapper.find('.carousel-caption').exists()).toBe(true)
@@ -130,8 +130,8 @@ describe('carousel-slide', () => {
   it('has style "background" when prop "background" is set', async () => {
     const wrapper = mount(BCarouselSlide, {
       propsData: {
-        background: 'rgb(1, 2, 3)'
-      }
+        background: 'rgb(1, 2, 3)',
+      },
     })
 
     expect(wrapper.attributes('style')).toBeDefined()
@@ -145,9 +145,9 @@ describe('carousel-slide', () => {
     const wrapper = mount(BCarouselSlide, {
       provide: {
         getBvCarousel: () => ({
-          background: 'rgb(1, 2, 3)'
-        })
-      }
+          background: 'rgb(1, 2, 3)',
+        }),
+      },
     })
 
     expect(wrapper.attributes('style')).toBeDefined()
@@ -161,8 +161,8 @@ describe('carousel-slide', () => {
     const wrapper = mount(BCarouselSlide, {
       propsData: {
         captionTag: 'h1',
-        caption: 'foobar'
-      }
+        caption: 'foobar',
+      },
     })
 
     const content = wrapper.find('.carousel-caption')
@@ -176,8 +176,8 @@ describe('carousel-slide', () => {
     const wrapper = mount(BCarouselSlide, {
       propsData: {
         textTag: 'span',
-        text: 'foobar'
-      }
+        text: 'foobar',
+      },
     })
 
     const content = wrapper.find('.carousel-caption')
@@ -190,8 +190,8 @@ describe('carousel-slide', () => {
   it('has image when prop "img-src" is set', async () => {
     const wrapper = mount(BCarouselSlide, {
       propsData: {
-        imgSrc: 'https://picsum.photos/1024/480/?image=52'
-      }
+        imgSrc: 'https://picsum.photos/1024/480/?image=52',
+      },
     })
 
     expect(wrapper.find('img').exists()).toBe(true)
@@ -204,8 +204,8 @@ describe('carousel-slide', () => {
   it('has image when prop "img-blank" is set', async () => {
     const wrapper = mount(BCarouselSlide, {
       propsData: {
-        imgBlank: true
-      }
+        imgBlank: true,
+      },
     })
 
     expect(wrapper.find('img').exists()).toBe(true)
@@ -219,8 +219,8 @@ describe('carousel-slide', () => {
     const wrapper = mount(BCarouselSlide, {
       propsData: {
         imgSrc: 'https://picsum.photos/1024/480/?image=52',
-        imgAlt: 'foobar'
-      }
+        imgAlt: 'foobar',
+      },
     })
 
     expect(wrapper.find('img').exists()).toBe(true)
@@ -236,8 +236,8 @@ describe('carousel-slide', () => {
       propsData: {
         imgSrc: 'https://picsum.photos/1024/480/?image=52',
         imgWidth: '1024',
-        imgHeight: '480'
-      }
+        imgHeight: '480',
+      },
     })
 
     expect(wrapper.find('img').exists()).toBe(true)
@@ -256,12 +256,12 @@ describe('carousel-slide', () => {
         // Mock carousel injection
         getBvCarousel: () => ({
           imgWidth: '1024',
-          imgHeight: '480'
-        })
+          imgHeight: '480',
+        }),
       },
       propsData: {
-        imgSrc: 'https://picsum.photos/1024/480/?image=52'
-      }
+        imgSrc: 'https://picsum.photos/1024/480/?image=52',
+      },
     })
 
     expect(wrapper.find('img').exists()).toBe(true)

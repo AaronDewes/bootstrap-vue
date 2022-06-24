@@ -10,7 +10,10 @@ export default {
   name: 'BVBreadcrumbs',
   computed: {
     items() {
-      const items = [{ text: 'Home', to: '/' }, { text: 'Docs', to: '/docs' }]
+      const items = [
+        { text: 'Home', to: '/' },
+        { text: 'Docs', to: '/docs' },
+      ]
 
       const section = this.$route.name.split('-')[1] || ''
       if (section) {
@@ -18,7 +21,7 @@ export default {
 
         items.push({
           text: sectionMeta.title || section,
-          to: ['/docs', section].join('/')
+          to: ['/docs', section].join('/'),
         })
 
         const slug = this.$route.params.slug || ''
@@ -27,20 +30,20 @@ export default {
 
           items.push({
             text: (pagesMeta[slug] || {}).title || slug,
-            to: ['/docs', section, slug].join('/')
+            to: ['/docs', section, slug].join('/'),
           })
         }
       }
 
       return items
-    }
+    },
   },
   render(h) {
     return h('nav', { attrs: { 'aria-label': 'Breadcrumbs' } }, [
       h('b-breadcrumb', {
         staticClass: 'd-inline-flex my-0 px-2 py-1 bg-transparent',
-        props: { items: this.items }
-      })
+        props: { items: this.items },
+      }),
     ])
-  }
+  },
 }

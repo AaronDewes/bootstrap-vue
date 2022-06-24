@@ -26,7 +26,7 @@ const externalExcludes = ['@popperjs/core', 'portal-vue', 'vue-functional-data-m
 const baseConfig = {
   input: path.resolve(src, 'index.js'),
   external: externals,
-  plugins: [resolve({ external: ['vue'] }), commonjs(), babel({ exclude: 'node_modules/**' })]
+  plugins: [resolve({ external: ['vue'] }), commonjs(), babel({ exclude: 'node_modules/**' })],
 }
 
 // Ensure dist directory exists
@@ -40,7 +40,7 @@ export default [
     ...baseConfig,
     // We use a specific input for the browser build
     input: path.resolve(src, 'browser.js'),
-    external: externals.filter(dep => !externalExcludes.includes(dep)),
+    external: externals.filter((dep) => !externalExcludes.includes(dep)),
     output: {
       format: 'umd',
       name: camelCase(name),
@@ -48,9 +48,9 @@ export default [
       banner: bannerComment,
       sourcemap: true,
       globals: {
-        vue: 'Vue'
-      }
-    }
+        vue: 'Vue',
+      },
+    },
   },
 
   // UMD Icons only Browser Build
@@ -58,7 +58,7 @@ export default [
     ...baseConfig,
     // We use a specific input for the browser build
     input: path.resolve(src, 'browser-icons.js'),
-    external: externals.filter(dep => !externalExcludes.includes(dep)),
+    external: externals.filter((dep) => !externalExcludes.includes(dep)),
     output: {
       format: 'umd',
       name: camelCase(`${name}-icons`),
@@ -66,9 +66,9 @@ export default [
       banner: bannerIconsComment,
       sourcemap: true,
       globals: {
-        vue: 'Vue'
-      }
-    }
+        vue: 'Vue',
+      },
+    },
   },
 
   // COMMONJS Module Build
@@ -82,8 +82,8 @@ export default [
       sourcemap: true,
       // Disable warning about mixed named/default exports
       // We we have handled this in the index file
-      exports: 'named'
-    }
+      exports: 'named',
+    },
   },
 
   // COMMONJS Icons only Module Build
@@ -98,8 +98,8 @@ export default [
       sourcemap: true,
       // Disable warning about mixed named/default exports
       // We we have handled this in the index file
-      exports: 'named'
-    }
+      exports: 'named',
+    },
   },
 
   // ESM Module Bundle Build
@@ -109,8 +109,8 @@ export default [
       format: 'es',
       file: path.resolve(dist, `${name}.esm.js`),
       banner: bannerComment,
-      sourcemap: true
-    }
+      sourcemap: true,
+    },
   },
 
   // ESM Icons only Module Bundle Build
@@ -121,7 +121,7 @@ export default [
       format: 'es',
       file: path.resolve(dist, `${name}-icons.esm.js`),
       banner: bannerComment,
-      sourcemap: true
-    }
-  }
+      sourcemap: true,
+    },
+  },
 ]

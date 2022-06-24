@@ -67,7 +67,10 @@
       <anchored-heading :id="`comp-ref-${componentName}-aliases`" level="4" class="mb-3">
         Component aliases
       </anchored-heading>
-      <p><code class="notranslate" translate="no">{{ tag }}</code> can also be used via the following aliases:</p>
+      <p>
+        <code class="notranslate" translate="no">{{ tag }}</code> can also be used via the following
+        aliases:
+      </p>
       <ul>
         <li v-for="alias in aliases" :key="alias">
           <code class="notranslate" translate="no">&lt;{{ kebabCase(alias) }}&gt;</code>
@@ -75,8 +78,8 @@
       </ul>
       <div class="alert alert-info">
         <p class="mb-0 small">
-          Note: component aliases are only available when importing all of BootstrapVue or using
-          the component group plugin.
+          Note: component aliases are only available when importing all of BootstrapVue or using the
+          component group plugin.
         </p>
       </div>
     </article>
@@ -87,7 +90,8 @@
       </anchored-heading>
 
       <p>
-        All property default values are <b-link href="/docs/reference/settings">globally configurable</b-link>.
+        All property default values are
+        <b-link href="/docs/reference/settings">globally configurable</b-link>.
       </p>
 
       <b-table
@@ -101,7 +105,8 @@
         striped
       >
         <template #cell(prop)="{ value, item }">
-          <code class="text-nowrap notranslate" translate="no">{{ value }}</code><br>
+          <code class="text-nowrap notranslate" translate="no">{{ value }}</code
+          ><br />
           <b-badge v-if="item.required" variant="info">Required</b-badge>
           <b-badge v-if="item.version" variant="secondary">v{{ item.version }}+</b-badge>
           <b-badge v-if="item.isVModel" variant="primary">v-model</b-badge>
@@ -128,21 +133,32 @@
         <p class="mb-0 small">
           <code class="notranslate" translate="no">{{ tag }}</code> supports generating
           <code class="notranslate" translate="no">&lt;router-link&gt;</code> or
-          <code class="notranslate" translate="no">&lt;nuxt-link&gt;</code> component (if using Nuxt.js).
-          For more details on the router link (or nuxt link) specific props, see the
+          <code class="notranslate" translate="no">&lt;nuxt-link&gt;</code> component (if using
+          Nuxt.js). For more details on the router link (or nuxt link) specific props, see the
           <b-link to="/docs/reference/router-links" class="alert-link">Router support</b-link>
           reference section.
         </p>
       </div>
       <div v-if="hasHtmlProps" class="alert alert-warning">
         <p class="mb-0 small">
-          <strong>Caution:</strong> Props that support HTML strings
-          (<code class="notranslate" translate="no">*-html</code>) can be vulnerable to
-          <b-link href="https://en.wikipedia.org/wiki/Cross-site_scripting" class="alert-link" target="_blank">
+          <strong>Caution:</strong> Props that support HTML strings (<code
+            class="notranslate"
+            translate="no"
+            >*-html</code
+          >) can be vulnerable to
+          <b-link
+            href="https://en.wikipedia.org/wiki/Cross-site_scripting"
+            class="alert-link"
+            target="_blank"
+          >
             Cross Site Scripting (XSS) attacks
           </b-link>
           when passed raw user supplied values. You must properly
-          <b-link href="https://en.wikipedia.org/wiki/HTML_sanitization" class="alert-link" target="_blank">
+          <b-link
+            href="https://en.wikipedia.org/wiki/HTML_sanitization"
+            class="alert-link"
+            target="_blank"
+          >
             sanitize
           </b-link>
           the user input first!
@@ -221,7 +237,9 @@
             </template>
             <template #cell(prop)="{ value, item: cellItem }">
               <code class="text-nowrap notranslate" translate="no">{{ value }}</code>
-              <b-badge v-if="cellItem.version" variant="secondary">v{{ cellItem.version }}+</b-badge>
+              <b-badge v-if="cellItem.version" variant="secondary"
+                >v{{ cellItem.version }}+</b-badge
+              >
             </template>
             <template #cell(type)="{ value }">
               <code class="text-nowrap notranslate" translate="no">{{ value || 'Any' }}</code>
@@ -320,28 +338,28 @@ export default {
     propsMeta: {
       // For getting prop descriptions
       type: Array,
-      default: () => []
+      default: () => [],
     },
     slots: {
       type: Array,
-      default: () => []
+      default: () => [],
     },
     events: {
       type: Array,
-      default: () => []
+      default: () => [],
     },
     rootEventListeners: {
       type: Array,
-      default: () => []
+      default: () => [],
     },
     aliases: {
       type: Array,
-      default: () => []
+      default: () => [],
     },
     version: {
       type: String,
-      default: null
-    }
+      default: null,
+    },
   },
   computed: {
     componentOptions() {
@@ -353,7 +371,7 @@ export default {
       let options = {}
       if (!component.options && typeof component === 'function') {
         // Async component that hans't been resolved yet
-        component(cmp => {
+        component((cmp) => {
           if (Object.prototype.toString.call(cmp) === '[object Object]') {
             options = { ...cmp }
           } else if (cmp && cmp.options) {
@@ -378,12 +396,12 @@ export default {
       return this.componentOptions.props || {}
     },
     hasRouterProps() {
-      return this.propsItems.some(p => {
+      return this.propsItems.some((p) => {
         return p.prop === 'to' || p.prop === 'split-to' || p.prop === 'exact-active-class'
       })
     },
     hasHtmlProps() {
-      return this.propsItems.some(p => p.xss)
+      return this.propsItems.some((p) => p.xss)
     },
     componentPropsMetaObj() {
       // Returns the propsMeta array in object format for easy lookups
@@ -396,12 +414,12 @@ export default {
     },
     propsFields() {
       const sortable = this.propsItems.length >= SORT_THRESHOLD
-      const hasDescriptions = this.propsItems.some(p => p.description)
+      const hasDescriptions = this.propsItems.some((p) => p.description)
       return [
         { key: 'prop', label: 'Property', sortable },
         { key: 'type', label: 'Type', sortable },
         { key: 'defaultValue', label: 'Default' },
-        ...(hasDescriptions ? [{ key: 'description', label: 'Description' }] : [])
+        ...(hasDescriptions ? [{ key: 'description', label: 'Description' }] : []),
       ]
     },
     eventsFields() {
@@ -409,7 +427,7 @@ export default {
       return [
         { key: 'event', label: 'Event', sortable },
         { key: 'args', label: 'Arguments' },
-        { key: 'description', label: 'Description' }
+        { key: 'description', label: 'Description' },
       ]
     },
     rootEventListenersFields() {
@@ -417,16 +435,16 @@ export default {
       return [
         { key: 'event', label: 'Event', sortable },
         { key: 'args', label: 'Arguments' },
-        { key: 'description', label: 'Description' }
+        { key: 'description', label: 'Description' },
       ]
     },
     slotsFields() {
       const sortable = this.slots.length >= SORT_THRESHOLD
-      const hasScopedSlots = this.slots.some(s => s.scope)
+      const hasScopedSlots = this.slots.some((s) => s.scope)
       return [
         { key: 'name', label: 'Name', sortable },
         ...(hasScopedSlots ? [{ key: 'scope', label: 'Scoped' }] : []),
-        { key: 'description', label: 'Description' }
+        { key: 'description', label: 'Description' },
       ]
     },
     propsItems() {
@@ -435,24 +453,24 @@ export default {
 
       return Object.keys(props)
         .sort()
-        .map(prop => {
+        .map((prop) => {
           const p = props[prop]
           const meta = {
             // Fallback descriptions for common props
             ...(commonProps[prop] || {}),
-            ...(propsMetaObj[prop] || {})
+            ...(propsMetaObj[prop] || {}),
           }
 
           // Describe type
           let type = p.type
           let types = []
           if (Array.isArray(type)) {
-            types = type.map(type => type.name)
+            types = type.map((type) => type.name)
           } else {
             types = type && type.name ? [type.name] : ['Any']
           }
           type = types
-            .map(type => `<code class="notranslate" translate="no">${type}</code>`)
+            .map((type) => `<code class="notranslate" translate="no">${type}</code>`)
             .join(' or ')
 
           // Default value
@@ -476,14 +494,14 @@ export default {
             isVModel: this.componentVModel && this.componentVModel.prop === prop,
             deprecated: p.deprecated || false,
             deprecation: p.deprecation || false,
-            _showDetails: typeof p.deprecated === 'string' || typeof p.deprecation === 'string'
+            _showDetails: typeof p.deprecated === 'string' || typeof p.deprecation === 'string',
           }
         })
     },
     slotsItems() {
       // We use object spread here so that `_showDetails` doesn't
       // mutate the original array objects
-      return this.slots ? this.slots.map(slot => ({ ...slot })) : []
+      return this.slots ? this.slots.map((slot) => ({ ...slot })) : []
     },
     componentName() {
       return getComponentName(this.component)
@@ -504,11 +522,11 @@ export default {
       const slug = this.$route.params.slug
       // Always point to the `.js` file (which may import a `.vue` file)
       return `${base}/${slug}/${name}.js`
-    }
+    },
   },
   methods: {
-    kebabCase
-  }
+    kebabCase,
+  },
 }
 </script>
 

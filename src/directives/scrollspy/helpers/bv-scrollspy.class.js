@@ -17,7 +17,7 @@ import {
   position,
   removeClass,
   select,
-  selectAll
+  selectAll,
 } from '../../../utils/dom'
 import { getRootEventName, eventOn, eventOff } from '../../../utils/events'
 import { identity } from '../../../utils/identity'
@@ -54,14 +54,14 @@ const Default = {
   element: 'body',
   offset: 10,
   method: 'auto',
-  throttle: 75
+  throttle: 75,
 }
 
 const DefaultType = {
   element: '(string|element|component)',
   offset: 'number',
   method: 'string',
-  throttle: 'number'
+  throttle: 'number',
 }
 
 // Transition Events
@@ -69,7 +69,7 @@ const TransitionEndEvents = [
   'webkitTransitionEnd',
   'transitionend',
   'otransitionend',
-  'oTransitionEnd'
+  'oTransitionEnd',
 ]
 
 /*
@@ -77,7 +77,7 @@ const TransitionEndEvents = [
  */
 
 // Better var type detection
-const toType = obj => /* istanbul ignore next: not easy to test */ {
+const toType = (obj) => /* istanbul ignore next: not easy to test */ {
   return objectToString(obj)
     .match(/\s([a-zA-Z]+)/)[1]
     .toLowerCase()
@@ -191,7 +191,7 @@ export class BVScrollspy /* istanbul ignore next: not easy to test */ {
     eventOn(window, 'scroll', this, EVENT_OPTIONS_NO_CAPTURE)
     eventOn(window, 'resize', this, EVENT_OPTIONS_NO_CAPTURE)
     eventOn(window, 'orientationchange', this, EVENT_OPTIONS_NO_CAPTURE)
-    TransitionEndEvents.forEach(eventName => {
+    TransitionEndEvents.forEach((eventName) => {
       eventOn(window, eventName, this, EVENT_OPTIONS_NO_CAPTURE)
     })
     this.setObservers(true)
@@ -208,7 +208,7 @@ export class BVScrollspy /* istanbul ignore next: not easy to test */ {
     eventOff(window, 'scroll', this, EVENT_OPTIONS_NO_CAPTURE)
     eventOff(window, 'resize', this, EVENT_OPTIONS_NO_CAPTURE)
     eventOff(window, 'orientationchange', this, EVENT_OPTIONS_NO_CAPTURE)
-    TransitionEndEvents.forEach(eventName => {
+    TransitionEndEvents.forEach((eventName) => {
       eventOff(window, eventName, this, EVENT_OPTIONS_NO_CAPTURE)
     })
   }
@@ -229,7 +229,7 @@ export class BVScrollspy /* istanbul ignore next: not easy to test */ {
           subtree: true,
           childList: true,
           attributes: true,
-          attributeFilter: ['href']
+          attributeFilter: ['href'],
         }
       )
       this.$scrollerObserver = observeDom(
@@ -242,7 +242,7 @@ export class BVScrollspy /* istanbul ignore next: not easy to test */ {
           childList: true,
           characterData: true,
           attributes: true,
-          attributeFilter: ['id', 'style', 'class']
+          attributeFilter: ['id', 'style', 'class'],
         }
       )
     }
@@ -295,11 +295,11 @@ export class BVScrollspy /* istanbul ignore next: not easy to test */ {
     // Find all the unique link HREFs that we will control
     selectAll(this.$selector, this.$el)
       // Get HREF value
-      .map(link => getAttr(link, 'href'))
+      .map((link) => getAttr(link, 'href'))
       // Filter out HREFs that do not match our RegExp
-      .filter(href => href && RX_HREF.test(href || ''))
+      .filter((href) => href && RX_HREF.test(href || ''))
       // Find all elements with ID that match HREF hash
-      .map(href => {
+      .map((href) => {
         // Convert HREF into an ID (including # at beginning)
         const id = href.replace(RX_HREF, '$1').trim()
         if (!id) {
@@ -310,7 +310,7 @@ export class BVScrollspy /* istanbul ignore next: not easy to test */ {
         if (el && isVisible(el)) {
           return {
             offset: toInteger(methodFn(el).top, 0) + offsetBase,
-            target: id
+            target: id,
           }
         }
         return null
@@ -414,13 +414,13 @@ export class BVScrollspy /* istanbul ignore next: not easy to test */ {
         // Split out the base selectors
         .split(',')
         // Map to a selector that matches links with HREF ending in the ID (including '#')
-        .map(selector => `${selector}[href$="${target}"]`)
+        .map((selector) => `${selector}[href$="${target}"]`)
         // Join back into a single selector string
         .join(','),
       this.$el
     )
 
-    links.forEach(link => {
+    links.forEach((link) => {
       if (hasClass(link, CLASS_NAME_DROPDOWN_ITEM)) {
         // This is a dropdown item, so find the .dropdown-toggle and set its state
         const dropdown = closest(SELECTOR_DROPDOWN, link)
@@ -463,8 +463,8 @@ export class BVScrollspy /* istanbul ignore next: not easy to test */ {
 
   clear() {
     selectAll(`${this.$selector}, ${SELECTOR_NAV_ITEMS}`, this.$el)
-      .filter(el => hasClass(el, CLASS_NAME_ACTIVE))
-      .forEach(el => this.setActiveState(el, false))
+      .filter((el) => hasClass(el, CLASS_NAME_ACTIVE))
+      .forEach((el) => this.setActiveState(el, false))
   }
 
   setActiveState(el, active) {

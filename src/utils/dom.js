@@ -16,9 +16,9 @@ const TABABLE_SELECTOR = [
   'select',
   'textarea',
   '[tabindex]',
-  '[contenteditable]'
+  '[contenteditable]',
 ]
-  .map(s => `${s}:not(:disabled):not([disabled])`)
+  .map((s) => `${s}:not(:disabled):not([disabled])`)
   .join(', ')
 
 // --- Normalization utils ---
@@ -32,7 +32,7 @@ export const matchesEl =
 /* istanbul ignore next */
 export const closestEl =
   ELEMENT_PROTO.closest ||
-  function(sel) {
+  function (sel) {
     let el = this
     do {
       // Use our "patched" matches function
@@ -55,7 +55,7 @@ export const requestAF = (
   // Fallback, but not a true polyfill
   // Only needed for Opera Mini
   /* istanbul ignore next */
-  (cb => setTimeout(cb, 16))
+  ((cb) => setTimeout(cb, 16))
 ).bind(WINDOW)
 
 export const MutationObs =
@@ -64,25 +64,25 @@ export const MutationObs =
 // --- Utils ---
 
 // Remove a node from DOM
-export const removeNode = el => el && el.parentNode && el.parentNode.removeChild(el)
+export const removeNode = (el) => el && el.parentNode && el.parentNode.removeChild(el)
 
 // Determine if an element is an HTML element
-export const isElement = el => !!(el && el.nodeType === Node.ELEMENT_NODE)
+export const isElement = (el) => !!(el && el.nodeType === Node.ELEMENT_NODE)
 
 // Get the currently active HTML element
 export const getActiveElement = (excludes = []) => {
   const { activeElement } = DOCUMENT
-  return activeElement && !excludes.some(el => el === activeElement) ? activeElement : null
+  return activeElement && !excludes.some((el) => el === activeElement) ? activeElement : null
 }
 
 // Returns `true` if a tag's name equals `name`
 export const isTag = (tag, name) => toString(tag).toLowerCase() === toString(name).toLowerCase()
 
 // Determine if an HTML element is the currently active element
-export const isActiveElement = el => isElement(el) && el === getActiveElement()
+export const isActiveElement = (el) => isElement(el) && el === getActiveElement()
 
 // Determine if an HTML element is visible - Faster than CSS check
-export const isVisible = el => {
+export const isVisible = (el) => {
   if (!isElement(el) || !el.parentNode || !contains(DOCUMENT.body, el)) {
     // Note this can fail for shadow dom elements since they
     // are not a direct descendant of document.body
@@ -101,11 +101,11 @@ export const isVisible = el => {
 }
 
 // Determine if an element is disabled
-export const isDisabled = el =>
+export const isDisabled = (el) =>
   !isElement(el) || el.disabled || hasAttr(el, 'disabled') || hasClass(el, 'disabled')
 
 // Cause/wait-for an element to reflow its content (adjusting its height/width)
-export const reflow = el => {
+export const reflow = (el) => {
   // Requesting an elements offsetHight will trigger a reflow of the element content
   /* istanbul ignore next: reflow doesn't happen in JSDOM */
   return isElement(el) && el.offsetHeight
@@ -140,7 +140,7 @@ export const contains = (parent, child) =>
   parent && isFunction(parent.contains) ? parent.contains(child) : false
 
 // Get an element given an ID
-export const getById = id => DOCUMENT.getElementById(/^#/.test(id) ? id.slice(1) : id) || null
+export const getById = (id) => DOCUMENT.getElementById(/^#/.test(id) ? id.slice(1) : id) || null
 
 // Add a class to an element
 export const addClass = (el, className) => {
@@ -216,11 +216,11 @@ export const getStyle = (el, prop) => (prop && isElement(el) ? el.style[prop] ||
 // Return the Bounding Client Rect of an element
 // Returns `null` if not an element
 /* istanbul ignore next: getBoundingClientRect() doesn't work in JSDOM */
-export const getBCR = el => (isElement(el) ? el.getBoundingClientRect() : null)
+export const getBCR = (el) => (isElement(el) ? el.getBoundingClientRect() : null)
 
 // Get computed style object for an element
 /* istanbul ignore next: getComputedStyle() doesn't work in JSDOM */
-export const getCS = el => {
+export const getCS = (el) => {
   const { getComputedStyle } = WINDOW
   return getComputedStyle && isElement(el) ? getComputedStyle(el) : {}
 }
@@ -235,7 +235,9 @@ export const getSel = () => {
 
 // Return an element's offset with respect to document element
 // https://j11y.io/jquery/#v=git&fn=jQuery.fn.offset
-export const offset = el => /* istanbul ignore next: getBoundingClientRect(), getClientRects() doesn't work in JSDOM */ {
+export const offset = (
+  el
+) => /* istanbul ignore next: getBoundingClientRect(), getClientRects() doesn't work in JSDOM */ {
   const _offset = { top: 0, left: 0 }
   if (!isElement(el) || el.getClientRects().length === 0) {
     return _offset
@@ -251,7 +253,9 @@ export const offset = el => /* istanbul ignore next: getBoundingClientRect(), ge
 
 // Return an element's offset with respect to to its offsetParent
 // https://j11y.io/jquery/#v=git&fn=jQuery.fn.position
-export const position = el => /* istanbul ignore next: getBoundingClientRect() doesn't work in JSDOM */ {
+export const position = (
+  el
+) => /* istanbul ignore next: getBoundingClientRect() doesn't work in JSDOM */ {
   let _offset = { top: 0, left: 0 }
   if (!isElement(el)) {
     return _offset
@@ -280,7 +284,7 @@ export const position = el => /* istanbul ignore next: getBoundingClientRect() d
   }
   return {
     top: _offset.top - parentOffset.top - toFloat(elStyles.marginTop, 0),
-    left: _offset.left - parentOffset.left - toFloat(elStyles.marginLeft, 0)
+    left: _offset.left - parentOffset.left - toFloat(elStyles.marginLeft, 0),
   }
 }
 
@@ -289,7 +293,7 @@ export const position = el => /* istanbul ignore next: getBoundingClientRect() d
 export const getTabables = (rootEl = document) =>
   selectAll(TABABLE_SELECTOR, rootEl)
     .filter(isVisible)
-    .filter(el => el.tabIndex > -1 && !el.disabled)
+    .filter((el) => el.tabIndex > -1 && !el.disabled)
 
 // Attempt to focus an element, and return `true` if successful
 export const attemptFocus = (el, options = {}) => {
@@ -300,7 +304,7 @@ export const attemptFocus = (el, options = {}) => {
 }
 
 // Attempt to blur an element, and return `true` if successful
-export const attemptBlur = el => {
+export const attemptBlur = (el) => {
   try {
     el.blur()
   } catch {}

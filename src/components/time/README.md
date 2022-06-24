@@ -32,14 +32,14 @@ If you need a time picker as a custom form control input, use the
     data() {
       return {
         value: '',
-        context: null
+        context: null,
       }
     },
     methods: {
       onContext(ctx) {
         this.context = ctx
-      }
-    }
+      },
+    },
   }
 </script>
 
@@ -62,10 +62,7 @@ Setting the `disabled` prop will remove all interactivity of the `<b-time>` comp
 ```html
 <template>
   <div>
-    <b-form-group
-      label="Select time interactive state"
-      v-slot="{ ariaDescribedby }"
-    >
+    <b-form-group label="Select time interactive state" v-slot="{ ariaDescribedby }">
       <b-form-radio-group
         v-model="state"
         :aria-describedby="ariaDescribedby"
@@ -77,11 +74,7 @@ Setting the `disabled` prop will remove all interactivity of the `<b-time>` comp
       </b-form-radio-group>
     </b-form-group>
 
-    <b-time
-      id="ex-disabled-readonly"
-      :disabled="disabled"
-      :readonly="readonly"
-    ></b-time>
+    <b-time id="ex-disabled-readonly" :disabled="disabled" :readonly="readonly"></b-time>
   </div>
 </template>
 
@@ -89,7 +82,7 @@ Setting the `disabled` prop will remove all interactivity of the `<b-time>` comp
   export default {
     data() {
       return {
-        state: 'disabled'
+        state: 'disabled',
       }
     },
     computed: {
@@ -98,8 +91,8 @@ Setting the `disabled` prop will remove all interactivity of the `<b-time>` comp
       },
       readonly() {
         return this.state === 'readonly'
-      }
-    }
+      },
+    },
   }
 </script>
 
@@ -125,9 +118,9 @@ string set to `00`.
   export default {
     data() {
       return {
-        value: ''
+        value: '',
       }
-    }
+    },
   }
 </script>
 
@@ -164,20 +157,10 @@ can be used to add buttons such as Now or Reset, etc.
 <template>
   <b-time v-model="value" show-seconds locale="en">
     <div class="d-flex" dir="ltr">
-      <b-button
-        size="sm"
-        variant="outline-danger"
-        v-if="value"
-        @click="clearTime"
-      >
+      <b-button size="sm" variant="outline-danger" v-if="value" @click="clearTime">
         Clear time
       </b-button>
-      <b-button
-        size="sm"
-        variant="outline-primary"
-        class="ms-auto"
-        @click="setNow"
-      >
+      <b-button size="sm" variant="outline-primary" class="ms-auto" @click="setNow">
         Set Now
       </b-button>
     </div>
@@ -188,7 +171,7 @@ can be used to add buttons such as Now or Reset, etc.
   export default {
     data() {
       return {
-        value: null
+        value: null,
       }
     },
     methods: {
@@ -199,8 +182,8 @@ can be used to add buttons such as Now or Reset, etc.
       },
       clearTime() {
         this.value = ''
-      }
-    }
+      },
+    },
   }
 </script>
 
@@ -287,7 +270,7 @@ supports `Intl` and the locales you will be using. Refer to the
       <p>Value: <b>'{{ value }}'</b></p>
       <p class="mb-0">Context:</p>
       <pre class="small">{{ context }}</pre>
-   </b-col>
+    </b-col>
   </b-row>
 </template>
 
@@ -302,7 +285,7 @@ supports `Intl` and the locales you will be using. Refer to the
           { value: 'en-US', text: 'English US (en-US)' },
           { value: 'de', text: 'German (de)' },
           { value: 'ar-EG', text: 'Arabic Egyptian (ar-EG)' },
-          { value: 'zh', text: 'Chinese (zh)' }
+          { value: 'zh', text: 'Chinese (zh)' },
         ],
         labels: {
           de: {
@@ -312,7 +295,7 @@ supports `Intl` and the locales you will be using. Refer to the
             labelIncrement: 'Erhöhen',
             labelDecrement: 'Verringern',
             labelSelected: 'Ausgewählte Zeit',
-            labelNoTimeSelected: 'Keine Zeit ausgewählt'
+            labelNoTimeSelected: 'Keine Zeit ausgewählt',
           },
           'ar-EG': {
             labelHours: 'ساعات',
@@ -324,7 +307,7 @@ supports `Intl` and the locales you will be using. Refer to the
             labelIncrement: 'زيادة',
             labelDecrement: 'إنقاص',
             labelSelected: 'الوقت المحدد',
-            labelNoTimeSelected: 'لا وقت المختار'
+            labelNoTimeSelected: 'لا وقت المختار',
           },
           zh: {
             labelHours: '小时',
@@ -336,16 +319,16 @@ supports `Intl` and the locales you will be using. Refer to the
             labelIncrement: '增量',
             labelDecrement: '减量',
             labelSelected: '选定时间',
-            labelNoTimeSelected: '没有选择时间'
-          }
-        }
+            labelNoTimeSelected: '没有选择时间',
+          },
+        },
       }
     },
     methods: {
       onContext(ctx) {
         this.context = ctx
-      }
-    }
+      },
+    },
   }
 </script>
 

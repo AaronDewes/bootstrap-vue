@@ -4,7 +4,7 @@ import {
   EVENT_NAME_HIDDEN,
   EVENT_NAME_HIDE,
   HOOK_EVENT_NAME_BEFORE_DESTROY,
-  HOOK_EVENT_NAME_DESTROYED
+  HOOK_EVENT_NAME_DESTROYED,
 } from '../../../constants/events'
 import { useParentMixin } from '../../../mixins/use-parent'
 import { concat } from '../../../utils/array'
@@ -19,7 +19,7 @@ import {
   hasOwnProperty,
   keys,
   omit,
-  readonlyDescriptor
+  readonlyDescriptor,
 } from '../../../utils/object'
 import { pluginFactory } from '../../../utils/plugins'
 import { warn, warnNotClient, warnNoPromiseSupport } from '../../../utils/warn'
@@ -38,7 +38,7 @@ const PROP_NAME_PRIV = '_bv__modal'
 // We need to add it in explicitly as it comes from the `idMixin`
 const BASE_PROPS = [
   'id',
-  ...keys(omit(modalProps, ['busy', 'lazy', 'noStacking', 'static', 'visible']))
+  ...keys(omit(modalProps, ['busy', 'lazy', 'noStacking', 'static', 'visible'])),
 ]
 
 // Fallback event resolver (returns undefined)
@@ -49,13 +49,13 @@ const propsToSlots = {
   msgBoxContent: 'default',
   title: 'modal-title',
   okTitle: 'modal-ok',
-  cancelTitle: 'modal-cancel'
+  cancelTitle: 'modal-cancel',
 }
 
 // --- Helper methods ---
 
 // Method to filter only recognized props that are not undefined
-const filterOptions = options => {
+const filterOptions = (options) => {
   return BASE_PROPS.reduce((memo, key) => {
     if (!isUndefined(options[key])) {
       memo[key] = options[key]
@@ -65,7 +65,7 @@ const filterOptions = options => {
 }
 
 // Method to install `$bvModal` VM injection
-const plugin = Vue => {
+const plugin = (Vue) => {
   // Create a private sub-component that extends BModal
   // which self-destructs after hidden
   // @vue/component
@@ -102,7 +102,7 @@ const plugin = Vue => {
       }
       // Show the `BMsgBox`
       this.show()
-    }
+    },
   })
 
   // Method to generate the on-demand modal message box
@@ -130,11 +130,11 @@ const plugin = Vue => {
         busy: false,
         visible: false,
         noStacking: false,
-        noEnforceFocus: false
-      }
+        noEnforceFocus: false,
+      },
     })
     // Convert certain props to scoped slots
-    keys(propsToSlots).forEach(prop => {
+    keys(propsToSlots).forEach((prop) => {
       if (!isUndefined(props[prop])) {
         // Can be a string, or array of VNodes.
         // Alternatively, user can use HTML version of prop to pass an HTML string.
@@ -150,7 +150,7 @@ const plugin = Vue => {
           reject(new Error('BootstrapVue MsgBox destroyed before resolve'))
         }
       })
-      msgBox.$on(EVENT_NAME_HIDE, bvModalEvent => {
+      msgBox.$on(EVENT_NAME_HIDE, (bvModalEvent) => {
         if (!bvModalEvent.defaultPrevented) {
           const result = resolver(bvModalEvent)
           // If resolver didn't cancel hide, we resolve
@@ -190,7 +190,7 @@ const plugin = Vue => {
       // Set these properties as read-only and non-enumerable
       defineProperties(this, {
         _vm: readonlyDescriptor(),
-        _root: readonlyDescriptor()
+        _root: readonlyDescriptor(),
       })
     }
 
@@ -223,7 +223,7 @@ const plugin = Vue => {
         okOnly: true,
         okDisabled: false,
         hideFooter: false,
-        msgBoxContent: message
+        msgBoxContent: message,
       }
       return makeMsgBox(this._vm, message, props, () => {
         // Always resolve to true for OK
@@ -241,9 +241,9 @@ const plugin = Vue => {
         okOnly: false,
         okDisabled: false,
         cancelDisabled: false,
-        hideFooter: false
+        hideFooter: false,
       }
-      return makeMsgBox(this._vm, message, props, bvModalEvent => {
+      return makeMsgBox(this._vm, message, props, (bvModalEvent) => {
         const trigger = bvModalEvent.trigger
         return trigger === 'ok' ? true : trigger === 'cancel' ? false : null
       })
@@ -256,7 +256,7 @@ const plugin = Vue => {
       // Because we need access to `$root` for `$emits`, and VM for parenting,
       // we have to create a fresh instance of `BvModal` for each VM
       this[PROP_NAME_PRIV] = new BvModal(this)
-    }
+    },
   })
 
   // Define our read-only `$bvModal` instance property
@@ -269,11 +269,11 @@ const plugin = Vue => {
           warn(`"${PROP_NAME}" must be accessed from a Vue instance "this" context.`, NAME_MODAL)
         }
         return this[PROP_NAME_PRIV]
-      }
+      },
     })
   }
 }
 
 export const BVModalPlugin = /*#__PURE__*/ pluginFactory({
-  plugins: { plugin }
+  plugins: { plugin },
 })

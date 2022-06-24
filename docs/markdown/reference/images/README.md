@@ -21,8 +21,8 @@ const options = {
     video: ['src', 'poster'],
     source: 'src',
     img: 'src',
-    image: 'xlink:href'
-  }
+    image: 'xlink:href',
+  },
 }
 ```
 
@@ -44,8 +44,8 @@ const options = {
     'b-card-img': 'src',
     'b-card-img-lazy': ['src', 'blank-src'],
     'b-carousel-slide': 'img-src',
-    'b-embed': 'src'
-  }
+    'b-embed': 'src',
+  },
 }
 ```
 
@@ -67,12 +67,12 @@ you need to do the following steps:
 
 ```js
 module.exports = {
-  chainWebpack: config => {
+  chainWebpack: (config) => {
     config.module
       .rule('vue')
       .use('vue-loader')
       .loader('vue-loader')
-      .tap(options => {
+      .tap((options) => {
         options.transformAssetUrls = {
           img: 'src',
           image: 'xlink:href',
@@ -83,12 +83,12 @@ module.exports = {
           'b-card-img': 'src',
           'b-card-img-lazy': ['src', 'blank-src'],
           'b-carousel-slide': 'img-src',
-          'b-embed': 'src'
+          'b-embed': 'src',
         }
 
         return options
       })
-  }
+  },
 }
 ```
 
@@ -100,7 +100,7 @@ In your `nuxt.config.js` file, add the following to your build section:
 module.exports = {
   build: {
     extend(config) {
-      const vueLoader = config.module.rules.find(rule => rule.loader === 'vue-loader')
+      const vueLoader = config.module.rules.find((rule) => rule.loader === 'vue-loader')
       vueLoader.options.transformAssetUrls = {
         video: ['src', 'poster'],
         source: 'src',
@@ -113,10 +113,10 @@ module.exports = {
         'b-card-img': 'src',
         'b-card-img-lazy': ['src', 'blank-src'],
         'b-carousel-slide': 'img-src',
-        'b-embed': 'src'
+        'b-embed': 'src',
       }
-    }
-  }
+    },
+  },
 }
 ```
 

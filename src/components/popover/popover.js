@@ -15,7 +15,7 @@ export const props = makePropsConfigurable(
     ...BTooltipProps,
     content: makeProp(PROP_TYPE_STRING),
     placement: makeProp(PROP_TYPE_STRING, 'right'),
-    triggers: makeProp(PROP_TYPE_ARRAY_STRING, EVENT_NAME_CLICK)
+    triggers: makeProp(PROP_TYPE_ARRAY_STRING, EVENT_NAME_CLICK),
   }),
   NAME_POPOVER
 )
@@ -40,7 +40,7 @@ export const BPopover = /*#__PURE__*/ Vue.extend({
       // And pass the title prop as a fallback
       this.setContent(this.normalizeSlot() || this.content)
       this.setTitle(this.normalizeSlot(SLOT_NAME_TITLE) || this.title)
-    }
-  }
+    },
+  },
   // Render function provided by BTooltip
 })

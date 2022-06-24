@@ -77,7 +77,7 @@ as well.
         if (el) {
           this.$refs.content.scrollTop = el.offsetTop
         }
-      }
+      },
     },
     data() {
       return {
@@ -90,9 +90,9 @@ as well.
           nisi sit est tempor laborum mollit labore officia laborum excepteur
           commodo non commodo dolor excepteur commodo. Ipsum fugiat ex est consectetur
           ipsum commodo tempor sunt in proident.
-        `
+        `,
       }
-    }
+    },
   }
 </script>
 
@@ -162,9 +162,9 @@ also be active. Scroll the area next to the navbar and watch the active class ch
           nisi sit est tempor laborum mollit labore officia laborum excepteur
           commodo non commodo dolor excepteur commodo. Ipsum fugiat ex est consectetur
           ipsum commodo tempor sunt in proident.
-        `
+        `,
       }
-    }
+    },
   }
 </script>
 
@@ -221,9 +221,9 @@ _local_ `href` or `to`. Scroll the area next to the list group and watch the act
           nisi sit est tempor laborum mollit labore officia laborum excepteur
           commodo non commodo dolor excepteur commodo. Ipsum fugiat ex est consectetur
           ipsum commodo tempor sunt in proident.
-        `
+        `,
       }
-    }
+    },
   }
 </script>
 
@@ -279,7 +279,7 @@ const config = {
   element: 'body',
   offset: 10,
   method: 'auto',
-  throttle: 100
+  throttle: 100,
 }
 ```
 
@@ -403,8 +403,8 @@ const app = new Vue({
   methods: {
     onActivate(target) {
       console.log('Received event: "bv::scrollspy::activate" for target ', target)
-    }
-  }
+    },
+  },
 })
 ```
 

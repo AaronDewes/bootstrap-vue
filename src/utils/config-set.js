@@ -19,7 +19,7 @@ class BvConfig {
       return
     }
     const configKeys = getOwnPropertyNames(config)
-    configKeys.forEach(key => {
+    configKeys.forEach((key) => {
       /* istanbul ignore next */
       const subConfig = config[key]
       if (key === 'breakpoints') {
@@ -27,7 +27,7 @@ class BvConfig {
         if (
           !isArray(subConfig) ||
           subConfig.length < 2 ||
-          subConfig.some(b => !isString(b) || b.length === 0)
+          subConfig.some((b) => !isString(b) || b.length === 0)
         ) {
           warn('"breakpoints" must be an array of at least 2 breakpoint names', NAME)
         } else {

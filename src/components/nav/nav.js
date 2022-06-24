@@ -5,7 +5,7 @@ import { makeProp, makePropsConfigurable } from '../../utils/props'
 
 // --- Helper methods ---
 
-const computeJustifyContent = value => {
+const computeJustifyContent = (value) => {
   value = value === 'left' ? 'start' : value === 'right' ? 'end' : value
   return `justify-content-${value}`
 }
@@ -23,7 +23,7 @@ export const props = makePropsConfigurable(
     small: makeProp(PROP_TYPE_BOOLEAN, false),
     tabs: makeProp(PROP_TYPE_BOOLEAN, false),
     tag: makeProp(PROP_TYPE_STRING, 'ul'),
-    vertical: makeProp(PROP_TYPE_BOOLEAN, false)
+    vertical: makeProp(PROP_TYPE_BOOLEAN, false),
   },
   NAME_NAV
 )
@@ -51,10 +51,10 @@ export const BNav = /*#__PURE__*/ Vue.extend({
           'nav-fill': !vertical && props.fill,
           'nav-justified': !vertical && props.justified,
           [computeJustifyContent(align)]: !vertical && align,
-          small: props.small
-        }
+          small: props.small,
+        },
       }),
       children
     )
-  }
+  },
 })

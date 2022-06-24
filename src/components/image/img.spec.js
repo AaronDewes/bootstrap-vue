@@ -16,8 +16,8 @@ describe('img', () => {
   it('has src attribute when prop src is set', async () => {
     const wrapper = mount(BImg, {
       propsData: {
-        src: '/foo/bar'
-      }
+        src: '/foo/bar',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('IMG')
@@ -34,9 +34,9 @@ describe('img', () => {
     const wrapper = mount(BImg, {
       context: {
         props: {
-          src: 'https://picsum.photos/600/300/?image=25'
-        }
-      }
+          src: 'https://picsum.photos/600/300/?image=25',
+        },
+      },
     })
 
     expect(wrapper.attributes('alt')).toBeUndefined()
@@ -50,8 +50,8 @@ describe('img', () => {
     const wrapper = mount(BImg, {
       propsData: {
         src: '/foo/bar',
-        fluid: true
-      }
+        fluid: true,
+      },
     })
 
     expect(wrapper.element.tagName).toBe('IMG')
@@ -65,8 +65,8 @@ describe('img', () => {
     const wrapper = mount(BImg, {
       propsData: {
         src: '/foo/bar',
-        fluidGrow: true
-      }
+        fluidGrow: true,
+      },
     })
 
     expect(wrapper.element.tagName).toBe('IMG')
@@ -81,8 +81,8 @@ describe('img', () => {
     const wrapper = mount(BImg, {
       propsData: {
         src: '/foo/bar',
-        thumbnail: true
-      }
+        thumbnail: true,
+      },
     })
 
     expect(wrapper.element.tagName).toBe('IMG')
@@ -96,8 +96,8 @@ describe('img', () => {
     const wrapper = mount(BImg, {
       propsData: {
         src: '/foo/bar',
-        rounded: true
-      }
+        rounded: true,
+      },
     })
 
     expect(wrapper.element.tagName).toBe('IMG')
@@ -111,8 +111,8 @@ describe('img', () => {
     const wrapper = mount(BImg, {
       propsData: {
         src: '/foo/bar',
-        rounded: 'circle'
-      }
+        rounded: 'circle',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('IMG')
@@ -126,8 +126,8 @@ describe('img', () => {
     const wrapper = mount(BImg, {
       propsData: {
         src: '/foo/bar',
-        left: true
-      }
+        left: true,
+      },
     })
 
     expect(wrapper.element.tagName).toBe('IMG')
@@ -141,8 +141,8 @@ describe('img', () => {
     const wrapper = mount(BImg, {
       propsData: {
         src: '/foo/bar',
-        right: true
-      }
+        right: true,
+      },
     })
 
     expect(wrapper.element.tagName).toBe('IMG')
@@ -156,8 +156,8 @@ describe('img', () => {
     const wrapper = mount(BImg, {
       propsData: {
         src: '/foo/bar',
-        center: true
-      }
+        center: true,
+      },
     })
 
     expect(wrapper.element.tagName).toBe('IMG')
@@ -171,8 +171,8 @@ describe('img', () => {
   it('has data URI when blank is true', async () => {
     const wrapper = mount(BImg, {
       propsData: {
-        blank: true
-      }
+        blank: true,
+      },
     })
 
     expect(wrapper.element.tagName).toBe('IMG')
@@ -189,8 +189,8 @@ describe('img', () => {
     const wrapper = mount(BImg, {
       propsData: {
         blank: true,
-        blankColor: 'blue'
-      }
+        blankColor: 'blue',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('IMG')
@@ -207,8 +207,8 @@ describe('img', () => {
       propsData: {
         blank: true,
         width: 300,
-        height: 200
-      }
+        height: 200,
+      },
     })
 
     expect(wrapper.element.tagName).toBe('IMG')
@@ -226,8 +226,8 @@ describe('img', () => {
       propsData: {
         src: '/foo/bar',
         width: 300,
-        height: 200
-      }
+        height: 200,
+      },
     })
 
     expect(wrapper.element.tagName).toBe('IMG')
@@ -243,8 +243,8 @@ describe('img', () => {
   it('should have alt attribute when `alt` prop is empty', async () => {
     const wrapper = mount(BImg, {
       propsData: {
-        alt: ''
-      }
+        alt: '',
+      },
     })
 
     expect(wrapper.attributes('alt')).toBeDefined()

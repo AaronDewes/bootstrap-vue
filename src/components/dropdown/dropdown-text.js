@@ -10,7 +10,7 @@ export const props = makePropsConfigurable(
   {
     tag: makeProp(PROP_TYPE_STRING, 'p'),
     textClass: makeProp(PROP_TYPE_ARRAY_OBJECT_STRING),
-    variant: makeProp(PROP_TYPE_STRING)
+    variant: makeProp(PROP_TYPE_STRING),
   },
   NAME_DROPDOWN_TEXT
 )
@@ -33,10 +33,10 @@ export const BDropdownText = /*#__PURE__*/ Vue.extend({
           class: [textClass, { [`text-${variant}`]: variant }],
           props,
           attrs: data.attrs || {},
-          ref: 'text'
+          ref: 'text',
         },
         children
-      )
+      ),
     ])
-  }
+  },
 })

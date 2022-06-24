@@ -23,9 +23,9 @@ describe('card-footer', () => {
     const wrapper = mount(BCardFooter, {
       context: {
         props: {
-          footerTag: 'footer'
-        }
-      }
+          footerTag: 'footer',
+        },
+      },
     })
 
     expect(wrapper.element.tagName).toBe('FOOTER')
@@ -37,8 +37,8 @@ describe('card-footer', () => {
   it('has class bg-info when prop footerBgVariant=info', async () => {
     const wrapper = mount(BCardFooter, {
       context: {
-        props: { footerBgVariant: 'info' }
-      }
+        props: { footerBgVariant: 'info' },
+      },
     })
 
     expect(wrapper.classes()).toContain('card-footer')
@@ -51,8 +51,8 @@ describe('card-footer', () => {
   it('has class text-info when prop footerTextVariant=info', async () => {
     const wrapper = mount(BCardFooter, {
       context: {
-        props: { footerTextVariant: 'info' }
-      }
+        props: { footerTextVariant: 'info' },
+      },
     })
 
     expect(wrapper.classes()).toContain('card-footer')
@@ -65,8 +65,8 @@ describe('card-footer', () => {
   it('has class border-info when prop footerBorderVariant=info', async () => {
     const wrapper = mount(BCardFooter, {
       context: {
-        props: { footerBorderVariant: 'info' }
-      }
+        props: { footerBorderVariant: 'info' },
+      },
     })
 
     expect(wrapper.classes()).toContain('card-footer')
@@ -82,9 +82,9 @@ describe('card-footer', () => {
         props: {
           footerTextVariant: 'info',
           footerBgVariant: 'danger',
-          footerBorderVariant: 'dark'
-        }
-      }
+          footerBorderVariant: 'dark',
+        },
+      },
     })
 
     expect(wrapper.classes()).toContain('card-footer')

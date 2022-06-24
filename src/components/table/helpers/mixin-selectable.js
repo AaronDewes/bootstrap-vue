@@ -3,7 +3,7 @@ import {
   EVENT_NAME_CONTEXT_CHANGED,
   EVENT_NAME_FILTERED,
   EVENT_NAME_ROW_CLICKED,
-  EVENT_NAME_ROW_SELECTED
+  EVENT_NAME_ROW_SELECTED,
 } from '../../../constants/events'
 import { PROP_TYPE_BOOLEAN, PROP_TYPE_STRING } from '../../../constants/props'
 import { arrayIncludes, createArray } from '../../../utils/array'
@@ -26,11 +26,11 @@ const ROLE_GRID = 'grid'
 export const props = {
   // Disable use of click handlers for row selection
   noSelectOnClick: makeProp(PROP_TYPE_BOOLEAN, false),
-  selectMode: makeProp(PROP_TYPE_STRING, 'multi', value => {
+  selectMode: makeProp(PROP_TYPE_STRING, 'multi', (value) => {
     return arrayIncludes(SELECT_MODES, value)
   }),
   selectable: makeProp(PROP_TYPE_BOOLEAN, false),
-  selectedVariant: makeProp(PROP_TYPE_STRING, 'active')
+  selectedVariant: makeProp(PROP_TYPE_STRING, 'active'),
 }
 
 // --- Mixin ---
@@ -41,7 +41,7 @@ export const selectableMixin = Vue.extend({
   data() {
     return {
       selectedRows: [],
-      selectedLastRow: -1
+      selectedLastRow: -1,
     }
   },
   computed: {
@@ -69,7 +69,7 @@ export const selectableMixin = Vue.extend({
         'b-table-selectable': isSelectable,
         [`b-table-select-${this.selectMode}`]: isSelectable,
         'b-table-selecting': this.selectableHasSelection,
-        'b-table-selectable-no-click': isSelectable && !this.hasSelectableRowClick
+        'b-table-selectable-no-click': isSelectable && !this.hasSelectableRowClick,
       }
     },
     selectableTableAttrs() {
@@ -84,9 +84,9 @@ export const selectableMixin = Vue.extend({
         // TODO:
         //   Should this attribute not be included when `no-select-on-click` is set
         //   since this attribute implies keyboard navigation?
-        'aria-multiselectable': role === ROLE_GRID ? toString(this.selectableIsMultiSelect) : null
+        'aria-multiselectable': role === ROLE_GRID ? toString(this.selectableIsMultiSelect) : null,
       }
-    }
+    },
   },
   watch: {
     computedItems(newValue, oldValue) {
@@ -126,7 +126,7 @@ export const selectableMixin = Vue.extend({
         })
         this.$emit(EVENT_NAME_ROW_SELECTED, items)
       }
-    }
+    },
   },
   beforeMount() {
     // Set up handlers if needed
@@ -182,7 +182,7 @@ export const selectableMixin = Vue.extend({
         const variant = this.selectedVariant
         return {
           'b-table-row-selected': true,
-          [`${this.dark ? 'bg' : 'table'}-${variant}`]: variant
+          [`${this.dark ? 'bg' : 'table'}-${variant}`]: variant,
         }
       }
 
@@ -190,7 +190,7 @@ export const selectableMixin = Vue.extend({
     },
     selectableRowAttrs(index) {
       return {
-        'aria-selected': !this.isSelectable ? null : this.isRowSelected(index) ? 'true' : 'false'
+        'aria-selected': !this.isSelectable ? null : this.isRowSelected(index) ? 'true' : 'false',
       }
     },
     setSelectionHandlers(on) {
@@ -236,6 +236,6 @@ export const selectableMixin = Vue.extend({
       }
       selectedRows[index] = selected
       this.selectedRows = selectedRows
-    }
-  }
+    },
+  },
 })

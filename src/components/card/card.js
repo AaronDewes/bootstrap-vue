@@ -11,7 +11,7 @@ import {
   makePropsConfigurable,
   pluckProps,
   prefixPropName,
-  unprefixPropName
+  unprefixPropName,
 } from '../../utils/props'
 import { props as cardProps } from '../../mixins/card'
 import { BCardBody, props as BCardBodyProps } from './card-body'
@@ -32,7 +32,7 @@ export const props = makePropsConfigurable(
     ...cardImgProps,
     ...cardProps,
     align: makeProp(PROP_TYPE_STRING),
-    noBody: makeProp(PROP_TYPE_BOOLEAN, false)
+    noBody: makeProp(PROP_TYPE_BOOLEAN, false),
   }),
   NAME_CARD
 )
@@ -59,7 +59,7 @@ export const BCard = /*#__PURE__*/ Vue.extend({
       align,
       textVariant,
       bgVariant,
-      borderVariant
+      borderVariant,
     } = props
     const $scopedSlots = scopedSlots || {}
     const $slots = slots()
@@ -69,7 +69,7 @@ export const BCard = /*#__PURE__*/ Vue.extend({
     let $imgLast = h()
     if (imgSrc) {
       const $img = h(BCardImg, {
-        props: pluckProps(cardImgProps, props, unprefixPropName.bind(null, 'img'))
+        props: pluckProps(cardImgProps, props, unprefixPropName.bind(null, 'img')),
       })
 
       if (imgBottom) {
@@ -86,7 +86,7 @@ export const BCard = /*#__PURE__*/ Vue.extend({
         BCardHeader,
         {
           props: pluckProps(BCardHeaderProps, props),
-          domProps: hasHeaderSlot ? {} : htmlOrText(headerHtml, header)
+          domProps: hasHeaderSlot ? {} : htmlOrText(headerHtml, header),
         },
         normalizeSlot(SLOT_NAME_HEADER, slotScope, $scopedSlots, $slots)
       )
@@ -115,7 +115,7 @@ export const BCard = /*#__PURE__*/ Vue.extend({
         BCardFooter,
         {
           props: pluckProps(BCardFooterProps, props),
-          domProps: hasHeaderSlot ? {} : htmlOrText(footerHtml, footer)
+          domProps: hasHeaderSlot ? {} : htmlOrText(footerHtml, footer),
         },
         normalizeSlot(SLOT_NAME_FOOTER, slotScope, $scopedSlots, $slots)
       )
@@ -131,10 +131,10 @@ export const BCard = /*#__PURE__*/ Vue.extend({
           [`text-${align}`]: align,
           [`bg-${bgVariant}`]: bgVariant,
           [`border-${borderVariant}`]: borderVariant,
-          [`text-${textVariant}`]: textVariant
-        }
+          [`text-${textVariant}`]: textVariant,
+        },
       }),
       [$imgFirst, $header, $content, $footer, $imgLast]
     )
-  }
+  },
 })

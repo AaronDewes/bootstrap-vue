@@ -97,7 +97,7 @@ exception of `static`, and `visible`) in <samp>camelCase</samp> name format inst
   export default {
     data() {
       return {
-        toastCount: 0
+        toastCount: 0,
       }
     },
     methods: {
@@ -106,10 +106,10 @@ exception of `static`, and `visible`) in <samp>camelCase</samp> name format inst
         this.$bvToast.toast(`This is toast number ${this.toastCount}`, {
           title: 'BootstrapVue Toast',
           autoHideDelay: 5000,
-          appendToast: append
+          appendToast: append,
         })
-      }
-    }
+      },
+    },
   }
 </script>
 
@@ -185,10 +185,10 @@ toast custom SCSS will automatically create toast variants for you (refer to the
         this.$bvToast.toast('Toast body content', {
           title: `Variant ${variant || 'default'}`,
           variant: variant,
-          solid: true
+          solid: true,
         })
-      }
-    }
+      },
+    },
   }
 </script>
 
@@ -216,10 +216,18 @@ SCSS):
     <b-button @click="toast('b-toaster-top-left')" class="mb-2">b-toaster-top-left</b-button>
     <b-button @click="toast('b-toaster-top-center')" class="mb-2">b-toaster-top-center</b-button>
     <b-button @click="toast('b-toaster-top-full')" class="mb-2">b-toaster-top-full</b-button>
-    <b-button @click="toast('b-toaster-bottom-right', true)" class="mb-2">b-toaster-bottom-right</b-button>
-    <b-button @click="toast('b-toaster-bottom-left', true)" class="mb-2">b-toaster-bottom-left</b-button>
-    <b-button @click="toast('b-toaster-bottom-center', true)" class="mb-2">b-toaster-bottom-center</b-button>
-    <b-button @click="toast('b-toaster-bottom-full', true)" class="mb-2">b-toaster-bottom-full</b-button>
+    <b-button @click="toast('b-toaster-bottom-right', true)" class="mb-2"
+      >b-toaster-bottom-right</b-button
+    >
+    <b-button @click="toast('b-toaster-bottom-left', true)" class="mb-2"
+      >b-toaster-bottom-left</b-button
+    >
+    <b-button @click="toast('b-toaster-bottom-center', true)" class="mb-2"
+      >b-toaster-bottom-center</b-button
+    >
+    <b-button @click="toast('b-toaster-bottom-full', true)" class="mb-2"
+      >b-toaster-bottom-full</b-button
+    >
   </div>
 </template>
 
@@ -227,7 +235,7 @@ SCSS):
   export default {
     data() {
       return {
-        counter: 0
+        counter: 0,
       }
     },
     methods: {
@@ -237,10 +245,10 @@ SCSS):
           title: `Toaster ${toaster}`,
           toaster: toaster,
           solid: true,
-          appendToast: append
+          appendToast: append,
         })
-      }
-    }
+      },
+    },
   }
 </script>
 
@@ -291,7 +299,7 @@ the `this.$bvToast.hide(id)` method to hide the specific toast:
   export default {
     data() {
       return {
-        count: 0
+        count: 0,
       }
     },
     methods: {
@@ -305,7 +313,7 @@ the `this.$bvToast.hide(id)` method to hide the specific toast:
         const $closeButton = h(
           'b-button',
           {
-            on: { click: () => this.$bvToast.hide(id) }
+            on: { click: () => this.$bvToast.hide(id) },
           },
           'Close'
         )
@@ -314,11 +322,11 @@ the `this.$bvToast.hide(id)` method to hide the specific toast:
         this.$bvToast.toast([$closeButton], {
           id: id,
           title: `Toast ${this.count}`,
-          noCloseButton: true
+          noCloseButton: true,
         })
-      }
-    }
- }
+      },
+    },
+  }
 </script>
 
 <!-- toasts-advanced.vue -->
@@ -351,10 +359,10 @@ Optionally convert the toast body to a link (`<a>`) or `<router-link>` (or `<nux
       toast() {
         this.$bvToast.toast(`Toast with action link`, {
           href: '#foo',
-          title: 'Example'
+          title: 'Example',
         })
-      }
-    }
+      },
+    },
   }
 </script>
 
@@ -392,8 +400,7 @@ component.
           <small class="text-muted me-2">42 seconds ago</small>
         </div>
       </template>
-      This is the content of the toast.
-      It is short and to the point.
+      This is the content of the toast. It is short and to the point.
     </b-toast>
   </div>
 </template>
@@ -488,7 +495,7 @@ for generating more complex toast content:
   export default {
     data() {
       return {
-        count: 0
+        count: 0,
       }
     },
     methods: {
@@ -498,35 +505,31 @@ for generating more complex toast content:
         // Increment the toast count
         this.count++
         // Create the message
-        const vNodesMsg = h(
-          'p',
-          { class: ['text-center', 'mb-0'] },
-          [
-            h('b-spinner', { props: { type: 'grow', small: true } }),
-            ' Flashy ',
-            h('strong', 'toast'),
-            ` message #${this.count} `,
-            h('b-spinner', { props: { type: 'grow', small: true } })
-          ]
-        )
+        const vNodesMsg = h('p', { class: ['text-center', 'mb-0'] }, [
+          h('b-spinner', { props: { type: 'grow', small: true } }),
+          ' Flashy ',
+          h('strong', 'toast'),
+          ` message #${this.count} `,
+          h('b-spinner', { props: { type: 'grow', small: true } }),
+        ])
         // Create the title
         const vNodesTitle = h(
           'div',
           { class: ['d-flex', 'flex-grow-1', 'align-items-baseline', 'me-2'] },
           [
             h('strong', { class: 'me-2' }, 'The Title'),
-            h('small', { class: 'ms-auto text-italics' }, '5 minutes ago')
+            h('small', { class: 'ms-auto text-italics' }, '5 minutes ago'),
           ]
         )
         // Pass the VNodes as an array for message and title
         this.$bvToast.toast([vNodesMsg], {
           title: [vNodesTitle],
           solid: true,
-          variant: 'info'
+          variant: 'info',
         })
-      }
-    }
- }
+      },
+    },
+  }
 </script>
 
 <!-- toasts-advanced.vue -->
@@ -571,14 +574,14 @@ custom styling on a [`<b-alert>`](/docs/components/alert) component:
 </template>
 
 <script>
-export default {
-  data() {
-    return {
-      showBottom: false,
-      showTop: false
-    }
+  export default {
+    data() {
+      return {
+        showBottom: false,
+        showTop: false,
+      }
+    },
   }
-}
 </script>
 
 <!-- fixed-position-alerts.vue -->

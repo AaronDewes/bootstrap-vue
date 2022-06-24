@@ -10,14 +10,14 @@ describe('mixins > listeners', () => {
       compatConfig: {
         MODE: 3,
         RENDER_FUNCTION: 'suppress-warning',
-        INSTANCE_LISTENERS: 'suppress-warning'
+        INSTANCE_LISTENERS: 'suppress-warning',
       },
       name: 'BTest',
       mixins: [listenersMixin],
       inheritAttrs: false,
       render(h) {
         return h('button', { on: this.bvListeners })
-      }
+      },
     }
     const App = {
       compatConfig: { MODE: 3, RENDER_FUNCTION: 'suppress-warning' },
@@ -27,20 +27,20 @@ describe('mixins > listeners', () => {
         listeners() {
           const listeners = {}
           if (this.listenClick) {
-            listeners.click = event => this.$emit('click', event)
+            listeners.click = (event) => this.$emit('click', event)
           }
           if (this.listenFocus) {
-            listeners.focus = event => this.$emit('focus', event)
+            listeners.focus = (event) => this.$emit('focus', event)
           }
           if (this.listenBlur) {
-            listeners.blur = event => this.$emit('blur', event)
+            listeners.blur = (event) => this.$emit('blur', event)
           }
           return listeners
-        }
+        },
       },
       render(h) {
         return h(BTest, { on: this.listeners })
-      }
+      },
     }
 
     const wrapper = mount(App)
@@ -62,7 +62,7 @@ describe('mixins > listeners', () => {
     // Correctly adds new listeners
     await wrapper.setProps({
       listenClick: true,
-      listenFocus: true
+      listenFocus: true,
     })
 
     expect($test.vm.bvListeners.click).toBeDefined()
@@ -72,7 +72,7 @@ describe('mixins > listeners', () => {
     // Correctly updates listeners
     await wrapper.setProps({
       listenClick: false,
-      listenBlur: true
+      listenBlur: true,
     })
 
     expect($test.vm.bvListeners.click).toBeUndefined()
@@ -83,7 +83,7 @@ describe('mixins > listeners', () => {
     await wrapper.setProps({
       listenClick: false,
       listenFocus: false,
-      listenBlur: false
+      listenBlur: false,
     })
 
     expect($test.vm.bvListeners.click).toBeUndefined()
@@ -101,7 +101,7 @@ describe('mixins > listeners', () => {
       compatConfig: {
         MODE: 3,
         RENDER_FUNCTION: 'suppress-warning',
-        INSTANCE_LISTENERS: 'suppress-warning'
+        INSTANCE_LISTENERS: 'suppress-warning',
       },
       props: ['value'],
       render(h) {
@@ -109,15 +109,15 @@ describe('mixins > listeners', () => {
         return h('input', {
           attrs: { value: this.value },
           domProps: { value: this.value },
-          on: { ...this.$listeners, input: e => this.$emit('input', e.target.value) }
+          on: { ...this.$listeners, input: (e) => this.$emit('input', e.target.value) },
         })
-      }
+      },
     }
     const Input2 = {
       compatConfig: {
         MODE: 3,
         RENDER_FUNCTION: 'suppress-warning',
-        INSTANCE_LISTENERS: 'suppress-warning'
+        INSTANCE_LISTENERS: 'suppress-warning',
       },
       props: ['value'],
       mixins: [listenersMixin],
@@ -126,9 +126,9 @@ describe('mixins > listeners', () => {
         return h('input', {
           attrs: { value: this.value },
           domProps: { value: this.value },
-          on: { ...this.bvListeners, input: e => this.$emit('input', e.target.value) }
+          on: { ...this.bvListeners, input: (e) => this.$emit('input', e.target.value) },
         })
-      }
+      },
     }
 
     const App1 = {
@@ -144,12 +144,12 @@ describe('mixins > listeners', () => {
           if (this.listenFocus2) {
             this.$emit('focus2', $event)
           }
-        }
+        },
       },
       template: `<div>
         <Input1 @focus="emit1" />
         <Input1 @focus="emit2" />
-      </div>`
+      </div>`,
     }
     const App2 = {
       components: { Input2 },
@@ -164,12 +164,12 @@ describe('mixins > listeners', () => {
           if (this.listenFocus2) {
             this.$emit('focus2', $event)
           }
-        }
+        },
       },
       template: `<div>
         <Input2 @focus="emit1" />
         <Input2 @focus="emit2" />
-      </div>`
+      </div>`,
     }
 
     const wrapper1 = mount(App1, { attachTo: document.body })

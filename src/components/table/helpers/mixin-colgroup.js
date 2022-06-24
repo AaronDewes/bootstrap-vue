@@ -17,11 +17,11 @@ export const colgroupMixin = Vue.extend({
       let $colgroup = h()
       if (this.hasNormalizedSlot(SLOT_NAME_TABLE_COLGROUP)) {
         $colgroup = h('colgroup', { key: 'colgroup' }, [
-          this.normalizeSlot(SLOT_NAME_TABLE_COLGROUP, { columns: fields.length, fields })
+          this.normalizeSlot(SLOT_NAME_TABLE_COLGROUP, { columns: fields.length, fields }),
         ])
       }
 
       return $colgroup
-    }
-  }
+    },
+  },
 })

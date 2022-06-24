@@ -4,8 +4,8 @@ import { pluginFactory } from '../../utils/plugins'
 const ButtonToolbarPlugin = /*#__PURE__*/ pluginFactory({
   components: {
     BButtonToolbar,
-    BBtnToolbar: BButtonToolbar
-  }
+    BBtnToolbar: BButtonToolbar,
+  },
 })
 
 export { ButtonToolbarPlugin, BButtonToolbar }

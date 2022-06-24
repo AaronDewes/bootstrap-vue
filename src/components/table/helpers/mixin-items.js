@@ -19,10 +19,10 @@ const {
   mixin: modelMixin,
   props: modelProps,
   prop: MODEL_PROP_NAME,
-  event: MODEL_EVENT_NAME
+  event: MODEL_EVENT_NAME,
 } = makeModelMixin('value', {
   type: PROP_TYPE_ARRAY,
-  defaultValue: []
+  defaultValue: [],
 })
 
 export { MODEL_PROP_NAME, MODEL_EVENT_NAME }
@@ -38,7 +38,7 @@ export const props = sortKeys({
   // If provided the value in each row must be unique!
   primaryKey: makeProp(PROP_TYPE_STRING),
   // `v-model` for retrieving the current displayed rows
-  [MODEL_PROP_NAME]: makeProp(PROP_TYPE_ARRAY, [])
+  [MODEL_PROP_NAME]: makeProp(PROP_TYPE_ARRAY, []),
 })
 
 // --- Mixin ---
@@ -53,7 +53,7 @@ export const itemsMixin = Vue.extend({
     return {
       // Our local copy of the items
       // Must be an array
-      localItems: isArray(items) ? items.slice() : []
+      localItems: isArray(items) ? items.slice() : [],
     }
   },
   computed: {
@@ -107,9 +107,9 @@ export const itemsMixin = Vue.extend({
         sortDesc: this.localSortDesc,
         perPage: mathMax(toInteger(perPage, 0), 0),
         currentPage: mathMax(toInteger(currentPage, 0), 1),
-        apiUrl: this.apiUrl
+        apiUrl: this.apiUrl,
       }
-    }
+    },
   },
   watch: {
     items(newValue) {
@@ -128,7 +128,7 @@ export const itemsMixin = Vue.extend({
       if (!looseEqual(newValue, oldValue)) {
         this.$emit(EVENT_NAME_CONTEXT_CHANGED, newValue)
       }
-    }
+    },
   },
   mounted() {
     // Initially update the `v-model` of displayed items
@@ -141,6 +141,6 @@ export const itemsMixin = Vue.extend({
       // `this.computedFieldsObj` has pre-normalized the formatter to a
       // function ref if present, otherwise `undefined`
       return field ? field.formatter : undefined
-    }
-  }
+    },
+  },
 })

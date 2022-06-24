@@ -29,8 +29,8 @@ describe('dropdown-form', () => {
   it('should have custom form classes on form', async () => {
     const wrapper = mount(BDropdownForm, {
       propsData: {
-        formClass: ['form-class-custom', 'form-class-custom-2']
-      }
+        formClass: ['form-class-custom', 'form-class-custom-2'],
+      },
     })
 
     const form = wrapper.find('form')
@@ -55,8 +55,8 @@ describe('dropdown-form', () => {
   it('does not have tabindex on form when disabled', async () => {
     const wrapper = mount(BDropdownForm, {
       propsData: {
-        disabled: true
-      }
+        disabled: true,
+      },
     })
 
     expect(wrapper.element.tagName).toBe('LI')
@@ -72,7 +72,7 @@ describe('dropdown-form', () => {
 
   it('has class "was-validated" when validated=true', async () => {
     const wrapper = mount(BDropdownForm, {
-      propsData: { validated: true }
+      propsData: { validated: true },
     })
 
     expect(wrapper.element.tagName).toBe('LI')
@@ -97,7 +97,7 @@ describe('dropdown-form', () => {
 
   it('has attribute novalidate when novalidate=true', async () => {
     const wrapper = mount(BDropdownForm, {
-      propsData: { novalidate: true }
+      propsData: { novalidate: true },
     })
 
     expect(wrapper.element.tagName).toBe('LI')

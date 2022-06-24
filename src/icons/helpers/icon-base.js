@@ -16,7 +16,7 @@ const BASE_ATTRS = {
   height: '1em',
   focusable: 'false',
   role: 'img',
-  'aria-label': 'icon'
+  'aria-label': 'icon',
 }
 
 // Attributes that are nulled out when stacked
@@ -25,7 +25,7 @@ const STACKED_ATTRS = {
   height: null,
   focusable: null,
   role: null,
-  'aria-label': null
+  'aria-label': null,
 }
 
 // --- Props ---
@@ -42,7 +42,7 @@ export const props = {
   shiftV: makeProp(PROP_TYPE_NUMBER_STRING, 0),
   stacked: makeProp(PROP_TYPE_BOOLEAN, false),
   title: makeProp(PROP_TYPE_STRING),
-  variant: makeProp(PROP_TYPE_STRING)
+  variant: makeProp(PROP_TYPE_STRING),
 }
 
 // --- Main component ---
@@ -73,7 +73,7 @@ export const BVIconBase = /*#__PURE__*/ Vue.extend({
       hasTransforms ? 'translate(8 8)' : null,
       hasScale ? `scale(${(flipH ? -1 : 1) * scale} ${(flipV ? -1 : 1) * scale})` : null,
       rotate ? `rotate(${rotate})` : null,
-      hasTransforms ? 'translate(-8 -8)' : null
+      hasTransforms ? 'translate(-8 -8)' : null,
     ].filter(identity)
 
     // We wrap the content in a `<g>` for handling the transforms (except shift)
@@ -81,7 +81,7 @@ export const BVIconBase = /*#__PURE__*/ Vue.extend({
       'g',
       {
         attrs: { transform: transforms.join(' ') || null },
-        domProps: hasContent ? { innerHTML: content || '' } : {}
+        domProps: hasContent ? { innerHTML: content || '' } : {},
       },
       children
     )
@@ -111,10 +111,10 @@ export const BVIconBase = /*#__PURE__*/ Vue.extend({
           staticClass: 'b-icon bi',
           class: {
             [`text-${variant}`]: variant,
-            [`b-icon-animation-${animation}`]: animation
+            [`b-icon-animation-${animation}`]: animation,
           },
           attrs: BASE_ATTRS,
-          style: stacked ? {} : { fontSize: fontScale === 1 ? null : `${fontScale * 100}%` }
+          style: stacked ? {} : { fontSize: fontScale === 1 ? null : `${fontScale * 100}%` },
         },
         // Merge in user supplied data
         data,
@@ -124,11 +124,11 @@ export const BVIconBase = /*#__PURE__*/ Vue.extend({
         {
           attrs: {
             xmlns: stacked ? null : 'http://www.w3.org/2000/svg',
-            fill: 'currentColor'
-          }
+            fill: 'currentColor',
+          },
         }
       ),
       $content
     )
-  }
+  },
 })

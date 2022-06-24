@@ -3,7 +3,7 @@ import { NAME_NAVBAR } from '../../constants/components'
 import {
   PROP_TYPE_BOOLEAN,
   PROP_TYPE_BOOLEAN_STRING,
-  PROP_TYPE_STRING
+  PROP_TYPE_STRING,
 } from '../../constants/props'
 import { getBreakpoints } from '../../utils/config'
 import { isTag } from '../../utils/dom'
@@ -21,7 +21,7 @@ export const props = makePropsConfigurable(
     tag: makeProp(PROP_TYPE_STRING, 'nav'),
     toggleable: makeProp(PROP_TYPE_BOOLEAN_STRING, false),
     type: makeProp(PROP_TYPE_STRING, 'light'),
-    variant: makeProp(PROP_TYPE_STRING)
+    variant: makeProp(PROP_TYPE_STRING),
   },
   NAME_NAVBAR
 )
@@ -49,7 +49,7 @@ export const BNavbar = /*#__PURE__*/ Vue.extend({
       }
 
       return breakpoint
-    }
+    },
   },
   render(h) {
     const { tag, type, variant, fixed } = this
@@ -64,15 +64,15 @@ export const BNavbar = /*#__PURE__*/ Vue.extend({
             'sticky-top': this.sticky,
             [`navbar-${type}`]: type,
             [`bg-${variant}`]: variant,
-            [`fixed-${fixed}`]: fixed
+            [`fixed-${fixed}`]: fixed,
           },
-          this.breakpointClass
+          this.breakpointClass,
         ],
         attrs: {
-          role: isTag(tag, 'nav') ? null : 'navigation'
-        }
+          role: isTag(tag, 'nav') ? null : 'navigation',
+        },
       },
       [this.normalizeSlot()]
     )
-  }
+  },
 })

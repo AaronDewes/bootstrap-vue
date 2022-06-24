@@ -19,7 +19,7 @@ export const props = makePropsConfigurable(
     prepend: makeProp(PROP_TYPE_STRING),
     prependHtml: makeProp(PROP_TYPE_STRING),
     size: makeProp(PROP_TYPE_STRING),
-    tag: makeProp(PROP_TYPE_STRING, 'div')
+    tag: makeProp(PROP_TYPE_STRING, 'div'),
   },
   NAME_INPUT_GROUP
 )
@@ -43,7 +43,7 @@ export const BInputGroup = /*#__PURE__*/ Vue.extend({
       $prepend = h(BInputGroupPrepend, [
         hasPrependSlot
           ? normalizeSlot(SLOT_NAME_PREPEND, slotScope, $scopedSlots, $slots)
-          : h(BInputGroupText, { domProps: htmlOrText(prependHtml, prepend) })
+          : h(BInputGroupText, { domProps: htmlOrText(prependHtml, prepend) }),
       ])
     }
 
@@ -53,7 +53,7 @@ export const BInputGroup = /*#__PURE__*/ Vue.extend({
       $append = h(BInputGroupAppend, [
         hasAppendSlot
           ? normalizeSlot(SLOT_NAME_APPEND, slotScope, $scopedSlots, $slots)
-          : h(BInputGroupText, { domProps: htmlOrText(appendHtml, append) })
+          : h(BInputGroupText, { domProps: htmlOrText(appendHtml, append) }),
       ])
     }
 
@@ -64,10 +64,10 @@ export const BInputGroup = /*#__PURE__*/ Vue.extend({
         class: { [`input-group-${size}`]: size },
         attrs: {
           id: props.id || null,
-          role: 'group'
-        }
+          role: 'group',
+        },
       }),
       [$prepend, normalizeSlot(SLOT_NAME_DEFAULT, slotScope, $scopedSlots, $slots), $append]
     )
-  }
+  },
 })

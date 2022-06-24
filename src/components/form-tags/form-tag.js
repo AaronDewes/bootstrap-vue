@@ -21,7 +21,7 @@ export const props = makePropsConfigurable(
     removeLabel: makeProp(PROP_TYPE_STRING, 'Remove tag'),
     tag: makeProp(PROP_TYPE_STRING, 'span'),
     title: makeProp(PROP_TYPE_STRING),
-    variant: makeProp(PROP_TYPE_STRING, 'secondary')
+    variant: makeProp(PROP_TYPE_STRING, 'secondary'),
   }),
   NAME_FORM_TAG
 )
@@ -39,7 +39,7 @@ export const BFormTag = /*#__PURE__*/ Vue.extend({
       if (!this.disabled && (type === 'click' || (type === 'keydown' && keyCode === CODE_DELETE))) {
         this.$emit(EVENT_NAME_REMOVE)
       }
-    }
+    },
   },
   render(h) {
     const { title, tag, variant, pill, disabled } = this
@@ -54,12 +54,12 @@ export const BFormTag = /*#__PURE__*/ Vue.extend({
         attrs: {
           'aria-controls': tagId,
           'aria-describedby': tagLabelId,
-          'aria-keyshortcuts': 'Delete'
+          'aria-keyshortcuts': 'Delete',
         },
         on: {
           click: this.onRemove,
-          keydown: this.onRemove
-        }
+          keydown: this.onRemove,
+        },
       })
     }
 
@@ -67,7 +67,7 @@ export const BFormTag = /*#__PURE__*/ Vue.extend({
       'span',
       {
         staticClass: 'b-form-tag-content flex-grow-1 text-truncate',
-        attrs: { id: tagLabelId }
+        attrs: { id: tagLabelId },
       },
       this.normalizeSlot() || title
     )
@@ -80,15 +80,15 @@ export const BFormTag = /*#__PURE__*/ Vue.extend({
         props: {
           tag,
           variant,
-          pill
+          pill,
         },
         attrs: {
           id: tagId,
           title: title || null,
-          'aria-labelledby': tagLabelId
-        }
+          'aria-labelledby': tagLabelId,
+        },
       },
       [$tag, $remove]
     )
-  }
+  },
 })

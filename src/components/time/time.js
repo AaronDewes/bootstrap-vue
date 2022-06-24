@@ -7,7 +7,7 @@ import {
   PROP_TYPE_ARRAY_STRING,
   PROP_TYPE_BOOLEAN,
   PROP_TYPE_NUMBER_STRING,
-  PROP_TYPE_STRING
+  PROP_TYPE_STRING,
 } from '../../constants/props'
 import { RX_TIME } from '../../constants/regex'
 import { concat } from '../../utils/array'
@@ -34,29 +34,29 @@ const {
   mixin: modelMixin,
   props: modelProps,
   prop: MODEL_PROP_NAME,
-  event: MODEL_EVENT_NAME
+  event: MODEL_EVENT_NAME,
 } = makeModelMixin('value', {
   type: PROP_TYPE_STRING,
-  defaultValue: ''
+  defaultValue: '',
 })
 
 const NUMERIC = 'numeric'
 
 // --- Helper methods ---
 
-const padLeftZeros = value => `00${value || ''}`.slice(-2)
+const padLeftZeros = (value) => `00${value || ''}`.slice(-2)
 
-const parseHMS = value => {
+const parseHMS = (value) => {
   value = toString(value)
   let [hh, mm, ss] = [null, null, null]
   if (RX_TIME.test(value)) {
-    ;[hh, mm, ss] = value.split(':').map(v => toInteger(v, null))
+    ;[hh, mm, ss] = value.split(':').map((v) => toInteger(v, null))
   }
   return {
     hours: isUndefinedOrNull(hh) ? null : hh,
     minutes: isUndefinedOrNull(mm) ? null : mm,
     seconds: isUndefinedOrNull(ss) ? null : ss,
-    ampm: isUndefinedOrNull(hh) || hh < 12 ? 0 : 1
+    ampm: isUndefinedOrNull(hh) || hh < 12 ? 0 : 1,
   }
 }
 
@@ -99,7 +99,7 @@ export const props = makePropsConfigurable(
     readonly: makeProp(PROP_TYPE_BOOLEAN, false),
     secondsStep: makeProp(PROP_TYPE_NUMBER_STRING, 1),
     // If `true`, show the second spinbutton
-    showSeconds: makeProp(PROP_TYPE_BOOLEAN, false)
+    showSeconds: makeProp(PROP_TYPE_BOOLEAN, false),
   }),
   NAME_TIME
 )
@@ -120,7 +120,7 @@ export const BTime = /*#__PURE__*/ Vue.extend({
       modelSeconds: parsed.seconds,
       modelAmpm: parsed.ampm,
       // Internal flag to enable aria-live regions
-      isLive: false
+      isLive: false,
     }
   },
   computed: {
@@ -136,7 +136,7 @@ export const BTime = /*#__PURE__*/ Vue.extend({
       const options = {
         hour: NUMERIC,
         minute: NUMERIC,
-        second: NUMERIC
+        second: NUMERIC,
       }
       if (!isUndefinedOrNull(this.hour12)) {
         // Force 12 or 24 hour clock
@@ -151,7 +151,7 @@ export const BTime = /*#__PURE__*/ Vue.extend({
       return {
         locale: resolved.locale,
         hour12,
-        hourCycle
+        hourCycle,
       }
     },
     computedLocale() {
@@ -186,7 +186,7 @@ export const BTime = /*#__PURE__*/ Vue.extend({
         minutes: this.modelMinutes,
         seconds: this.showSeconds ? this.modelSeconds : 0,
         value: this.computedHMS,
-        formatted: this.formattedTimeString
+        formatted: this.formattedTimeString,
       }
     },
     valueId() {
@@ -203,7 +203,7 @@ export const BTime = /*#__PURE__*/ Vue.extend({
         hourCycle: this.computedHourCycle,
         hour: NUMERIC,
         minute: NUMERIC,
-        timeZone: 'UTC'
+        timeZone: 'UTC',
       }
       if (this.showSeconds) {
         options.second = NUMERIC
@@ -219,7 +219,7 @@ export const BTime = /*#__PURE__*/ Vue.extend({
         minimumIntegerDigits: 2,
         minimumFractionDigits: 0,
         maximumFractionDigits: 0,
-        notation: 'standard'
+        notation: 'standard',
       })
       return nf.format
     },
@@ -238,15 +238,15 @@ export const BTime = /*#__PURE__*/ Vue.extend({
         increment: ({ hasFocus }) =>
           h(BIconChevronUp, {
             props: { scale: hasFocus ? 1.5 : 1.25 },
-            attrs: { 'aria-hidden': 'true' }
+            attrs: { 'aria-hidden': 'true' },
           }),
         decrement: ({ hasFocus }) =>
           h(BIconChevronUp, {
             props: { flipV: true, scale: hasFocus ? 1.5 : 1.25 },
-            attrs: { 'aria-hidden': 'true' }
-          })
+            attrs: { 'aria-hidden': 'true' },
+          }),
       }
-    }
+    },
   },
   watch: {
     [MODEL_PROP_NAME](newValue, oldValue) {
@@ -286,7 +286,7 @@ export const BTime = /*#__PURE__*/ Vue.extend({
       if (newHours !== oldHours) {
         this.modelAmpm = newHours > 11 ? 1 : 0
       }
-    }
+    },
   },
   created() {
     this.$nextTick(() => {
@@ -333,10 +333,10 @@ export const BTime = /*#__PURE__*/ Vue.extend({
         hh === 0 && hourCycle === 'h12'
           ? 12
           : hh === 0 && hourCycle === 'h24'
-            ? /* istanbul ignore next */ 24
-            : hh === 12 && hourCycle === 'h11'
-              ? /* istanbul ignore next */ 0
-              : hh
+          ? /* istanbul ignore next */ 24
+          : hh === 12 && hourCycle === 'h11'
+          ? /* istanbul ignore next */ 0
+          : hh
       return this.numberFormatter(hh)
     },
     formatMinutes(mm) {
@@ -372,7 +372,7 @@ export const BTime = /*#__PURE__*/ Vue.extend({
       ) {
         stopEvent(event)
         const spinners = this.$refs.spinners || []
-        let index = spinners.map(cmp => !!cmp.hasFocus).indexOf(true)
+        let index = spinners.map((cmp) => !!cmp.hasFocus).indexOf(true)
         index = index + (keyCode === CODE_LEFT ? -1 : 1)
         index = index >= spinners.length ? 0 : index < 0 ? spinners.length - 1 : index
         attemptFocus(spinners[index])
@@ -388,7 +388,7 @@ export const BTime = /*#__PURE__*/ Vue.extend({
       } else {
         this.isLive = false
       }
-    }
+    },
   },
   render(h) {
     // If hidden, we just render a placeholder comment
@@ -405,7 +405,7 @@ export const BTime = /*#__PURE__*/ Vue.extend({
       labelIncrement,
       labelDecrement,
       valueId,
-      focus: focusHandler
+      focus: focusHandler,
     } = this
     const spinIds = []
 
@@ -429,7 +429,7 @@ export const BTime = /*#__PURE__*/ Vue.extend({
           wrap: true,
           ariaControls: valueId,
           min: 0,
-          ...spinbuttonProps
+          ...spinbuttonProps,
         },
         scopedSlots: this.spinScopedSlots,
         on: {
@@ -437,11 +437,11 @@ export const BTime = /*#__PURE__*/ Vue.extend({
           // As the spinbutton will announce each value change
           // and we don't want the formatted time to be announced
           // on each value input if repeat is happening
-          change: handler
+          change: handler,
         },
         key,
         ref: 'spinners',
-        refInFor: true
+        refInFor: true,
       })
     }
 
@@ -452,11 +452,11 @@ export const BTime = /*#__PURE__*/ Vue.extend({
         {
           staticClass: 'd-flex flex-column',
           class: { 'text-muted': disabled || readonly },
-          attrs: { 'aria-hidden': 'true' }
+          attrs: { 'aria-hidden': 'true' },
         },
         [
           h(BIconCircleFill, { props: { shiftV: 4, scale: 0.5 } }),
-          h(BIconCircleFill, { props: { shiftV: -4, scale: 0.5 } })
+          h(BIconCircleFill, { props: { shiftV: -4, scale: 0.5 } }),
         ]
       )
     }
@@ -470,7 +470,7 @@ export const BTime = /*#__PURE__*/ Vue.extend({
         max: 23,
         step: 1,
         formatterFn: this.formatHours,
-        ariaLabel: this.labelHours
+        ariaLabel: this.labelHours,
       })
     )
 
@@ -484,7 +484,7 @@ export const BTime = /*#__PURE__*/ Vue.extend({
         max: 59,
         step: this.minutesStep || 1,
         formatterFn: this.formatMinutes,
-        ariaLabel: this.labelMinutes
+        ariaLabel: this.labelMinutes,
       })
     )
 
@@ -498,7 +498,7 @@ export const BTime = /*#__PURE__*/ Vue.extend({
           max: 59,
           step: this.secondsStep || 1,
           formatterFn: this.formatSeconds,
-          ariaLabel: this.labelSeconds
+          ariaLabel: this.labelSeconds,
         })
       )
     }
@@ -516,7 +516,7 @@ export const BTime = /*#__PURE__*/ Vue.extend({
           formatterFn: this.formatAmpm,
           ariaLabel: this.labelAmpm,
           // We set `required` as `false`, since this always has a value
-          required: false
+          required: false,
         })
       )
     }
@@ -529,16 +529,16 @@ export const BTime = /*#__PURE__*/ Vue.extend({
         attrs: {
           role: 'group',
           tabindex: disabled || readonly ? null : '-1',
-          'aria-labelledby': ariaLabelledby
+          'aria-labelledby': ariaLabelledby,
         },
         on: {
           keydown: this.onSpinLeftRight,
-          click: /* istanbul ignore next */ event => {
+          click: /* istanbul ignore next */ (event) => {
             if (event.target === event.currentTarget) {
               focusHandler()
             }
-          }
-        }
+          },
+        },
       },
       $spinners
     )
@@ -549,7 +549,7 @@ export const BTime = /*#__PURE__*/ Vue.extend({
       {
         staticClass: 'form-control form-control-sm text-center',
         class: {
-          disabled: disabled || readonly
+          disabled: disabled || readonly,
         },
         attrs: {
           id: valueId,
@@ -557,24 +557,24 @@ export const BTime = /*#__PURE__*/ Vue.extend({
           for: spinIds.filter(identity).join(' ') || null,
           tabindex: disabled ? null : '-1',
           'aria-live': this.isLive ? 'polite' : 'off',
-          'aria-atomic': 'true'
+          'aria-atomic': 'true',
         },
         on: {
           // Transfer focus/click to focus hours spinner
           click: focusHandler,
-          focus: focusHandler
-        }
+          focus: focusHandler,
+        },
       },
       [
         h('bdi', this.formattedTimeString),
-        this.computedHMS ? h('span', { staticClass: 'sr-only' }, ` (${this.labelSelected}) `) : ''
+        this.computedHMS ? h('span', { staticClass: 'sr-only' }, ` (${this.labelSelected}) `) : '',
       ]
     )
     const $header = h(
       this.headerTag,
       {
         staticClass: 'b-time-header',
-        class: { 'sr-only': this.hideHeader }
+        class: { 'sr-only': this.hideHeader },
       },
       [$value]
     )
@@ -591,10 +591,10 @@ export const BTime = /*#__PURE__*/ Vue.extend({
           lang: this.computedLang || null,
           'aria-labelledby': ariaLabelledby || null,
           'aria-disabled': disabled ? 'true' : null,
-          'aria-readonly': readonly && !disabled ? 'true' : null
-        }
+          'aria-readonly': readonly && !disabled ? 'true' : null,
+        },
       },
       [$header, $spinners, $footer]
     )
-  }
+  },
 })

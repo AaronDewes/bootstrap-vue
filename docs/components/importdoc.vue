@@ -1,8 +1,5 @@
 <template>
-  <section
-    v-if="components.length > 0 || directives.length > 0"
-    class="bd-content"
-  >
+  <section v-if="components.length > 0 || directives.length > 0" class="bd-content">
     <template v-if="components.length > 0">
       <article class="bd-content">
         <anchored-heading id="importing-individual-components" level="3">
@@ -10,8 +7,7 @@
         </anchored-heading>
 
         <p>
-          You can import individual components into your project via the following named
-          exports:
+          You can import individual components into your project via the following named exports:
         </p>
 
         <b-table
@@ -34,7 +30,9 @@
         </b-table>
 
         <p><strong>Example:</strong></p>
-        <pre class="hljs language-js text-monospace p-2 notranslate" translate="no">{{ componentImportCode }}</pre>
+        <pre class="hljs language-js text-monospace p-2 notranslate" translate="no">{{
+          componentImportCode
+        }}</pre>
       </article>
     </template>
 
@@ -45,8 +43,7 @@
         </anchored-heading>
 
         <p>
-          You can import individual directives into your project via the following named
-          exports:
+          You can import individual directives into your project via the following named exports:
         </p>
 
         <b-table
@@ -69,7 +66,9 @@
         </b-table>
 
         <p><strong>Example:</strong></p>
-        <pre class="hljs language-js text-monospace p-2 notranslate" translate="no">{{ directiveImportCode }}</pre>
+        <pre class="hljs language-js text-monospace p-2 notranslate" translate="no">{{
+          directiveImportCode
+        }}</pre>
       </article>
     </template>
 
@@ -79,13 +78,13 @@
       </anchored-heading>
 
       <p v-if="isComponentRoute">
-        This plugin includes all of the above listed individual
-        components<span v-if="directives.length"> and directives</span>.
-        Plugins also include any component aliases.
+        This plugin includes all of the above listed individual components<span
+          v-if="directives.length"
+        >
+          and directives</span
+        >. Plugins also include any component aliases.
       </p>
-      <p v-else>
-        This plugin includes all of the above listed individual directives.
-      </p>
+      <p v-else>This plugin includes all of the above listed individual directives.</p>
 
       <b-table
         :items="pluginImports"
@@ -115,7 +114,9 @@
       </template>
 
       <p><strong>Example:</strong></p>
-      <pre class="hljs language-js text-monospace p-2 notranslate" translate="no">{{ pluginImportCode }}</pre>
+      <pre class="hljs language-js text-monospace p-2 notranslate" translate="no">{{
+        pluginImportCode
+      }}</pre>
     </article>
   </section>
 </template>
@@ -132,7 +133,7 @@ export default {
   name: 'BVImportdoc',
   components: { AnchoredHeading },
   props: {
-    meta: {}
+    meta: {},
   },
   computed: {
     importPath() {
@@ -151,20 +152,20 @@ export default {
       return `${prefix}${startCase(this.pluginDir).replace(/\s+/g, '')}Plugin`
     },
     componentImports() {
-      return this.components.map(c => {
+      return this.components.map((c) => {
         return {
           component: this.componentTag(c),
           namedExport: c,
-          importPath: this.importPath
+          importPath: this.importPath,
         }
       })
     },
     directiveImports() {
-      return this.directives.map(d => {
+      return this.directives.map((d) => {
         return {
           directive: this.directiveAttr(d),
           namedExport: d,
-          importPath: this.importPath
+          importPath: this.importPath,
         }
       })
     },
@@ -172,31 +173,31 @@ export default {
       return [
         {
           namedExport: this.pluginName,
-          importPath: this.importPath
-        }
+          importPath: this.importPath,
+        },
       ]
     },
     components() {
       let subcomponents = []
       if (this.meta.components) {
         // We just want the sub-component name
-        subcomponents = this.meta.components.map(m => m.component)
+        subcomponents = this.meta.components.map((m) => m.component)
       }
-      return [].concat(this.meta.component, subcomponents).filter(c => c)
+      return [].concat(this.meta.component, subcomponents).filter((c) => c)
     },
     directives() {
       // We just need the directive name
       return []
         .concat(this.meta.directive, this.meta.directives)
-        .filter(d => d)
-        .map(d => (typeof d === 'string' ? d : d.directive))
+        .filter((d) => d)
+        .map((d) => (typeof d === 'string' ? d : d.directive))
     },
     componentImportCode() {
       const firstComponent = this.components[0]
       const firstComponentImport = this.componentImports[0]
       return [
         `import { ${firstComponent} } from '${firstComponentImport.importPath}'`,
-        `Vue.component('${getComponentName(firstComponent)}', ${firstComponent})`
+        `Vue.component('${getComponentName(firstComponent)}', ${firstComponent})`,
       ].join('\n')
     },
     directiveImportCode() {
@@ -204,19 +205,19 @@ export default {
       return [
         `import { ${firstDirective} } from '${importPath}'`,
         "// Note: Vue automatically prefixes the directive name with 'v-'",
-        `Vue.directive('${this.directiveName(firstDirective)}', ${firstDirective})`
+        `Vue.directive('${this.directiveName(firstDirective)}', ${firstDirective})`,
       ].join('\n')
     },
     pluginImportCode() {
       return [
         `import { ${this.pluginName} } from 'bootstrap-vue'`,
-        `Vue.use(${this.pluginName})`
+        `Vue.use(${this.pluginName})`,
       ].join('\n')
-    }
+    },
   },
   mounted() {
     // Highlight code blocks
-    ;[...this.$el.querySelectorAll('pre.hljs')].forEach(pre => {
+    ;[...this.$el.querySelectorAll('pre.hljs')].forEach((pre) => {
       hljs.highlightBlock(pre)
     })
   },
@@ -225,13 +226,11 @@ export default {
       return `<${getComponentName(component)}>`
     },
     directiveName(directive) {
-      return kebabCase(directive)
-        .replace(/^v-/, '')
-        .replace(/^vb-/, 'b-')
+      return kebabCase(directive).replace(/^v-/, '').replace(/^vb-/, 'b-')
     },
     directiveAttr(directive) {
       return kebabCase(directive).replace(/^vb-/, 'v-b-')
-    }
-  }
+    },
+  },
 }
 </script>

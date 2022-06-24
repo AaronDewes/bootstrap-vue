@@ -11,12 +11,12 @@ const srcIndex = 'bootstrap-vue/src/index.js'
 // --- Utility methods ---
 
 // Converts PascalCase or camelCase to kebab-case
-const kebabCase = str => {
+const kebabCase = (str) => {
   return str.replace(RX_HYPHENATE, '-$1').toLowerCase()
 }
 
 // Converts a kebab-case or camelCase string to PascalCase
-const pascalCase = str => {
+const pascalCase = (str) => {
   str = kebabCase(str).replace(RX_UN_KEBAB, (_, c) => (c ? c.toUpperCase() : ''))
   return str.charAt(0).toUpperCase() + str.slice(1)
 }
@@ -35,7 +35,7 @@ module.exports = function nuxtBootstrapVue(moduleOptions = {}) {
     // Merge moduleOptions with default
     const options = {
       ...this.options.bootstrapVue,
-      ...moduleOptions
+      ...moduleOptions,
     }
 
     // Ensure we have arrays
@@ -82,7 +82,7 @@ module.exports = function nuxtBootstrapVue(moduleOptions = {}) {
       'b-carousel-slide': 'img-src',
       'b-embed': 'src',
       // Ensure super supplied values/overrides are not lost
-      ...this.options.build.loaders.vue.transformAssetUrls
+      ...this.options.build.loaders.vue.transformAssetUrls,
     }
 
     // Enable transpilation of `src/` directory
@@ -93,7 +93,7 @@ module.exports = function nuxtBootstrapVue(moduleOptions = {}) {
     if (!usePretranspiled) {
       // Use bootstrap-vue source code for smaller prod builds
       // by aliasing 'bootstrap-vue' to the source files
-      this.extendBuild(config => {
+      this.extendBuild((config) => {
         if (!config.resolve.alias) {
           config.resolve.alias = {}
         }
@@ -113,7 +113,7 @@ module.exports = function nuxtBootstrapVue(moduleOptions = {}) {
     const templateOptions = {
       // Flag if we are tree shaking
       treeShake: false,
-      icons: !!options.icons
+      icons: !!options.icons,
     }
 
     // Specific component and/or directive plugins
@@ -123,7 +123,7 @@ module.exports = function nuxtBootstrapVue(moduleOptions = {}) {
       templateOptions[type] = bvPlugins
         // Normalize plugin name to `${Name}Plugin` (component) or `VB${Name}Plugin` (directive)
         // Required for backwards compatibility with old plugin import names
-        .map(plugin => {
+        .map((plugin) => {
           // Ensure PascalCase name
           plugin = pascalCase(plugin)
           // Ensure new naming convention for directive plugins prefixed with `VB`
@@ -146,9 +146,9 @@ module.exports = function nuxtBootstrapVue(moduleOptions = {}) {
 
       templateOptions[type] = ComponentsOrDirectives
         // Ensure PascalCase name
-        .map(item => pascalCase(item))
+        .map((item) => pascalCase(item))
         // Ensure prefixed with `V`
-        .map(item => (type === 'directives' && !/^V/.test(item) ? `V${item}` : item))
+        .map((item) => (type === 'directives' && !/^V/.test(item) ? `V${item}` : item))
         // Remove duplicate items
         .filter((item, i, arr) => arr.indexOf(item) === i)
 
@@ -177,7 +177,7 @@ module.exports = function nuxtBootstrapVue(moduleOptions = {}) {
     this.addPlugin({
       src: resolve(__dirname, 'plugin.template.js'),
       fileName: 'bootstrap-vue.js',
-      options: templateOptions
+      options: templateOptions,
     })
   })
 }

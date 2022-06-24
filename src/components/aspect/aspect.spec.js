@@ -32,8 +32,8 @@ describe('aspect', () => {
   it('should have expected structure when prop `tag` is set', async () => {
     const wrapper = mount(BAspect, {
       propsData: {
-        tag: 'section'
-      }
+        tag: 'section',
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -63,8 +63,8 @@ describe('aspect', () => {
   it('should have expected structure when aspect is set to "4:3"', async () => {
     const wrapper = mount(BAspect, {
       propsData: {
-        aspect: '4:3'
-      }
+        aspect: '4:3',
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -92,8 +92,8 @@ describe('aspect', () => {
   it('should have expected structure when aspect is set to `16/9`', async () => {
     const wrapper = mount(BAspect, {
       propsData: {
-        aspect: 16 / 9
-      }
+        aspect: 16 / 9,
+      },
     })
 
     expect(wrapper.vm).toBeDefined()

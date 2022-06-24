@@ -23,9 +23,9 @@ describe('card-header', () => {
     const wrapper = mount(BCardHeader, {
       context: {
         props: {
-          headerTag: 'header'
-        }
-      }
+          headerTag: 'header',
+        },
+      },
     })
 
     expect(wrapper.element.tagName).toBe('HEADER')
@@ -37,8 +37,8 @@ describe('card-header', () => {
   it('has class bg-info when prop headerBgVariant=info', async () => {
     const wrapper = mount(BCardHeader, {
       context: {
-        props: { headerBgVariant: 'info' }
-      }
+        props: { headerBgVariant: 'info' },
+      },
     })
 
     expect(wrapper.classes()).toContain('card-header')
@@ -51,8 +51,8 @@ describe('card-header', () => {
   it('has class text-info when prop headerTextVariant=info', async () => {
     const wrapper = mount(BCardHeader, {
       context: {
-        props: { headerTextVariant: 'info' }
-      }
+        props: { headerTextVariant: 'info' },
+      },
     })
 
     expect(wrapper.classes()).toContain('card-header')
@@ -65,8 +65,8 @@ describe('card-header', () => {
   it('has class border-info when prop headerBorderVariant=info', async () => {
     const wrapper = mount(BCardHeader, {
       context: {
-        props: { headerBorderVariant: 'info' }
-      }
+        props: { headerBorderVariant: 'info' },
+      },
     })
 
     expect(wrapper.classes()).toContain('card-header')
@@ -82,9 +82,9 @@ describe('card-header', () => {
         props: {
           headerTextVariant: 'info',
           headerBgVariant: 'danger',
-          headerBorderVariant: 'dark'
-        }
-      }
+          headerBorderVariant: 'dark',
+        },
+      },
     })
 
     expect(wrapper.classes()).toContain('card-header')

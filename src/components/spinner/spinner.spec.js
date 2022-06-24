@@ -15,8 +15,8 @@ describe('spinner', () => {
   it('renders custom root element when tag prop is set', async () => {
     const wrapper = mount(BSpinner, {
       context: {
-        props: { tag: 'aside' }
-      }
+        props: { tag: 'aside' },
+      },
     })
 
     expect(wrapper.element.tagName).toBe('ASIDE')
@@ -29,9 +29,9 @@ describe('spinner', () => {
       context: {
         props: {
           tag: 'div',
-          label: 'Loading...'
-        }
-      }
+          label: 'Loading...',
+        },
+      },
     })
 
     expect(wrapper).toBeDefined()
@@ -45,7 +45,7 @@ describe('spinner', () => {
   it('accepts custom label text via label slot', async () => {
     const wrapper = mount(BSpinner, {
       slots: { label: 'foobar' },
-      context: {}
+      context: {},
     })
 
     expect(wrapper.text()).toBe('foobar')
@@ -58,9 +58,9 @@ describe('spinner', () => {
       context: {
         props: {
           tag: 'div',
-          label: 'Loading...'
-        }
-      }
+          label: 'Loading...',
+        },
+      },
     })
 
     const span = wrapper.find('span')
@@ -83,8 +83,8 @@ describe('spinner', () => {
   it('default has class "spinner-border-sm" when prop small=true', async () => {
     const wrapper = mount(BSpinner, {
       context: {
-        props: { small: true }
-      }
+        props: { small: true },
+      },
     })
 
     expect(wrapper.classes().length).toBe(2)
@@ -97,8 +97,8 @@ describe('spinner', () => {
   it('default has classes "spinner-border" and "text-danger" when prop variant="danger"', async () => {
     const wrapper = mount(BSpinner, {
       context: {
-        props: { variant: 'danger' }
-      }
+        props: { variant: 'danger' },
+      },
     })
 
     expect(wrapper.classes().length).toBe(2)
@@ -113,9 +113,9 @@ describe('spinner', () => {
       context: {
         props: {
           variant: 'danger',
-          small: true
-        }
-      }
+          small: true,
+        },
+      },
     })
 
     expect(wrapper.classes().length).toBe(3)
@@ -137,8 +137,8 @@ describe('spinner', () => {
   it('has role "status" when label provided', async () => {
     const wrapper = mount(BSpinner, {
       context: {
-        props: { label: 'Loading' }
-      }
+        props: { label: 'Loading' },
+      },
     })
 
     expect(wrapper.attributes('role')).toBeDefined()
@@ -151,9 +151,9 @@ describe('spinner', () => {
     const wrapper = mount(BSpinner, {
       context: {
         props: {
-          role: 'foobar'
-        }
-      }
+          role: 'foobar',
+        },
+      },
     })
 
     expect(wrapper.attributes('role')).toBeUndefined()
@@ -166,9 +166,9 @@ describe('spinner', () => {
       context: {
         props: {
           role: 'foobar',
-          label: 'loading'
-        }
-      }
+          label: 'loading',
+        },
+      },
     })
 
     expect(wrapper.attributes('role')).toBeDefined()
@@ -189,8 +189,8 @@ describe('spinner', () => {
   it('does not have attribute "aria-hidden" when label provided', async () => {
     const wrapper = mount(BSpinner, {
       context: {
-        props: { label: 'loading' }
-      }
+        props: { label: 'loading' },
+      },
     })
 
     expect(wrapper.attributes('aria-hidden')).toBeUndefined()
@@ -201,8 +201,8 @@ describe('spinner', () => {
   it('does not have attribute "aria-hidden" when label slot provided', async () => {
     const wrapper = mount(BSpinner, {
       slots: {
-        label: 'loading'
-      }
+        label: 'loading',
+      },
     })
 
     expect(wrapper.attributes('aria-hidden')).toBeUndefined()
@@ -213,8 +213,8 @@ describe('spinner', () => {
   it('places user supplied attributes on root element', async () => {
     const wrapper = mount(BSpinner, {
       context: {
-        attrs: { id: 'foobar' }
-      }
+        attrs: { id: 'foobar' },
+      },
     })
 
     expect(wrapper.attributes('id')).toBeDefined()
@@ -226,8 +226,8 @@ describe('spinner', () => {
   it('places user supplied class on root element', async () => {
     const wrapper = mount(BSpinner, {
       context: {
-        class: ['foo', 'bar']
-      }
+        class: ['foo', 'bar'],
+      },
     })
 
     expect(wrapper.classes()).toContain('spinner-border')
@@ -240,8 +240,8 @@ describe('spinner', () => {
   it('has class "spinner-grow" when prop type="grow"', async () => {
     const wrapper = mount(BSpinner, {
       context: {
-        props: { type: 'grow' }
-      }
+        props: { type: 'grow' },
+      },
     })
 
     expect(wrapper.classes().length).toBe(1)
@@ -255,9 +255,9 @@ describe('spinner', () => {
       context: {
         props: {
           small: true,
-          type: 'grow'
-        }
-      }
+          type: 'grow',
+        },
+      },
     })
 
     expect(wrapper.classes().length).toBe(2)
@@ -272,9 +272,9 @@ describe('spinner', () => {
       context: {
         props: {
           type: 'grow',
-          variant: 'danger'
-        }
-      }
+          variant: 'danger',
+        },
+      },
     })
 
     expect(wrapper.classes().length).toBe(2)
@@ -290,9 +290,9 @@ describe('spinner', () => {
         props: {
           type: 'grow',
           variant: 'info',
-          small: true
-        }
-      }
+          small: true,
+        },
+      },
     })
 
     expect(wrapper.classes().length).toBe(3)

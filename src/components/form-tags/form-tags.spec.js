@@ -18,8 +18,8 @@ describe('form-tags', () => {
   it('has tags when value is set', async () => {
     const wrapper = mount(BFormTags, {
       propsData: {
-        value: ['apple', 'orange']
-      }
+        value: ['apple', 'orange'],
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')
@@ -47,8 +47,8 @@ describe('form-tags', () => {
   it('responds to changes in value prop', async () => {
     const wrapper = mount(BFormTags, {
       propsData: {
-        value: ['apple', 'orange']
-      }
+        value: ['apple', 'orange'],
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')
@@ -63,13 +63,13 @@ describe('form-tags', () => {
     let scope
     const wrapper = mount(BFormTags, {
       propsData: {
-        value: ['apple', 'orange']
+        value: ['apple', 'orange'],
       },
       scopedSlots: {
         default(props) {
           scope = props
-        }
-      }
+        },
+      },
     })
 
     await waitNT(wrapper.vm)
@@ -102,8 +102,8 @@ describe('form-tags', () => {
       propsData: {
         value: [],
         name: 'foo',
-        required: true
-      }
+        required: true,
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')
@@ -127,8 +127,8 @@ describe('form-tags', () => {
   it('adds new tags from user input', async () => {
     const wrapper = mount(BFormTags, {
       propsData: {
-        value: ['apple', 'orange']
-      }
+        value: ['apple', 'orange'],
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')
@@ -168,8 +168,8 @@ describe('form-tags', () => {
     const wrapper = mount(BFormTags, {
       propsData: {
         inputId: '1-tag-input',
-        value: ['apple', 'orange']
-      }
+        value: ['apple', 'orange'],
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')
@@ -202,8 +202,8 @@ describe('form-tags', () => {
     const wrapper = mount(BFormTags, {
       propsData: {
         noTagRemove: true,
-        value: ['apple', 'orange']
-      }
+        value: ['apple', 'orange'],
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')
@@ -223,8 +223,8 @@ describe('form-tags', () => {
   it('removes tags when user clicks remove on tag', async () => {
     const wrapper = mount(BFormTags, {
       propsData: {
-        value: ['apple', 'orange', 'pear', 'peach']
-      }
+        value: ['apple', 'orange', 'pear', 'peach'],
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')
@@ -252,8 +252,8 @@ describe('form-tags', () => {
     const wrapper = mount(BFormTags, {
       propsData: {
         separator: ' ,;',
-        value: ['apple', 'orange']
-      }
+        value: ['apple', 'orange'],
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')
@@ -290,9 +290,9 @@ describe('form-tags', () => {
     const wrapper = mount(BFormTags, {
       propsData: {
         separator: ' ',
-        tagValidator: tag => tag.length < 5,
-        value: ['one', 'two']
-      }
+        tagValidator: (tag) => tag.length < 5,
+        value: ['one', 'two'],
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')
@@ -349,10 +349,10 @@ describe('form-tags', () => {
     const wrapper = mount(BFormTags, {
       propsData: {
         separator: ' ',
-        tagValidator: tag => tag.length < 5,
+        tagValidator: (tag) => tag.length < 5,
         validateOnInput: true,
-        value: ['one', 'two']
-      }
+        value: ['one', 'two'],
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')
@@ -528,8 +528,8 @@ describe('form-tags', () => {
   it('adds new tags when add button clicked', async () => {
     const wrapper = mount(BFormTags, {
       propsData: {
-        value: ['apple', 'orange']
-      }
+        value: ['apple', 'orange'],
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')
@@ -563,8 +563,8 @@ describe('form-tags', () => {
       propsData: {
         value: ['one', 'two'],
         addOnChange: true,
-        tagValidator: tag => tag.length < 4
-      }
+        tagValidator: (tag) => tag.length < 4,
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')
@@ -585,10 +585,7 @@ describe('form-tags', () => {
 
     const $tags = wrapper.findAll('.badge')
     expect($tags.length).toBe(2)
-    await $tags
-      .at(1)
-      .find('button')
-      .trigger('click')
+    await $tags.at(1).find('button').trigger('click')
     expect(wrapper.vm.tags).toEqual(['one'])
     expect(wrapper.vm.removedTags).toContain('two')
 
@@ -608,8 +605,8 @@ describe('form-tags', () => {
       propsData: {
         value: ['one', 'two'],
         addOnChange: true,
-        tagValidator: tag => tag.length < 4
-      }
+        tagValidator: (tag) => tag.length < 4,
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')
@@ -630,10 +627,7 @@ describe('form-tags', () => {
 
     const $tags = wrapper.findAll('.badge')
     expect($tags.length).toBe(2)
-    await $tags
-      .at(1)
-      .find('button')
-      .trigger('click')
+    await $tags.at(1).find('button').trigger('click')
     expect(wrapper.vm.tags).toEqual(['one'])
     expect(wrapper.vm.removedTags).toContain('two')
 
@@ -656,14 +650,14 @@ describe('form-tags', () => {
             props: {
               value: ['one', 'two'],
               addOnChange: true,
-              tagValidator: tag => tag.length < 4
-            }
-          })
+              tagValidator: (tag) => tag.length < 4,
+            },
+          }),
         ])
-      }
+      },
     }
     const wrapper = mount(App, {
-      attachTo: document.body
+      attachTo: document.body,
     })
 
     expect(wrapper.element.tagName).toBe('FORM')
@@ -688,10 +682,7 @@ describe('form-tags', () => {
 
     const $tags = formTags.findAll('.badge')
     expect($tags.length).toBe(2)
-    await $tags
-      .at(1)
-      .find('button')
-      .trigger('click')
+    await $tags.at(1).find('button').trigger('click')
     expect(formTags.vm.tags).toEqual(['one'])
     expect(formTags.vm.removedTags).toContain('two')
 
@@ -711,8 +702,8 @@ describe('form-tags', () => {
     const wrapper = mount(BFormTags, {
       attachTo: document.body,
       propsData: {
-        value: ['apple', 'orange']
-      }
+        value: ['apple', 'orange'],
+      },
     })
 
     await waitNT(wrapper.vm)
@@ -762,8 +753,8 @@ describe('form-tags', () => {
       attachTo: document.body,
       propsData: {
         autofocus: true,
-        value: ['apple', 'orange']
-      }
+        value: ['apple', 'orange'],
+      },
     })
 
     await waitNT(wrapper.vm)
@@ -792,8 +783,8 @@ describe('form-tags', () => {
     const wrapper = mount(BFormTags, {
       propsData: {
         value: ['apple', 'orange'],
-        limit: 3
-      }
+        limit: 3,
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')
@@ -849,12 +840,12 @@ describe('form-tags', () => {
     const wrapper = mount(BFormTags, {
       attachTo: document.body,
       propsData: {
-        value: ['apple', 'orange']
+        value: ['apple', 'orange'],
       },
       listeners: {
         focus: onFocus,
-        blur: onBlur
-      }
+        blur: onBlur,
+      },
     })
 
     expect(onFocus).not.toHaveBeenCalled()
@@ -887,12 +878,12 @@ describe('form-tags', () => {
     const onFocusOut = jest.fn()
     const wrapper = mount(BFormTags, {
       propsData: {
-        value: ['apple', 'orange']
+        value: ['apple', 'orange'],
       },
       listeners: {
         focusin: onFocusIn,
-        focusout: onFocusOut
-      }
+        focusout: onFocusOut,
+      },
     })
 
     expect(onFocusIn).not.toHaveBeenCalled()

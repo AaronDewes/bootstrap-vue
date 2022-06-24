@@ -16,8 +16,8 @@ describe('media-body', () => {
   it('custom root element when prop `tag` is set', async () => {
     const wrapper = mount(BMediaBody, {
       propsData: {
-        tag: 'article'
-      }
+        tag: 'article',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('ARTICLE')
@@ -31,8 +31,8 @@ describe('media-body', () => {
   it('renders default slot content', async () => {
     const wrapper = mount(BMediaBody, {
       slots: {
-        default: '<b>foobar</b>'
-      }
+        default: '<b>foobar</b>',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')

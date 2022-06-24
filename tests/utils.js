@@ -9,8 +9,8 @@ export const wrapWithMethods = (Component, methods) => ({
       <slot v-for="(_, name) in $slots" :name="name" :slot="name" />
       <template v-for="(_, name) in $scopedSlots" :slot="name" slot-scope="slotData"><slot :name="name" v-bind="slotData" /></template>
     </wrapped-component>
-  `
+  `,
 })
 
-export const waitNT = ctx => new Promise(resolve => ctx.$nextTick(resolve))
-export const waitRAF = () => new Promise(resolve => requestAnimationFrame(resolve))
+export const waitNT = (ctx) => new Promise((resolve) => ctx.$nextTick(resolve))
+export const waitRAF = () => new Promise((resolve) => requestAnimationFrame(resolve))

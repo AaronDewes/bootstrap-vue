@@ -30,9 +30,9 @@ button will only appear when the user has entered a new tag value.
   export default {
     data() {
       return {
-        value: ['apple', 'orange']
+        value: ['apple', 'orange'],
       }
-    }
+    },
   }
 </script>
 
@@ -72,9 +72,9 @@ are typed:
   export default {
     data() {
       return {
-        value: ['one', 'two']
+        value: ['one', 'two'],
       }
-    }
+    },
   }
 </script>
 
@@ -110,9 +110,9 @@ When the prop `remove-on-delete` is set, and the user presses <kbd>Backspace</kb
   export default {
     data() {
       return {
-        value: ['apple', 'orange', 'grape']
+        value: ['apple', 'orange', 'grape'],
       }
-    }
+    },
   }
 </script>
 
@@ -157,9 +157,9 @@ The focus and validation state styling of the component relies upon BootstrapVue
   export default {
     data() {
       return {
-        value: ['apple', 'orange', 'grape']
+        value: ['apple', 'orange', 'grape'],
       }
-    }
+    },
   }
 </script>
 
@@ -202,14 +202,12 @@ not validated.
         separator=" "
       ></b-form-tags>
 
-      <template #invalid-feedback>
-        You must provide at least 3 tags and no more than 8
-      </template>
+      <template #invalid-feedback> You must provide at least 3 tags and no more than 8 </template>
 
       <template #description>
         <div id="tags-validation-help">
-         Tags must be 3 to 5 characters in length and all lower
-         case. Enter tags separated by spaces or press enter.
+          Tags must be 3 to 5 characters in length and all lower case. Enter tags separated by
+          spaces or press enter.
         </div>
       </template>
     </b-form-group>
@@ -221,27 +219,27 @@ not validated.
     data() {
       return {
         tags: [],
-        dirty: false
+        dirty: false,
       }
     },
     computed: {
       state() {
         // Overall component validation state
-        return this.dirty ? (this.tags.length > 2 && this.tags.length < 9) : null
-      }
+        return this.dirty ? this.tags.length > 2 && this.tags.length < 9 : null
+      },
     },
     watch: {
       tags(newValue, oldValue) {
         // Set the dirty flag on first change to the tags array
         this.dirty = true
-      }
+      },
     },
     methods: {
       tagValidator(tag) {
         // Individual tag validator function
         return tag === tag.toLowerCase() && tag.length > 2 && tag.length < 6
-      }
-    }
+      },
+    },
   }
 </script>
 
@@ -283,9 +281,9 @@ to either an empty string (`''`) or `null`.
     <p class="mt-2">Tags: {{ tags }}</p>
     <p>Event values:</p>
     <ul>
-        <li>validTags: {{ validTags }}</li>
-        <li>invalidTags: {{ invalidTags }}</li>
-        <li>duplicateTags: {{ duplicateTags }}</li>
+      <li>validTags: {{ validTags }}</li>
+      <li>invalidTags: {{ invalidTags }}</li>
+      <li>duplicateTags: {{ duplicateTags }}</li>
     </ul>
   </div>
 </template>
@@ -297,7 +295,7 @@ to either an empty string (`''`) or `null`.
         tags: [],
         validTags: [],
         invalidTags: [],
-        duplicateTags: []
+        duplicateTags: [],
       }
     },
     methods: {
@@ -308,8 +306,8 @@ to either an empty string (`''`) or `null`.
       },
       validator(tag) {
         return tag.length > 2 && tag.length < 6
-      }
-    }
+      },
+    },
   }
 </script>
 
@@ -332,7 +330,12 @@ Removing tags is unaffected by the `limit` prop.
 <template>
   <div>
     <label for="tags-limit">Enter tags</label>
-    <b-form-tags input-id="tags-limit" v-model="value" :limit="limit" remove-on-delete></b-form-tags>
+    <b-form-tags
+      input-id="tags-limit"
+      v-model="value"
+      :limit="limit"
+      remove-on-delete
+    ></b-form-tags>
     <p class="mt-2">Value: {{ value }}</p>
   </div>
 </template>
@@ -342,9 +345,9 @@ Removing tags is unaffected by the `limit` prop.
     data() {
       return {
         value: [],
-        limit: 5
+        limit: 5,
       }
-    }
+    },
   }
 </script>
 
@@ -444,7 +447,8 @@ support.
             v-bind="inputAttrs"
             v-on="inputHandlers"
             placeholder="New tag - Press enter to add"
-            class="form-control">
+            class="form-control"
+          />
           <b-input-group-append>
             <b-button @click="addTag()" variant="primary">Add</b-button>
           </b-input-group-append>
@@ -473,7 +477,8 @@ support.
               variant="link"
               size="sm"
               :aria-controls="`my-custom-tags-tag_${tag.replace(/\s/g, '_')}_`"
-            >remove</b-button>
+              >remove</b-button
+            >
           </b-card>
         </ul>
       </template>
@@ -485,9 +490,9 @@ support.
   export default {
     data() {
       return {
-        value: ['apple', 'orange', 'banana', 'pear', 'peach']
+        value: ['apple', 'orange', 'banana', 'pear', 'peach'],
       }
-    }
+    },
   }
 </script>
 
@@ -529,7 +534,8 @@ but feel free to render tags using standard HTML or components.
             :title="tag"
             :variant="tagVariant"
             class="me-1"
-          >{{ tag }}</b-form-tag>
+            >{{ tag }}</b-form-tag
+          >
         </div>
       </template>
     </b-form-tags>
@@ -540,9 +546,9 @@ but feel free to render tags using standard HTML or components.
   export default {
     data() {
       return {
-        value: ['apple', 'orange', 'banana']
+        value: ['apple', 'orange', 'banana'],
       }
-    }
+    },
   }
 </script>
 
@@ -568,12 +574,9 @@ of tags:
         <template v-slot="{ tags, inputAttrs, inputHandlers, disabled, removeTag }">
           <ul v-if="tags.length > 0" class="list-inline d-inline-block mb-2">
             <li v-for="tag in tags" :key="tag" class="list-inline-item">
-              <b-form-tag
-                @remove="removeTag(tag)"
-                :title="tag"
-                :disabled="disabled"
-                variant="info"
-              >{{ tag }}</b-form-tag>
+              <b-form-tag @remove="removeTag(tag)" :title="tag" :disabled="disabled" variant="info"
+                >{{ tag }}</b-form-tag
+              >
             </li>
           </ul>
           <b-form-select
@@ -598,14 +601,14 @@ of tags:
     data() {
       return {
         options: ['Apple', 'Orange', 'Banana', 'Lime', 'Peach', 'Chocolate', 'Strawberry'],
-        value: []
+        value: [],
       }
     },
     computed: {
       availableOptions() {
-        return this.options.filter(opt => this.value.indexOf(opt) === -1)
-      }
-    }
+        return this.options.filter((opt) => this.value.indexOf(opt) === -1)
+      },
+    },
   }
 </script>
 
@@ -672,7 +675,7 @@ default slot's scope.
         </b-form-invalid-feedback>
         <ul v-if="tags.length > 0" class="mb-0">
           <li v-for="tag in tags" :key="tag" :title="`Tag: ${tag}`" class="mt-2">
-            <span  class="d-flex align-items-center">
+            <span class="d-flex align-items-center">
               <span class="me-2">{{ tag }}</span>
               <b-button
                 :disabled="disabled"
@@ -685,9 +688,7 @@ default slot's scope.
             </span>
           </li>
         </ul>
-        <b-form-text v-else>
-          There are no tags specified. Add a new tag above.
-        </b-form-text>
+        <b-form-text v-else> There are no tags specified. Add a new tag above. </b-form-text>
       </template>
     </b-form-tags>
   </div>
@@ -699,14 +700,14 @@ default slot's scope.
       return {
         newTag: '',
         disabled: false,
-        value: []
+        value: [],
       }
     },
     computed: {
       state() {
         // Return false (invalid) if new tag is a duplicate
         return this.value.indexOf(this.newTag.trim()) > -1 ? false : null
-      }
+      },
     },
     methods: {
       resetInputValue() {
@@ -714,8 +715,8 @@ default slot's scope.
       },
       formatter(value) {
         return value.toUpperCase()
-      }
-    }
+      },
+    },
   }
 </script>
 
@@ -733,19 +734,14 @@ pre-defined set of tags:
         <template v-slot="{ tags, disabled, addTag, removeTag }">
           <ul v-if="tags.length > 0" class="list-inline d-inline-block mb-2">
             <li v-for="tag in tags" :key="tag" class="list-inline-item">
-              <b-form-tag
-                @remove="removeTag(tag)"
-                :title="tag"
-                :disabled="disabled"
-                variant="info"
-              >{{ tag }}</b-form-tag>
+              <b-form-tag @remove="removeTag(tag)" :title="tag" :disabled="disabled" variant="info"
+                >{{ tag }}</b-form-tag
+              >
             </li>
           </ul>
 
           <b-dropdown size="sm" variant="outline-secondary" block menu-class="w-100">
-            <template #button-content>
-              <b-icon icon="tag-fill"></b-icon> Choose tags
-            </template>
+            <template #button-content> <b-icon icon="tag-fill"></b-icon> Choose tags </template>
             <b-dropdown-form @submit.stop.prevent="() => {}">
               <b-form-group
                 label="Search tags"
@@ -762,7 +758,7 @@ pre-defined set of tags:
                   type="search"
                   size="sm"
                   autocomplete="off"
-                 ></b-form-input>
+                ></b-form-input>
               </b-form-group>
             </b-dropdown-form>
             <b-dropdown-divider></b-dropdown-divider>
@@ -789,7 +785,7 @@ pre-defined set of tags:
       return {
         options: ['Apple', 'Orange', 'Banana', 'Lime', 'Peach', 'Chocolate', 'Strawberry'],
         search: '',
-        value: []
+        value: [],
       }
     },
     computed: {
@@ -800,10 +796,10 @@ pre-defined set of tags:
       availableOptions() {
         const criteria = this.criteria
         // Filter out already selected options
-        const options = this.options.filter(opt => this.value.indexOf(opt) === -1)
+        const options = this.options.filter((opt) => this.value.indexOf(opt) === -1)
         if (criteria) {
           // Show only options that match criteria
-          return options.filter(opt => opt.toLowerCase().indexOf(criteria) > -1);
+          return options.filter((opt) => opt.toLowerCase().indexOf(criteria) > -1)
         }
         // Show all options available
         return options
@@ -813,14 +809,14 @@ pre-defined set of tags:
           return 'There are no tags matching your search criteria'
         }
         return ''
-      }
+      },
     },
     methods: {
       onOptionClick({ option, addTag }) {
         addTag(option)
         this.search = ''
-      }
-    }
+      },
+    },
   }
 </script>
 
@@ -835,7 +831,7 @@ You can easily create a custom wrapper component with your preferred rendering s
 <template>
   <b-form-tags :value="value" @input="$emit('input', $event)">
     <template v-slot="{ tags, addTag, removeTag, inputAttrs, inputHandlers }">
-     <!-- Place your custom rendering here -->
+      <!-- Place your custom rendering here -->
     </template>
   </b-form-tags>
 </template>
@@ -848,14 +844,14 @@ You can easily create a custom wrapper component with your preferred rendering s
     components: { BFormTags },
     model: {
       prop: 'value',
-      event: 'input'
+      event: 'input',
     },
     props: {
       value: {
         type: Array,
-        default: () => []
-      }
-    }
+        default: () => [],
+      },
+    },
   }
 </script>
 ```

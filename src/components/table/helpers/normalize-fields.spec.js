@@ -4,13 +4,13 @@ describe('table/helpers/normalize-fields', () => {
   it('uses first row of items when fields are not defined and items passed', async () => {
     const fields = normalizeFields(null, [
       { foo: 1, bar: { a: 2 }, 'foo bar': 3, baz_bar: 4 },
-      { foo: 1, bar: { a: 2 }, 'foo bar': 3, baz: 5 }
+      { foo: 1, bar: { a: 2 }, 'foo bar': 3, baz: 5 },
     ])
     expect(fields).toEqual([
       { key: 'foo', label: 'Foo' },
       { key: 'bar', label: 'Bar' },
       { key: 'foo bar', label: 'Foo Bar' },
-      { key: 'baz_bar', label: 'Baz Bar' }
+      { key: 'baz_bar', label: 'Baz Bar' },
     ])
   })
 
@@ -22,13 +22,13 @@ describe('table/helpers/normalize-fields', () => {
         _showDetails: true,
         _rowVariant: 'primary',
         _cellVariants: ['primary', 'secondary', 'info'],
-        baz: 3
-      }
+        baz: 3,
+      },
     ])
     expect(fields).toEqual([
       { key: 'foo', label: 'Foo' },
       { key: 'bar', label: 'Bar' },
-      { key: 'baz', label: 'Baz' }
+      { key: 'baz', label: 'Baz' },
     ])
   })
 
@@ -46,7 +46,7 @@ describe('table/helpers/normalize-fields', () => {
     expect(normalizeFields(arr1, [])).toEqual([
       { key: 'foo', label: 'Foo' },
       { key: 'bar', label: 'Bar' },
-      { key: 'foo_bar', label: 'Foo Bar' }
+      { key: 'foo_bar', label: 'Foo Bar' },
     ])
   })
 
@@ -56,12 +56,12 @@ describe('table/helpers/normalize-fields', () => {
     expect(normalizeFields(arr1, [])).toEqual([
       { key: 'foo', label: 'Foo' },
       { key: 'bar', label: 'Bar Label' },
-      { key: 'baz', label: 'Baz Label' }
+      { key: 'baz', label: 'Baz Label' },
     ])
   })
 
   it('handles formatter shortcut', async () => {
-    const formatter = value => value
+    const formatter = (value) => value
     const arr1 = [{ foo: formatter }]
 
     expect(normalizeFields(arr1, [])).toEqual([{ key: 'foo', label: 'Foo', formatter }])
@@ -81,13 +81,13 @@ describe('table/helpers/normalize-fields', () => {
     expect(normalizeFields(arr1, [])).toEqual([
       { key: 'foo', label: 'Foo' },
       { key: 'bar', label: 'Bar' },
-      { key: 'foo_bar', label: 'Foo Bar' }
+      { key: 'foo_bar', label: 'Foo Bar' },
     ])
 
     expect(normalizeFields(arr2, [])).toEqual([
       { key: 'foo', label: 'Fiz' },
       { key: 'bar', label: 'Bar' },
-      { key: 'foo_bar', label: 'Foo Bar' }
+      { key: 'foo_bar', label: 'Foo Bar' },
     ])
   })
 })

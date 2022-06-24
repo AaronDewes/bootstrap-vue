@@ -27,9 +27,9 @@ describe('nav-item', () => {
     const wrapper = mount(BNavItem, {
       context: {
         props: {
-          linkAttrs: { role: 'tab' }
-        }
-      }
+          linkAttrs: { role: 'tab' },
+        },
+      },
     })
 
     expect(wrapper.attributes('role')).toBeUndefined()
@@ -48,9 +48,9 @@ describe('nav-item', () => {
     const wrapper = mount(BNavItem, {
       context: {
         props: {
-          linkClasses: ['foo', { bar: true }]
-        }
-      }
+          linkClasses: ['foo', { bar: true }],
+        },
+      },
     })
 
     const link = wrapper.find('a')
@@ -67,8 +67,8 @@ describe('nav-item', () => {
   it('has class "disabled" on link when disabled set', async () => {
     const wrapper = mount(BNavItem, {
       context: {
-        props: { disabled: true }
-      }
+        props: { disabled: true },
+      },
     })
 
     const link = wrapper.find('a')
@@ -84,8 +84,8 @@ describe('nav-item', () => {
     const spy = jest.fn()
     const wrapper = mount(BNavItem, {
       context: {
-        on: { click: spy }
-      }
+        on: { click: spy },
+      },
     })
 
     expect(spy).not.toHaveBeenCalled()
@@ -107,8 +107,8 @@ describe('nav-item', () => {
     const wrapper = mount(BNavItem, {
       context: {
         props: { disabled: true },
-        on: { click: spy }
-      }
+        on: { click: spy },
+      },
     })
 
     expect(spy).not.toHaveBeenCalled()

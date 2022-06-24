@@ -18,8 +18,8 @@ describe('table-simple', () => {
   it('renders content from default slot', async () => {
     const wrapper = mount(BTableSimple, {
       slots: {
-        default: 'foobar'
-      }
+        default: 'foobar',
+      },
     })
 
     expect(wrapper).toBeDefined()
@@ -35,8 +35,8 @@ describe('table-simple', () => {
   it('has class "table-striped" when striped=true', async () => {
     const wrapper = mount(BTableSimple, {
       propsData: {
-        striped: true
-      }
+        striped: true,
+      },
     })
 
     expect(wrapper).toBeDefined()
@@ -52,8 +52,8 @@ describe('table-simple', () => {
   it('has class "table-bordered" when bordered=true', async () => {
     const wrapper = mount(BTableSimple, {
       propsData: {
-        bordered: true
-      }
+        bordered: true,
+      },
     })
 
     expect(wrapper).toBeDefined()
@@ -69,8 +69,8 @@ describe('table-simple', () => {
   it('has class "table-borderless" when borderless=true', async () => {
     const wrapper = mount(BTableSimple, {
       propsData: {
-        borderless: true
-      }
+        borderless: true,
+      },
     })
 
     expect(wrapper).toBeDefined()
@@ -86,8 +86,8 @@ describe('table-simple', () => {
   it('has class "table-hover" when hover=true', async () => {
     const wrapper = mount(BTableSimple, {
       propsData: {
-        hover: true
-      }
+        hover: true,
+      },
     })
 
     expect(wrapper).toBeDefined()
@@ -103,8 +103,8 @@ describe('table-simple', () => {
   it('has class "table-sm" when small=true', async () => {
     const wrapper = mount(BTableSimple, {
       propsData: {
-        small: true
-      }
+        small: true,
+      },
     })
 
     expect(wrapper).toBeDefined()
@@ -120,8 +120,8 @@ describe('table-simple', () => {
   it('has class "table-dark" when dark=true', async () => {
     const wrapper = mount(BTableSimple, {
       propsData: {
-        dark: true
-      }
+        dark: true,
+      },
     })
 
     expect(wrapper).toBeDefined()
@@ -137,8 +137,8 @@ describe('table-simple', () => {
   it('has class "border" when outlined=true', async () => {
     const wrapper = mount(BTableSimple, {
       propsData: {
-        outlined: true
-      }
+        outlined: true,
+      },
     })
 
     expect(wrapper).toBeDefined()
@@ -154,8 +154,8 @@ describe('table-simple', () => {
   it('has class "b-table-fixed" when fixed=true', async () => {
     const wrapper = mount(BTableSimple, {
       propsData: {
-        fixed: true
-      }
+        fixed: true,
+      },
     })
 
     expect(wrapper).toBeDefined()
@@ -171,8 +171,8 @@ describe('table-simple', () => {
   it('has class "table-responsive" when responsive=true', async () => {
     const wrapper = mount(BTableSimple, {
       propsData: {
-        responsive: true
-      }
+        responsive: true,
+      },
     })
 
     expect(wrapper).toBeDefined()
@@ -189,8 +189,8 @@ describe('table-simple', () => {
   it('has class "table-responsive-md" when responsive=md', async () => {
     const wrapper = mount(BTableSimple, {
       propsData: {
-        responsive: 'md'
-      }
+        responsive: 'md',
+      },
     })
 
     expect(wrapper).toBeDefined()

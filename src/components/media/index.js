@@ -7,8 +7,8 @@ const MediaPlugin = /*#__PURE__*/ pluginFactory({
   components: {
     BMedia,
     BMediaAside,
-    BMediaBody
-  }
+    BMediaBody,
+  },
 })
 
 export { MediaPlugin, BMedia, BMediaAside, BMediaBody }

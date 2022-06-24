@@ -17,8 +17,8 @@ describe('input-group > input-group-prepend', () => {
   it('renders custom root element when tag prop is set', async () => {
     const wrapper = mount(BInputGroupPrepend, {
       propsData: {
-        tag: 'span'
-      }
+        tag: 'span',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('SPAN')
@@ -33,8 +33,8 @@ describe('input-group > input-group-prepend', () => {
   it('renders content of default slot', async () => {
     const wrapper = mount(BInputGroupPrepend, {
       slots: {
-        default: 'foobar'
-      }
+        default: 'foobar',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')
@@ -48,8 +48,8 @@ describe('input-group > input-group-prepend', () => {
   it('renders child input-group-text when prop is-text set', async () => {
     const wrapper = mount(BInputGroupPrepend, {
       propsData: {
-        isText: true
-      }
+        isText: true,
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')
@@ -65,11 +65,11 @@ describe('input-group > input-group-prepend', () => {
   it('renders default slot inside child input-group-text when prop is-text set', async () => {
     const wrapper = mount(BInputGroupPrepend, {
       propsData: {
-        isText: true
+        isText: true,
       },
       slots: {
-        default: 'foobar'
-      }
+        default: 'foobar',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')

@@ -55,12 +55,12 @@ describe('get', () => {
       c: 'bar',
       d: { e: 'baz' },
       f: { 'g.h': 'faz' },
-      'i.j.k': 'fuz'
+      'i.j.k': 'fuz',
     }
     const obj2 = {
       a: { b: 'fiz' },
       c: 'bar',
-      d: { e: 'baz' }
+      d: { e: 'baz' },
     }
 
     expect(get(obj1, 'a.b')).toBe('foo')
@@ -88,13 +88,13 @@ describe('get', () => {
       a: { b: 'c' },
       b: [{ c: 'd' }],
       c: { d: { e: 'f' } },
-      d: [{ e: [{ f: 'g' }] }]
+      d: [{ e: [{ f: 'g' }] }],
     }
     const obj2 = {
       a: null,
       b: undefined,
       c: 0,
-      d: [null]
+      d: [null],
     }
 
     expect(get(obj1, 'a.b')).toBe('c')

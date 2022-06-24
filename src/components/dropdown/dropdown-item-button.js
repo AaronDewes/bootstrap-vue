@@ -4,7 +4,7 @@ import { EVENT_NAME_CLICK } from '../../constants/events'
 import {
   PROP_TYPE_ARRAY_OBJECT_STRING,
   PROP_TYPE_BOOLEAN,
-  PROP_TYPE_STRING
+  PROP_TYPE_STRING,
 } from '../../constants/props'
 import { makeProp, makePropsConfigurable } from '../../utils/props'
 import { attrsMixin } from '../../mixins/attrs'
@@ -18,7 +18,7 @@ export const props = makePropsConfigurable(
     activeClass: makeProp(PROP_TYPE_STRING, 'active'),
     buttonClass: makeProp(PROP_TYPE_ARRAY_OBJECT_STRING),
     disabled: makeProp(PROP_TYPE_BOOLEAN, false),
-    variant: makeProp(PROP_TYPE_STRING)
+    variant: makeProp(PROP_TYPE_STRING),
   },
   NAME_DROPDOWN_ITEM_BUTTON
 )
@@ -30,7 +30,7 @@ export const BDropdownItemButton = /*#__PURE__*/ Vue.extend({
   name: NAME_DROPDOWN_ITEM_BUTTON,
   mixins: [attrsMixin, normalizeSlotMixin],
   inject: {
-    getBvDropdown: { default: () => () => null }
+    getBvDropdown: { default: () => () => null },
   },
   inheritAttrs: false,
   props,
@@ -44,9 +44,9 @@ export const BDropdownItemButton = /*#__PURE__*/ Vue.extend({
         ...this.bvAttrs,
         role: 'menuitem',
         type: 'button',
-        disabled: this.disabled
+        disabled: this.disabled,
       }
-    }
+    },
   },
   methods: {
     closeDropdown() {
@@ -57,7 +57,7 @@ export const BDropdownItemButton = /*#__PURE__*/ Vue.extend({
     onClick(event) {
       this.$emit(EVENT_NAME_CLICK, event)
       this.closeDropdown()
-    }
+    },
   },
   render(h) {
     const { active, variant, bvAttrs } = this
@@ -67,7 +67,7 @@ export const BDropdownItemButton = /*#__PURE__*/ Vue.extend({
       {
         class: bvAttrs.class,
         style: bvAttrs.style,
-        attrs: { role: 'presentation' }
+        attrs: { role: 'presentation' },
       },
       [
         h(
@@ -78,16 +78,16 @@ export const BDropdownItemButton = /*#__PURE__*/ Vue.extend({
               this.buttonClass,
               {
                 [this.activeClass]: active,
-                [`text-${variant}`]: variant && !(active || this.disabled)
-              }
+                [`text-${variant}`]: variant && !(active || this.disabled),
+              },
             ],
             attrs: this.computedAttrs,
             on: { click: this.onClick },
-            ref: 'button'
+            ref: 'button',
           },
           this.normalizeSlot()
-        )
+        ),
       ]
     )
-  }
+  },
 })

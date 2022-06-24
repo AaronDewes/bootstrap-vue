@@ -23,9 +23,9 @@ describe('card-group', () => {
     const wrapper = mount(BCardGroup, {
       context: {
         props: {
-          tag: 'article'
-        }
-      }
+          tag: 'article',
+        },
+      },
     })
 
     expect(wrapper.element.tagName).toBe('ARTICLE')
@@ -37,8 +37,8 @@ describe('card-group', () => {
   it('has class card-deck when prop deck=true', async () => {
     const wrapper = mount(BCardGroup, {
       context: {
-        props: { deck: true }
-      }
+        props: { deck: true },
+      },
     })
 
     expect(wrapper.classes()).toContain('card-deck')
@@ -50,8 +50,8 @@ describe('card-group', () => {
   it('has class card-columns when prop columns=true', async () => {
     const wrapper = mount(BCardGroup, {
       context: {
-        props: { columns: true }
-      }
+        props: { columns: true },
+      },
     })
 
     expect(wrapper.classes()).toContain('card-columns')
@@ -63,8 +63,8 @@ describe('card-group', () => {
   it('accepts custom classes', async () => {
     const wrapper = mount(BCardGroup, {
       context: {
-        class: ['foobar']
-      }
+        class: ['foobar'],
+      },
     })
 
     expect(wrapper.classes()).toContain('card-group')

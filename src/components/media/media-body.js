@@ -7,7 +7,7 @@ import { makeProp, makePropsConfigurable } from '../../utils/props'
 
 export const props = makePropsConfigurable(
   {
-    tag: makeProp(PROP_TYPE_STRING, 'div')
+    tag: makeProp(PROP_TYPE_STRING, 'div'),
   },
   NAME_MEDIA_BODY
 )
@@ -21,5 +21,5 @@ export const BMediaBody = /*#__PURE__*/ Vue.extend({
   props,
   render(h, { props, data, children }) {
     return h(props.tag, mergeData(data, { staticClass: 'media-body' }), children)
-  }
+  },
 })

@@ -15,7 +15,7 @@ const DARK = 'dark'
 
 export const props = makePropsConfigurable(
   {
-    variant: makeProp(PROP_TYPE_STRING)
+    variant: makeProp(PROP_TYPE_STRING),
   },
   NAME_TR
 )
@@ -31,13 +31,13 @@ export const BTr = /*#__PURE__*/ Vue.extend({
   mixins: [attrsMixin, listenersMixin, normalizeSlotMixin],
   provide() {
     return {
-      getBvTableTr: () => this
+      getBvTableTr: () => this,
     }
   },
   inject: {
     getBvTableRowGroup: {
-      default: /* istanbul ignore next */ () => () => ({})
-    }
+      default: /* istanbul ignore next */ () => () => ({}),
+    },
   },
   inheritAttrs: false,
   props,
@@ -96,8 +96,8 @@ export const BTr = /*#__PURE__*/ Vue.extend({
       return this.headVariant === LIGHT || this.footVariant === LIGHT
         ? /* istanbul ignore next */ false
         : this.headVariant === DARK || this.footVariant === DARK
-          ? /* istanbul ignore next */ true
-          : this.isDark
+        ? /* istanbul ignore next */ true
+        : this.isDark
     },
     trClasses() {
       const { variant } = this
@@ -105,7 +105,7 @@ export const BTr = /*#__PURE__*/ Vue.extend({
     },
     trAttrs() {
       return { role: 'row', ...this.bvAttrs }
-    }
+    },
   },
   render(h) {
     return h(
@@ -114,9 +114,9 @@ export const BTr = /*#__PURE__*/ Vue.extend({
         class: this.trClasses,
         attrs: this.trAttrs,
         // Pass native listeners to child
-        on: this.bvListeners
+        on: this.bvListeners,
       },
       this.normalizeSlot()
     )
-  }
+  },
 })

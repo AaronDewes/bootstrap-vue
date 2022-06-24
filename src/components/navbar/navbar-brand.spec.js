@@ -22,8 +22,8 @@ describe('navbar-brand', () => {
   it('accepts custom tag', async () => {
     const wrapper = mount(BNavbarBrand, {
       context: {
-        props: { tag: 'span' }
-      }
+        props: { tag: 'span' },
+      },
     })
 
     expect(wrapper.element.tagName).toBe('SPAN')
@@ -36,8 +36,8 @@ describe('navbar-brand', () => {
   it('renders link when href set', async () => {
     const wrapper = mount(BNavbarBrand, {
       context: {
-        props: { href: '#foo' }
-      }
+        props: { href: '#foo' },
+      },
     })
 
     expect(wrapper.element.tagName).toBe('A')

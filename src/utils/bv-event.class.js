@@ -6,9 +6,7 @@ export class BvEvent {
     if (!type) {
       /* istanbul ignore next */
       throw new TypeError(
-        `Failed to construct '${this.constructor.name}'. 1 argument required, ${
-          arguments.length
-        } given.`
+        `Failed to construct '${this.constructor.name}'. 1 argument required, ${arguments.length} given.`
       )
     }
 
@@ -24,7 +22,7 @@ export class BvEvent {
       target: readonlyDescriptor(),
       relatedTarget: readonlyDescriptor(),
       vueTarget: readonlyDescriptor(),
-      componentId: readonlyDescriptor()
+      componentId: readonlyDescriptor(),
     })
 
     // Create a private variable using closure scoping
@@ -42,7 +40,7 @@ export class BvEvent {
       enumerable: true,
       get() {
         return defaultPrevented
-      }
+      },
     })
   }
 
@@ -54,7 +52,7 @@ export class BvEvent {
       target: null,
       relatedTarget: null,
       vueTarget: null,
-      componentId: null
+      componentId: null,
     }
   }
 }

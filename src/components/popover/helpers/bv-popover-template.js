@@ -10,7 +10,7 @@ export const BVPopoverTemplate = /*#__PURE__*/ Vue.extend({
   computed: {
     templateType() {
       return 'popover'
-    }
+    },
   },
   methods: {
     renderTemplate(h) {
@@ -30,21 +30,21 @@ export const BVPopoverTemplate = /*#__PURE__*/ Vue.extend({
           staticClass: 'popover b-popover',
           class: this.templateClasses,
           attrs: this.templateAttributes,
-          on: this.templateListeners
+          on: this.templateListeners,
         },
         [
           h('div', {
             staticClass: 'arrow',
-            ref: 'arrow'
+            ref: 'arrow',
           }),
           isUndefinedOrNull($title) || $title === ''
             ? /* istanbul ignore next */ h()
             : h('h3', { staticClass: 'popover-header', domProps: titleDomProps }, [$title]),
           isUndefinedOrNull($content) || $content === ''
             ? /* istanbul ignore next */ h()
-            : h('div', { staticClass: 'popover-body', domProps: contentDomProps }, [$content])
+            : h('div', { staticClass: 'popover-body', domProps: contentDomProps }, [$content]),
         ]
       )
-    }
-  }
+    },
+  },
 })

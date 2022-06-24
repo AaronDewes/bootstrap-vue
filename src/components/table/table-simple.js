@@ -15,7 +15,7 @@ export const props = makePropsConfigurable(
   sortKeys({
     ...idProps,
     ...stackedProps,
-    ...tableRendererProps
+    ...tableRendererProps,
   }),
   NAME_TABLE_SIMPLE
 )
@@ -38,13 +38,13 @@ export const BTableSimple = /*#__PURE__*/ Vue.extend({
     // Table features mixins
     // Stacked requires extra handling by users via
     // the table cell `stacked-heading` prop
-    stackedMixin
+    stackedMixin,
   ],
   props,
   computed: {
     isTableSimple() {
       return true
-    }
-  }
+    },
+  },
   // Render function is provided by `tableRendererMixin`
 })

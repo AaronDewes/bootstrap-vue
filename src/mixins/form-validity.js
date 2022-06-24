@@ -9,7 +9,7 @@ export const formValidityMixin = Vue.extend({
       /* istanbul ignore next */
       get() {
         return this.$refs.input.validity
-      }
+      },
     },
     validationMessage: {
       // Expose validationMessage property
@@ -17,7 +17,7 @@ export const formValidityMixin = Vue.extend({
       /* istanbul ignore next */
       get() {
         return this.$refs.input.validationMessage
-      }
+      },
     },
     willValidate: {
       // Expose willValidate property
@@ -25,8 +25,8 @@ export const formValidityMixin = Vue.extend({
       /* istanbul ignore next */
       get() {
         return this.$refs.input.willValidate
-      }
-    }
+      },
+    },
   },
   methods: {
     /* istanbul ignore next */
@@ -43,6 +43,6 @@ export const formValidityMixin = Vue.extend({
     reportValidity() {
       // For external handler that may want a reportValidity(...) method
       return this.$refs.input.reportValidity(...arguments)
-    }
-  }
+    },
+  },
 })

@@ -16,8 +16,8 @@ describe('layout > container', () => {
   it('renders custom root element when prop tag set', async () => {
     const wrapper = mount(BContainer, {
       propsData: {
-        tag: 'section'
-      }
+        tag: 'section',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('SECTION')
@@ -31,8 +31,8 @@ describe('layout > container', () => {
   it('should have container-fluid class when prop fluid set', async () => {
     const wrapper = mount(BContainer, {
       propsData: {
-        fluid: true
-      }
+        fluid: true,
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')
@@ -46,8 +46,8 @@ describe('layout > container', () => {
   it('should have container-md class when prop fluid="md"', async () => {
     const wrapper = mount(BContainer, {
       propsData: {
-        fluid: 'md'
-      }
+        fluid: 'md',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')
@@ -61,8 +61,8 @@ describe('layout > container', () => {
   it('has content from default slot', async () => {
     const wrapper = mount(BContainer, {
       slots: {
-        default: 'foobar'
-      }
+        default: 'foobar',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')

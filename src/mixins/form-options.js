@@ -20,7 +20,7 @@ export const props = makePropsConfigurable(
     htmlField: makeProp(PROP_TYPE_STRING, 'html'),
     options: makeProp(PROP_TYPE_ARRAY_OBJECT, []),
     textField: makeProp(PROP_TYPE_STRING, 'text'),
-    valueField: makeProp(PROP_TYPE_STRING, 'value')
+    valueField: makeProp(PROP_TYPE_STRING, 'value'),
   },
   'formOptionControls'
 )
@@ -33,7 +33,7 @@ export const formOptionsMixin = Vue.extend({
   computed: {
     formOptions() {
       return this.normalizeOptions(this.options)
-    }
+    },
   },
   methods: {
     normalizeOption(option, key = null) {
@@ -45,29 +45,29 @@ export const formOptionsMixin = Vue.extend({
           value: isUndefined(value) ? key || text : value,
           text: stripTags(String(isUndefined(text) ? key : text)),
           html: get(option, this.htmlField),
-          disabled: Boolean(get(option, this.disabledField))
+          disabled: Boolean(get(option, this.disabledField)),
         }
       }
       // Otherwise create an `<option>` object from the given value
       return {
         value: key || option,
         text: stripTags(String(option)),
-        disabled: false
+        disabled: false,
       }
     },
     normalizeOptions(options) {
       // Normalize the given options array
       if (isArray(options)) {
-        return options.map(option => this.normalizeOption(option))
+        return options.map((option) => this.normalizeOption(option))
       } else if (isPlainObject(options)) {
         // Deprecate the object options format
         warn(OPTIONS_OBJECT_DEPRECATED_MSG, this.$options.name)
         // Normalize a `options` object to an array of options
-        return keys(options).map(key => this.normalizeOption(options[key] || {}, key))
+        return keys(options).map((key) => this.normalizeOption(options[key] || {}, key))
       }
       // If not an array or object, return an empty array
       /* istanbul ignore next */
       return []
-    }
-  }
+    },
+  },
 })

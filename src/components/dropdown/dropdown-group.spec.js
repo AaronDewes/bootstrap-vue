@@ -26,8 +26,8 @@ describe('dropdown > dropdown-header', () => {
   it('renders header element when prop header set', async () => {
     const wrapper = mount(BDropdownGroup, {
       context: {
-        props: { header: 'foobar' }
-      }
+        props: { header: 'foobar' },
+      },
     })
 
     expect(wrapper.element.tagName).toBe('LI')
@@ -47,9 +47,9 @@ describe('dropdown > dropdown-header', () => {
       context: {
         props: {
           header: 'foobar',
-          headerTag: 'h6'
-        }
-      }
+          headerTag: 'h6',
+        },
+      },
     })
 
     expect(wrapper.element.tagName).toBe('LI')
@@ -65,8 +65,8 @@ describe('dropdown > dropdown-header', () => {
   it('user supplied id when prop id set', async () => {
     const wrapper = mount(BDropdownGroup, {
       context: {
-        props: { id: 'foo' }
-      }
+        props: { id: 'foo' },
+      },
     })
 
     expect(wrapper.element.tagName).toBe('LI')
@@ -80,7 +80,7 @@ describe('dropdown > dropdown-header', () => {
 
   it('renders default slot content', async () => {
     const wrapper = mount(BDropdownGroup, {
-      slots: { default: '<li>foobar</li>' }
+      slots: { default: '<li>foobar</li>' },
     })
 
     expect(wrapper.element.tagName).toBe('LI')

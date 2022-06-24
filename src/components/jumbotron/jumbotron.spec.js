@@ -16,8 +16,8 @@ describe('jumbotron', () => {
   it('renders with custom root element when prop "tag" is set', async () => {
     const wrapper = mount(BJumbotron, {
       propsData: {
-        tag: 'article'
-      }
+        tag: 'article',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('ARTICLE')
@@ -31,8 +31,8 @@ describe('jumbotron', () => {
   it('has border when prop "border-variant" is set', async () => {
     const wrapper = mount(BJumbotron, {
       propsData: {
-        borderVariant: 'danger'
-      }
+        borderVariant: 'danger',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')
@@ -47,8 +47,8 @@ describe('jumbotron', () => {
   it('has background variant when prop "bg-variant" is set', async () => {
     const wrapper = mount(BJumbotron, {
       propsData: {
-        bgVariant: 'info'
-      }
+        bgVariant: 'info',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')
@@ -62,8 +62,8 @@ describe('jumbotron', () => {
   it('has text variant when prop "text-variant" is set', async () => {
     const wrapper = mount(BJumbotron, {
       propsData: {
-        textVariant: 'primary'
-      }
+        textVariant: 'primary',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')
@@ -77,8 +77,8 @@ describe('jumbotron', () => {
   it('renders default slot content', async () => {
     const wrapper = mount(BJumbotron, {
       slots: {
-        default: 'foobar'
-      }
+        default: 'foobar',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')
@@ -93,11 +93,11 @@ describe('jumbotron', () => {
   it('renders default slot content inside container when "fluid" prop set', async () => {
     const wrapper = mount(BJumbotron, {
       propsData: {
-        fluid: true
+        fluid: true,
       },
       slots: {
-        default: 'foobar'
-      }
+        default: 'foobar',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')
@@ -117,11 +117,11 @@ describe('jumbotron', () => {
     const wrapper = mount(BJumbotron, {
       propsData: {
         fluid: true,
-        containerFluid: true
+        containerFluid: true,
       },
       slots: {
-        default: 'foobar'
-      }
+        default: 'foobar',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')
@@ -142,11 +142,11 @@ describe('jumbotron', () => {
     const wrapper = mount(BJumbotron, {
       propsData: {
         header: 'foo',
-        lead: 'bar'
+        lead: 'bar',
       },
       slots: {
-        default: '<span>baz</span>'
-      }
+        default: '<span>baz</span>',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')
@@ -179,11 +179,11 @@ describe('jumbotron', () => {
         header: 'foo',
         headerHtml: '<strong>baz</strong>',
         lead: 'bar',
-        leadHtml: '<strong>bat</strong>'
+        leadHtml: '<strong>bat</strong>',
       },
       slots: {
-        default: '<span>baz</span>'
-      }
+        default: '<span>baz</span>',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')
@@ -218,13 +218,13 @@ describe('jumbotron', () => {
         header: 'foo',
         headerHtml: '<strong>baz</strong>',
         lead: 'bar',
-        leadHtml: '<strong>bat</strong>'
+        leadHtml: '<strong>bat</strong>',
       },
       slots: {
         default: '<span>baz</span>',
         header: '<small>foo</small>',
-        lead: '<small>bar</small>'
-      }
+        lead: '<small>bar</small>',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')

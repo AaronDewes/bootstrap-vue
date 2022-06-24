@@ -6,8 +6,8 @@ describe('form-file', () => {
   it('default has expected structure, classes and attributes', async () => {
     const wrapper = mount(BFormFile, {
       propsData: {
-        id: 'foo'
-      }
+        id: 'foo',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')
@@ -43,8 +43,8 @@ describe('form-file', () => {
     const wrapper = mount(BFormFile, {
       propsData: {
         id: 'foo',
-        multiple: true
-      }
+        multiple: true,
+      },
     })
 
     const $input = wrapper.find('input')
@@ -57,8 +57,8 @@ describe('form-file', () => {
     const wrapper = mount(BFormFile, {
       propsData: {
         id: 'foo',
-        required: true
-      }
+        required: true,
+      },
     })
 
     const $input = wrapper.find('input')
@@ -73,8 +73,8 @@ describe('form-file', () => {
     const wrapper = mount(BFormFile, {
       propsData: {
         id: 'foo',
-        disabled: true
-      }
+        disabled: true,
+      },
     })
 
     const $input = wrapper.find('input')
@@ -87,8 +87,8 @@ describe('form-file', () => {
     const wrapper = mount(BFormFile, {
       propsData: {
         id: 'foo',
-        capture: true
-      }
+        capture: true,
+      },
     })
 
     const $input = wrapper.find('input')
@@ -101,8 +101,8 @@ describe('form-file', () => {
     const wrapper = mount(BFormFile, {
       propsData: {
         id: 'foo',
-        accept: 'image/*'
-      }
+        accept: 'image/*',
+      },
     })
 
     const $input = wrapper.find('input')
@@ -116,8 +116,8 @@ describe('form-file', () => {
     const wrapper = mount(BFormFile, {
       propsData: {
         id: 'foo',
-        name: 'bar'
-      }
+        name: 'bar',
+      },
     })
 
     const $input = wrapper.find('input')
@@ -131,8 +131,8 @@ describe('form-file', () => {
     const wrapper = mount(BFormFile, {
       propsData: {
         id: 'foo',
-        form: 'bar'
-      }
+        form: 'bar',
+      },
     })
 
     const $input = wrapper.find('input')
@@ -146,8 +146,8 @@ describe('form-file', () => {
     const wrapper = mount(BFormFile, {
       propsData: {
         id: 'foo',
-        foo: 'bar'
-      }
+        foo: 'bar',
+      },
     })
 
     const $input = wrapper.find('input')
@@ -160,8 +160,8 @@ describe('form-file', () => {
   it('default has class focus when input focused', async () => {
     const wrapper = mount(BFormFile, {
       propsData: {
-        id: 'foo'
-      }
+        id: 'foo',
+      },
     })
 
     const $input = wrapper.find('input')
@@ -181,8 +181,8 @@ describe('form-file', () => {
     const wrapper = mount(BFormFile, {
       propsData: {
         id: 'foo',
-        plain: true
-      }
+        plain: true,
+      },
     })
 
     expect(wrapper.element.tagName).toBe('INPUT')
@@ -198,13 +198,13 @@ describe('form-file', () => {
   it('emits input event when file changed', async () => {
     const wrapper = mount(BFormFile, {
       propsData: {
-        id: 'foo'
-      }
+        id: 'foo',
+      },
     })
 
     const file = new File(['foo'], 'foo.txt', {
       type: 'text/plain',
-      lastModified: Date.now()
+      lastModified: Date.now(),
     })
 
     // Emulate the files array
@@ -227,17 +227,17 @@ describe('form-file', () => {
     const wrapper = mount(BFormFile, {
       propsData: {
         id: 'foo',
-        multiple: true
-      }
+        multiple: true,
+      },
     })
 
     const file1 = new File(['foo'], 'foo.txt', {
       type: 'text/plain',
-      lastModified: Date.now()
+      lastModified: Date.now(),
     })
     const file2 = new File(['foobar'], 'foobar.txt', {
       type: 'text/plain',
-      lastModified: Date.now() - 1000
+      lastModified: Date.now() - 1000,
     })
     const files = [file1, file2]
 
@@ -273,21 +273,21 @@ describe('form-file', () => {
       propsData: {
         id: 'foo',
         multiple: true,
-        directory: true
-      }
+        directory: true,
+      },
     })
 
     const file1 = new File(['foo'], 'foo.txt', {
       type: 'text/plain',
-      lastModified: Date.now()
+      lastModified: Date.now(),
     })
     const file2 = new File(['bar'], 'bar.txt', {
       type: 'text/plain',
-      lastModified: Date.now() - 1000
+      lastModified: Date.now() - 1000,
     })
     const file3 = new File(['baz'], 'baz.txt', {
       type: 'text/plain',
-      lastModified: Date.now() - 2000
+      lastModified: Date.now() - 2000,
     })
     const files = [[file1, file2], file3]
 
@@ -324,21 +324,21 @@ describe('form-file', () => {
         id: 'foo',
         multiple: true,
         directory: true,
-        noTraverse: true
-      }
+        noTraverse: true,
+      },
     })
 
     const file1 = new File(['foo'], 'foo.txt', {
       type: 'text/plain',
-      lastModified: Date.now()
+      lastModified: Date.now(),
     })
     const file2 = new File(['bar'], 'bar.txt', {
       type: 'text/plain',
-      lastModified: Date.now() - 1000
+      lastModified: Date.now() - 1000,
     })
     const file3 = new File(['baz'], 'baz.txt', {
       type: 'text/plain',
-      lastModified: Date.now() - 2000
+      lastModified: Date.now() - 2000,
     })
     const files = [[file1, file2], file3]
 
@@ -354,13 +354,13 @@ describe('form-file', () => {
   it('native change event works', async () => {
     const wrapper = mount(BFormFile, {
       propsData: {
-        id: 'foo'
-      }
+        id: 'foo',
+      },
     })
 
     const file1 = new File(['foo'], 'foo.txt', {
       type: 'text/plain',
-      lastModified: Date.now()
+      lastModified: Date.now(),
     })
 
     // Emulate the files array
@@ -385,13 +385,13 @@ describe('form-file', () => {
     const wrapper = mount(BFormFile, {
       propsData: {
         id: 'foo',
-        multiple: false
-      }
+        multiple: false,
+      },
     })
 
     const file1 = new File(['foo'], 'foo.txt', {
       type: 'text/plain',
-      lastModified: Date.now()
+      lastModified: Date.now(),
     })
     const files = [file1]
 
@@ -414,17 +414,17 @@ describe('form-file', () => {
     const wrapper = mount(BFormFile, {
       propsData: {
         id: 'foo',
-        multiple: true
-      }
+        multiple: true,
+      },
     })
 
     const file1 = new File(['foo'], 'foo.txt', {
       type: 'text/plain',
-      lastModified: Date.now()
+      lastModified: Date.now(),
     })
     const file2 = new File(['<html><body></body></html>'], 'bar.html', {
       type: 'text/html',
-      lastModified: Date.now() - 500
+      lastModified: Date.now() - 500,
     })
     const files = [file1, file2]
 
@@ -447,13 +447,13 @@ describe('form-file', () => {
     const wrapper = mount(BFormFile, {
       propsData: {
         id: 'foo',
-        value: null
-      }
+        value: null,
+      },
     })
 
     const file1 = new File(['foo'], 'foo.txt', {
       type: 'text/plain',
-      lastModified: Date.now()
+      lastModified: Date.now(),
     })
 
     // Emulate the files array
@@ -474,17 +474,17 @@ describe('form-file', () => {
       propsData: {
         id: 'foo',
         value: [],
-        multiple: true
-      }
+        multiple: true,
+      },
     })
 
     const file1 = new File(['foo'], 'foo.txt', {
       type: 'text/plain',
-      lastModified: Date.now()
+      lastModified: Date.now(),
     })
     const file2 = new File(['foo bar'], 'foobar.txt', {
       type: 'text/plain',
-      lastModified: Date.now()
+      lastModified: Date.now(),
     })
     const files = [file1, file2]
 
@@ -515,13 +515,13 @@ describe('form-file', () => {
     const wrapper = mount(BFormFile, {
       propsData: {
         id: 'foo',
-        value: null
-      }
+        value: null,
+      },
     })
 
     const file1 = new File(['foo'], 'foo.txt', {
       type: 'text/plain',
-      lastModified: Date.now()
+      lastModified: Date.now(),
     })
 
     // Emulate the files array
@@ -542,15 +542,15 @@ describe('form-file', () => {
     const App = {
       render(h) {
         return h('form', {}, [h(BFormFile, { id: 'foo' })])
-      }
+      },
     }
     const wrapper = mount(App, {
-      attachTo: document.body
+      attachTo: document.body,
     })
 
     const file = new File(['foo'], 'foo.txt', {
       type: 'text/plain',
-      lastModified: Date.now()
+      lastModified: Date.now(),
     })
 
     expect(wrapper.element.tagName).toBe('FORM')
@@ -585,12 +585,12 @@ describe('form-file', () => {
           filesArray = files
           filesTraversedArray = filesTraversed
           return 'some files'
-        }
-      }
+        },
+      },
     })
     const file = new File(['foo'], 'foo.txt', {
       type: 'text/plain',
-      lastModified: Date.now()
+      lastModified: Date.now(),
     })
 
     // Emulate the files array
@@ -616,18 +616,18 @@ describe('form-file', () => {
     let slotScope = null
     const wrapper = mount(BFormFile, {
       propsData: {
-        id: 'foo'
+        id: 'foo',
       },
       scopedSlots: {
-        'file-name': scope => {
+        'file-name': (scope) => {
           slotScope = scope
           return 'foobar'
-        }
-      }
+        },
+      },
     })
     const file = new File(['foo'], 'foo.txt', {
       type: 'text/plain',
-      lastModified: Date.now()
+      lastModified: Date.now(),
     })
 
     // Emulate the files array
@@ -652,13 +652,13 @@ describe('form-file', () => {
         placeholder: 'PLACEHOLDER',
         dropPlaceholder: 'DROP_HERE',
         noDropPlaceholder: 'NO_DROP_HERE',
-        noDrop: true
-      }
+        noDrop: true,
+      },
     })
 
     const file = new File(['foo'], 'foo.txt', {
       type: 'text/plain',
-      lastModified: Date.now()
+      lastModified: Date.now(),
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -677,8 +677,8 @@ describe('form-file', () => {
 
     await wrapper.trigger('drop', {
       dataTransfer: {
-        files: [file]
-      }
+        files: [file],
+      },
     })
     expect($label.text()).toContain('PLACEHOLDER')
     expect($label.text()).not.toContain('DROP_HERE')
@@ -706,8 +706,8 @@ describe('form-file', () => {
 
     await wrapper.trigger('drop', {
       dataTransfer: {
-        files: [file]
-      }
+        files: [file],
+      },
     })
     await waitNT(wrapper.vm)
     expect($label.text()).not.toContain('PLACEHOLDER')
@@ -730,7 +730,7 @@ describe('form-file', () => {
         top: 0,
         left: 0,
         bottom: 0,
-        right: 0
+        right: 0,
       }))
     })
 
@@ -743,8 +743,8 @@ describe('form-file', () => {
       const wrapper = mount(BFormFile, {
         attachTo: document.body,
         propsData: {
-          autofocus: true
-        }
+          autofocus: true,
+        },
       })
 
       expect(wrapper.vm).toBeDefined()
@@ -783,8 +783,8 @@ describe('form-file', () => {
     it('isFileValid() works with accept set to single extension', async () => {
       const wrapper = mount(BFormFile, {
         propsData: {
-          accept: '.txt'
-        }
+          accept: '.txt',
+        },
       })
 
       const vm = wrapper.vm
@@ -800,8 +800,8 @@ describe('form-file', () => {
     it('isFileValid() works with accept set to multiple extensions', async () => {
       const wrapper = mount(BFormFile, {
         propsData: {
-          accept: '.txt,.html, .png'
-        }
+          accept: '.txt,.html, .png',
+        },
       })
 
       const vm = wrapper.vm
@@ -817,8 +817,8 @@ describe('form-file', () => {
     it('isFileValid() works with accept set to single mime type', async () => {
       const wrapper = mount(BFormFile, {
         propsData: {
-          accept: 'text/plain'
-        }
+          accept: 'text/plain',
+        },
       })
 
       const vm = wrapper.vm
@@ -834,8 +834,8 @@ describe('form-file', () => {
     it('isFileValid() works with accept set to single wildcard mime type', async () => {
       const wrapper = mount(BFormFile, {
         propsData: {
-          accept: 'text/*'
-        }
+          accept: 'text/*',
+        },
       })
 
       const vm = wrapper.vm
@@ -851,8 +851,8 @@ describe('form-file', () => {
     it('isFileValid() works with accept set to multiple mime types', async () => {
       const wrapper = mount(BFormFile, {
         propsData: {
-          accept: 'text/*, application/json'
-        }
+          accept: 'text/*, application/json',
+        },
       })
 
       const vm = wrapper.vm
@@ -868,8 +868,8 @@ describe('form-file', () => {
     it('isFileValid() works with accept set to mime and extension', async () => {
       const wrapper = mount(BFormFile, {
         propsData: {
-          accept: '.png, application/json'
-        }
+          accept: '.png, application/json',
+        },
       })
 
       const vm = wrapper.vm

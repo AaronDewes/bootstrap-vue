@@ -20,9 +20,9 @@ import { textSelectionActive } from './text-selection-active'
 
 // --- Helper methods ---
 
-const getHeadSlotName = value => `head(${value || ''})`
+const getHeadSlotName = (value) => `head(${value || ''})`
 
-const getFootSlotName = value => `foot(${value || ''})`
+const getFootSlotName = (value) => `foot(${value || ''})`
 
 // --- Props ---
 
@@ -32,7 +32,7 @@ export const props = {
   // 'light', 'dark' or `null` (or custom)
   headVariant: makeProp(PROP_TYPE_STRING),
   theadClass: makeProp(PROP_TYPE_ARRAY_OBJECT_STRING),
-  theadTrClass: makeProp(PROP_TYPE_ARRAY_OBJECT_STRING)
+  theadTrClass: makeProp(PROP_TYPE_ARRAY_OBJECT_STRING),
 }
 
 // --- Mixin ---
@@ -68,7 +68,7 @@ export const theadMixin = Vue.extend({
         headVariant,
         footVariant,
         headRowVariant,
-        footRowVariant
+        footRowVariant,
       } = safeVueInstance(this)
       const h = this.$createElement
 
@@ -98,10 +98,10 @@ export const theadMixin = Vue.extend({
 
         const on = {}
         if (hasHeadClickListener) {
-          on.click = event => {
+          on.click = (event) => {
             this.headClicked(event, field, isFoot)
           }
-          on.keydown = event => {
+          on.keydown = (event) => {
             const keyCode = event.keyCode
             if (keyCode === CODE_ENTER || keyCode === CODE_SPACE) {
               this.headClicked(event, field, isFoot)
@@ -118,10 +118,10 @@ export const theadMixin = Vue.extend({
             {
               // We need to make the header cell relative when we have
               // a `.sr-only` sort label to work around overflow issues
-              'position-relative': sortLabel
+              'position-relative': sortLabel,
             },
             this.fieldClasses(field),
-            sortClass
+            sortClass,
           ],
           props: { variant, stickyColumn },
           style: field.thStyle || {},
@@ -134,10 +134,10 @@ export const theadMixin = Vue.extend({
             'aria-colindex': colIndex + 1,
             'aria-label': ariaLabel,
             ...this.getThValues(null, key, field.thAttr, isFoot ? 'foot' : 'head', {}),
-            ...sortAttrs
+            ...sortAttrs,
           },
           on,
-          key
+          key,
         }
 
         // Handle edge case where in-document templates are used with new
@@ -148,7 +148,7 @@ export const theadMixin = Vue.extend({
         let slotNames = [
           getHeadSlotName(key),
           getHeadSlotName(key.toLowerCase()),
-          getHeadSlotName()
+          getHeadSlotName(),
         ]
         // Footer will fallback to header slot names
         if (isFoot) {
@@ -156,7 +156,7 @@ export const theadMixin = Vue.extend({
             getFootSlotName(key),
             getFootSlotName(key.toLowerCase()),
             getFootSlotName(),
-            ...slotNames
+            ...slotNames,
           ]
         }
 
@@ -167,7 +167,7 @@ export const theadMixin = Vue.extend({
           isFoot,
           // Add in row select methods
           selectAllRows,
-          clearSelected
+          clearSelected,
         }
 
         const $content =
@@ -194,8 +194,8 @@ export const theadMixin = Vue.extend({
               props: {
                 variant: isUndefinedOrNull(footRowVariant)
                   ? headRowVariant
-                  : /* istanbul ignore next */ footRowVariant
-              }
+                  : /* istanbul ignore next */ footRowVariant,
+              },
             },
             $cells
           )
@@ -206,7 +206,7 @@ export const theadMixin = Vue.extend({
           fields,
           // Add in row select methods
           selectAllRows,
-          clearSelected
+          clearSelected,
         }
         $trs.push(this.normalizeSlot(SLOT_NAME_THEAD_TOP, scope) || h())
 
@@ -215,7 +215,7 @@ export const theadMixin = Vue.extend({
             BTr,
             {
               class: this.theadTrClass,
-              props: { variant: headRowVariant }
+              props: { variant: headRowVariant },
             },
             $cells
           )
@@ -229,10 +229,10 @@ export const theadMixin = Vue.extend({
           props: isFoot
             ? { footVariant: footVariant || headVariant || null }
             : { headVariant: headVariant || null },
-          key: isFoot ? 'bv-tfoot' : 'bv-thead'
+          key: isFoot ? 'bv-tfoot' : 'bv-thead',
         },
         $trs
       )
-    }
-  }
+    },
+  },
 })

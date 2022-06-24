@@ -12,8 +12,8 @@ describe('mixins/listen-on-document', () => {
       props: {
         offClickOne: {
           type: Boolean,
-          default: false
-        }
+          default: false,
+        },
       },
       mounted() {
         this.listenOnDocument('click', spyClick1)
@@ -25,11 +25,11 @@ describe('mixins/listen-on-document', () => {
           if (newValue) {
             this.listenOffDocument('click', spyClick1)
           }
-        }
+        },
       },
       render(h) {
         return h('div', this.$slots.default)
-      }
+      },
     }
 
     const App = {
@@ -37,30 +37,30 @@ describe('mixins/listen-on-document', () => {
       props: {
         offClickOne: {
           type: Boolean,
-          default: false
+          default: false,
         },
         destroy: {
           type: Boolean,
-          default: false
-        }
+          default: false,
+        },
       },
       render(h) {
         const props = {
-          offClickOne: this.offClickOne
+          offClickOne: this.offClickOne,
         }
         return h('div', [
           h('span', ''),
           h('input', { type: 'text' }),
-          this.destroy ? h() : h(TestComponent, { props }, 'test-component')
+          this.destroy ? h() : h(TestComponent, { props }, 'test-component'),
         ])
-      }
+      },
     }
 
     const wrapper = mount(App, {
       attachTo: document.body,
       propsData: {
-        destroy: false
-      }
+        destroy: false,
+      },
     })
 
     expect(wrapper.vm).toBeDefined()

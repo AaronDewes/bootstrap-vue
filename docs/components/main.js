@@ -7,10 +7,10 @@ export default {
   props: {
     tag: {
       type: String,
-      default: 'main'
-    }
+      default: 'main',
+    },
   },
   render(h, { props, data, children }) {
     return h(props.tag, mergeData(data, { staticClass: 'bd-main' }), [children])
-  }
+  },
 }

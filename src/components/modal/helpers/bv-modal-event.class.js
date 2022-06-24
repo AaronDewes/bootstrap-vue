@@ -6,14 +6,14 @@ class BvModalEvent extends BvEvent {
     super(type, eventInit)
     // Freeze our new props as readonly, but leave them enumerable
     defineProperties(this, {
-      trigger: readonlyDescriptor()
+      trigger: readonlyDescriptor(),
     })
   }
 
   static get Defaults() {
     return {
       ...super.Defaults,
-      trigger: null
+      trigger: null,
     }
   }
 }

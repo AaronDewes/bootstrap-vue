@@ -2,7 +2,7 @@ import { BPaginationNav } from './pagination-nav'
 import { pluginFactory } from '../../utils/plugins'
 
 const PaginationNavPlugin = /*#__PURE__*/ pluginFactory({
-  components: { BPaginationNav }
+  components: { BPaginationNav },
 })
 
 export { PaginationNavPlugin, BPaginationNav }

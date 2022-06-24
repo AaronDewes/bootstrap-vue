@@ -7,7 +7,7 @@ import { makeProp, makePropsConfigurable } from '../../utils/props'
 
 export const props = makePropsConfigurable(
   {
-    tag: makeProp(PROP_TYPE_STRING, 'div')
+    tag: makeProp(PROP_TYPE_STRING, 'div'),
   },
   NAME_FORM_ROW
 )
@@ -23,9 +23,9 @@ export const BFormRow = /*#__PURE__*/ Vue.extend({
     return h(
       props.tag,
       mergeData(data, {
-        staticClass: 'form-row'
+        staticClass: 'form-row',
       }),
       children
     )
-  }
+  },
 })

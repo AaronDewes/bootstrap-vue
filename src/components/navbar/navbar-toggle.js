@@ -22,7 +22,7 @@ export const props = makePropsConfigurable(
   {
     disabled: makeProp(PROP_TYPE_BOOLEAN, false),
     label: makeProp(PROP_TYPE_STRING, 'Toggle navigation'),
-    target: makeProp(PROP_TYPE_ARRAY_STRING, undefined, true) // Required
+    target: makeProp(PROP_TYPE_ARRAY_STRING, undefined, true), // Required
   },
   NAME_NAVBAR_TOGGLE
 )
@@ -37,7 +37,7 @@ export const BNavbarToggle = /*#__PURE__*/ Vue.extend({
   props,
   data() {
     return {
-      toggleState: false
+      toggleState: false,
     }
   },
   created() {
@@ -57,7 +57,7 @@ export const BNavbarToggle = /*#__PURE__*/ Vue.extend({
       if (id === this.target) {
         this.toggleState = state
       }
-    }
+    },
   },
   render(h) {
     const { disabled } = this
@@ -71,14 +71,14 @@ export const BNavbarToggle = /*#__PURE__*/ Vue.extend({
         attrs: {
           type: 'button',
           disabled,
-          'aria-label': this.label
+          'aria-label': this.label,
         },
-        on: { click: this.onClick }
+        on: { click: this.onClick },
       },
       [
         this.normalizeSlot(SLOT_NAME_DEFAULT, { expanded: this.toggleState }) ||
-          h('span', { staticClass: `${CLASS_NAME}-icon` })
+          h('span', { staticClass: `${CLASS_NAME}-icon` }),
       ]
     )
-  }
+  },
 })

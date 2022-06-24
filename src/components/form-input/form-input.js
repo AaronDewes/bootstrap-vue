@@ -33,7 +33,7 @@ const TYPES = [
   'datetime',
   'datetime-local',
   'month',
-  'week'
+  'week',
 ]
 
 // --- Props ---
@@ -51,9 +51,9 @@ export const props = makePropsConfigurable(
     // Disable mousewheel to prevent wheel from changing values (i.e. number/date)
     noWheel: makeProp(PROP_TYPE_BOOLEAN, false),
     step: makeProp(PROP_TYPE_NUMBER_STRING),
-    type: makeProp(PROP_TYPE_STRING, 'text', type => {
+    type: makeProp(PROP_TYPE_STRING, 'text', (type) => {
       return arrayIncludes(TYPES, type)
-    })
+    }),
   }),
   NAME_FORM_INPUT
 )
@@ -72,7 +72,7 @@ export const BFormInput = /*#__PURE__*/ Vue.extend({
     formStateMixin,
     formTextMixin,
     formSelectionMixin,
-    formValidityMixin
+    formValidityMixin,
   ],
   props,
   computed: {
@@ -99,7 +99,7 @@ export const BFormInput = /*#__PURE__*/ Vue.extend({
         step,
         list: type !== 'password' ? this.list : null,
         'aria-required': required ? 'true' : null,
-        'aria-invalid': this.computedAriaInvalid
+        'aria-invalid': this.computedAriaInvalid,
       }
     },
     computedListeners() {
@@ -107,14 +107,14 @@ export const BFormInput = /*#__PURE__*/ Vue.extend({
         ...this.bvListeners,
         input: this.onInput,
         change: this.onChange,
-        blur: this.onBlur
+        blur: this.onBlur,
       }
-    }
+    },
   },
   watch: {
     noWheel(newValue) {
       this.setWheelStopper(newValue)
-    }
+    },
   },
   mounted() {
     this.setWheelStopper(this.noWheel)
@@ -154,7 +154,7 @@ export const BFormInput = /*#__PURE__*/ Vue.extend({
     stopWheel(event) {
       stopEvent(event, { propagation: false })
       attemptBlur(this.$el)
-    }
+    },
   },
   render(h) {
     return h('input', {
@@ -162,7 +162,7 @@ export const BFormInput = /*#__PURE__*/ Vue.extend({
       attrs: this.computedAttrs,
       domProps: { value: this.localValue },
       on: this.computedListeners,
-      ref: 'input'
+      ref: 'input',
     })
-  }
+  },
 })

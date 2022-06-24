@@ -25,8 +25,8 @@ describe('progress-bar', () => {
   it('has class bg-primary when variant=primary', async () => {
     const wrapper = mount(BProgressBar, {
       propsData: {
-        variant: 'primary'
-      }
+        variant: 'primary',
+      },
     })
 
     expect(wrapper.classes()).toContain('bg-primary')
@@ -39,9 +39,9 @@ describe('progress-bar', () => {
     const wrapper = mount(BProgressBar, {
       provide: {
         getBvProgress: () => ({
-          variant: 'info'
-        })
-      }
+          variant: 'info',
+        }),
+      },
     })
 
     expect(wrapper.classes()).toContain('bg-info')
@@ -54,12 +54,12 @@ describe('progress-bar', () => {
     const wrapper = mount(BProgressBar, {
       provide: {
         getBvProgress: () => ({
-          variant: 'info'
-        })
+          variant: 'info',
+        }),
       },
       propsData: {
-        variant: 'primary'
-      }
+        variant: 'primary',
+      },
     })
 
     expect(wrapper.classes()).toContain('bg-primary')
@@ -70,8 +70,8 @@ describe('progress-bar', () => {
   it('has class progress-bar-striped when prop striped set', async () => {
     const wrapper = mount(BProgressBar, {
       propsData: {
-        striped: true
-      }
+        striped: true,
+      },
     })
 
     expect(wrapper.classes()).toContain('progress-bar-striped')
@@ -84,9 +84,9 @@ describe('progress-bar', () => {
     const wrapper = mount(BProgressBar, {
       provide: {
         getBvProgress: () => ({
-          striped: true
-        })
-      }
+          striped: true,
+        }),
+      },
     })
 
     expect(wrapper.classes()).toContain('progress-bar-striped')
@@ -98,8 +98,8 @@ describe('progress-bar', () => {
   it('has class progress-bar-animated and progress-bar-striped when prop animated set', async () => {
     const wrapper = mount(BProgressBar, {
       propsData: {
-        animated: true
-      }
+        animated: true,
+      },
     })
 
     expect(wrapper.classes()).toContain('progress-bar-animated')
@@ -113,9 +113,9 @@ describe('progress-bar', () => {
     const wrapper = mount(BProgressBar, {
       provide: {
         getBvProgress: () => ({
-          animated: true
-        })
-      }
+          animated: true,
+        }),
+      },
     })
 
     expect(wrapper.classes()).toContain('progress-bar-animated')
@@ -128,8 +128,8 @@ describe('progress-bar', () => {
   it('has style width set when value set', async () => {
     const wrapper = mount(BProgressBar, {
       propsData: {
-        value: 50
-      }
+        value: 50,
+      },
     })
 
     expect(wrapper.attributes('style')).toContain('width: 50%;')
@@ -144,8 +144,8 @@ describe('progress-bar', () => {
     const wrapper = mount(BProgressBar, {
       propsData: {
         value: 25,
-        max: 50
-      }
+        max: 50,
+      },
     })
 
     expect(wrapper.attributes('style')).toContain('width: 50%;')
@@ -160,12 +160,12 @@ describe('progress-bar', () => {
     const wrapper = mount(BProgressBar, {
       provide: {
         getBvProgress: () => ({
-          max: 50
-        })
+          max: 50,
+        }),
       },
       propsData: {
-        value: 25
-      }
+        value: 25,
+      },
     })
 
     expect(wrapper.attributes('style')).toContain('width: 50%;')
@@ -179,8 +179,8 @@ describe('progress-bar', () => {
   it('has label when prop label set', async () => {
     const wrapper = mount(BProgressBar, {
       propsData: {
-        label: 'foobar'
-      }
+        label: 'foobar',
+      },
     })
 
     expect(wrapper.text()).toBe('foobar')
@@ -191,8 +191,8 @@ describe('progress-bar', () => {
   it('has label when prop labelHtml set', async () => {
     const wrapper = mount(BProgressBar, {
       propsData: {
-        labelHtml: 'foobar'
-      }
+        labelHtml: 'foobar',
+      },
     })
 
     expect(wrapper.text()).toBe('foobar')
@@ -203,8 +203,8 @@ describe('progress-bar', () => {
   it('has label from default slot', async () => {
     const wrapper = mount(BProgressBar, {
       slots: {
-        default: 'foobar'
-      }
+        default: 'foobar',
+      },
     })
 
     expect(wrapper.text()).toBe('foobar')
@@ -216,8 +216,8 @@ describe('progress-bar', () => {
     const wrapper = mount(BProgressBar, {
       propsData: {
         value: 50,
-        showValue: true
-      }
+        showValue: true,
+      },
     })
 
     expect(wrapper.text()).toBe('50')
@@ -230,8 +230,8 @@ describe('progress-bar', () => {
       propsData: {
         value: 50,
         showValue: true,
-        precision: 2
-      }
+        precision: 2,
+      },
     })
 
     expect(wrapper.text()).toBe('50.00')
@@ -244,8 +244,8 @@ describe('progress-bar', () => {
       propsData: {
         value: 25,
         showProgress: true,
-        max: 50
-      }
+        max: 50,
+      },
     })
 
     expect(wrapper.text()).toBe('50')
@@ -259,8 +259,8 @@ describe('progress-bar', () => {
         value: 25,
         showProgress: true,
         max: 50,
-        precision: 2
-      }
+        precision: 2,
+      },
     })
 
     expect(wrapper.text()).toBe('50.00')

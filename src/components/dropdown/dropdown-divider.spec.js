@@ -21,8 +21,8 @@ describe('dropdown > dropdown-divider', () => {
   it('renders custom root element when prop tag set', async () => {
     const wrapper = mount(BDropdownDivider, {
       context: {
-        props: { tag: 'span' }
-      }
+        props: { tag: 'span' },
+      },
     })
 
     expect(wrapper.element.tagName).toBe('LI')
@@ -40,7 +40,7 @@ describe('dropdown > dropdown-divider', () => {
 
   it('does not render default slot content', async () => {
     const wrapper = mount(BDropdownDivider, {
-      slots: { default: 'foobar' }
+      slots: { default: 'foobar' },
     })
 
     expect(wrapper.element.tagName).toBe('LI')

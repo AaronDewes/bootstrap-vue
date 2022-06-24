@@ -29,7 +29,7 @@ export const HAS_PASSIVE_EVENT_SUPPORT = (() => {
         get passive() {
           /* istanbul ignore next: will never be called in JSDOM */
           passiveEventSupported = true
-        }
+        },
       }
       WINDOW.addEventListener('test', options, options)
       WINDOW.removeEventListener('test', options, options)

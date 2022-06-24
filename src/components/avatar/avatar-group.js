@@ -4,7 +4,7 @@ import {
   PROP_TYPE_BOOLEAN,
   PROP_TYPE_BOOLEAN_STRING,
   PROP_TYPE_NUMBER_STRING,
-  PROP_TYPE_STRING
+  PROP_TYPE_STRING,
 } from '../../constants/props'
 import { mathMax, mathMin } from '../../utils/math'
 import { toFloat } from '../../utils/number'
@@ -25,7 +25,7 @@ export const props = makePropsConfigurable(
     square: makeProp(PROP_TYPE_BOOLEAN, false),
     tag: makeProp(PROP_TYPE_STRING, 'div'),
     // Child avatars will prefer this variant over their own
-    variant: makeProp(PROP_TYPE_STRING)
+    variant: makeProp(PROP_TYPE_STRING),
   },
   NAME_AVATAR_GROUP
 )
@@ -51,14 +51,14 @@ export const BAvatarGroup = /*#__PURE__*/ Vue.extend({
       let value = this.computedSize
       value = value ? `calc(${value} * ${this.overlapScale})` : null
       return value ? { paddingLeft: value, paddingRight: value } : {}
-    }
+    },
   },
   render(h) {
     const $inner = h(
       'div',
       {
         staticClass: 'b-avatar-group-inner',
-        style: this.paddingStyle
+        style: this.paddingStyle,
       },
       this.normalizeSlot()
     )
@@ -67,9 +67,9 @@ export const BAvatarGroup = /*#__PURE__*/ Vue.extend({
       this.tag,
       {
         staticClass: 'b-avatar-group',
-        attrs: { role: 'group' }
+        attrs: { role: 'group' },
       },
       [$inner]
     )
-  }
+  },
 })

@@ -3,7 +3,11 @@ import { waitNT } from '../../../tests/utils'
 import { stringifyRecordValues } from './helpers/stringify-record-values'
 import { BTable } from './table'
 
-const testItems = [{ a: 3, b: 'b', c: 'x' }, { a: 1, b: 'c', c: 'y' }, { a: 2, b: 'a', c: 'z' }]
+const testItems = [
+  { a: 3, b: 'b', c: 'x' },
+  { a: 1, b: 'c', c: 'y' },
+  { a: 2, b: 'a', c: 'z' },
+]
 const testFields = ['a', 'b', 'c']
 
 describe('table > filtering', () => {
@@ -11,8 +15,8 @@ describe('table > filtering', () => {
     const wrapper = mount(BTable, {
       propsData: {
         fields: testFields,
-        items: testItems
-      }
+        items: testItems,
+      },
     })
     expect(wrapper).toBeDefined()
     expect(wrapper.findAll('tbody > tr').exists()).toBe(true)
@@ -24,11 +28,8 @@ describe('table > filtering', () => {
     const $rows = wrapper.findAll('tbody > tr').wrappers
     expect($rows.length).toBe(3)
     // Map the rows to the first column text value
-    const columnA = $rows.map(row => {
-      return row
-        .findAll('td')
-        .at(0)
-        .text()
+    const columnA = $rows.map((row) => {
+      return row.findAll('td').at(0).text()
     })
     expect(columnA[0]).toBe('3')
     expect(columnA[1]).toBe('1')
@@ -42,8 +43,8 @@ describe('table > filtering', () => {
       propsData: {
         fields: testFields,
         items: testItems,
-        filter: 'z'
-      }
+        filter: 'z',
+      },
     })
     expect(wrapper).toBeDefined()
     await waitNT(wrapper.vm)
@@ -68,8 +69,8 @@ describe('table > filtering', () => {
       propsData: {
         fields: testFields,
         items: testItems,
-        filter: ''
-      }
+        filter: '',
+      },
     })
     expect(wrapper).toBeDefined()
     await waitNT(wrapper.vm)
@@ -79,7 +80,7 @@ describe('table > filtering', () => {
     expect(wrapper.emitted('filtered')).toBeUndefined()
 
     await wrapper.setProps({
-      filter: 'z'
+      filter: 'z',
     })
     await waitNT(wrapper.vm)
 
@@ -94,7 +95,7 @@ describe('table > filtering', () => {
     expect(wrapper.emitted('filtered')[0][1]).toEqual(1)
 
     await wrapper.setProps({
-      filter: ''
+      filter: '',
     })
     await waitNT(wrapper.vm)
 
@@ -108,7 +109,7 @@ describe('table > filtering', () => {
     expect(wrapper.emitted('filtered')[1][1]).toEqual(3)
 
     await wrapper.setProps({
-      filter: '3'
+      filter: '3',
     })
     await waitNT(wrapper.vm)
 
@@ -123,7 +124,7 @@ describe('table > filtering', () => {
 
     await wrapper.setProps({
       // Setting to null will also clear the filter
-      filter: null
+      filter: null,
     })
     await waitNT(wrapper.vm)
 
@@ -149,8 +150,8 @@ describe('table > filtering', () => {
         fields: testFields,
         items: testItems,
         filter: '',
-        filterFunction: filterFn
-      }
+        filterFunction: filterFn,
+      },
     })
     expect(wrapper).toBeDefined()
     await waitNT(wrapper.vm)
@@ -160,7 +161,7 @@ describe('table > filtering', () => {
     expect(wrapper.emitted('filtered')).toBeUndefined()
 
     await wrapper.setProps({
-      filter: /z/
+      filter: /z/,
     })
     await waitNT(wrapper.vm)
 
@@ -175,7 +176,7 @@ describe('table > filtering', () => {
     expect(wrapper.emitted('filtered')[0][1]).toEqual(1)
 
     await wrapper.setProps({
-      filter: []
+      filter: [],
     })
     await waitNT(wrapper.vm)
 
@@ -196,8 +197,8 @@ describe('table > filtering', () => {
       propsData: {
         fields: testFields,
         items: testItems,
-        filter: 'ZZZZZZZZ'
-      }
+        filter: 'ZZZZZZZZ',
+      },
     })
     expect(wrapper).toBeDefined()
     await waitNT(wrapper.vm)
@@ -213,8 +214,8 @@ describe('table > filtering', () => {
         fields: testFields,
         items: testItems,
         filter: '',
-        filterIgnoredFields: []
-      }
+        filterIgnoredFields: [],
+      },
     })
 
     expect(wrapper).toBeDefined()
@@ -242,8 +243,8 @@ describe('table > filtering', () => {
         // Add a extra item with a duplicated value in another field
         items: [...testItems, { a: 4, b: 'y', c: 'a' }],
         filter: '',
-        filterIncludedFields: []
-      }
+        filterIncludedFields: [],
+      },
     })
 
     expect(wrapper).toBeDefined()
@@ -273,16 +274,16 @@ describe('table > filtering', () => {
           {
             key: 'b',
             formatter: () => 'Foo',
-            filterByFormatted: true
+            filterByFormatted: true,
           },
           {
             key: 'c',
             formatter: () => 'Bar',
-            filterByFormatted: true
-          }
+            filterByFormatted: true,
+          },
         ],
-        filter: 'Bar'
-      }
+        filter: 'Bar',
+      },
     })
     expect(wrapper).toBeDefined()
     await waitNT(wrapper.vm)
@@ -298,15 +299,15 @@ describe('table > filtering', () => {
         fields: testFields,
         items: testItems,
         filter: '',
-        showEmpty: true
-      }
+        showEmpty: true,
+      },
     })
     expect(wrapper).toBeDefined()
     await waitNT(wrapper.vm)
     expect(wrapper.findAll('tbody > tr').length).toBe(testItems.length)
 
     await wrapper.setProps({
-      filter: 'ZZZZZZ'
+      filter: 'ZZZZZZ',
     })
     await waitNT(wrapper.vm)
 
@@ -335,8 +336,8 @@ describe('table > filtering', () => {
         propsData: {
           fields: testFields,
           items: testItems,
-          filterDebounce: 100 // 100ms
-        }
+          filterDebounce: 100, // 100ms
+        },
       })
       expect(wrapper).toBeDefined()
       expect(wrapper.findAll('tbody > tr').exists()).toBe(true)
@@ -351,7 +352,7 @@ describe('table > filtering', () => {
 
       // Set filter to a single character
       await wrapper.setProps({
-        filter: '1'
+        filter: '1',
       })
       await waitNT(wrapper.vm)
       expect(wrapper.emitted('input').length).toBe(1)
@@ -362,7 +363,7 @@ describe('table > filtering', () => {
 
       // Change filter
       await wrapper.setProps({
-        filter: 'z'
+        filter: 'z',
       })
       await waitNT(wrapper.vm)
       expect(wrapper.emitted('input').length).toBe(1)
@@ -381,7 +382,7 @@ describe('table > filtering', () => {
 
       // Change filter
       await wrapper.setProps({
-        filter: '1'
+        filter: '1',
       })
       await waitNT(wrapper.vm)
       expect(wrapper.vm.$_filterTimer).not.toBe(null)
@@ -393,7 +394,7 @@ describe('table > filtering', () => {
 
       // Change filter-debounce to no debouncing
       await wrapper.setProps({
-        filterDebounce: 0
+        filterDebounce: 0,
       })
       await waitNT(wrapper.vm)
       // Should clear the pending timer

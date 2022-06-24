@@ -76,7 +76,7 @@ class VisibilityObserver {
         // Pixels away from view port to consider "visible"
         rootMargin: this.margin,
         // Intersection ratio of el and root (as a value from 0 to 1)
-        threshold: 0
+        threshold: 0,
       })
     } catch {
       // No IntersectionObserver support, so just stop trying to observe
@@ -120,7 +120,7 @@ class VisibilityObserver {
   }
 }
 
-const destroy = el => {
+const destroy = (el) => {
   const observer = el[OBSERVER_PROP_NAME]
   if (observer && observer.stop) {
     observer.stop()
@@ -133,10 +133,10 @@ const bind = (el, { value, modifiers }) => {
   const options = {
     margin: '0px',
     once: false,
-    callback: value
+    callback: value,
   }
   // Parse modifiers
-  keys(modifiers).forEach(mod => {
+  keys(modifiers).forEach((mod) => {
     /* istanbul ignore else: Until <b-img-lazy> is switched to use this directive */
     if (RX_DIGITS.test(mod)) {
       options.margin = `${mod}px`
@@ -171,7 +171,7 @@ const componentUpdated = (el, { value, oldValue, modifiers }, vnode) => {
 }
 
 // When directive un-binds from element
-const unbind = el => {
+const unbind = (el) => {
   // Remove the observer
   destroy(el)
 }
@@ -180,5 +180,5 @@ const unbind = el => {
 export const VBVisible = {
   bind,
   componentUpdated,
-  unbind
+  unbind,
 }

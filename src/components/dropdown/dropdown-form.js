@@ -11,7 +11,7 @@ export const props = makePropsConfigurable(
   sortKeys({
     ...formControlProps,
     disabled: makeProp(PROP_TYPE_BOOLEAN, false),
-    formClass: makeProp(PROP_TYPE_ARRAY_OBJECT_STRING)
+    formClass: makeProp(PROP_TYPE_ARRAY_OBJECT_STRING),
   }),
   NAME_DROPDOWN_FORM
 )
@@ -35,13 +35,13 @@ export const BDropdownForm = /*#__PURE__*/ Vue.extend({
             ...(data.attrs || {}),
             disabled: props.disabled,
             // Tab index of -1 for keyboard navigation
-            tabindex: props.disabled ? null : '-1'
+            tabindex: props.disabled ? null : '-1',
           },
           on: listeners,
-          ref: 'form'
+          ref: 'form',
         },
         children
-      )
+      ),
     ])
-  }
+  },
 })

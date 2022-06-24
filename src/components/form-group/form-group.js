@@ -4,7 +4,7 @@ import {
   PROP_TYPE_ARRAY_OBJECT_STRING,
   PROP_TYPE_BOOLEAN,
   PROP_TYPE_BOOLEAN_NUMBER_STRING,
-  PROP_TYPE_STRING
+  PROP_TYPE_STRING,
 } from '../../constants/props'
 import { RX_SPACE_SPLIT } from '../../constants/regex'
 import {
@@ -12,7 +12,7 @@ import {
   SLOT_NAME_DESCRIPTION,
   SLOT_NAME_INVALID_FEEDBACK,
   SLOT_NAME_LABEL,
-  SLOT_NAME_VALID_FEEDBACK
+  SLOT_NAME_VALID_FEEDBACK,
 } from '../../constants/slots'
 import { arrayIncludes } from '../../utils/array'
 import { getBreakpointsUpCached } from '../../utils/config'
@@ -24,7 +24,7 @@ import {
   setAttr,
   removeAttr,
   getAttr,
-  attemptFocus
+  attemptFocus,
 } from '../../utils/dom'
 import { identity } from '../../utils/identity'
 import { isBoolean } from '../../utils/inspect'
@@ -45,7 +45,7 @@ import { BFormValidFeedback } from '../form/form-valid-feedback'
 const INPUTS = ['input', 'select', 'textarea']
 
 // Selector for finding first input in the form group
-const INPUT_SELECTOR = INPUTS.map(v => `${v}:not([disabled])`).join()
+const INPUT_SELECTOR = INPUTS.map((v) => `${v}:not([disabled])`).join()
 
 // A list of interactive elements (tag names) inside `<b-form-group>`'s legend
 const LEGEND_INTERACTIVE_ELEMENTS = [...INPUTS, 'a', 'button', 'label']
@@ -78,7 +78,7 @@ export const generateProps = () =>
       labelSrOnly: makeProp(PROP_TYPE_BOOLEAN, false),
       tooltip: makeProp(PROP_TYPE_BOOLEAN, false),
       validFeedback: makeProp(PROP_TYPE_STRING),
-      validated: makeProp(PROP_TYPE_BOOLEAN, false)
+      validated: makeProp(PROP_TYPE_BOOLEAN, false),
     }),
     NAME_FORM_GROUP
   )
@@ -101,7 +101,7 @@ export const BFormGroup = {
   },
   data() {
     return {
-      ariaDescribedby: null
+      ariaDescribedby: null,
     }
   },
   computed: {
@@ -118,14 +118,14 @@ export const BFormGroup = {
       // Determine if the form group will be rendered horizontal
       // based on the existence of 'content-col' or 'label-col' props
       return keys(this.contentColProps).length > 0 || keys(this.labelColProps).length > 0
-    }
+    },
   },
   watch: {
     ariaDescribedby(newValue, oldValue) {
       if (newValue !== oldValue) {
         this.updateAriaDescribedby(newValue, oldValue)
       }
-    }
+    },
   },
   mounted() {
     this.$nextTick(() => {
@@ -187,7 +187,7 @@ export const BFormGroup = {
           // and ensuring the ID's are unique
           const ids = (getAttr($input, attr) || '')
             .split(RX_SPACE_SPLIT)
-            .filter(id => !arrayIncludes(oldIds, id))
+            .filter((id) => !arrayIncludes(oldIds, id))
             .concat(newIds)
             .filter((id, index, ids) => ids.indexOf(id) === index)
             .filter(identity)
@@ -224,7 +224,7 @@ export const BFormGroup = {
       if (inputs.length === 1) {
         attemptFocus(inputs[0])
       }
-    }
+    },
   },
   render(h) {
     const {
@@ -234,7 +234,7 @@ export const BFormGroup = {
       labelFor,
       normalizeSlot,
       safeId,
-      tooltip
+      tooltip,
     } = this
     const id = safeId()
     const isFieldset = !labelFor
@@ -251,13 +251,13 @@ export const BFormGroup = {
             labelTag,
             {
               class: 'sr-only',
-              attrs: { id: labelId, for: labelFor || null }
+              attrs: { id: labelId, for: labelFor || null },
             },
             [labelContent]
           )
         }
         $label = h(isHorizontal ? BCol : 'div', { props: isHorizontal ? labelColProps : {} }, [
-          $label
+          $label,
         ])
       } else {
         $label = h(
@@ -270,7 +270,7 @@ export const BFormGroup = {
               for: labelFor || null,
               // We add a `tabindex` to legend so that screen readers
               // will properly read the `aria-labelledby` in IE
-              tabindex: isFieldset ? '-1' : null
+              tabindex: isFieldset ? '-1' : null,
             },
             class: [
               // Hide the focus ring on the legend
@@ -287,8 +287,8 @@ export const BFormGroup = {
               !isHorizontal && !isFieldset ? 'd-block' : '',
               labelSize ? `col-form-label-${labelSize}` : '',
               this.labelAlignClasses,
-              this.labelClass
-            ]
+              this.labelClass,
+            ],
           },
           [labelContent]
         )
@@ -307,9 +307,9 @@ export const BFormGroup = {
             id: invalidFeedbackId,
             // If state is explicitly `false`, always show the feedback
             state,
-            tooltip
+            tooltip,
           },
-          attrs: { tabindex: invalidFeedbackContent ? '-1' : null }
+          attrs: { tabindex: invalidFeedbackContent ? '-1' : null },
         },
         [invalidFeedbackContent]
       )
@@ -327,9 +327,9 @@ export const BFormGroup = {
             id: validFeedbackId,
             // If state is explicitly `true`, always show the feedback
             state,
-            tooltip
+            tooltip,
           },
-          attrs: { tabindex: validFeedbackContent ? '-1' : null }
+          attrs: { tabindex: validFeedbackContent ? '-1' : null },
         },
         [validFeedbackContent]
       )
@@ -344,8 +344,8 @@ export const BFormGroup = {
         {
           attrs: {
             id: descriptionId,
-            tabindex: '-1'
-          }
+            tabindex: '-1',
+          },
         },
         [descriptionContent]
       )
@@ -359,7 +359,7 @@ export const BFormGroup = {
       [
         descriptionId,
         state === false ? invalidFeedbackId : null,
-        state === true ? validFeedbackId : null
+        state === true ? validFeedbackId : null,
       ]
         .filter(identity)
         .join(' ') || null)
@@ -368,13 +368,13 @@ export const BFormGroup = {
       isHorizontal ? BCol : 'div',
       {
         props: isHorizontal ? this.contentColProps : {},
-        ref: 'content'
+        ref: 'content',
       },
       [
         normalizeSlot(SLOT_NAME_DEFAULT, { ariaDescribedby, descriptionId, id, labelId }) || h(),
         $invalidFeedback,
         $validFeedback,
-        $description
+        $description,
       ]
     )
 
@@ -394,10 +394,10 @@ export const BFormGroup = {
           'aria-invalid': this.computedAriaInvalid,
           // Only apply `aria-labelledby` if we are a horizontal fieldset
           // as the legend is no longer a direct child of fieldset
-          'aria-labelledby': isFieldset && isHorizontal ? labelId : null
-        }
+          'aria-labelledby': isFieldset && isHorizontal ? labelId : null,
+        },
       },
       isHorizontal && isFieldset ? [h(BFormRow, [$label, $content])] : [$label, $content]
     )
-  }
+  },
 }

@@ -11,8 +11,8 @@ import { pluginFactory } from '../../utils/plugins'
 
 const TableLitePlugin = /*#__PURE__*/ pluginFactory({
   components: {
-    BTableLite
-  }
+    BTableLite,
+  },
 })
 
 const TableSimplePlugin = /*#__PURE__*/ pluginFactory({
@@ -23,18 +23,18 @@ const TableSimplePlugin = /*#__PURE__*/ pluginFactory({
     BTfoot,
     BTr,
     BTd,
-    BTh
-  }
+    BTh,
+  },
 })
 
 const TablePlugin = /*#__PURE__*/ pluginFactory({
   components: {
-    BTable
+    BTable,
   },
   plugins: {
     TableLitePlugin,
-    TableSimplePlugin
-  }
+    TableSimplePlugin,
+  },
 })
 
 export {
@@ -52,5 +52,5 @@ export {
   BTfoot,
   BTr,
   BTd,
-  BTh
+  BTh,
 }

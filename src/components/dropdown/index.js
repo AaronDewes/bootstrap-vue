@@ -27,8 +27,8 @@ const DropdownPlugin = /*#__PURE__*/ pluginFactory({
     BDropdownText,
     BDdText: BDropdownText,
     BDropdownGroup,
-    BDdGroup: BDropdownGroup
-  }
+    BDdGroup: BDropdownGroup,
+  },
 })
 
 export {
@@ -40,5 +40,5 @@ export {
   BDropdownDivider,
   BDropdownForm,
   BDropdownText,
-  BDropdownGroup
+  BDropdownGroup,
 }

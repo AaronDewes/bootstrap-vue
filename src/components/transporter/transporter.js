@@ -4,7 +4,7 @@ import { IS_BROWSER } from '../../constants/env'
 import {
   PROP_TYPE_ARRAY_FUNCTION,
   PROP_TYPE_BOOLEAN,
-  PROP_TYPE_STRING
+  PROP_TYPE_STRING,
 } from '../../constants/props'
 import { HTMLElement } from '../../constants/safe-types'
 import { concat } from '../../utils/array'
@@ -40,11 +40,11 @@ const BVTransporterTarget = /*#__PURE__*/ Vue.extend({
   props: {
     // Even though we only support a single root element,
     // VNodes are always passed as an array
-    nodes: makeProp(PROP_TYPE_ARRAY_FUNCTION)
+    nodes: makeProp(PROP_TYPE_ARRAY_FUNCTION),
   },
-  data: vm => {
+  data: (vm) => {
     return {
-      updatedNodes: vm.nodes
+      updatedNodes: vm.nodes,
     }
   },
   destroyed() {
@@ -61,7 +61,7 @@ const BVTransporterTarget = /*#__PURE__*/ Vue.extend({
 
     /* istanbul ignore next */
     return h()
-  }
+  },
 })
 
 // --- Props ---
@@ -73,7 +73,7 @@ export const props = {
   container: makeProp([HTMLElement, PROP_TYPE_STRING], 'body'),
   disabled: makeProp(PROP_TYPE_BOOLEAN, false),
   // This should be set to match the root element type
-  tag: makeProp(PROP_TYPE_STRING, 'div')
+  tag: makeProp(PROP_TYPE_STRING, 'div'),
 }
 
 // --- Main component ---
@@ -88,8 +88,8 @@ const BVTransporterVue2 = /*#__PURE__*/ Vue.extend({
       immediate: true,
       handler(disabled) {
         disabled ? this.unmountTarget() : this.$nextTick(this.mountTarget)
-      }
-    }
+      },
+    },
   },
   created() {
     // Create private non-reactive props
@@ -134,8 +134,8 @@ const BVTransporterVue2 = /*#__PURE__*/ Vue.extend({
             el: $el,
             propsData: {
               // Initial nodes to be rendered
-              nodes: concat(this.normalizeSlot())
-            }
+              nodes: concat(this.normalizeSlot()),
+            },
           })
         }
       }
@@ -164,7 +164,7 @@ const BVTransporterVue2 = /*#__PURE__*/ Vue.extend({
     unmountTarget() {
       this.$_target && this.$_target.$destroy()
       this.$_target = null
-    }
+    },
   },
   render(h) {
     // This component has no root element, so only a single VNode is allowed
@@ -175,7 +175,7 @@ const BVTransporterVue2 = /*#__PURE__*/ Vue.extend({
       }
     }
     return h()
-  }
+  },
 })
 
 const BVTransporterVue3 = /*#__PURE__*/ Vue.extend({
@@ -192,11 +192,11 @@ const BVTransporterVue3 = /*#__PURE__*/ Vue.extend({
     return h(
       Vue.Teleport,
       {
-        to: this.container
+        to: this.container,
       },
       this.normalizeSlot()
     )
-  }
+  },
 })
 
 export const BVTransporter = isVue3 ? BVTransporterVue3 : BVTransporterVue2

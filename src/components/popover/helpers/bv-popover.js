@@ -17,12 +17,12 @@ export const BVPopover = /*#__PURE__*/ Vue.extend({
     // Overwrites BVTooltip
     templateType() {
       return 'popover'
-    }
+    },
   },
   methods: {
     getTemplate() {
       // Overwrites BVTooltip
       return BVPopoverTemplate
-    }
-  }
+    },
+  },
 })

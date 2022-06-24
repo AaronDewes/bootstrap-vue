@@ -7,7 +7,7 @@ import {
   EVENT_NAME_HIDE,
   EVENT_NAME_SHOW,
   EVENT_NAME_SHOWN,
-  EVENT_OPTIONS_NO_CAPTURE
+  EVENT_OPTIONS_NO_CAPTURE,
 } from '../../constants/events'
 import { PROP_TYPE_BOOLEAN, PROP_TYPE_STRING } from '../../constants/props'
 import { SLOT_NAME_DEFAULT } from '../../constants/slots'
@@ -34,7 +34,7 @@ const {
   mixin: modelMixin,
   props: modelProps,
   prop: MODEL_PROP_NAME,
-  event: MODEL_EVENT_NAME
+  event: MODEL_EVENT_NAME,
 } = makeModelMixin('visible', { type: PROP_TYPE_BOOLEAN, defaultValue: false })
 
 // --- Props ---
@@ -47,7 +47,7 @@ export const props = makePropsConfigurable(
     accordion: makeProp(PROP_TYPE_STRING),
     appear: makeProp(PROP_TYPE_BOOLEAN, false),
     isNav: makeProp(PROP_TYPE_BOOLEAN, false),
-    tag: makeProp(PROP_TYPE_STRING, 'div')
+    tag: makeProp(PROP_TYPE_STRING, 'div'),
   }),
   NAME_COLLAPSE
 )
@@ -62,7 +62,7 @@ export const BCollapse = /*#__PURE__*/ Vue.extend({
   data() {
     return {
       show: this[MODEL_PROP_NAME],
-      transitioning: false
+      transitioning: false,
     }
   },
   computed: {
@@ -72,7 +72,7 @@ export const BCollapse = /*#__PURE__*/ Vue.extend({
       return {
         'navbar-collapse': this.isNav,
         collapse: !transitioning,
-        show: this.show && !transitioning
+        show: this.show && !transitioning,
       }
     },
     slotScope() {
@@ -80,9 +80,9 @@ export const BCollapse = /*#__PURE__*/ Vue.extend({
         visible: this.show,
         close: () => {
           this.show = false
-        }
+        },
       }
-    }
+    },
   },
   watch: {
     [MODEL_PROP_NAME](newValue) {
@@ -94,7 +94,7 @@ export const BCollapse = /*#__PURE__*/ Vue.extend({
       if (newValue !== oldValue) {
         this.emitState()
       }
-    }
+    },
   },
   created() {
     this.show = this[MODEL_PROP_NAME]
@@ -114,7 +114,7 @@ export const BCollapse = /*#__PURE__*/ Vue.extend({
       this.emitState()
     })
     // Listen for "Sync state" requests from `v-b-toggle`
-    this.listenOnRoot(ROOT_ACTION_EVENT_NAME_REQUEST_STATE, id => {
+    this.listenOnRoot(ROOT_ACTION_EVENT_NAME_REQUEST_STATE, (id) => {
       if (id === this.safeId()) {
         this.$nextTick(this.emitSync)
       }
@@ -239,7 +239,7 @@ export const BCollapse = /*#__PURE__*/ Vue.extend({
     handleResize() {
       // Handler for orientation/resize to set collapsed state in nav/navbar
       this.show = getCS(this.$el).display === 'block'
-    }
+    },
   },
   render(h) {
     const { appear } = this
@@ -250,7 +250,7 @@ export const BCollapse = /*#__PURE__*/ Vue.extend({
         class: this.classObject,
         directives: [{ name: 'show', value: this.show }],
         attrs: { id: this.safeId() },
-        on: { click: this.clickHandler }
+        on: { click: this.clickHandler },
       },
       this.normalizeSlot(SLOT_NAME_DEFAULT, this.slotScope)
     )
@@ -263,10 +263,10 @@ export const BCollapse = /*#__PURE__*/ Vue.extend({
           enter: this.onEnter,
           afterEnter: this.onAfterEnter,
           leave: this.onLeave,
-          afterLeave: this.onAfterLeave
-        }
+          afterLeave: this.onAfterLeave,
+        },
       },
       [$content]
     )
-  }
+  },
 })

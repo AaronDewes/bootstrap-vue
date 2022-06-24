@@ -6,7 +6,7 @@ import { props as BNavProps } from '../nav/nav'
 
 // --- Helper methods ---
 
-const computeJustifyContent = value => {
+const computeJustifyContent = (value) => {
   value = value === 'left' ? 'start' : value === 'right' ? 'end' : value
   return `justify-content-${value}`
 }
@@ -36,10 +36,10 @@ export const BNavbarNav = /*#__PURE__*/ Vue.extend({
           'nav-fill': props.fill,
           'nav-justified': props.justified,
           [computeJustifyContent(align)]: align,
-          small: props.small
-        }
+          small: props.small,
+        },
       }),
       children
     )
-  }
+  },
 })

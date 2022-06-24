@@ -8,7 +8,7 @@ import { makeProp } from '../utils/props'
 // --- Props ---
 
 export const props = {
-  id: makeProp(PROP_TYPE_STRING)
+  id: makeProp(PROP_TYPE_STRING),
 }
 
 // --- Mixin ---
@@ -18,7 +18,7 @@ export const idMixin = Vue.extend({
   props,
   data() {
     return {
-      localId_: null
+      localId_: null,
     }
   },
   computed: {
@@ -30,7 +30,7 @@ export const idMixin = Vue.extend({
       // We return a function that accepts an optional suffix string
       // So this computed prop looks and works like a method
       // but benefits from Vue's computed prop caching
-      const fn = suffix => {
+      const fn = (suffix) => {
         if (!id) {
           return null
         }
@@ -38,7 +38,7 @@ export const idMixin = Vue.extend({
         return suffix ? id + '_' + suffix : id
       }
       return fn
-    }
+    },
   },
   mounted() {
     // `mounted()` only occurs client-side
@@ -47,5 +47,5 @@ export const idMixin = Vue.extend({
       // to prevent SSR hydration errors
       this.localId_ = `__BVID__${this[COMPONENT_UID_KEY]}`
     })
-  }
+  },
 })

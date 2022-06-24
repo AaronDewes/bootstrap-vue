@@ -1684,7 +1684,7 @@ import {
   BIconYinYang,
   BIconYoutube,
   BIconZoomIn,
-  BIconZoomOut
+  BIconZoomOut,
 } from './icons'
 
 // Icon component names for used in the docs
@@ -3359,7 +3359,7 @@ export const iconNames = [
   'BIconYinYang',
   'BIconYoutube',
   'BIconZoomIn',
-  'BIconZoomOut'
+  'BIconZoomOut',
 ]
 
 // Export the icons plugin
@@ -5039,8 +5039,8 @@ export const IconsPlugin = /*#__PURE__*/ pluginFactoryNoConfig({
     BIconYinYang,
     BIconYoutube,
     BIconZoomIn,
-    BIconZoomOut
-  }
+    BIconZoomOut,
+  },
 })
 
 // Export the BootstrapVueIcons plugin installer

@@ -11,7 +11,7 @@ export const props = makePropsConfigurable(
   {
     id: makeProp(PROP_TYPE_STRING),
     tag: makeProp(PROP_TYPE_STRING, 'header'),
-    variant: makeProp(PROP_TYPE_STRING)
+    variant: makeProp(PROP_TYPE_STRING),
   },
   NAME_DROPDOWN_HEADER
 )
@@ -35,12 +35,12 @@ export const BDropdownHeader = /*#__PURE__*/ Vue.extend({
           attrs: {
             ...(data.attrs || {}),
             id: props.id || null,
-            role: isTag(tag, 'header') ? null : 'heading'
+            role: isTag(tag, 'header') ? null : 'heading',
           },
-          ref: 'header'
+          ref: 'header',
         },
         children
-      )
+      ),
     ])
-  }
+  },
 })

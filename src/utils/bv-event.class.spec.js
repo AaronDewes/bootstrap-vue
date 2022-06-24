@@ -22,7 +22,7 @@ describe('utils/BvEvent class', () => {
 
   it('supports cancelable events', async () => {
     const event = new BvEvent('foobar', {
-      cancelable: true
+      cancelable: true,
     })
     expect(event).toBeInstanceOf(BvEvent)
     expect(event.type).toBe('foobar')
@@ -34,7 +34,7 @@ describe('utils/BvEvent class', () => {
 
   it('supports non cancelable events', async () => {
     const event = new BvEvent('foobar', {
-      cancelable: false
+      cancelable: false,
     })
     expect(event).toBeInstanceOf(BvEvent)
     expect(event.type).toBe('foobar')
@@ -46,7 +46,7 @@ describe('utils/BvEvent class', () => {
 
   it('supports built in properties', async () => {
     const event = new BvEvent('foobar', {
-      target: 'baz'
+      target: 'baz',
     })
     expect(event).toBeInstanceOf(BvEvent)
     expect(event.type).toBe('foobar')
@@ -56,7 +56,7 @@ describe('utils/BvEvent class', () => {
 
   it('supports custom properties', async () => {
     const event = new BvEvent('foobar', {
-      custom: 123
+      custom: 123,
     })
     expect(event).toBeInstanceOf(BvEvent)
     expect(event.type).toBe('foobar')

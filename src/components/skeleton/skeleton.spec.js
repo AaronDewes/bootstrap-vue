@@ -19,8 +19,8 @@ describe('skeleton', () => {
   it('has class `b-skeleton-button` when `type="button"` is set', async () => {
     const wrapper = mount(BSkeleton, {
       propsData: {
-        type: 'button'
-      }
+        type: 'button',
+      },
     })
 
     expect(wrapper).toBeDefined()
@@ -32,8 +32,8 @@ describe('skeleton', () => {
   it('has class `b-skeleton-animate-fade` when `animation="fade"` is set', async () => {
     const wrapper = mount(BSkeleton, {
       propsData: {
-        animation: 'fade'
-      }
+        animation: 'fade',
+      },
     })
 
     expect(wrapper).toBeDefined()
@@ -45,8 +45,8 @@ describe('skeleton', () => {
   it('has no animate class when `animation` prop has falsy value', async () => {
     const wrapper = mount(BSkeleton, {
       propsData: {
-        animation: null
-      }
+        animation: null,
+      },
     })
 
     expect(wrapper).toBeDefined()
@@ -58,8 +58,8 @@ describe('skeleton', () => {
   it('has `width` style set when `width` prop is used', async () => {
     const wrapper = mount(BSkeleton, {
       propsData: {
-        width: '50px'
-      }
+        width: '50px',
+      },
     })
 
     expect(wrapper).toBeDefined()
@@ -71,8 +71,8 @@ describe('skeleton', () => {
   it('has `height` style set when `height` prop is used', async () => {
     const wrapper = mount(BSkeleton, {
       propsData: {
-        height: '50px'
-      }
+        height: '50px',
+      },
     })
 
     expect(wrapper).toBeDefined()
@@ -84,8 +84,8 @@ describe('skeleton', () => {
   it('has `width` and `height` styles set when `size` prop is used', async () => {
     const wrapper = mount(BSkeleton, {
       propsData: {
-        size: '50px'
-      }
+        size: '50px',
+      },
     })
 
     expect(wrapper).toBeDefined()
@@ -100,8 +100,8 @@ describe('skeleton', () => {
       propsData: {
         height: '25px',
         width: '40px',
-        size: '50px'
-      }
+        size: '50px',
+      },
     })
 
     expect(wrapper).toBeDefined()
@@ -114,8 +114,8 @@ describe('skeleton', () => {
   it('has `bg-[variant]` class applied when `variant` prop is used', async () => {
     const wrapper = mount(BSkeleton, {
       propsData: {
-        variant: 'primary'
-      }
+        variant: 'primary',
+      },
     })
 
     expect(wrapper).toBeDefined()

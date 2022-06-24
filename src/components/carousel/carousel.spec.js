@@ -16,7 +16,7 @@ const App = {
     'noWrap',
     'value',
     // Custom props
-    'slideCount'
+    'slideCount',
   ],
   render(h) {
     const props = { ...this.$props }
@@ -28,13 +28,13 @@ const App = {
     )
 
     return h(BCarousel, { props }, $slides)
-  }
+  },
 }
 
 describe('carousel', () => {
   it('has expected default structure', async () => {
     const wrapper = mount(BCarousel, {
-      attachTo: document.body
+      attachTo: document.body,
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -103,8 +103,8 @@ describe('carousel', () => {
     const wrapper = mount(BCarousel, {
       attachTo: document.body,
       propsData: {
-        controls: true
-      }
+        controls: true,
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -166,8 +166,8 @@ describe('carousel', () => {
     const wrapper = mount(BCarousel, {
       attachTo: document.body,
       propsData: {
-        indicators: true
-      }
+        indicators: true,
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -213,8 +213,8 @@ describe('carousel', () => {
     const wrapper = mount(BCarousel, {
       attachTo: document.body,
       propsData: {
-        fade: true
-      }
+        fade: true,
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -232,8 +232,8 @@ describe('carousel', () => {
     const wrapper = mount(BCarousel, {
       attachTo: document.body,
       propsData: {
-        noAnimation: true
-      }
+        noAnimation: true,
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -252,8 +252,8 @@ describe('carousel', () => {
       attachTo: document.body,
       propsData: {
         fade: true,
-        noAnimation: true
-      }
+        noAnimation: true,
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -271,8 +271,8 @@ describe('carousel', () => {
     const wrapper = mount(App, {
       attachTo: document.body,
       propsData: {
-        interval: 0
-      }
+        interval: 0,
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -299,8 +299,8 @@ describe('carousel', () => {
       attachTo: document.body,
       propsData: {
         interval: 0,
-        controls: true
-      }
+        controls: true,
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -361,8 +361,8 @@ describe('carousel', () => {
       attachTo: document.body,
       propsData: {
         interval: 0,
-        controls: true
-      }
+        controls: true,
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -423,8 +423,8 @@ describe('carousel', () => {
       attachTo: document.body,
       propsData: {
         interval: 0,
-        controls: true
-      }
+        controls: true,
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -485,8 +485,8 @@ describe('carousel', () => {
       attachTo: document.body,
       propsData: {
         interval: 0,
-        controls: true
-      }
+        controls: true,
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -547,8 +547,8 @@ describe('carousel', () => {
       attachTo: document.body,
       propsData: {
         interval: 0,
-        controls: true
-      }
+        controls: true,
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -605,8 +605,8 @@ describe('carousel', () => {
     const wrapper = mount(App, {
       attachTo: document.body,
       propsData: {
-        interval: 0
-      }
+        interval: 0,
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -631,7 +631,7 @@ describe('carousel', () => {
     expect($carousel.emitted('paused')).toBeUndefined()
 
     await wrapper.setProps({
-      interval: 1000
+      interval: 1000,
     })
     await waitNT(wrapper.vm)
     await waitRAF()
@@ -651,7 +651,7 @@ describe('carousel', () => {
     await waitRAF()
 
     await wrapper.setProps({
-      interval: 0
+      interval: 0,
     })
     await waitNT(wrapper.vm)
     await waitRAF()
@@ -667,7 +667,7 @@ describe('carousel', () => {
     await waitRAF()
 
     await wrapper.setProps({
-      interval: 1000
+      interval: 1000,
     })
     await waitNT(wrapper.vm)
     await waitRAF()
@@ -685,8 +685,8 @@ describe('carousel', () => {
       attachTo: document.body,
       propsData: {
         interval: 0,
-        value: 0
-      }
+        value: 0,
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -708,7 +708,7 @@ describe('carousel', () => {
     expect($carousel.vm.isSliding).toBe(false)
 
     await wrapper.setProps({
-      value: 1
+      value: 1,
     })
 
     await waitNT(wrapper.vm)
@@ -734,7 +734,7 @@ describe('carousel', () => {
     expect($carousel.vm.isSliding).toBe(false)
 
     await wrapper.setProps({
-      value: 3
+      value: 3,
     })
 
     await waitNT(wrapper.vm)
@@ -764,8 +764,8 @@ describe('carousel', () => {
       attachTo: document.body,
       propsData: {
         interval: 0,
-        noAnimation: true
-      }
+        noAnimation: true,
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -788,7 +788,7 @@ describe('carousel', () => {
 
     // Transitions (or fallback timers) are not used when no-animation set
     await wrapper.setProps({
-      value: 1
+      value: 1,
     })
 
     await waitNT(wrapper.vm)
@@ -806,7 +806,7 @@ describe('carousel', () => {
     expect($carousel.vm.isSliding).toBe(false)
 
     await wrapper.setProps({
-      value: 3
+      value: 3,
     })
 
     await waitNT(wrapper.vm)
@@ -827,8 +827,8 @@ describe('carousel', () => {
     const wrapper = mount(App, {
       attachTo: document.body,
       propsData: {
-        interval: 0
-      }
+        interval: 0,
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -850,7 +850,7 @@ describe('carousel', () => {
     expect($carousel.vm.isSliding).toBe(false)
 
     await wrapper.setProps({
-      value: 1
+      value: 1,
     })
 
     await waitNT(wrapper.vm)
@@ -865,7 +865,7 @@ describe('carousel', () => {
 
     // Set new slide while sliding
     await wrapper.setProps({
-      value: 3
+      value: 3,
     })
 
     jest.runOnlyPendingTimers()
@@ -908,8 +908,8 @@ describe('carousel', () => {
         noAnimation: true,
         noWrap: false,
         // Start at last slide
-        value: 3
-      }
+        value: 3,
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -975,8 +975,8 @@ describe('carousel', () => {
         noWrap: true,
         indicators: true,
         // Start at last slide
-        value: 3
-      }
+        value: 3,
+      },
     })
 
     expect(wrapper.vm).toBeDefined()

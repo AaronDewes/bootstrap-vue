@@ -1,9 +1,5 @@
 <template>
-  <form
-    role="search"
-    class="bd-search d-flex align-items-center"
-    @submit.stop.prevent
-  >
+  <form role="search" class="bd-search d-flex align-items-center" @submit.stop.prevent>
     <b-form-input
       id="bd-search-input"
       autocomplete="off"
@@ -23,7 +19,7 @@ export default {
   name: 'BVSearch',
   data() {
     return {
-      docsearch: null
+      docsearch: null,
     }
   },
   mounted() {
@@ -42,7 +38,7 @@ export default {
       const $body = document.body
 
       // Load JS
-      const loadJs = new Promise(resolve => {
+      const loadJs = new Promise((resolve) => {
         const $script = document.createElement('script')
         $script.setAttribute('type', 'text/javascript')
         $script.setAttribute('src', `${cdnBaseUrl}docsearch.min.js`)
@@ -51,7 +47,7 @@ export default {
       })
 
       // Load CSS
-      const loadCss = new Promise(resolve => {
+      const loadCss = new Promise((resolve) => {
         const $link = document.createElement('link')
         $link.setAttribute('rel', 'stylesheet')
         $link.setAttribute('type', 'text/css')
@@ -74,7 +70,7 @@ export default {
         indexName: 'bootstrap-vue',
         inputSelector: '#bd-search-input',
         transformData(hits) {
-          return hits.map(function(hit) {
+          return hits.map(function (hit) {
             // Transform URL to a relative URL
             hit.url = relativeUrl(hit.url)
 
@@ -82,9 +78,9 @@ export default {
           })
         },
         // Set debug to `true` if you want to inspect the dropdown
-        debug: false
+        debug: false,
       })
-    }
-  }
+    },
+  },
 }
 </script>

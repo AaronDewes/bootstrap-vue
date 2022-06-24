@@ -21,6 +21,6 @@ export const hasListenerMixin = Vue.extend({
       // Registered listeners in `this._events` are always an array,
       // but might be zero length
       return !isUndefined($listeners[name]) || (isArray($events[name]) && $events[name].length > 0)
-    }
-  }
+    },
+  },
 })

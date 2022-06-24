@@ -14,7 +14,7 @@ export const props = makePropsConfigurable(
     // Tri-state prop: `true`, `false`, or `null`
     state: makeProp(PROP_TYPE_BOOLEAN, null),
     tag: makeProp(PROP_TYPE_STRING, 'div'),
-    tooltip: makeProp(PROP_TYPE_BOOLEAN, false)
+    tooltip: makeProp(PROP_TYPE_BOOLEAN, false),
   },
   NAME_FORM_VALID_FEEDBACK
 )
@@ -36,16 +36,16 @@ export const BFormValidFeedback = /*#__PURE__*/ Vue.extend({
         class: {
           'd-block': show,
           'valid-feedback': !tooltip,
-          'valid-tooltip': tooltip
+          'valid-tooltip': tooltip,
         },
         attrs: {
           id: props.id || null,
           role: props.role || null,
           'aria-live': ariaLive || null,
-          'aria-atomic': ariaLive ? 'true' : null
-        }
+          'aria-atomic': ariaLive ? 'true' : null,
+        },
       }),
       children
     )
-  }
+  },
 })

@@ -20,8 +20,8 @@ describe('embed', () => {
   it('has custom root element when tag prop set', async () => {
     const wrapper = mount(BEmbed, {
       propsData: {
-        tag: 'aside'
-      }
+        tag: 'aside',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('ASIDE')
@@ -36,8 +36,8 @@ describe('embed', () => {
   it('it renders specified inner element when type set', async () => {
     const wrapper = mount(BEmbed, {
       propsData: {
-        type: 'video'
-      }
+        type: 'video',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')
@@ -54,8 +54,8 @@ describe('embed', () => {
   it('renders specified aspect ratio class', async () => {
     const wrapper = mount(BEmbed, {
       propsData: {
-        aspect: '4by3'
-      }
+        aspect: '4by3',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')
@@ -70,8 +70,8 @@ describe('embed', () => {
     const wrapper = mount(BEmbed, {
       attrs: {
         src: '/foo/bar',
-        baz: 'buz'
-      }
+        baz: 'buz',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')
@@ -89,11 +89,11 @@ describe('embed', () => {
   it('default slot should be rendered inside inner element', async () => {
     const wrapper = mount(BEmbed, {
       propsData: {
-        type: 'video'
+        type: 'video',
       },
       slots: {
-        default: 'foobar'
-      }
+        default: 'foobar',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')

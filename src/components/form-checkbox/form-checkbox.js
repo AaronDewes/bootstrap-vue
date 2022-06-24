@@ -10,7 +10,7 @@ import { makeProp, makePropsConfigurable } from '../../utils/props'
 import {
   MODEL_EVENT_NAME,
   formRadioCheckMixin,
-  props as formRadioCheckProps
+  props as formRadioCheckProps,
 } from '../../mixins/form-radio-check'
 
 // --- Constants ---
@@ -29,7 +29,7 @@ export const props = makePropsConfigurable(
     switch: makeProp(PROP_TYPE_BOOLEAN, false),
     // Not applicable in multi-check mode
     uncheckedValue: makeProp(PROP_TYPE_ANY, false),
-    value: makeProp(PROP_TYPE_ANY, true)
+    value: makeProp(PROP_TYPE_ANY, true),
   }),
   NAME_FORM_CHECKBOX
 )
@@ -43,8 +43,8 @@ export const BFormCheckbox = /*#__PURE__*/ Vue.extend({
   inject: {
     getBvGroup: {
       from: 'getBvCheckGroup',
-      default: () => () => null
-    }
+      default: () => () => null,
+    },
   },
   props,
   computed: {
@@ -57,14 +57,14 @@ export const BFormCheckbox = /*#__PURE__*/ Vue.extend({
     },
     isRadio() {
       return false
-    }
+    },
   },
   watch: {
     [MODEL_PROP_NAME_INDETERMINATE](newValue, oldValue) {
       if (!looseEqual(newValue, oldValue)) {
         this.setIndeterminate(newValue)
       }
-    }
+    },
   },
   mounted() {
     // Set initial indeterminate state
@@ -127,6 +127,6 @@ export const BFormCheckbox = /*#__PURE__*/ Vue.extend({
         // Emit update event to prop
         this.$emit(MODEL_EVENT_NAME_INDETERMINATE, state)
       }
-    }
-  }
+    },
+  },
 })

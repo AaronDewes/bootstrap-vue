@@ -22,8 +22,7 @@ The width will always be 100% of the available width in the parent element/compo
     </b-form-group>
     <b-card>
       <b-aspect :aspect="aspect">
-        This will always be an aspect of "{{ aspect }}",
-        except when the content is too tall.
+        This will always be an aspect of "{{ aspect }}", except when the content is too tall.
       </b-aspect>
     </b-card>
   </div>
@@ -50,10 +49,10 @@ The width will always be 100% of the available width in the parent element/compo
           { text: '2 (Same as 2:1)', value: 2 },
           { text: '1.85 (Same as 1.85:1)', value: 1.85 },
           { text: '1.5', value: 1.5 },
-          { text: '1 (Same as 1:1)', value: 1 }
-        ]
+          { text: '1 (Same as 1:1)', value: 1 },
+        ],
       }
-    }
+    },
   }
 </script>
 

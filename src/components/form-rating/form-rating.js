@@ -6,14 +6,14 @@ import {
   PROP_TYPE_BOOLEAN,
   PROP_TYPE_NUMBER,
   PROP_TYPE_NUMBER_STRING,
-  PROP_TYPE_STRING
+  PROP_TYPE_STRING,
 } from '../../constants/props'
 import { CODE_LEFT, CODE_RIGHT, CODE_UP, CODE_DOWN } from '../../constants/key-codes'
 import {
   SLOT_NAME_ICON_CLEAR,
   SLOT_NAME_ICON_EMPTY,
   SLOT_NAME_ICON_FULL,
-  SLOT_NAME_ICON_HALF
+  SLOT_NAME_ICON_HALF,
 } from '../../constants/slots'
 import { arrayIncludes, concat } from '../../utils/array'
 import { attemptBlur, attemptFocus } from '../../utils/dom'
@@ -40,10 +40,10 @@ const {
   mixin: modelMixin,
   props: modelProps,
   prop: MODEL_PROP_NAME,
-  event: MODEL_EVENT_NAME
+  event: MODEL_EVENT_NAME,
 } = makeModelMixin('value', {
   type: PROP_TYPE_NUMBER_STRING,
-  event: EVENT_NAME_CHANGE
+  event: EVENT_NAME_CHANGE,
 })
 
 const MIN_STARS = 3
@@ -51,7 +51,7 @@ const DEFAULT_STARS = 5
 
 // --- Helper methods ---
 
-const computeStars = stars => mathMax(MIN_STARS, toInteger(stars, DEFAULT_STARS))
+const computeStars = (stars) => mathMax(MIN_STARS, toInteger(stars, DEFAULT_STARS))
 
 const clampValue = (value, min, max) => mathMax(mathMin(value, max), min)
 
@@ -69,7 +69,7 @@ const BVFormRatingStar = Vue.extend({
     rating: makeProp(PROP_TYPE_NUMBER, 0),
     readonly: makeProp(PROP_TYPE_BOOLEAN, false),
     star: makeProp(PROP_TYPE_NUMBER, 0),
-    variant: makeProp(PROP_TYPE_STRING)
+    variant: makeProp(PROP_TYPE_STRING),
   },
   methods: {
     onClick(event) {
@@ -77,7 +77,7 @@ const BVFormRatingStar = Vue.extend({
         stopEvent(event, { propagation: false })
         this.$emit(EVENT_NAME_SELECTED, this.star)
       }
-    }
+    },
   },
   render(h) {
     const { rating, star, focused, hasClear, variant, disabled, readonly } = this
@@ -95,14 +95,14 @@ const BVFormRatingStar = Vue.extend({
           // We add type classes to we can handle RTL styling
           'b-rating-star-empty': type === 'empty',
           'b-rating-star-half': type === 'half',
-          'b-rating-star-full': type === 'full'
+          'b-rating-star-full': type === 'full',
         },
         attrs: { tabindex: !disabled && !readonly ? '-1' : null },
-        on: { click: this.onClick }
+        on: { click: this.onClick },
       },
       [h('span', { staticClass: 'b-rating-icon' }, [this.normalizeSlot(type, slotScope)])]
     )
-  }
+  },
 })
 
 // --- Props ---
@@ -129,10 +129,10 @@ export const props = makePropsConfigurable(
     showClear: makeProp(PROP_TYPE_BOOLEAN, false),
     showValue: makeProp(PROP_TYPE_BOOLEAN, false),
     showValueMax: makeProp(PROP_TYPE_BOOLEAN, false),
-    stars: makeProp(PROP_TYPE_NUMBER_STRING, DEFAULT_STARS, value => {
+    stars: makeProp(PROP_TYPE_NUMBER_STRING, DEFAULT_STARS, (value) => {
       return toInteger(value) >= MIN_STARS
     }),
-    variant: makeProp(PROP_TYPE_STRING)
+    variant: makeProp(PROP_TYPE_STRING),
   }),
   NAME_FORM_RATING
 )
@@ -150,7 +150,7 @@ export const BFormRating = /*#__PURE__*/ Vue.extend({
     const stars = computeStars(this.stars)
     return {
       localValue: isNull(value) ? null : clampValue(value, 0, stars),
-      hasFocus: false
+      hasFocus: false,
     }
   },
   computed: {
@@ -181,7 +181,7 @@ export const BFormRating = /*#__PURE__*/ Vue.extend({
       const formatOptions = {
         notation: 'standard',
         minimumFractionDigits: isNaN(precision) ? 0 : precision,
-        maximumFractionDigits: isNaN(precision) ? 3 : precision
+        maximumFractionDigits: isNaN(precision) ? 3 : precision,
       }
       const stars = this.computedStars.toLocaleString(locale)
       let value = this.localValue
@@ -191,7 +191,7 @@ export const BFormRating = /*#__PURE__*/ Vue.extend({
           : ''
         : value.toLocaleString(locale, formatOptions)
       return showValueMax ? `${value}/${stars}` : value
-    }
+    },
   },
   watch: {
     [MODEL_PROP_NAME](newValue, oldValue) {
@@ -210,7 +210,7 @@ export const BFormRating = /*#__PURE__*/ Vue.extend({
         this.hasFocus = false
         this.blur()
       }
-    }
+    },
   },
   methods: {
     // --- Public methods ---
@@ -261,8 +261,8 @@ export const BFormRating = /*#__PURE__*/ Vue.extend({
       return this.$createElement(BIcon, {
         props: {
           icon,
-          variant: this.disabled || this.color ? null : this.variant || null
-        }
+          variant: this.disabled || this.color ? null : this.variant || null,
+        },
       })
     },
     iconEmptyFn() {
@@ -276,7 +276,7 @@ export const BFormRating = /*#__PURE__*/ Vue.extend({
     },
     iconClearFn() {
       return this.$createElement(BIcon, { props: { icon: this.iconClear } })
-    }
+    },
   },
   render(h) {
     const {
@@ -295,13 +295,13 @@ export const BFormRating = /*#__PURE__*/ Vue.extend({
       showClear,
       isRTL,
       isInteractive,
-      $scopedSlots
+      $scopedSlots,
     } = this
     const $content = []
 
     if (showClear && !disabled && !readonly) {
       const $icon = h('span', { staticClass: 'b-rating-icon' }, [
-        ($scopedSlots[SLOT_NAME_ICON_CLEAR] || this.iconClearFn)()
+        ($scopedSlots[SLOT_NAME_ICON_CLEAR] || this.iconClearFn)(),
       ])
       $content.push(
         h(
@@ -311,7 +311,7 @@ export const BFormRating = /*#__PURE__*/ Vue.extend({
             class: { focused: hasFocus && computedRating === 0 },
             attrs: { tabindex: isInteractive ? '-1' : null },
             on: { click: () => this.onSelected(null) },
-            key: 'clear'
+            key: 'clear',
           },
           [$icon]
         )
@@ -331,15 +331,15 @@ export const BFormRating = /*#__PURE__*/ Vue.extend({
             disabled,
             readonly,
             focused: hasFocus,
-            hasClear: showClear
+            hasClear: showClear,
           },
           on: { selected: this.onSelected },
           scopedSlots: {
             empty: $scopedSlots[SLOT_NAME_ICON_EMPTY] || this.iconEmptyFn,
             half: $scopedSlots[SLOT_NAME_ICON_HALF] || this.iconHalfFn,
-            full: $scopedSlots[SLOT_NAME_ICON_FULL] || this.iconFullFn
+            full: $scopedSlots[SLOT_NAME_ICON_FULL] || this.iconFullFn,
           },
-          key: index
+          key: index,
         })
       )
     }
@@ -351,9 +351,9 @@ export const BFormRating = /*#__PURE__*/ Vue.extend({
             type: 'hidden',
             value: isNull(this.localValue) ? '' : computedRating,
             name,
-            form: form || null
+            form: form || null,
           },
-          key: 'hidden'
+          key: 'hidden',
         })
       )
     }
@@ -365,7 +365,7 @@ export const BFormRating = /*#__PURE__*/ Vue.extend({
           {
             staticClass: 'b-rating-value flex-grow-1',
             attrs: { 'aria-hidden': 'true' },
-            key: 'value'
+            key: 'value',
           },
           toString(formattedRating)
         )
@@ -382,9 +382,9 @@ export const BFormRating = /*#__PURE__*/ Vue.extend({
             'd-flex': !inline,
             'border-0': noBorder,
             disabled,
-            readonly: !disabled && readonly
+            readonly: !disabled && readonly,
           },
-          this.sizeFormClass
+          this.sizeFormClass,
         ],
         attrs: {
           id: this.safeId(),
@@ -397,15 +397,15 @@ export const BFormRating = /*#__PURE__*/ Vue.extend({
           'aria-live': 'off',
           'aria-valuemin': showClear ? '0' : '1',
           'aria-valuemax': toString(computedStars),
-          'aria-valuenow': computedRating ? toString(computedRating) : null
+          'aria-valuenow': computedRating ? toString(computedRating) : null,
         },
         on: {
           keydown: this.onKeydown,
           focus: this.onFocus,
-          blur: this.onFocus
-        }
+          blur: this.onFocus,
+        },
       },
       $content
     )
-  }
+  },
 })

@@ -31,7 +31,7 @@ export const props = makePropsConfigurable(
     // Distance away from viewport (in pixels)
     // before being considered "visible"
     offset: makeProp(PROP_TYPE_NUMBER_STRING, 360),
-    [MODEL_PROP_NAME_SHOW]: makeProp(PROP_TYPE_BOOLEAN, false)
+    [MODEL_PROP_NAME_SHOW]: makeProp(PROP_TYPE_BOOLEAN, false),
   },
   NAME_IMG_LAZY
 )
@@ -42,12 +42,12 @@ export const props = makePropsConfigurable(
 export const BImgLazy = /*#__PURE__*/ Vue.extend({
   name: NAME_IMG_LAZY,
   directives: {
-    'b-visible': VBVisible
+    'b-visible': VBVisible,
   },
   props,
   data() {
     return {
-      isShown: this[MODEL_PROP_NAME_SHOW]
+      isShown: this[MODEL_PROP_NAME_SHOW],
     }
   },
   computed: {
@@ -67,19 +67,15 @@ export const BImgLazy = /*#__PURE__*/ Vue.extend({
       return this.isShown ? height : this.blankHeight || height
     },
     computedSrcset() {
-      const srcset = concat(this.srcset)
-        .filter(identity)
-        .join(',')
+      const srcset = concat(this.srcset).filter(identity).join(',')
 
       return srcset && (!this.blankSrc || this.isShown) ? srcset : null
     },
     computedSizes() {
-      const sizes = concat(this.sizes)
-        .filter(identity)
-        .join(',')
+      const sizes = concat(this.sizes).filter(identity).join(',')
 
       return sizes && (!this.blankSrc || this.isShown) ? sizes : null
-    }
+    },
   },
   watch: {
     [MODEL_PROP_NAME_SHOW](newValue, oldValue) {
@@ -100,7 +96,7 @@ export const BImgLazy = /*#__PURE__*/ Vue.extend({
       if (newValue !== oldValue) {
         this.updateShowProp()
       }
-    }
+    },
   },
   mounted() {
     // If `IntersectionObserver` is not available, image is always shown
@@ -122,7 +118,7 @@ export const BImgLazy = /*#__PURE__*/ Vue.extend({
           this.isShown = true
         })
       }
-    }
+    },
   },
   render(h) {
     const directives = []
@@ -138,8 +134,8 @@ export const BImgLazy = /*#__PURE__*/ Vue.extend({
           // Root margin from viewport
           [`${toInteger(this.offset, 0)}`]: true,
           // Once the image is shown, stop observing
-          once: true
-        }
+          once: true,
+        },
       })
     }
 
@@ -154,8 +150,8 @@ export const BImgLazy = /*#__PURE__*/ Vue.extend({
         width: this.computedWidth,
         height: this.computedHeight,
         srcset: this.computedSrcset,
-        sizes: this.computedSizes
-      }
+        sizes: this.computedSizes,
+      },
     })
-  }
+  },
 })

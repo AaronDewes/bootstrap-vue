@@ -21,8 +21,8 @@ describe('nav > nav-form', () => {
   it('renders default slot content', async () => {
     const wrapper = mount(BNavForm, {
       slots: {
-        default: 'foobar'
-      }
+        default: 'foobar',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('LI')
@@ -40,11 +40,11 @@ describe('nav > nav-form', () => {
   it('applies ID to form when prop ID is set', async () => {
     const wrapper = mount(BNavForm, {
       propsData: {
-        id: 'baz'
+        id: 'baz',
       },
       slots: {
-        default: 'foobar'
-      }
+        default: 'foobar',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('LI')
@@ -64,14 +64,14 @@ describe('nav > nav-form', () => {
     const onSubmit = jest.fn()
     const wrapper = mount(BNavForm, {
       propsData: {
-        id: 'baz'
+        id: 'baz',
       },
       listeners: {
-        submit: onSubmit
+        submit: onSubmit,
       },
       slots: {
-        default: 'foobar'
-      }
+        default: 'foobar',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('LI')

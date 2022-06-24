@@ -17,7 +17,7 @@ const offsetRE = /^(auto|position|offset)$/
 // Build a Scrollspy config based on bindings (if any)
 // Arguments and modifiers take precedence over passed value config object
 /* istanbul ignore next: not easy to test */
-const parseBindings = bindings => /* istanbul ignore next: not easy to test */ {
+const parseBindings = (bindings) => /* istanbul ignore next: not easy to test */ {
   const config = {}
 
   // If argument, assume element ID
@@ -28,7 +28,7 @@ const parseBindings = bindings => /* istanbul ignore next: not easy to test */ {
   }
 
   // Process modifiers
-  keys(bindings.modifiers).forEach(mod => {
+  keys(bindings.modifiers).forEach((mod) => {
     if (onlyDigitsRE.test(mod)) {
       // Offset value
       config.offset = toInteger(mod, 0)
@@ -49,8 +49,8 @@ const parseBindings = bindings => /* istanbul ignore next: not easy to test */ {
     // Value is config object
     // Filter the object based on our supported config options
     keys(bindings.value)
-      .filter(k => !!BVScrollspy.DefaultType[k])
-      .forEach(k => {
+      .filter((k) => !!BVScrollspy.DefaultType[k])
+      .forEach((k) => {
         config[k] = bindings.value[k]
       })
   }
@@ -78,7 +78,7 @@ const applyScrollspy = (el, bindings, vnode) => /* istanbul ignore next: not eas
 
 // Remove Scrollspy on our element
 /* istanbul ignore next: not easy to test */
-const removeScrollspy = el => /* istanbul ignore next: not easy to test */ {
+const removeScrollspy = (el) => /* istanbul ignore next: not easy to test */ {
   if (el[BV_SCROLLSPY]) {
     el[BV_SCROLLSPY].dispose()
     el[BV_SCROLLSPY] = null
@@ -113,5 +113,5 @@ export const VBScrollspy = {
   /* istanbul ignore next: not easy to test */
   unbind(el) {
     removeScrollspy(el)
-  }
+  },
 }

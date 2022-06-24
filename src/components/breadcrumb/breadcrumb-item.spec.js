@@ -16,8 +16,8 @@ describe('breadcrumb-item', () => {
   it('has class active when prop active is set', async () => {
     const wrapper = mount(BBreadcrumbItem, {
       propsData: {
-        active: true
-      }
+        active: true,
+      },
     })
 
     expect(wrapper.element.tagName).toBe('LI')
@@ -41,8 +41,8 @@ describe('breadcrumb-item', () => {
   it('has link as child and href', async () => {
     const wrapper = mount(BBreadcrumbItem, {
       propsData: {
-        href: '/foo/bar'
-      }
+        href: '/foo/bar',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('LI')
@@ -55,8 +55,8 @@ describe('breadcrumb-item', () => {
   it('has child span and class active when prop active is set', async () => {
     const wrapper = mount(BBreadcrumbItem, {
       propsData: {
-        active: true
-      }
+        active: true,
+      },
     })
 
     expect(wrapper.element.tagName).toBe('LI')
@@ -72,8 +72,8 @@ describe('breadcrumb-item', () => {
     const wrapper = mount(BBreadcrumbItem, {
       propsData: {
         active: true,
-        text: 'foobar'
-      }
+        text: 'foobar',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('LI')
@@ -89,8 +89,8 @@ describe('breadcrumb-item', () => {
     const wrapper = mount(BBreadcrumbItem, {
       propsData: {
         active: true,
-        html: 'foobar'
-      }
+        html: 'foobar',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('LI')
@@ -105,11 +105,11 @@ describe('breadcrumb-item', () => {
   it('has child text content from default slot', async () => {
     const wrapper = mount(BBreadcrumbItem, {
       propsData: {
-        active: true
+        active: true,
       },
       slots: {
-        default: 'foobar'
-      }
+        default: 'foobar',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('LI')

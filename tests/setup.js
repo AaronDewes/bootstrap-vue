@@ -32,7 +32,7 @@ if (useVue3) {
     OPTIONS_DESTROYED: 'suppress-warning',
     RENDER_FUNCTION: 'suppress-warning',
     V_FOR_REF: 'suppress-warning',
-    WATCH_ARRAY: 'suppress-warning'
+    WATCH_ARRAY: 'suppress-warning',
   })
 
   let compatH
@@ -40,11 +40,11 @@ if (useVue3) {
   Vue.createApp({
     compatConfig: {
       MODE: 3,
-      RENDER_FUNCTION: 'suppress-warning'
+      RENDER_FUNCTION: 'suppress-warning',
     },
     render(h) {
       compatH = h
-    }
+    },
   }).mount(document.createElement('div'))
   installVTUCompat(VTU, fullCompatConfig, compatH)
 }

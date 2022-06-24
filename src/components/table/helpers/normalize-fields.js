@@ -31,7 +31,7 @@ export const normalizeFields = (origFields, items) => {
 
   if (isArray(origFields)) {
     // Normalize array Form
-    origFields.filter(identity).forEach(f => {
+    origFields.filter(identity).forEach((f) => {
       if (isString(f)) {
         fields.push({ key: f, label: startCase(f) })
       } else if (isObject(f) && f.key && isString(f.key)) {
@@ -51,7 +51,7 @@ export const normalizeFields = (origFields, items) => {
   // If no field provided, take a sample from first record (if exits)
   if (fields.length === 0 && isArray(items) && items.length > 0) {
     const sample = items[0]
-    keys(sample).forEach(k => {
+    keys(sample).forEach((k) => {
       if (!IGNORED_FIELD_KEYS[k]) {
         fields.push({ key: k, label: startCase(k) })
       }
@@ -60,7 +60,7 @@ export const normalizeFields = (origFields, items) => {
 
   // Ensure we have a unique array of fields and that they have String labels
   const memo = {}
-  return fields.filter(f => {
+  return fields.filter((f) => {
     if (!memo[f.key]) {
       memo[f.key] = true
       f.label = isString(f.label) ? f.label : startCase(f.key)

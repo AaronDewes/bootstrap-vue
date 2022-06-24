@@ -28,7 +28,7 @@ export const observeDom = (
   }
 
   // Define a new observer
-  const obs = new MutationObs(mutations => {
+  const obs = new MutationObs((mutations) => {
     let changed = false
 
     // A mutation can contain several change records, so we loop

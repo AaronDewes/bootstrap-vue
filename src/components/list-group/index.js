@@ -5,8 +5,8 @@ import { pluginFactory } from '../../utils/plugins'
 const ListGroupPlugin = /*#__PURE__*/ pluginFactory({
   components: {
     BListGroup,
-    BListGroupItem
-  }
+    BListGroupItem,
+  },
 })
 
 export { ListGroupPlugin, BListGroup, BListGroupItem }

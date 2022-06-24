@@ -4,8 +4,8 @@ import { pluginFactory } from '../../utils/plugins'
 const FormDatepickerPlugin = /*#__PURE__*/ pluginFactory({
   components: {
     BFormDatepicker,
-    BDatepicker: BFormDatepicker
-  }
+    BDatepicker: BFormDatepicker,
+  },
 })
 
 export { FormDatepickerPlugin, BFormDatepicker }

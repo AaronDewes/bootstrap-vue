@@ -19,10 +19,10 @@ const DEFAULT_TOTAL_ROWS = 0
 // --- Helper methods ---
 
 // Sanitize the provided per page number (converting to a number)
-const sanitizePerPage = value => mathMax(toInteger(value) || DEFAULT_PER_PAGE, 1)
+const sanitizePerPage = (value) => mathMax(toInteger(value) || DEFAULT_PER_PAGE, 1)
 
 // Sanitize the provided total rows number (converting to a number)
-const sanitizeTotalRows = value => mathMax(toInteger(value) || DEFAULT_TOTAL_ROWS, 0)
+const sanitizeTotalRows = (value) => mathMax(toInteger(value) || DEFAULT_TOTAL_ROWS, 0)
 
 // --- Props ---
 
@@ -31,7 +31,7 @@ export const props = makePropsConfigurable(
     ...paginationProps,
     ariaControls: makeProp(PROP_TYPE_STRING),
     perPage: makeProp(PROP_TYPE_NUMBER_STRING, DEFAULT_PER_PAGE),
-    totalRows: makeProp(PROP_TYPE_NUMBER_STRING, DEFAULT_TOTAL_ROWS)
+    totalRows: makeProp(PROP_TYPE_NUMBER_STRING, DEFAULT_TOTAL_ROWS),
   }),
   NAME_PAGINATION
 )
@@ -54,9 +54,9 @@ export const BPagination = /*#__PURE__*/ Vue.extend({
       return {
         perPage: sanitizePerPage(this.perPage),
         totalRows: sanitizeTotalRows(this.totalRows),
-        numberOfPages: this.numberOfPages
+        numberOfPages: this.numberOfPages,
       }
-    }
+    },
   },
   watch: {
     pageSizeNumberOfPages(newValue, oldValue) {
@@ -74,7 +74,7 @@ export const BPagination = /*#__PURE__*/ Vue.extend({
         }
       }
       this.localNumberOfPages = newValue.numberOfPages
-    }
+    },
   },
   created() {
     // Set the initial page count
@@ -105,7 +105,7 @@ export const BPagination = /*#__PURE__*/ Vue.extend({
       const clickEvent = new BvEvent(EVENT_NAME_PAGE_CLICK, {
         cancelable: true,
         vueTarget: this,
-        target
+        target,
       })
       this.$emit(clickEvent.type, clickEvent, pageNumber)
       if (clickEvent.defaultPrevented) {
@@ -133,6 +133,6 @@ export const BPagination = /*#__PURE__*/ Vue.extend({
     linkProps() {
       // No props, since we render a plain button
       return {}
-    }
-  }
+    },
+  },
 })

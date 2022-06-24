@@ -19,13 +19,13 @@ const getTarget = ({ modifiers = {}, arg, value }) => {
   return isString(value) ? value : isString(arg) ? arg : keys(modifiers).reverse()[0]
 }
 
-const getTriggerElement = el => {
+const getTriggerElement = (el) => {
   // If root element is a dropdown-item or nav-item, we
   // need to target the inner link or button instead
   return el && matches(el, '.dropdown-menu > li, li.nav-item') ? select('a, button', el) || el : el
 }
 
-const setRole = trigger => {
+const setRole = (trigger) => {
   // Ensure accessibility on non button elements
   if (trigger && trigger.tagName !== 'BUTTON') {
     // Only set a role if the trigger element doesn't have one
@@ -43,7 +43,7 @@ const bind = (el, binding, vnode) => {
   const target = getTarget(binding)
   const trigger = getTriggerElement(el)
   if (target && trigger) {
-    const handler = event => {
+    const handler = (event) => {
       // `currentTarget` is the element with the listener on it
       const currentTarget = event.currentTarget
       if (!isDisabled(currentTarget)) {
@@ -75,7 +75,7 @@ const bind = (el, binding, vnode) => {
   }
 }
 
-const unbind = el => {
+const unbind = (el) => {
   const oldProp = el[PROPERTY] || {}
   const trigger = oldProp.trigger
   const handler = oldProp.handler
@@ -111,5 +111,5 @@ export const VBModal = {
   inserted: componentUpdated,
   updated,
   componentUpdated,
-  unbind
+  unbind,
 }

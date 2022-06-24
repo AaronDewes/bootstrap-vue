@@ -19,8 +19,8 @@ describe('v-b-tooltip directive', () => {
       setEnd: () => {},
       commonAncestorContainer: {
         nodeName: 'BODY',
-        ownerDocument: document
-      }
+        ownerDocument: document,
+      },
     })
     // Mock `getBoundingClientRect()` so that the `isVisible(el)` test returns `true`
     // Needed for visibility checks of trigger element, etc.
@@ -30,7 +30,7 @@ describe('v-b-tooltip directive', () => {
       top: 0,
       left: 0,
       bottom: 0,
-      right: 0
+      right: 0,
     }))
   })
 
@@ -45,13 +45,13 @@ describe('v-b-tooltip directive', () => {
 
     const App = {
       directives: {
-        bTooltip: VBTooltip
+        bTooltip: VBTooltip,
       },
-      template: '<button v-b-tooltip title="foobar">button</button>'
+      template: '<button v-b-tooltip title="foobar">button</button>',
     }
 
     const wrapper = mount(App, {
-      attachTo: document.body
+      attachTo: document.body,
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -80,13 +80,13 @@ describe('v-b-tooltip directive', () => {
 
     const App = {
       directives: {
-        bTooltip: VBTooltip
+        bTooltip: VBTooltip,
       },
-      template: '<button v-b-tooltip.click.html title="<b>foobar</b>">button</button>'
+      template: '<button v-b-tooltip.click.html title="<b>foobar</b>">button</button>',
     }
 
     const wrapper = mount(App, {
-      attachTo: document.body
+      attachTo: document.body,
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -132,13 +132,13 @@ describe('v-b-tooltip directive', () => {
 
     const App = {
       directives: {
-        bTooltip: VBTooltip
+        bTooltip: VBTooltip,
       },
-      template: '<button v-b-tooltip.click title="">button</button>'
+      template: '<button v-b-tooltip.click title="">button</button>',
     }
 
     const wrapper = mount(App, {
-      attachTo: document.body
+      attachTo: document.body,
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -179,13 +179,13 @@ describe('v-b-tooltip directive', () => {
 
     const App = {
       directives: {
-        bTooltip: VBTooltip
+        bTooltip: VBTooltip,
       },
-      template: `<button v-b-tooltip.click.html.v-info="{ customClass: 'foobar'}" title="<b>foobar</b>">button</button>`
+      template: `<button v-b-tooltip.click.html.v-info="{ customClass: 'foobar'}" title="<b>foobar</b>">button</button>`,
     }
 
     const wrapper = mount(App, {
-      attachTo: document.body
+      attachTo: document.body,
     })
 
     expect(wrapper.vm).toBeDefined()

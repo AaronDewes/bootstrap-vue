@@ -12,7 +12,7 @@ import { normalizeSlotMixin } from '../../mixins/normalize-slot'
 export const props = makePropsConfigurable(
   sortKeys({
     ...formOptionsProps,
-    id: makeProp(PROP_TYPE_STRING, undefined, true) // Required
+    id: makeProp(PROP_TYPE_STRING, undefined, true), // Required
   }),
   NAME_FORM_DATALIST
 )
@@ -33,10 +33,10 @@ export const BFormDatalist = /*#__PURE__*/ Vue.extend({
       return h('option', {
         attrs: { value, disabled },
         domProps: htmlOrText(html, text),
-        key: `option_${index}`
+        key: `option_${index}`,
       })
     })
 
     return h('datalist', { attrs: { id } }, [$options, this.normalizeSlot()])
-  }
+  },
 })

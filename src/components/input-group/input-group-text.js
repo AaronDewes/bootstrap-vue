@@ -7,7 +7,7 @@ import { makeProp, makePropsConfigurable } from '../../utils/props'
 
 export const props = makePropsConfigurable(
   {
-    tag: makeProp(PROP_TYPE_STRING, 'div')
+    tag: makeProp(PROP_TYPE_STRING, 'div'),
   },
   NAME_INPUT_GROUP_TEXT
 )
@@ -23,9 +23,9 @@ export const BInputGroupText = /*#__PURE__*/ Vue.extend({
     return h(
       props.tag,
       mergeData(data, {
-        staticClass: 'input-group-text'
+        staticClass: 'input-group-text',
       }),
       children
     )
-  }
+  },
 })

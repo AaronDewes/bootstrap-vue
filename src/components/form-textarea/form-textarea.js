@@ -35,7 +35,7 @@ export const props = makePropsConfigurable(
     rows: makeProp(PROP_TYPE_NUMBER_STRING, 2),
     // 'soft', 'hard' or 'off'
     // Browser default is 'soft'
-    wrap: makeProp(PROP_TYPE_STRING, 'soft')
+    wrap: makeProp(PROP_TYPE_STRING, 'soft'),
   }),
   NAME_FORM_TEXTAREA
 )
@@ -46,7 +46,7 @@ export const props = makePropsConfigurable(
 export const BFormTextarea = /*#__PURE__*/ Vue.extend({
   name: NAME_FORM_TEXTAREA,
   directives: {
-    'b-visible': VBVisible
+    'b-visible': VBVisible,
   },
   // Mixin order is important!
   mixins: [
@@ -58,12 +58,12 @@ export const BFormTextarea = /*#__PURE__*/ Vue.extend({
     formStateMixin,
     formTextMixin,
     formSelectionMixin,
-    formValidityMixin
+    formValidityMixin,
   ],
   props,
   data() {
     return {
-      heightInPx: null
+      heightInPx: null,
     }
   },
   computed: {
@@ -74,7 +74,7 @@ export const BFormTextarea = /*#__PURE__*/ Vue.extend({
       const styles = {
         // Setting `noResize` to true will disable the ability for the user to
         // manually resize the textarea. We also disable when in auto height mode
-        resize: !this.computedRows || this.noResize ? 'none' : null
+        resize: !this.computedRows || this.noResize ? 'none' : null,
       }
       if (!this.computedRows) {
         // Conditionally set the computed CSS height when auto rows/height is enabled
@@ -115,7 +115,7 @@ export const BFormTextarea = /*#__PURE__*/ Vue.extend({
         rows: this.computedRows,
         wrap: this.wrap || null,
         'aria-required': this.required ? 'true' : null,
-        'aria-invalid': this.computedAriaInvalid
+        'aria-invalid': this.computedAriaInvalid,
       }
     },
     computedListeners() {
@@ -123,14 +123,14 @@ export const BFormTextarea = /*#__PURE__*/ Vue.extend({
         ...this.bvListeners,
         input: this.onInput,
         change: this.onChange,
-        blur: this.onBlur
+        blur: this.onBlur,
       }
-    }
+    },
   },
   watch: {
     localValue() {
       this.setHeight()
-    }
+    },
   },
   mounted() {
     this.setHeight()
@@ -203,7 +203,7 @@ export const BFormTextarea = /*#__PURE__*/ Vue.extend({
 
       // Return the new computed CSS height in px units
       return `${height}px`
-    }
+    },
   },
   render(h) {
     return h('textarea', {
@@ -214,13 +214,13 @@ export const BFormTextarea = /*#__PURE__*/ Vue.extend({
           name: 'b-visible',
           value: this.visibleCallback,
           // If textarea is within 640px of viewport, consider it visible
-          modifiers: { '640': true }
-        }
+          modifiers: { 640: true },
+        },
       ],
       attrs: this.computedAttrs,
       domProps: { value: this.localValue },
       on: this.computedListeners,
-      ref: 'input'
+      ref: 'input',
     })
-  }
+  },
 })

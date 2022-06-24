@@ -9,7 +9,7 @@ import { toString } from '../../utils/string'
 export const props = makePropsConfigurable(
   {
     title: makeProp(PROP_TYPE_STRING),
-    titleTag: makeProp(PROP_TYPE_STRING, 'h4')
+    titleTag: makeProp(PROP_TYPE_STRING, 'h4'),
   },
   NAME_CARD_TITLE
 )
@@ -25,9 +25,9 @@ export const BCardTitle = /*#__PURE__*/ Vue.extend({
     return h(
       props.titleTag,
       mergeData(data, {
-        staticClass: 'card-title'
+        staticClass: 'card-title',
       }),
       children || toString(props.title)
     )
-  }
+  },
 })

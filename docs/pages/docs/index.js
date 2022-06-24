@@ -20,7 +20,7 @@ import {
   version,
   vueVersion,
   vueVersionMajor,
-  vueVersionMinor
+  vueVersionMinor,
 } from '~/content'
 import meta from '~/markdown/intro/meta.json'
 import readmeData from '~/markdown/intro/README.md'
@@ -34,7 +34,7 @@ export default {
     CarbonAd,
     Main,
     QuickLinks,
-    Section
+    Section,
   },
   mixins: [docsMixin],
   layout: 'docs',
@@ -59,7 +59,7 @@ export default {
       version,
       vueVersion,
       vueVersionMinor,
-      vueVersionMajor
+      vueVersionMajor,
     }
   },
   computed: {
@@ -69,7 +69,7 @@ export default {
     },
     meta() {
       return meta
-    }
+    },
   },
   // We use a string template here so that the docs README can do interpolation
   template: `
@@ -78,5 +78,5 @@ export default {
       <CarbonAd key="ad-/docs"></CarbonAd>
       <QuickLinks key="quick-/docs"></QuickLinks>
       <Section>${body}</Section>
-    </Main>`
+    </Main>`,
 }

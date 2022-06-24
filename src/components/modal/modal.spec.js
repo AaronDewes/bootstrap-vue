@@ -20,7 +20,7 @@ describe('modal', () => {
       top: 0,
       left: 0,
       bottom: 0,
-      right: 0
+      right: 0,
     }))
   })
 
@@ -35,8 +35,8 @@ describe('modal', () => {
         attachTo: document.body,
         propsData: {
           static: true,
-          id: 'test'
-        }
+          id: 'test',
+        },
       })
 
       expect(wrapper.vm).toBeDefined()
@@ -81,8 +81,8 @@ describe('modal', () => {
         attachTo: document.body,
         propsData: {
           static: true,
-          lazy: true
-        }
+          lazy: true,
+        },
       })
 
       expect(wrapper.vm).toBeDefined()
@@ -97,8 +97,8 @@ describe('modal', () => {
       const wrapper = mount(BModal, {
         attachTo: document.body,
         propsData: {
-          static: false
-        }
+          static: false,
+        },
       })
 
       expect(wrapper.vm).toBeDefined()
@@ -115,8 +115,8 @@ describe('modal', () => {
         propsData: {
           static: true,
           id: 'test',
-          visible: true
-        }
+          visible: true,
+        },
       })
 
       expect(wrapper.vm).toBeDefined()
@@ -164,8 +164,8 @@ describe('modal', () => {
         propsData: {
           static: false,
           id: 'test-target',
-          visible: true
-        }
+          visible: true,
+        },
       })
 
       expect(wrapper.vm).toBeDefined()
@@ -200,8 +200,8 @@ describe('modal', () => {
         propsData: {
           static: true,
           id: 'test',
-          visible: true
-        }
+          visible: true,
+        },
       })
 
       expect(wrapper.vm).toBeDefined()
@@ -229,7 +229,7 @@ describe('modal', () => {
 
       // Now we close the modal via the value prop
       await wrapper.setProps({
-        visible: false
+        visible: false,
       })
       await waitNT(wrapper.vm)
       await waitRAF()
@@ -253,8 +253,8 @@ describe('modal', () => {
         propsData: {
           static: true,
           id: 'test',
-          titleHtml: '<em>title</em>'
-        }
+          titleHtml: '<em>title</em>',
+        },
       })
 
       expect(wrapper.vm).toBeDefined()
@@ -273,8 +273,8 @@ describe('modal', () => {
         propsData: {
           static: true,
           id: 'test',
-          headerTag: 'div'
-        }
+          headerTag: 'div',
+        },
       })
 
       expect(wrapper.vm).toBeDefined()
@@ -294,8 +294,8 @@ describe('modal', () => {
         propsData: {
           static: true,
           id: 'test',
-          footerTag: 'div'
-        }
+          footerTag: 'div',
+        },
       })
 
       expect(wrapper.vm).toBeDefined()
@@ -316,8 +316,8 @@ describe('modal', () => {
       const wrapper = mount(BModal, {
         attachTo: document.body,
         propsData: {
-          static: true
-        }
+          static: true,
+        },
       })
       expect(wrapper).toBeDefined()
 
@@ -345,8 +345,8 @@ describe('modal', () => {
       const wrapper = mount(BModal, {
         attachTo: document.body,
         propsData: {
-          static: true
-        }
+          static: true,
+        },
       })
       expect(wrapper).toBeDefined()
 
@@ -368,8 +368,8 @@ describe('modal', () => {
         propsData: {
           static: true,
           okTitleHtml: '<em>ok</em>',
-          cancelTitleHtml: '<em>cancel</em>'
-        }
+          cancelTitleHtml: '<em>cancel</em>',
+        },
       })
       expect(wrapper).toBeDefined()
 
@@ -397,12 +397,12 @@ describe('modal', () => {
       const wrapper = mount(BModal, {
         attachTo: document.body,
         propsData: {
-          static: true
+          static: true,
         },
         slots: {
           'modal-ok': '<em>bar ok</em>',
-          'modal-cancel': '<em>foo cancel</em>'
-        }
+          'modal-cancel': '<em>foo cancel</em>',
+        },
       })
       expect(wrapper).toBeDefined()
 
@@ -437,17 +437,17 @@ describe('modal', () => {
         propsData: {
           static: true,
           id: 'test',
-          visible: true
+          visible: true,
         },
         listeners: {
-          hide: bvEvent => {
+          hide: (bvEvent) => {
             if (cancelHide) {
               bvEvent.preventDefault()
             }
             trigger = bvEvent.trigger
             event = bvEvent
-          }
-        }
+          },
+        },
       })
 
       expect(wrapper.vm).toBeDefined()
@@ -515,16 +515,16 @@ describe('modal', () => {
         propsData: {
           static: true,
           id: 'test',
-          visible: true
+          visible: true,
         },
         listeners: {
-          hide: bvEvent => {
+          hide: (bvEvent) => {
             if (cancelHide) {
               bvEvent.preventDefault()
             }
             trigger = bvEvent.trigger
-          }
-        }
+          },
+        },
       })
 
       expect(wrapper.vm).toBeDefined()
@@ -598,13 +598,13 @@ describe('modal', () => {
         propsData: {
           static: true,
           id: 'test',
-          visible: true
+          visible: true,
         },
         listeners: {
-          hide: bvEvent => {
+          hide: (bvEvent) => {
             trigger = bvEvent.trigger
-          }
-        }
+          },
+        },
       })
 
       expect(wrapper.vm).toBeDefined()
@@ -654,13 +654,13 @@ describe('modal', () => {
         propsData: {
           static: true,
           id: 'test',
-          visible: true
+          visible: true,
         },
         listeners: {
-          hide: bvEvent => {
+          hide: (bvEvent) => {
             trigger = bvEvent.trigger
-          }
-        }
+          },
+        },
       })
 
       expect(wrapper.vm).toBeDefined()
@@ -711,14 +711,14 @@ describe('modal', () => {
         propsData: {
           static: true,
           id: 'test',
-          visible: true
+          visible: true,
         },
         listeners: {
-          hide: bvEvent => {
+          hide: (bvEvent) => {
             called = true
             trigger = bvEvent.trigger
-          }
-        }
+          },
+        },
       })
 
       expect(wrapper.vm).toBeDefined()
@@ -787,8 +787,8 @@ describe('modal', () => {
         propsData: {
           static: true,
           id: 'test',
-          visible: false
-        }
+          visible: false,
+        },
       })
 
       expect(wrapper.vm).toBeDefined()
@@ -834,8 +834,8 @@ describe('modal', () => {
         propsData: {
           static: true,
           id: 'test',
-          visible: false
-        }
+          visible: false,
+        },
       })
 
       expect(wrapper.vm).toBeDefined()
@@ -894,8 +894,8 @@ describe('modal', () => {
         propsData: {
           static: true,
           id: 'test',
-          visible: false
-        }
+          visible: false,
+        },
       })
 
       expect(wrapper.vm).toBeDefined()
@@ -910,7 +910,7 @@ describe('modal', () => {
 
       expect($modal.element.style.display).toEqual('none')
 
-      wrapper.vm.$on('show', bvEvent => {
+      wrapper.vm.$on('show', (bvEvent) => {
         called = true
         if (prevent) {
           bvEvent.preventDefault()
@@ -959,8 +959,8 @@ describe('modal', () => {
         propsData: {
           static: true,
           id: 'test',
-          visible: false
-        }
+          visible: false,
+        },
       })
 
       expect(wrapper.vm).toBeDefined()
@@ -1007,8 +1007,8 @@ describe('modal', () => {
           static: true,
           id: 'test',
           visible: true,
-          noStacking: true
-        }
+          noStacking: true,
+        },
       })
 
       expect(wrapper.vm).toBeDefined()
@@ -1046,12 +1046,12 @@ describe('modal', () => {
         render(h) {
           return h('div', [
             h('button', { class: 'trigger', attrs: { id: 'trigger', type: 'button' } }, 'trigger'),
-            h(BModal, { props: { static: true, id: 'test', visible: false } }, 'modal content')
+            h(BModal, { props: { static: true, id: 'test', visible: false } }, 'modal content'),
           ])
-        }
+        },
       }
       const wrapper = mount(App, {
-        attachTo: document.body
+        attachTo: document.body,
       })
 
       expect(wrapper.vm).toBeDefined()
@@ -1124,12 +1124,12 @@ describe('modal', () => {
               { class: 'return-to', attrs: { id: 'return-to', type: 'button' } },
               'trigger'
             ),
-            h(BModal, { props: { static: true, id: 'test', visible: false } }, 'modal content')
+            h(BModal, { props: { static: true, id: 'test', visible: false } }, 'modal content'),
           ])
-        }
+        },
       }
       const wrapper = mount(App, {
-        attachTo: document.body
+        attachTo: document.body,
       })
 
       expect(wrapper.vm).toBeDefined()
@@ -1204,12 +1204,12 @@ describe('modal', () => {
         render(h) {
           return h('div', [
             h('button', { attrs: { id: 'button', type: 'button' } }, 'Button'),
-            h(BModal, { props: { static: true, id: 'test', visible: true } }, 'Modal content')
+            h(BModal, { props: { static: true, id: 'test', visible: true } }, 'Modal content'),
           ])
-        }
+        },
       }
       const wrapper = mount(App, {
-        attachTo: document.body
+        attachTo: document.body,
       })
 
       expect(wrapper.vm).toBeDefined()
@@ -1293,16 +1293,16 @@ describe('modal', () => {
                   static: true,
                   id: 'test',
                   visible: true,
-                  noEnforceFocus: true
-                }
+                  noEnforceFocus: true,
+                },
               },
               'Modal content'
-            )
+            ),
           ])
-        }
+        },
       }
       const wrapper = mount(App, {
-        attachTo: document.body
+        attachTo: document.body,
       })
 
       expect(wrapper.vm).toBeDefined()
@@ -1361,16 +1361,16 @@ describe('modal', () => {
                   static: true,
                   id: 'test',
                   visible: true,
-                  ignoreEnforceFocusSelector: '#button1'
-                }
+                  ignoreEnforceFocusSelector: '#button1',
+                },
               },
               'Modal content'
-            )
+            ),
           ])
-        }
+        },
       }
       const wrapper = mount(App, {
-        attachTo: document.body
+        attachTo: document.body,
       })
 
       expect(wrapper.vm).toBeDefined()

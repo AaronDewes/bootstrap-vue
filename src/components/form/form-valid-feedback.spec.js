@@ -46,9 +46,9 @@ describe('form-valid-feedback', () => {
     const wrapper = mount(BFormValidFeedback, {
       context: {
         props: {
-          id: 'foobar'
-        }
-      }
+          id: 'foobar',
+        },
+      },
     })
 
     expect(wrapper.attributes('id')).toBe('foobar')
@@ -60,9 +60,9 @@ describe('form-valid-feedback', () => {
     const wrapper = mount(BFormValidFeedback, {
       context: {
         props: {
-          tag: 'small'
-        }
-      }
+          tag: 'small',
+        },
+      },
     })
 
     expect(wrapper.element.tagName).toBe('SMALL')
@@ -74,9 +74,9 @@ describe('form-valid-feedback', () => {
     const wrapper = mount(BFormValidFeedback, {
       context: {
         props: {
-          forceShow: true
-        }
-      }
+          forceShow: true,
+        },
+      },
     })
 
     expect(wrapper.classes()).toContain('d-block')
@@ -88,9 +88,9 @@ describe('form-valid-feedback', () => {
     const wrapper = mount(BFormValidFeedback, {
       context: {
         props: {
-          state: true
-        }
-      }
+          state: true,
+        },
+      },
     })
 
     expect(wrapper.classes()).toContain('d-block')
@@ -102,9 +102,9 @@ describe('form-valid-feedback', () => {
     const wrapper = mount(BFormValidFeedback, {
       context: {
         props: {
-          state: false
-        }
-      }
+          state: false,
+        },
+      },
     })
 
     expect(wrapper.classes()).not.toContain('d-block')
@@ -117,9 +117,9 @@ describe('form-valid-feedback', () => {
       context: {
         props: {
           forceShow: true,
-          state: false
-        }
-      }
+          state: false,
+        },
+      },
     })
 
     expect(wrapper.classes()).toContain('d-block')
@@ -131,9 +131,9 @@ describe('form-valid-feedback', () => {
     const wrapper = mount(BFormValidFeedback, {
       context: {
         props: {
-          tooltip: true
-        }
-      }
+          tooltip: true,
+        },
+      },
     })
 
     expect(wrapper.classes()).toContain('valid-tooltip')
@@ -145,9 +145,9 @@ describe('form-valid-feedback', () => {
     const wrapper = mount(BFormValidFeedback, {
       context: {
         props: {
-          tooltip: true
-        }
-      }
+          tooltip: true,
+        },
+      },
     })
 
     expect(wrapper.classes()).not.toContain('valid-feedback')

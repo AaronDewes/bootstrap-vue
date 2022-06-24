@@ -12,24 +12,24 @@ export default {
   props: {
     tag: {
       type: String,
-      default: 'main'
+      default: 'main',
     },
     titleLead: {
       type: String,
-      default: ''
+      default: '',
     },
     body: {
       type: String,
-      default: ''
+      default: '',
     },
     meta: {
       type: Object,
-      default: null
+      default: null,
     },
     loadError: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   render(h, { props, data, children }) {
     const { tag, titleLead, body, meta, loadError } = props
@@ -38,7 +38,7 @@ export default {
     // Lead section
     const $leadSection = h(Section, {
       props: { tag: 'header', play: false },
-      domProps: { innerHTML: titleLead || '' }
+      domProps: { innerHTML: titleLead || '' },
     })
 
     // Available since section
@@ -47,8 +47,8 @@ export default {
       $availableSinceSection = h(Section, { props: { play: false } }, [
         h('p', { staticClass: 'font-italic' }, [
           'Available in BootstrapVue since ',
-          h('code', { staticClass: 'text-nowrap' }, `v${version}`)
-        ])
+          h('code', { staticClass: 'text-nowrap' }, `v${version}`),
+        ]),
       ])
     }
 
@@ -64,7 +64,7 @@ export default {
     // Body section
     const $bodySection = h(Section, {
       props: { play: true },
-      domProps: { innerHTML: body || '' }
+      domProps: { innerHTML: body || '' },
     })
 
     return h(Main, mergeData(data, { props: { tag } }), [
@@ -74,7 +74,7 @@ export default {
       $carbonAd,
       $quickLinks,
       $bodySection,
-      children
+      children,
     ])
-  }
+  },
 }

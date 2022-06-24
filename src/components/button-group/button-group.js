@@ -13,7 +13,7 @@ export const props = makePropsConfigurable(
     ariaRole: makeProp(PROP_TYPE_STRING, 'group'),
     size: makeProp(PROP_TYPE_STRING),
     tag: makeProp(PROP_TYPE_STRING, 'div'),
-    vertical: makeProp(PROP_TYPE_BOOLEAN, false)
+    vertical: makeProp(PROP_TYPE_BOOLEAN, false),
   }),
   NAME_BUTTON_GROUP
 )
@@ -32,11 +32,11 @@ export const BButtonGroup = /*#__PURE__*/ Vue.extend({
         class: {
           'btn-group': !props.vertical,
           'btn-group-vertical': props.vertical,
-          [`btn-group-${props.size}`]: props.size
+          [`btn-group-${props.size}`]: props.size,
         },
-        attrs: { role: props.ariaRole }
+        attrs: { role: props.ariaRole },
       }),
       children
     )
-  }
+  },
 })

@@ -14,7 +14,7 @@ import { toString } from './string'
 // Numbers get converted to string
 // `null` and `undefined` values are filtered out
 // Dates are converted to their native string format
-export const stringifyObjectValues = value => {
+export const stringifyObjectValues = (value) => {
   if (isUndefinedOrNull(value)) {
     return ''
   }
@@ -23,8 +23,8 @@ export const stringifyObjectValues = value => {
   if (isObject(value) && !isDate(value)) {
     return keys(value)
       .sort() // Sort to prevent SSR issues on pre-rendered sorted tables
-      .map(k => stringifyObjectValues(value[k]))
-      .filter(v => !!v) // Ignore empty strings
+      .map((k) => stringifyObjectValues(value[k]))
+      .filter((v) => !!v) // Ignore empty strings
       .join(' ')
   }
   return toString(value)

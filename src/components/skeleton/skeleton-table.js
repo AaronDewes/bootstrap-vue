@@ -4,7 +4,7 @@ import {
   PROP_TYPE_BOOLEAN,
   PROP_TYPE_NUMBER,
   PROP_TYPE_OBJECT,
-  PROP_TYPE_STRING
+  PROP_TYPE_STRING,
 } from '../../constants/props'
 import { createArray } from '../../utils/array'
 import { makeProp, makePropsConfigurable } from '../../utils/props'
@@ -13,7 +13,7 @@ import { BTableSimple } from '../table'
 
 // --- Helper methods ---
 
-const isPositiveNumber = value => value > 0
+const isPositiveNumber = (value) => value > 0
 
 // --- Props ---
 
@@ -24,7 +24,7 @@ export const props = makePropsConfigurable(
     hideHeader: makeProp(PROP_TYPE_BOOLEAN, false),
     rows: makeProp(PROP_TYPE_NUMBER, 3, isPositiveNumber),
     showFooter: makeProp(PROP_TYPE_BOOLEAN, false),
-    tableProps: makeProp(PROP_TYPE_OBJECT, {})
+    tableProps: makeProp(PROP_TYPE_OBJECT, {}),
   },
   NAME_SKELETON_TABLE
 )
@@ -52,7 +52,7 @@ export const BSkeletonTable = /*#__PURE__*/ Vue.extend({
     return h(BTableSimple, mergeData(data, { props: { ...props.tableProps } }), [
       $thead,
       $tbody,
-      $tfoot
+      $tfoot,
     ])
-  }
+  },
 })

@@ -24,8 +24,8 @@ describe('progress', () => {
   it('renders content from default slot', async () => {
     const wrapper = mount(BProgress, {
       slots: {
-        default: '<b>foobar</b>'
-      }
+        default: '<b>foobar</b>',
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -43,8 +43,8 @@ describe('progress', () => {
         variant: 'success',
         striped: true,
         animated: true,
-        showValue: true
-      }
+        showValue: true,
+      },
     })
 
     expect(wrapper.vm).toBeDefined()

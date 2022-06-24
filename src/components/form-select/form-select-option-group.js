@@ -14,7 +14,7 @@ import { BFormSelectOption } from './form-select-option'
 export const props = makePropsConfigurable(
   sortKeys({
     ...formOptionsProps,
-    label: makeProp(PROP_TYPE_STRING, undefined, true) // Required
+    label: makeProp(PROP_TYPE_STRING, undefined, true), // Required
   }),
   NAME_FORM_SELECT_OPTION_GROUP
 )
@@ -35,14 +35,14 @@ export const BFormSelectOptionGroup = /*#__PURE__*/ Vue.extend({
       return h(BFormSelectOption, {
         attrs: { value, disabled },
         domProps: htmlOrText(html, text),
-        key: `option_${index}`
+        key: `option_${index}`,
       })
     })
 
     return h('optgroup', { attrs: { label } }, [
       this.normalizeSlot(SLOT_NAME_FIRST),
       $options,
-      this.normalizeSlot()
+      this.normalizeSlot(),
     ])
-  }
+  },
 })

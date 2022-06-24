@@ -13,13 +13,13 @@ import { normalizeSlotMixin } from '../../mixins/normalize-slot'
 // --- Helper methods ---
 
 // Parse a rowspan or colspan into a digit (or `null` if < `1` )
-const parseSpan = value => {
+const parseSpan = (value) => {
   value = toInteger(value, 0)
   return value > 0 ? value : null
 }
 
 /* istanbul ignore next */
-const spanValidator = value => isUndefinedOrNull(value) || parseSpan(value) > 0
+const spanValidator = (value) => isUndefinedOrNull(value) || parseSpan(value) > 0
 
 // --- Props ---
 
@@ -29,7 +29,7 @@ export const props = makePropsConfigurable(
     rowspan: makeProp(PROP_TYPE_NUMBER_STRING, null, spanValidator),
     stackedHeading: makeProp(PROP_TYPE_STRING),
     stickyColumn: makeProp(PROP_TYPE_BOOLEAN, false),
-    variant: makeProp(PROP_TYPE_STRING)
+    variant: makeProp(PROP_TYPE_STRING),
   },
   NAME_TABLE_CELL
 )
@@ -46,8 +46,8 @@ export const BTd = /*#__PURE__*/ Vue.extend({
   mixins: [attrsMixin, listenersMixin, normalizeSlotMixin],
   inject: {
     getBvTableTr: {
-      default: /* istanbul ignore next */ () => () => ({})
-    }
+      default: /* istanbul ignore next */ () => () => ({}),
+    },
   },
   inheritAttrs: false,
   props,
@@ -134,7 +134,7 @@ export const BTd = /*#__PURE__*/ Vue.extend({
       }
       return [
         variant ? `${this.isDark ? 'bg' : 'table'}-${variant}` : null,
-        isStickyColumn ? 'b-table-sticky-column' : null
+        isStickyColumn ? 'b-table-sticky-column' : null,
       ]
     },
     cellAttrs() {
@@ -174,9 +174,9 @@ export const BTd = /*#__PURE__*/ Vue.extend({
         'data-label':
           this.isStackedCell && !isUndefinedOrNull(stackedHeading)
             ? /* istanbul ignore next */ toString(stackedHeading)
-            : null
+            : null,
       }
-    }
+    },
   },
   render(h) {
     const $content = [this.normalizeSlot()]
@@ -187,9 +187,9 @@ export const BTd = /*#__PURE__*/ Vue.extend({
         class: this.cellClasses,
         attrs: this.cellAttrs,
         // Transfer any native listeners
-        on: this.bvListeners
+        on: this.bvListeners,
       },
       [this.isStackedCell ? h('div', [$content]) : $content]
     )
-  }
+  },
 })

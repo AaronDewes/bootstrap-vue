@@ -22,7 +22,7 @@ export const props = makePropsConfigurable(
     showValue: makeProp(PROP_TYPE_BOOLEAN, null),
     striped: makeProp(PROP_TYPE_BOOLEAN, null),
     value: makeProp(PROP_TYPE_NUMBER_STRING, 0),
-    variant: makeProp(PROP_TYPE_STRING)
+    variant: makeProp(PROP_TYPE_STRING),
   },
   NAME_PROGRESS_BAR
 )
@@ -35,8 +35,8 @@ export const BProgressBar = /*#__PURE__*/ Vue.extend({
   mixins: [normalizeSlotMixin],
   inject: {
     getBvProgress: {
-      default: /* istanbul ignore next */ () => () => ({})
-    }
+      default: /* istanbul ignore next */ () => () => ({}),
+    },
   },
   props,
   computed: {
@@ -48,12 +48,12 @@ export const BProgressBar = /*#__PURE__*/ Vue.extend({
       return [
         computedVariant ? `bg-${computedVariant}` : '',
         this.computedStriped || computedAnimated ? 'progress-bar-striped' : '',
-        computedAnimated ? 'progress-bar-animated' : ''
+        computedAnimated ? 'progress-bar-animated' : '',
       ]
     },
     progressBarStyles() {
       return {
-        width: 100 * (this.computedValue / this.computedMax) + '%'
+        width: 100 * (this.computedValue / this.computedMax) + '%',
       }
     },
     computedValue() {
@@ -96,7 +96,7 @@ export const BProgressBar = /*#__PURE__*/ Vue.extend({
     computedShowValue() {
       // Prefer our showValue over parent setting
       return isBoolean(this.showValue) ? this.showValue : this.bvProgress.showValue || false
-    }
+    },
   },
   render(h) {
     const { label, labelHtml, computedValue, computedPrecision } = this
@@ -123,11 +123,11 @@ export const BProgressBar = /*#__PURE__*/ Vue.extend({
           role: 'progressbar',
           'aria-valuemin': '0',
           'aria-valuemax': toString(this.computedMax),
-          'aria-valuenow': toFixed(computedValue, computedPrecision)
+          'aria-valuenow': toFixed(computedValue, computedPrecision),
         },
-        domProps
+        domProps,
       },
       $children
     )
-  }
+  },
 })

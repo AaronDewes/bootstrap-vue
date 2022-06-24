@@ -2,7 +2,9 @@
   <b-container fluid tag="main" class="pb-5">
     <!-- Introduction -->
     <div class="bd-content mb-4">
-      <h1><span class="bd-content-title">{{ title }}</span></h1>
+      <h1>
+        <span class="bd-content-title">{{ title }}</span>
+      </h1>
       <b-row align-v="center">
         <b-col>
           <p class="bd-lead">
@@ -21,13 +23,7 @@
     <b-row v-if="loading">
       <b-col class="mb-2 mb-md-0">
         <!-- Loading indicator -->
-        <b-alert
-          variant="info"
-          class="text-center"
-          show
-        >
-          Loading JavaScript compiler...
-        </b-alert>
+        <b-alert variant="info" class="text-center" show> Loading JavaScript compiler... </b-alert>
       </b-col>
     </b-row>
 
@@ -35,13 +31,7 @@
     <b-container v-if="ready && needsTranspiler">
       <b-row>
         <b-col>
-          <b-alert
-            variant="info"
-            class="mb-3"
-            show
-            fade
-            dismissible
-          >
+          <b-alert variant="info" class="mb-3" show fade dismissible>
             Your browser does not support modern ES6 JavaScript syntax. However, the code in the
             JavaScipt editor will be transpiled to work with your browser, except for any ES6 code
             that is in the Template editor (i.e. destructuring, arrow functions, etc.)
@@ -54,21 +44,13 @@
     <b-row>
       <b-col class="mb-2 mb-md-0">
         <!-- Reset action -->
-        <b-btn
-          size="sm"
-          variant="danger"
-          :disabled="isDefault || isBusy"
-          @click="reset"
-        >
+        <b-btn size="sm" variant="danger" :disabled="isDefault || isBusy" @click="reset">
           Reset to default
         </b-btn>
       </b-col>
 
       <!-- Export actions -->
-      <b-col
-        md="auto"
-        class="mt-2 mt-md-0"
-      >
+      <b-col md="auto" class="mt-2 mt-md-0">
         <b class="d-block d-sm-inline-block me-sm-2 mb-1 mb-sm-0">Export to</b>
 
         <!-- Export to CodePen -->
@@ -79,7 +61,7 @@
           action="https://codepen.io/pen/define"
           target="_blank"
         >
-          <input type="hidden" name="data" :value="codepenData">
+          <input type="hidden" name="data" :value="codepenData" />
           <b-btn size="sm" type="submit" :disabled="!isOk || isBusy">CodePen</b-btn>
         </b-form>
 
@@ -91,7 +73,7 @@
           action="https://codesandbox.io/api/v1/sandboxes/define"
           target="_blank"
         >
-          <input type="hidden" name="parameters" :value="codesandboxData">
+          <input type="hidden" name="parameters" :value="codesandboxData" />
           <b-btn size="sm" type="submit" :disabled="!isOk || isBusy">CodeSandbox</b-btn>
         </b-form>
 
@@ -103,32 +85,27 @@
           action="https://jsfiddle.net/api/post/library/pure/"
           target="_blank"
         >
-          <input type="hidden" name="html" :value="exportData.extendedHtml">
-          <input type="hidden" name="js" :value="exportData.extendedJs">
-          <input type="hidden" name="resources" :value="[...exportData.externalCss, exportData.externalJs].join(',')">
-          <input type="hidden" name="css" :value="exportData.css">
-          <input type="hidden" name="js_wrap" value="l">
+          <input type="hidden" name="html" :value="exportData.extendedHtml" />
+          <input type="hidden" name="js" :value="exportData.extendedJs" />
+          <input
+            type="hidden"
+            name="resources"
+            :value="[...exportData.externalCss, exportData.externalJs].join(',')"
+          />
+          <input type="hidden" name="css" :value="exportData.css" />
+          <input type="hidden" name="js_wrap" value="l" />
           <b-btn size="sm" type="submit" :disabled="!isOk || isBusy">JSFiddle</b-btn>
         </b-form>
       </b-col>
     </b-row>
 
     <!-- Editors / Result / Console -->
-    <transition-group
-      tag="div"
-      class="row"
-      name="flip"
-    >
+    <transition-group tag="div" class="row" name="flip">
       <!-- Left/Top column -->
       <b-col key="A" :cols="full ? 12 : null">
         <transition-group tag="div" class="row" name="flip">
           <!-- Template column -->
-          <b-col
-            key="A1"
-            :md="vertical && !full ? 6 : 12"
-            sm="12"
-            class="mt-3"
-          >
+          <b-col key="A1" :md="vertical && !full ? 6 : 12" sm="12" class="mt-3">
             <!-- Template -->
             <b-card no-body header-tag="header">
               <template #header>
@@ -152,12 +129,7 @@
           </b-col>
 
           <!-- JavaScript column -->
-          <b-col
-            key="A2"
-            :md="vertical && !full ? 6 : 12"
-            sm="12"
-            class="mt-3"
-          >
+          <b-col key="A2" :md="vertical && !full ? 6 : 12" sm="12" class="mt-3">
             <!-- JavaScript -->
             <b-card no-body header-tag="header">
               <template #header>
@@ -208,7 +180,11 @@
                 </div>
               </template>
 
-              <b-card-body ref="result" class="play-result-body notranslate" translate="no"></b-card-body>
+              <b-card-body
+                ref="result"
+                class="play-result-body notranslate"
+                translate="no"
+              ></b-card-body>
             </b-card>
           </b-col>
 
@@ -245,13 +221,14 @@
                   :key="`console-${msg[2]}`"
                   class="py-2 d-flex"
                 >
-                  <b-badge :variant="msg[0]" class="me-1" style="font-size:90%;">
+                  <b-badge :variant="msg[0]" class="me-1" style="font-size: 90%">
                     {{ msg[0] === 'danger' ? 'error' : msg[0] === 'warning' ? 'warn' : 'log' }}
                   </b-badge>
                   <span
                     :class="[`text-${msg[0]}`, 'text-monospace', 'small', 'd-block']"
-                    style="white-space: pre-wrap;"
-                  >{{ msg[1] }}</span>
+                    style="white-space: pre-wrap"
+                    >{{ msg[1] }}</span
+                  >
                 </b-list-group-item>
               </transition-group>
             </b-card>
@@ -316,7 +293,7 @@ const STORAGE_KEYS = {
   html: `${STORAGE_KEY_PREFIX}_html`,
   js: `${STORAGE_KEY_PREFIX}_js`,
   layout: `${STORAGE_KEY_PREFIX}_layout`,
-  timestamp: `${STORAGE_KEY_PREFIX}_ts`
+  timestamp: `${STORAGE_KEY_PREFIX}_ts`,
 }
 
 // Maximum age of localStorage before we revert back to defaults
@@ -325,7 +302,7 @@ const STORAGE_MAX_RETENTION = 7 * 24 * 60 * 60 * 1000 // 7 days
 // --- Helper methods ---
 
 // Remove a node from its parent's children
-const removeNode = node => node && node.parentNode && node.parentNode.removeChild(node)
+const removeNode = (node) => node && node.parentNode && node.parentNode.removeChild(node)
 
 // Indent a value by the given count
 const indent = (value, count = 2, { indent } = { indent: ' ' }) => {
@@ -338,7 +315,7 @@ const indent = (value, count = 2, { indent } = { indent: ' ' }) => {
 export default {
   components: {
     BVCarbonAd,
-    BVCodeMirror
+    BVCodeMirror,
   },
   data() {
     return {
@@ -354,7 +331,7 @@ export default {
       loading: false,
       ready: false,
       compiling: false,
-      building: false
+      building: false,
     }
   },
   head() {
@@ -367,20 +344,20 @@ export default {
           hid: 'og:title',
           name: 'og:title',
           property: 'og:title',
-          content: title
+          content: title,
         },
         {
           hid: 'og:description',
           name: 'og:description',
           property: 'og:description',
-          content: description
+          content: description,
         },
         {
           hid: 'description',
           name: 'description',
-          content: description
-        }
-      ]
+          content: description,
+        },
+      ],
     }
   },
   computed: {
@@ -401,7 +378,7 @@ export default {
       // Used by our debounced `run` watcher to build the app
       return {
         html: this.html.trim(),
-        js: this.compiledJs // Transpiled String or null if transpilation failed
+        js: this.compiledJs, // Transpiled String or null if transpilation failed
       }
     },
     layout() {
@@ -423,14 +400,14 @@ export default {
         extendedJs,
         externalCss: [
           `//unpkg.com/bootstrap@${bootstrapVersion}/dist/css/bootstrap.min.css`,
-          `//unpkg.com/bootstrap-vue@${bootstrapVueVersion}/dist/bootstrap-vue.css`
+          `//unpkg.com/bootstrap-vue@${bootstrapVueVersion}/dist/bootstrap-vue.css`,
         ],
         externalJs: [
           '//unpkg.com/babel-polyfill/dist/polyfill.min.js',
           `//unpkg.com/vue@${vueVersion}/dist/vue.min.js`,
           `//unpkg.com/bootstrap-vue@${bootstrapVueVersion}/dist/bootstrap-vue.js`,
-          `//unpkg.com/bootstrap-vue@${bootstrapVueVersion}/dist/bootstrap-vue-icons.js`
-        ]
+          `//unpkg.com/bootstrap-vue@${bootstrapVueVersion}/dist/bootstrap-vue-icons.js`,
+        ],
       }
     },
     codepenData() {
@@ -447,7 +424,7 @@ export default {
         js_external: externalJs.join(';'),
         html: extendedHtml,
         js: extendedJs,
-        css
+        css,
       }
       return JSON.stringify(data)
     },
@@ -465,7 +442,7 @@ export default {
         '',
         '<style>',
         indent(css, 2),
-        '</style>'
+        '</style>',
       ]
         .join('\r\n')
         .replace(/\\\//g, '/')
@@ -481,27 +458,27 @@ export default {
         'Vue.use(BootstrapVue)',
         'Vue.use(BootstrapVueIcons)',
         '',
-        "new Vue({ el: '#app', render: h => h(App) })"
+        "new Vue({ el: '#app', render: h => h(App) })",
       ].join('\r\n')
       const scripts = {
         serve: 'vue-cli-service serve',
-        build: 'vue-cli-service build'
+        build: 'vue-cli-service build',
       }
       const dependencies = {
         bootstrap: bootstrapVersion,
         'bootstrap-vue': bootstrapVueVersion,
-        vue: vueVersion
+        vue: vueVersion,
       }
       const devDependencies = {
-        '@vue/cli-service': '^4.3.0'
+        '@vue/cli-service': '^4.3.0',
       }
       return getCodeSandboxParameters({
         files: {
           'App.vue': { content: vueContent },
           'index.html': { content: htmlContent },
           'index.js': { content: jsContent },
-          'package.json': { content: { scripts, dependencies, devDependencies } }
-        }
+          'package.json': { content: { scripts, dependencies, devDependencies } },
+        },
       })
     },
     fakeConsole() {
@@ -547,16 +524,16 @@ export default {
             clear()
             oClear.apply(oConsole)
           } catch {}
-        }
+        },
       }
-    }
+    },
   },
   watch: {
     layout(newVal, oldVal) {
       if (newVal !== oldVal) {
         this.saveToStorage()
       }
-    }
+    },
   },
   created() {
     // Create some non reactive properties
@@ -566,7 +543,7 @@ export default {
     this.run = () => {}
     this.compileJs = () => {}
     // Default code "transpiler"
-    this.compiler = code => code
+    this.compiler = (code) => code
   },
   beforeMount() {
     // Load content and preferences (or defaults if not available)
@@ -579,7 +556,7 @@ export default {
       this.$nextTick(() => {
         this.$nuxt && this.$nuxt.$loading && this.$nuxt.$loading.start()
         // Lazy load the babel transpiler (in a separate chunk)
-        import('../utils/compile-js' /* webpackChunkName: "compile-js" */).then(module => {
+        import('../utils/compile-js' /* webpackChunkName: "compile-js" */).then((module) => {
           // Update compiler reference
           this.compiler = module.default || module
           // Stop the loading indicator
@@ -711,13 +688,13 @@ export default {
       // Note: Doesn't handle errors in async methods
       // See: https://github.com/vuejs/vue/issues/8568
       if (options.methods) {
-        Object.keys(options.methods).forEach(methodName => {
+        Object.keys(options.methods).forEach((methodName) => {
           const fn = options.methods[methodName]
           if (typeof fn !== 'function') {
             this.errorHandler(`TypeError: ${methodName} is not a function`, 'methods')
           } else {
             // Replace it with a wrapped method
-            options.methods[methodName] = function() {
+            options.methods[methodName] = function () {
               try {
                 return fn.apply(this, arguments)
               } catch (err) {
@@ -747,8 +724,8 @@ export default {
               // Don't propagate to parent/global error handler!
               return false
             },
-            template: '<span></span>'
-          })
+            template: '<span></span>',
+          }),
         })
       } catch (err) {
         this.destroyVM()
@@ -852,15 +829,15 @@ export default {
             headerClass: 'p-2',
             footerClass: 'p-2',
             hideHeaderClose: false,
-            centered: true
+            centered: true,
           }
         )
-        .then(value => {
+        .then((value) => {
           if (value) {
             this.doReset()
           }
         })
-        .catch(err => {
+        .catch((err) => {
           // An error occurred
           console.log(err)
         })
@@ -878,7 +855,7 @@ export default {
       if (!storage) {
         return
       }
-      Object.keys(STORAGE_KEYS).forEach(key => {
+      Object.keys(STORAGE_KEYS).forEach((key) => {
         storage.removeItem(key)
       })
     },
@@ -928,11 +905,11 @@ export default {
         w.oRequestAnimationFrame ||
         // Fallback, but not a true polyfill
         // Only needed for Opera Mini
-        (cb => setTimeout(cb, 16))
+        ((cb) => setTimeout(cb, 16))
 
       return raf(fn)
-    }
-  }
+    },
+  },
 }
 </script>
 

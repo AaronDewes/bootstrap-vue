@@ -26,7 +26,7 @@ describe('dropdown-item-button', () => {
 
   it('has class "active" when active=true', async () => {
     const wrapper = mount(BDropdownItemButton, {
-      propsData: { active: true }
+      propsData: { active: true },
     })
     expect(wrapper.element.tagName).toBe('LI')
 
@@ -39,7 +39,7 @@ describe('dropdown-item-button', () => {
 
   it('has attribute "disabled" when disabled=true', async () => {
     const wrapper = mount(BDropdownItemButton, {
-      propsData: { disabled: true }
+      propsData: { disabled: true },
     })
     expect(wrapper.element.tagName).toBe('LI')
 
@@ -58,9 +58,9 @@ describe('dropdown-item-button', () => {
           hide(arg) {
             called = true
             refocus = arg
-          }
-        })
-      }
+          },
+        }),
+      },
     })
     expect(wrapper.element.tagName).toBe('LI')
 
@@ -78,16 +78,16 @@ describe('dropdown-item-button', () => {
     let refocus = null
     const wrapper = mount(BDropdownItemButton, {
       propsData: {
-        disabled: true
+        disabled: true,
       },
       provide: {
         getBvDropdown: () => ({
           hide(arg) {
             called = true
             refocus = arg
-          }
-        })
-      }
+          },
+        }),
+      },
     })
     expect(wrapper.element.tagName).toBe('LI')
 
@@ -103,8 +103,8 @@ describe('dropdown-item-button', () => {
   it('has buttonClass when prop is passed a value', () => {
     const wrapper = mount(BDropdownItemButton, {
       propsData: {
-        buttonClass: 'button-class'
-      }
+        buttonClass: 'button-class',
+      },
     })
     expect(wrapper.element.tagName).toBe('LI')
 

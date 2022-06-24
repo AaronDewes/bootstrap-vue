@@ -5,8 +5,8 @@ import { pluginFactory } from '../../utils/plugins'
 const CarouselPlugin = /*#__PURE*/ pluginFactory({
   components: {
     BCarousel,
-    BCarouselSlide
-  }
+    BCarouselSlide,
+  },
 })
 
 export { CarouselPlugin, BCarousel, BCarouselSlide }

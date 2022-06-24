@@ -3,7 +3,7 @@ import { isDate, isFunction, isNumber, isNumeric, isUndefinedOrNull } from '../.
 import { toFloat } from '../../../utils/number'
 import { stringifyObjectValues } from '../../../utils/stringify-object-values'
 
-const normalizeValue = value => {
+const normalizeValue = (value) => {
   if (isUndefinedOrNull(value)) {
     return ''
   }

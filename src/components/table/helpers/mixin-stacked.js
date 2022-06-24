@@ -5,7 +5,7 @@ import { makeProp } from '../../../utils/props'
 // --- Props ---
 
 export const props = {
-  stacked: makeProp(PROP_TYPE_BOOLEAN_STRING, false)
+  stacked: makeProp(PROP_TYPE_BOOLEAN_STRING, false),
 }
 
 // --- Mixin ---
@@ -26,8 +26,8 @@ export const stackedMixin = Vue.extend({
       const { isStackedAlways } = this
       return {
         'b-table-stacked': isStackedAlways,
-        [`b-table-stacked-${this.stacked}`]: !isStackedAlways && this.isStacked
+        [`b-table-stacked-${this.stacked}`]: !isStackedAlways && this.isStacked,
       }
-    }
-  }
+    },
+  },
 })

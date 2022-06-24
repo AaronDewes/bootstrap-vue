@@ -25,6 +25,6 @@ export const normalizeSlotMixin = Vue.extend({
     ) {
       const vNodes = normalizeSlot(name, scope, scopedSlots, slots)
       return vNodes ? concat(vNodes) : vNodes
-    }
-  }
+    },
+  },
 })

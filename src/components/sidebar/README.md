@@ -237,10 +237,10 @@ that can be used to close the sidebar.
     <b-button v-b-toggle.sidebar-footer>Toggle Sidebar</b-button>
     <b-sidebar id="sidebar-footer" aria-label="Sidebar with custom footer" no-header shadow>
       <template #footer="{ hide }">
-       <div class="d-flex bg-dark text-light align-items-center px-3 py-2">
-        <strong class="me-auto">Footer</strong>
-        <b-button size="sm" @click="hide">Close</b-button>
-       </div>
+        <div class="d-flex bg-dark text-light align-items-center px-3 py-2">
+          <strong class="me-auto">Footer</strong>
+          <b-button size="sm" @click="hide">Close</b-button>
+        </div>
       </template>
       <div class="px-3 py-2">
         <p>
@@ -289,7 +289,11 @@ theme color variant of the backdrop. The default backdrop variant is `dark`.
     >
       <div class="px-3 py-2">
         <b-form-group label="Backdrop variant" label-for="backdrop-variant">
-          <b-form-select id="backdrop-variant" v-model="variant" :options="variants"></b-form-select>
+          <b-form-select
+            id="backdrop-variant"
+            v-model="variant"
+            :options="variants"
+          ></b-form-select>
         </b-form-group>
       </div>
     </b-sidebar>
@@ -312,9 +316,9 @@ theme color variant of the backdrop. The default backdrop variant is `dark`.
           'danger',
           'warning',
           'info',
-        ]
+        ],
       }
-    }
+    },
   }
 </script>
 

@@ -4,8 +4,8 @@ import { pluginFactory } from '../../utils/plugins'
 const FormGroupPlugin = /*#__PURE__*/ pluginFactory({
   components: {
     BFormGroup,
-    BFormFieldset: BFormGroup
-  }
+    BFormFieldset: BFormGroup,
+  },
 })
 
 export { FormGroupPlugin, BFormGroup }

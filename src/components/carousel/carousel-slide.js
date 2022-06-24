@@ -20,7 +20,7 @@ const imgProps = {
   imgBlankColor: makeProp(PROP_TYPE_STRING, 'transparent'),
   imgHeight: makeProp(PROP_TYPE_NUMBER_STRING),
   imgSrc: makeProp(PROP_TYPE_STRING),
-  imgWidth: makeProp(PROP_TYPE_NUMBER_STRING)
+  imgWidth: makeProp(PROP_TYPE_NUMBER_STRING),
 }
 
 export const props = makePropsConfigurable(
@@ -35,7 +35,7 @@ export const props = makePropsConfigurable(
     contentVisibleUp: makeProp(PROP_TYPE_STRING),
     text: makeProp(PROP_TYPE_STRING),
     textHtml: makeProp(PROP_TYPE_STRING),
-    textTag: makeProp(PROP_TYPE_STRING, 'p')
+    textTag: makeProp(PROP_TYPE_STRING, 'p'),
   }),
   NAME_CAROUSEL_SLIDE
 )
@@ -49,8 +49,8 @@ export const BCarouselSlide = /*#__PURE__*/ Vue.extend({
   inject: {
     getBvCarousel: {
       // Explicitly disable touch if not a child of carousel
-      default: () => () => ({ noTouch: true })
-    }
+      default: () => () => ({ noTouch: true }),
+    },
   },
   props,
   computed: {
@@ -60,7 +60,7 @@ export const BCarouselSlide = /*#__PURE__*/ Vue.extend({
     contentClasses() {
       return [
         this.contentVisibleUp ? 'd-none' : '',
-        this.contentVisibleUp ? `d-${this.contentVisibleUp}-block` : ''
+        this.contentVisibleUp ? `d-${this.contentVisibleUp}-block` : '',
       ]
     },
     computedWidth() {
@@ -70,7 +70,7 @@ export const BCarouselSlide = /*#__PURE__*/ Vue.extend({
     computedHeight() {
       // Use local height, or try parent height
       return this.imgHeight || this.bvCarousel.imgHeight || null
-    }
+    },
   },
   render(h) {
     let $img = this.normalizeSlot(SLOT_NAME_IMG)
@@ -79,7 +79,7 @@ export const BCarouselSlide = /*#__PURE__*/ Vue.extend({
       // Touch support event handler
       /* istanbul ignore if: difficult to test in JSDOM */
       if (!this.bvCarousel.noTouch && HAS_TOUCH_SUPPORT) {
-        on.dragstart = event => stopEvent(event, { propagation: false })
+        on.dragstart = (event) => stopEvent(event, { propagation: false })
       }
 
       $img = h(BImg, {
@@ -88,9 +88,9 @@ export const BCarouselSlide = /*#__PURE__*/ Vue.extend({
           width: this.computedWidth,
           height: this.computedHeight,
           fluidGrow: true,
-          block: true
+          block: true,
         },
-        on
+        on,
       })
     }
 
@@ -104,7 +104,7 @@ export const BCarouselSlide = /*#__PURE__*/ Vue.extend({
         ? h(this.textTag, { domProps: htmlOrText(this.textHtml, this.text) })
         : false,
       // Children
-      this.normalizeSlot() || false
+      this.normalizeSlot() || false,
     ]
 
     let $content = h()
@@ -113,9 +113,9 @@ export const BCarouselSlide = /*#__PURE__*/ Vue.extend({
         this.contentTag,
         {
           staticClass: 'carousel-caption',
-          class: this.contentClasses
+          class: this.contentClasses,
         },
-        $contentChildren.map($child => $child || h())
+        $contentChildren.map(($child) => $child || h())
       )
     }
 
@@ -124,9 +124,9 @@ export const BCarouselSlide = /*#__PURE__*/ Vue.extend({
       {
         staticClass: 'carousel-item',
         style: { background: this.background || this.bvCarousel.background || null },
-        attrs: { id: this.safeId(), role: 'listitem' }
+        attrs: { id: this.safeId(), role: 'listitem' },
       },
       [$img, $content]
     )
-  }
+  },
 })

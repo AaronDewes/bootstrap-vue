@@ -5,7 +5,7 @@ import {
   PROP_TYPE_ARRAY_STRING,
   PROP_TYPE_BOOLEAN,
   PROP_TYPE_OBJECT_STRING,
-  PROP_TYPE_STRING
+  PROP_TYPE_STRING,
 } from '../../constants/props'
 import { concat } from '../../utils/array'
 import { attemptBlur, attemptFocus, isTag } from '../../utils/dom'
@@ -37,7 +37,7 @@ export const routerLinkProps = {
   exactPathActiveClass: makeProp(PROP_TYPE_STRING),
   replace: makeProp(PROP_TYPE_BOOLEAN, false),
   routerTag: makeProp(PROP_TYPE_STRING),
-  to: makeProp(PROP_TYPE_OBJECT_STRING)
+  to: makeProp(PROP_TYPE_OBJECT_STRING),
 }
 
 // `<nuxt-link>` specific props
@@ -49,7 +49,7 @@ export const nuxtLinkProps = {
   // compiled default
   // Vue treats `undefined` as default of `false` for Boolean props,
   // so we must set it as `null` here to be a true tri-state prop
-  prefetch: makeProp(PROP_TYPE_BOOLEAN, null)
+  prefetch: makeProp(PROP_TYPE_BOOLEAN, null),
 }
 
 // All `<b-link>` props
@@ -67,7 +67,7 @@ export const props = makePropsConfigurable(
     // Gridsome doesn't provide a mechanism to auto detect and has caveats
     // such as not supporting FQDN URLs or hash only URLs
     routerComponentName: makeProp(PROP_TYPE_STRING),
-    target: makeProp(PROP_TYPE_STRING, '_self')
+    target: makeProp(PROP_TYPE_STRING, '_self'),
   }),
   NAME_LINK
 )
@@ -115,7 +115,7 @@ export const BLink = /*#__PURE__*/ Vue.extend({
             ...(event ? { event } : {}),
             ...(isBoolean(prefetch) ? { prefetch } : {}),
             // Pass `router-tag` as `tag` prop
-            ...(routerTag ? { tag: routerTag } : {})
+            ...(routerTag ? { tag: routerTag } : {}),
           }
         : {}
     },
@@ -127,7 +127,7 @@ export const BLink = /*#__PURE__*/ Vue.extend({
         disabled,
         target,
         routerTag,
-        isRouterLink
+        isRouterLink,
       } = this
 
       return {
@@ -139,7 +139,7 @@ export const BLink = /*#__PURE__*/ Vue.extend({
         // We don't render `rel` or `target` on non link tags when using `vue-router`
         ...(isRouterLink && routerTag && !isTag(routerTag, 'a') ? {} : { rel, target }),
         tabindex: disabled ? '-1' : isUndefined(bvAttrs.tabindex) ? null : bvAttrs.tabindex,
-        'aria-disabled': disabled ? 'true' : null
+        'aria-disabled': disabled ? 'true' : null,
       }
     },
     computedListeners() {
@@ -148,9 +148,9 @@ export const BLink = /*#__PURE__*/ Vue.extend({
         ...this.bvListeners,
         // We want to overwrite any click handler since our callback
         // will invoke the user supplied handler(s) if `!this.disabled`
-        click: this.onClick
+        click: this.onClick,
       }
-    }
+    },
   },
   methods: {
     onClick(event) {
@@ -171,8 +171,8 @@ export const BLink = /*#__PURE__*/ Vue.extend({
         }
         // Call the suppliedHandler(s), if any provided
         concat(suppliedHandler)
-          .filter(h => isFunction(h))
-          .forEach(handler => {
+          .filter((h) => isFunction(h))
+          .forEach((handler) => {
             handler(...arguments)
           })
         // Emit the global `$root` click event
@@ -191,7 +191,7 @@ export const BLink = /*#__PURE__*/ Vue.extend({
     },
     blur() {
       attemptBlur(this.$el)
-    }
+    },
   },
   render(h) {
     const { active, disabled } = this
@@ -203,9 +203,9 @@ export const BLink = /*#__PURE__*/ Vue.extend({
         attrs: this.computedAttrs,
         props: this.computedProps,
         // We must use `nativeOn` for `<router-link>`/`<nuxt-link>` instead of `on`
-        [this.isRouterLink ? 'nativeOn' : 'on']: this.computedListeners
+        [this.isRouterLink ? 'nativeOn' : 'on']: this.computedListeners,
       },
       this.normalizeSlot()
     )
-  }
+  },
 })

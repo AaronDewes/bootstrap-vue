@@ -9,8 +9,8 @@ const FormCheckboxPlugin = /*#__PURE__*/ pluginFactory({
     BCheck: BFormCheckbox,
     BFormCheckboxGroup,
     BCheckboxGroup: BFormCheckboxGroup,
-    BCheckGroup: BFormCheckboxGroup
-  }
+    BCheckGroup: BFormCheckboxGroup,
+  },
 })
 
 export { FormCheckboxPlugin, BFormCheckbox, BFormCheckboxGroup }

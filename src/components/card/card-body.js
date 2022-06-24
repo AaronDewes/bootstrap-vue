@@ -7,7 +7,7 @@ import {
   makeProp,
   makePropsConfigurable,
   pluckProps,
-  prefixPropName
+  prefixPropName,
 } from '../../utils/props'
 import { props as cardProps } from '../../mixins/card'
 import { BCardTitle, props as titleProps } from './card-title'
@@ -21,7 +21,7 @@ export const props = makePropsConfigurable(
     ...subTitleProps,
     ...copyProps(cardProps, prefixPropName.bind(null, 'body')),
     bodyClass: makeProp(PROP_TYPE_ARRAY_OBJECT_STRING),
-    overlay: makeProp(PROP_TYPE_BOOLEAN, false)
+    overlay: makeProp(PROP_TYPE_BOOLEAN, false),
   }),
   NAME_CARD_BODY
 )
@@ -45,7 +45,7 @@ export const BCardBody = /*#__PURE__*/ Vue.extend({
     if (props.subTitle) {
       $subTitle = h(BCardSubTitle, {
         props: pluckProps(subTitleProps, props),
-        class: ['mb-2']
+        class: ['mb-2'],
       })
     }
 
@@ -58,12 +58,12 @@ export const BCardBody = /*#__PURE__*/ Vue.extend({
             'card-img-overlay': props.overlay,
             [`bg-${bodyBgVariant}`]: bodyBgVariant,
             [`border-${bodyBorderVariant}`]: bodyBorderVariant,
-            [`text-${bodyTextVariant}`]: bodyTextVariant
+            [`text-${bodyTextVariant}`]: bodyTextVariant,
           },
-          props.bodyClass
-        ]
+          props.bodyClass,
+        ],
       }),
       [$title, $subTitle, children]
     )
-  }
+  },
 })

@@ -13,9 +13,9 @@ const icons = importAll(iconsContext) || {}
 // one extra example icon component which we modify the icon name to be `BIcon{IconName}`
 // We sort the array to ensure `BIcon` appears first
 icons[''].components = icons[''].components
-  .filter(c => c.component === 'BIconBlank' || !/^BIcon[A-Z]/.test(c.component))
+  .filter((c) => c.component === 'BIconBlank' || !/^BIcon[A-Z]/.test(c.component))
   .sort((a, b) => (a.component < b.component ? -1 : a.component > b.component ? 1 : 0))
-  .map(c => {
+  .map((c) => {
     c = { ...c }
     if (c.component === 'BIconBlank') {
       c.component = 'BIcon{IconName}'
@@ -33,32 +33,32 @@ export const nav = [
   {
     title: 'Getting Started',
     base: '',
-    exact: true
+    exact: true,
   },
   {
     title: 'Components',
     base: 'components/',
     pages: components,
-    description: 'BootstrapVue components and component group plugins.'
+    description: 'BootstrapVue components and component group plugins.',
   },
   {
     title: 'Directives',
     base: 'directives/',
     pages: directives,
-    description: 'BootstrapVue directives and directive group plugins.'
+    description: 'BootstrapVue directives and directive group plugins.',
   },
   {
     title: 'Icons',
     base: 'icons',
     version: '2.3.0',
-    description: 'BootstrapVue icons.'
+    description: 'BootstrapVue icons.',
   },
   {
     title: 'Reference',
     base: 'reference/',
     pages: reference,
-    description: 'BootstrapVue and Bootstrap reference, and additional resources documentation.'
-  }
+    description: 'BootstrapVue and Bootstrap reference, and additional resources documentation.',
+  },
 ]
 
 // RegExp to grab the minor version from a full version

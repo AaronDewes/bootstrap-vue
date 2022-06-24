@@ -7,7 +7,7 @@ const ModalPlugin = /*#__PURE__*/ pluginFactory({
   components: { BModal },
   directives: { VBModal },
   // $bvModal injection
-  plugins: { BVModalPlugin }
+  plugins: { BVModalPlugin },
 })
 
 export { ModalPlugin, BModal }

@@ -12,7 +12,7 @@ export const props = makePropsConfigurable(
   {
     // Also sniffed by `<b-tr>` / `<b-td>` / `<b-th>`
     // Supported values: 'lite', 'dark', or `null`
-    headVariant: makeProp(PROP_TYPE_STRING)
+    headVariant: makeProp(PROP_TYPE_STRING),
   },
   NAME_THEAD
 )
@@ -28,14 +28,14 @@ export const BThead = /*#__PURE__*/ Vue.extend({
   mixins: [attrsMixin, listenersMixin, normalizeSlotMixin],
   provide() {
     return {
-      getBvTableRowGroup: () => this
+      getBvTableRowGroup: () => this,
     }
   },
   inject: {
     // Sniffed by `<b-tr>` / `<b-td>` / `<b-th>`
     getBvTable: {
-      default: /* istanbul ignore next */ () => () => ({})
-    }
+      default: /* istanbul ignore next */ () => () => ({}),
+    },
   },
   inheritAttrs: false,
   props,
@@ -81,7 +81,7 @@ export const BThead = /*#__PURE__*/ Vue.extend({
     },
     theadAttrs() {
       return { role: 'rowgroup', ...this.bvAttrs }
-    }
+    },
   },
   render(h) {
     return h(
@@ -90,9 +90,9 @@ export const BThead = /*#__PURE__*/ Vue.extend({
         class: this.theadClasses,
         attrs: this.theadAttrs,
         // Pass down any native listeners
-        on: this.bvListeners
+        on: this.bvListeners,
       },
       this.normalizeSlot()
     )
-  }
+  },
 })

@@ -6,9 +6,9 @@ describe('card-image', () => {
     const wrapper = mount(BCardImgLazy, {
       context: {
         props: {
-          src: 'https://picsum.photos/600/300/?image=25'
-        }
-      }
+          src: 'https://picsum.photos/600/300/?image=25',
+        },
+      },
     })
 
     expect(wrapper.element.tagName).toBe('IMG')
@@ -21,9 +21,9 @@ describe('card-image', () => {
     const wrapper = mount(BCardImgLazy, {
       context: {
         props: {
-          src: 'https://picsum.photos/600/300/?image=25'
-        }
-      }
+          src: 'https://picsum.photos/600/300/?image=25',
+        },
+      },
     })
 
     expect(wrapper.attributes('alt')).toBeUndefined()
@@ -35,9 +35,9 @@ describe('card-image', () => {
     const wrapper = mount(BCardImgLazy, {
       context: {
         props: {
-          src: 'https://picsum.photos/600/300/?image=25'
-        }
-      }
+          src: 'https://picsum.photos/600/300/?image=25',
+        },
+      },
     })
 
     expect(wrapper.attributes('width')).toBeDefined()
@@ -52,9 +52,9 @@ describe('card-image', () => {
     const wrapper = mount(BCardImgLazy, {
       context: {
         props: {
-          src: 'https://picsum.photos/600/300/?image=25'
-        }
-      }
+          src: 'https://picsum.photos/600/300/?image=25',
+        },
+      },
     })
 
     expect(wrapper.classes()).toContain('card-img')
@@ -67,9 +67,9 @@ describe('card-image', () => {
       context: {
         props: {
           src: 'https://picsum.photos/600/300/?image=25',
-          top: true
-        }
-      }
+          top: true,
+        },
+      },
     })
 
     expect(wrapper.classes()).toContain('card-img-top')
@@ -82,9 +82,9 @@ describe('card-image', () => {
       context: {
         props: {
           src: 'https://picsum.photos/600/300/?image=25',
-          bottom: true
-        }
-      }
+          bottom: true,
+        },
+      },
     })
 
     expect(wrapper.classes()).toContain('card-img-bottom')
@@ -98,9 +98,9 @@ describe('card-image', () => {
         props: {
           src: 'https://picsum.photos/600/300/?image=25',
           top: true,
-          bottom: true
-        }
-      }
+          bottom: true,
+        },
+      },
     })
 
     expect(wrapper.classes()).toContain('card-img-top')
@@ -113,9 +113,9 @@ describe('card-image', () => {
       context: {
         props: {
           src: 'https://picsum.photos/600/300/?image=25',
-          left: true
-        }
-      }
+          left: true,
+        },
+      },
     })
 
     expect(wrapper.classes()).toContain('card-img-left')
@@ -128,9 +128,9 @@ describe('card-image', () => {
       context: {
         props: {
           src: 'https://picsum.photos/600/300/?image=25',
-          right: true
-        }
-      }
+          right: true,
+        },
+      },
     })
 
     expect(wrapper.classes()).toContain('card-img-right')
@@ -143,9 +143,9 @@ describe('card-image', () => {
       context: {
         props: {
           src: 'https://picsum.photos/600/300/?image=25',
-          alt: 'image'
-        }
-      }
+          alt: 'image',
+        },
+      },
     })
 
     expect(wrapper.attributes('alt')).toBeDefined()
@@ -159,9 +159,9 @@ describe('card-image', () => {
       context: {
         props: {
           src: 'https://picsum.photos/600/300/?image=25',
-          alt: ''
-        }
-      }
+          alt: '',
+        },
+      },
     })
 
     expect(wrapper.attributes('alt')).toBeDefined()
@@ -175,9 +175,9 @@ describe('card-image', () => {
       context: {
         props: {
           src: 'https://picsum.photos/600/300/?image=25',
-          width: '600'
-        }
-      }
+          width: '600',
+        },
+      },
     })
 
     expect(wrapper.attributes('width')).toBeDefined()
@@ -191,9 +191,9 @@ describe('card-image', () => {
       context: {
         props: {
           src: 'https://picsum.photos/600/300/?image=25',
-          height: '300'
-        }
-      }
+          height: '300',
+        },
+      },
     })
 
     expect(wrapper.attributes('height')).toBeDefined()

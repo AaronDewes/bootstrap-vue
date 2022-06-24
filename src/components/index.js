@@ -105,6 +105,6 @@ export const componentsPlugin = /*#__PURE__*/ pluginFactory({
     TabsPlugin,
     TimePlugin,
     ToastPlugin,
-    TooltipPlugin
-  }
+    TooltipPlugin,
+  },
 })

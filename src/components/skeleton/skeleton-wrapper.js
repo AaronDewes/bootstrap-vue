@@ -9,7 +9,7 @@ import { makeProp, makePropsConfigurable } from '../../utils/props'
 
 export const props = makePropsConfigurable(
   {
-    loading: makeProp(PROP_TYPE_BOOLEAN, false)
+    loading: makeProp(PROP_TYPE_BOOLEAN, false),
   },
   NAME_SKELETON_WRAPPER
 )
@@ -33,15 +33,15 @@ export const BSkeletonWrapper = /*#__PURE__*/ Vue.extend({
           attrs: {
             role: 'alert',
             'aria-live': 'polite',
-            'aria-busy': true
+            'aria-busy': true,
           },
           staticClass: 'b-skeleton-wrapper',
-          key: 'loading'
+          key: 'loading',
         }),
         normalizeSlot(SLOT_NAME_LOADING, slotScope, $scopedSlots, $slots)
       )
     }
 
     return normalizeSlot(SLOT_NAME_DEFAULT, slotScope, $scopedSlots, $slots)
-  }
+  },
 })

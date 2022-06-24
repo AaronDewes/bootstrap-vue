@@ -5,7 +5,7 @@ import {
   PROP_TYPE_BOOLEAN,
   PROP_TYPE_BOOLEAN_STRING,
   PROP_TYPE_NUMBER_STRING,
-  PROP_TYPE_STRING
+  PROP_TYPE_STRING,
 } from '../../constants/props'
 import { SLOT_NAME_OVERLAY } from '../../constants/slots'
 import { toFloat } from '../../utils/number'
@@ -32,7 +32,7 @@ export const props = makePropsConfigurable(
     // If `true, does not render the default slot
     // and switches to absolute positioning
     noWrap: makeProp(PROP_TYPE_BOOLEAN, false),
-    opacity: makeProp(PROP_TYPE_NUMBER_STRING, 0.85, value => {
+    opacity: makeProp(PROP_TYPE_NUMBER_STRING, 0.85, (value) => {
       const number = toFloat(value, 0)
       return number >= 0 && number <= 1
     }),
@@ -44,7 +44,7 @@ export const props = makePropsConfigurable(
     spinnerVariant: makeProp(PROP_TYPE_STRING),
     variant: makeProp(PROP_TYPE_STRING, 'light'),
     wrapTag: makeProp(PROP_TYPE_STRING, 'div'),
-    zIndex: makeProp(PROP_TYPE_NUMBER_STRING, 10)
+    zIndex: makeProp(PROP_TYPE_NUMBER_STRING, 10),
   },
   NAME_OVERLAY
 )
@@ -69,9 +69,9 @@ export const BOverlay = /*#__PURE__*/ Vue.extend({
       return {
         spinnerType: this.spinnerType || null,
         spinnerVariant: this.spinnerVariant || null,
-        spinnerSmall: this.spinnerSmall
+        spinnerSmall: this.spinnerSmall,
       }
-    }
+    },
   },
   methods: {
     defaultOverlayFn({ spinnerType, spinnerVariant, spinnerSmall }) {
@@ -79,10 +79,10 @@ export const BOverlay = /*#__PURE__*/ Vue.extend({
         props: {
           type: spinnerType,
           variant: spinnerVariant,
-          small: spinnerSmall
-        }
+          small: spinnerSmall,
+        },
       })
-    }
+    },
   },
   render(h) {
     const { show, fixed, noFade, noWrap, slotScope } = this
@@ -96,8 +96,8 @@ export const BOverlay = /*#__PURE__*/ Vue.extend({
           ...POSITION_COVER,
           opacity: this.opacity,
           backgroundColor: this.bgColor || null,
-          backdropFilter: this.blur ? `blur(${this.blur})` : null
-        }
+          backdropFilter: this.blur ? `blur(${this.blur})` : null,
+        },
       })
 
       const $content = h(
@@ -106,7 +106,7 @@ export const BOverlay = /*#__PURE__*/ Vue.extend({
           staticClass: 'position-absolute',
           style: this.noCenter
             ? /* istanbul ignore next */ { ...POSITION_COVER }
-            : { top: '50%', left: '50%', transform: 'translateX(-50%) translateY(-50%)' }
+            : { top: '50%', left: '50%', transform: 'translateX(-50%) translateY(-50%)' },
         },
         [this.normalizeSlot(SLOT_NAME_OVERLAY, slotScope) || this.defaultOverlayFn(slotScope)]
       )
@@ -117,14 +117,14 @@ export const BOverlay = /*#__PURE__*/ Vue.extend({
           staticClass: 'b-overlay',
           class: {
             'position-absolute': !noWrap || (noWrap && !fixed),
-            'position-fixed': noWrap && fixed
+            'position-fixed': noWrap && fixed,
           },
           style: {
             ...POSITION_COVER,
-            zIndex: this.zIndex || 10
+            zIndex: this.zIndex || 10,
           },
-          on: { click: event => this.$emit(EVENT_NAME_CLICK, event) },
-          key: 'overlay'
+          on: { click: (event) => this.$emit(EVENT_NAME_CLICK, event) },
+          key: 'overlay',
         },
         [$background, $content]
       )
@@ -136,12 +136,12 @@ export const BOverlay = /*#__PURE__*/ Vue.extend({
       {
         props: {
           noFade,
-          appear: true
+          appear: true,
         },
         on: {
           'after-enter': () => this.$emit(EVENT_NAME_SHOWN),
-          'after-leave': () => this.$emit(EVENT_NAME_HIDDEN)
-        }
+          'after-leave': () => this.$emit(EVENT_NAME_HIDDEN),
+        },
       },
       [$overlay]
     )
@@ -154,9 +154,9 @@ export const BOverlay = /*#__PURE__*/ Vue.extend({
       this.wrapTag,
       {
         staticClass: 'b-overlay-wrap position-relative',
-        attrs: { 'aria-busy': show ? 'true' : null }
+        attrs: { 'aria-busy': show ? 'true' : null },
       },
       noWrap ? [$overlay] : [this.normalizeSlot(), $overlay]
     )
-  }
+  },
 })

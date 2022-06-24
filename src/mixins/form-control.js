@@ -16,7 +16,7 @@ export const props = makePropsConfigurable(
     form: makeProp(PROP_TYPE_STRING),
     id: makeProp(PROP_TYPE_STRING),
     name: makeProp(PROP_TYPE_STRING),
-    required: makeProp(PROP_TYPE_BOOLEAN, false)
+    required: makeProp(PROP_TYPE_BOOLEAN, false),
   },
   'formControls'
 )
@@ -46,6 +46,6 @@ export const formControlMixin = Vue.extend({
           }
         })
       })
-    }
-  }
+    },
+  },
 })

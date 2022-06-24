@@ -8,7 +8,7 @@ import {
   EVENT_NAME_HIDE,
   EVENT_NAME_SHOW,
   EVENT_NAME_SHOWN,
-  EVENT_NAME_TOGGLE
+  EVENT_NAME_TOGGLE,
 } from '../constants/events'
 import { CODE_DOWN, CODE_ENTER, CODE_ESC, CODE_SPACE, CODE_UP } from '../constants/key-codes'
 import {
@@ -17,13 +17,13 @@ import {
   PLACEMENT_BOTTOM_START,
   PLACEMENT_BOTTOM_END,
   PLACEMENT_RIGHT_START,
-  PLACEMENT_LEFT_START
+  PLACEMENT_LEFT_START,
 } from '../constants/popper'
 import {
   PROP_TYPE_BOOLEAN,
   PROP_TYPE_NUMBER_STRING,
   PROP_TYPE_OBJECT,
-  PROP_TYPE_STRING
+  PROP_TYPE_STRING,
 } from '../constants/props'
 import { HTMLElement } from '../constants/safe-types'
 import { BvEvent } from '../utils/bv-event.class'
@@ -46,13 +46,13 @@ const ROOT_EVENT_NAME_HIDDEN = getRootEventName(NAME_DROPDOWN, EVENT_NAME_HIDDEN
 // CSS selectors
 const SELECTOR_FORM_CHILD = '.dropdown form'
 const SELECTOR_ITEM = ['.dropdown-item', '.b-dropdown-form']
-  .map(selector => `${selector}:not(.disabled):not([disabled])`)
+  .map((selector) => `${selector}:not(.disabled):not([disabled])`)
   .join(', ')
 
 // --- Helper methods ---
 
 // Return an array of visible items
-const filterVisibles = els => (els || []).filter(isVisible)
+const filterVisibles = (els) => (els || []).filter(isVisible)
 
 // --- Props ---
 
@@ -76,7 +76,7 @@ export const props = makePropsConfigurable(
     offset: makeProp(PROP_TYPE_NUMBER_STRING, 0),
     popperOpts: makeProp(PROP_TYPE_OBJECT, {}),
     // Right align menu (default is left align)
-    right: makeProp(PROP_TYPE_BOOLEAN, false)
+    right: makeProp(PROP_TYPE_BOOLEAN, false),
   }),
   NAME_DROPDOWN
 )
@@ -90,13 +90,13 @@ export const dropdownMixin = Vue.extend({
     return { getBvDropdown: () => this }
   },
   inject: {
-    getBvNavbar: { default: () => () => null }
+    getBvNavbar: { default: () => () => null },
   },
   props,
   data() {
     return {
       visible: false,
-      visibleChangePrevented: false
+      visibleChangePrevented: false,
     }
   },
   computed: {
@@ -128,7 +128,7 @@ export const dropdownMixin = Vue.extend({
     },
     hideDelay() {
       return this.inNavbar ? (HAS_TOUCH_SUPPORT ? 300 : 50) : 0
-    }
+    },
   },
   watch: {
     visible(newValue, oldValue) {
@@ -144,7 +144,7 @@ export const dropdownMixin = Vue.extend({
           vueTarget: this,
           target: this.$refs.menu,
           relatedTarget: null,
-          componentId: this.safeId ? this.safeId() : this.id || null
+          componentId: this.safeId ? this.safeId() : this.id || null,
         })
         this.emitEvent(bvEvent)
         if (bvEvent.defaultPrevented) {
@@ -167,7 +167,7 @@ export const dropdownMixin = Vue.extend({
         // Hide dropdown if disabled changes to true
         this.visible = false
       }
-    }
+    },
   },
   created() {
     // Create private non-reactive props
@@ -270,8 +270,8 @@ export const dropdownMixin = Vue.extend({
         placement,
         modifiers: {
           offset: { offset: this.offset || 0 },
-          flip: { enabled: !this.noFlip }
-        }
+          flip: { enabled: !this.noFlip },
+        },
       }
       const boundariesElement = this.boundary
       if (boundariesElement) {
@@ -447,6 +447,6 @@ export const dropdownMixin = Vue.extend({
       this.$nextTick(() => {
         attemptFocus(this.toggler)
       })
-    }
-  }
+    },
+  },
 })

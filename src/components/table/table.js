@@ -45,7 +45,7 @@ export const props = makePropsConfigurable(
     ...tbodyProps,
     ...tfootProps,
     ...theadProps,
-    ...topRowProps
+    ...topRowProps,
   }),
   NAME_TABLE
 )
@@ -82,8 +82,8 @@ export const BTable = /*#__PURE__*/ Vue.extend({
     topRowMixin,
     bottomRowMixin,
     busyMixin,
-    providerMixin
+    providerMixin,
   ],
-  props
+  props,
   // Render function is provided by `tableRendererMixin`
 })

@@ -5,8 +5,8 @@ import { pluginFactory } from '../../utils/plugins'
 const ImagePlugin = /*#__PURE__*/ pluginFactory({
   components: {
     BImg,
-    BImgLazy
-  }
+    BImgLazy,
+  },
 })
 
 export { ImagePlugin, BImg, BImgLazy }

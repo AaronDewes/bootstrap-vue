@@ -17,8 +17,8 @@ describe('form-timepicker', () => {
       setEnd: () => {},
       commonAncestorContainer: {
         nodeName: 'BODY',
-        ownerDocument: document
-      }
+        ownerDocument: document,
+      },
     })
   })
 
@@ -31,8 +31,8 @@ describe('form-timepicker', () => {
     const wrapper = mount(BFormTimepicker, {
       attachTo: document.body,
       propsData: {
-        id: 'test-base'
-      }
+        id: 'test-base',
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -75,8 +75,8 @@ describe('form-timepicker', () => {
       attachTo: document.body,
       propsData: {
         id: 'test-button-only',
-        buttonOnly: true
-      }
+        buttonOnly: true,
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -122,8 +122,8 @@ describe('form-timepicker', () => {
       propsData: {
         value: '',
         name: 'foobar',
-        hour12: false
-      }
+        hour12: false,
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -148,7 +148,7 @@ describe('form-timepicker', () => {
 
     await wrapper.setProps({
       showSeconds: true,
-      value: '01:02:33'
+      value: '01:02:33',
     })
     await waitNT(wrapper.vm)
     await waitRAF()
@@ -166,8 +166,8 @@ describe('form-timepicker', () => {
       attachTo: document.body,
       propsData: {
         value: '',
-        hour12: false
-      }
+        hour12: false,
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -206,8 +206,8 @@ describe('form-timepicker', () => {
       attachTo: document.body,
       propsData: {
         value: '',
-        id: 'test-focus-blur'
-      }
+        id: 'test-focus-blur',
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -241,8 +241,8 @@ describe('form-timepicker', () => {
       attachTo: document.body,
       propsData: {
         value: '',
-        id: 'test-hover'
-      }
+        id: 'test-hover',
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -283,8 +283,8 @@ describe('form-timepicker', () => {
       attachTo: document.body,
       propsData: {
         value: '',
-        id: 'test-open'
-      }
+        id: 'test-open',
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -325,8 +325,8 @@ describe('form-timepicker', () => {
         value: '01:02:03',
         nowButton: true,
         resetButton: true,
-        noCloseButton: false
-      }
+        noCloseButton: false,
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -415,11 +415,11 @@ describe('form-timepicker', () => {
       propsData: {
         id: 'test-button-slot',
         showSeconds: true,
-        value: '11:12:13'
+        value: '11:12:13',
       },
       slots: {
-        'button-content': 'foobar'
-      }
+        'button-content': 'foobar',
+      },
     })
 
     expect(wrapper.vm).toBeDefined()

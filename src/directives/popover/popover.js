@@ -12,7 +12,7 @@ import {
   isPlainObject,
   isString,
   isUndefined,
-  isUndefinedOrNull
+  isUndefinedOrNull,
 } from '../../utils/inspect'
 import { looseEqual } from '../../utils/loose-equal'
 import { toInteger } from '../../utils/number'
@@ -33,13 +33,14 @@ const validTriggers = {
   hover: true,
   click: true,
   blur: true,
-  manual: true
+  manual: true,
 }
 
 // Directive modifier test regular expressions. Pre-compile for performance
 const htmlRE = /^html$/i
 const noFadeRE = /^nofade$/i
-const placementRE = /^(auto|top(left|right)?|bottom(left|right)?|left(top|bottom)?|right(top|bottom)?)$/i
+const placementRE =
+  /^(auto|top(left|right)?|bottom(left|right)?|left(top|bottom)?|right(top|bottom)?)$/i
 const boundaryRE = /^(window|viewport|scrollParent)$/i
 const delayRE = /^d\d+$/i
 const delayShowRE = /^ds\d+$/i
@@ -68,7 +69,7 @@ const parseBindings = (bindings, vnode) => /* istanbul ignore next: not easy to 
     boundary: String(getComponentConfig(NAME_POPOVER, 'boundary', 'scrollParent')),
     boundaryPadding: toInteger(getComponentConfig(NAME_POPOVER, 'boundaryPadding', 5), 0),
     variant: getComponentConfig(NAME_POPOVER, 'variant'),
-    customClass: getComponentConfig(NAME_POPOVER, 'customClass')
+    customClass: getComponentConfig(NAME_POPOVER, 'customClass'),
   }
 
   // Process `bindings.value`
@@ -101,12 +102,12 @@ const parseBindings = (bindings, vnode) => /* istanbul ignore next: not easy to 
   if (!isPlainObject(config.delay)) {
     config.delay = {
       show: toInteger(config.delay, 0),
-      hide: toInteger(config.delay, 0)
+      hide: toInteger(config.delay, 0),
     }
   }
 
   // Process modifiers
-  keys(bindings.modifiers).forEach(mod => {
+  keys(bindings.modifiers).forEach((mod) => {
     if (htmlRE.test(mod)) {
       // Title/content allows HTML
       config.html = true
@@ -151,14 +152,14 @@ const parseBindings = (bindings, vnode) => /* istanbul ignore next: not easy to 
     .trim()
     .toLowerCase()
     .split(spacesRE)
-    .forEach(trigger => {
+    .forEach((trigger) => {
       if (validTriggers[trigger]) {
         selectedTriggers[trigger] = true
       }
     })
 
   // Parse modifiers for triggers
-  keys(bindings.modifiers).forEach(mod => {
+  keys(bindings.modifiers).forEach((mod) => {
     mod = mod.toLowerCase()
     if (validTriggers[mod]) {
       // If modifier is a valid trigger
@@ -191,7 +192,7 @@ const applyPopover = (el, bindings, vnode) => {
     const parent = getInstanceFromDirective(vnode, bindings)
     el[BV_POPOVER] = createNewChildComponent(parent, BVPopover, {
       // Add the parent's scoped style attribute data
-      _scopeId: getScopeId(parent, undefined)
+      _scopeId: getScopeId(parent, undefined),
     })
     el[BV_POPOVER].__bv_prev_data__ = {}
     el[BV_POPOVER].$on(EVENT_NAME_SHOW, () => /* istanbul ignore next: for now */ {
@@ -224,16 +225,16 @@ const applyPopover = (el, bindings, vnode) => {
     noFade: !config.animation,
     id: config.id,
     disabled: config.disabled,
-    html: config.html
+    html: config.html,
   }
   const oldData = el[BV_POPOVER].__bv_prev_data__
   el[BV_POPOVER].__bv_prev_data__ = data
   if (!looseEqual(data, oldData)) {
     // We only update the instance if data has changed
     const newData = {
-      target: el
+      target: el,
     }
-    keys(data).forEach(prop => {
+    keys(data).forEach((prop) => {
       // We only pass data properties that have changed
       if (data[prop] !== oldData[prop]) {
         // If title/content is a function, we execute it here
@@ -248,7 +249,7 @@ const applyPopover = (el, bindings, vnode) => {
 }
 
 // Remove Popover from our element
-const removePopover = el => {
+const removePopover = (el) => {
   if (el[BV_POPOVER]) {
     el[BV_POPOVER].$destroy()
     el[BV_POPOVER] = null
@@ -271,5 +272,5 @@ export const VBPopover = {
   },
   unbind(el) {
     removePopover(el)
-  }
+  },
 }

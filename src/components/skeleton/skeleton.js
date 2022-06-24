@@ -12,7 +12,7 @@ export const props = makePropsConfigurable(
     size: makeProp(PROP_TYPE_STRING),
     type: makeProp(PROP_TYPE_STRING, 'text'),
     variant: makeProp(PROP_TYPE_STRING),
-    width: makeProp(PROP_TYPE_STRING)
+    width: makeProp(PROP_TYPE_STRING),
   },
   NAME_SKELETON
 )
@@ -33,14 +33,14 @@ export const BSkeleton = /*#__PURE__*/ Vue.extend({
         staticClass: 'b-skeleton',
         style: {
           width: size || props.width,
-          height: size || props.height
+          height: size || props.height,
         },
         class: {
           [`b-skeleton-${props.type}`]: true,
           [`b-skeleton-animate-${animation}`]: animation,
-          [`bg-${variant}`]: variant
-        }
+          [`bg-${variant}`]: variant,
+        },
       })
     )
-  }
+  },
 })

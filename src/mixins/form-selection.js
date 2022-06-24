@@ -13,7 +13,7 @@ export const formSelectionMixin = Vue.extend({
       /* istanbul ignore next */
       set(val) {
         this.$refs.input.selectionStart = val
-      }
+      },
     },
     selectionEnd: {
       // Expose selectionEnd for formatters, etc
@@ -25,7 +25,7 @@ export const formSelectionMixin = Vue.extend({
       /* istanbul ignore next */
       set(val) {
         this.$refs.input.selectionEnd = val
-      }
+      },
     },
     selectionDirection: {
       // Expose selectionDirection for formatters, etc
@@ -37,8 +37,8 @@ export const formSelectionMixin = Vue.extend({
       /* istanbul ignore next */
       set(val) {
         this.$refs.input.selectionDirection = val
-      }
-    }
+      },
+    },
   },
   methods: {
     /* istanbul ignore next */
@@ -55,6 +55,6 @@ export const formSelectionMixin = Vue.extend({
     setRangeText() {
       // For external handler that may want a setRangeText(a,b,c) method
       this.$refs.input.setRangeText(...arguments)
-    }
-  }
+    },
+  },
 })

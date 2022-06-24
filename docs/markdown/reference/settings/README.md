@@ -99,7 +99,7 @@ props instead of `sm`, `md`, `lg` and `xl` props (similar for the `label-cols-{b
 import BootstrapVue from 'bootstrap-vue'
 
 Vue.use(BootstrapVue, {
-  breakpoints: [`xs`, 'sm', 'md', 'lg', 'xl', 'xxl']
+  breakpoints: [`xs`, 'sm', 'md', 'lg', 'xl', 'xxl'],
 })
 ```
 
@@ -110,7 +110,7 @@ import BootstrapVue from 'bootstrap-vue'
 
 Vue.use(BootstrapVue, {
   BAlert: { variant: 'danger' },
-  BButton: { variant: 'primary' }
+  BButton: { variant: 'primary' },
 })
 ```
 
@@ -155,7 +155,7 @@ import { LayoutPlugin, AlertPlugin, ButtonPlugin } from 'bootstrap-vue'
 Vue.use(LayoutPlugin, {
   breakpoints: ['xs', 'sm', 'lg', 'xl', 'xxl'],
   BAlert: { variant: 'danger' },
-  BButton: { variant: 'primary' }
+  BButton: { variant: 'primary' },
 })
 Vue.use(AlertPlugin)
 Vue.use(ButtonPlugin)
@@ -172,7 +172,7 @@ import { BVConfigPlugin, LayoutPlugin, AlertPlugin, ButtonPlugin } from 'bootstr
 Vue.use(BVConfigPlugin, {
   breakpoints: ['xs', 'sm', 'lg', 'xl', 'xxl'],
   BAlert: { variant: 'danger' },
-  BButton: { variant: 'primary' }
+  BButton: { variant: 'primary' },
 })
 
 // Then use component plugins
@@ -192,7 +192,7 @@ import { BVConfigPlugin, BAlert, BButton, BRow, BCol } from 'bootstrap-vue'
 Vue.use(BVConfigPlugin, {
   breakpoints: ['xs', 'sm', 'lg', 'xl', 'xxl'],
   BAlert: { variant: 'danger' },
-  BButton: { variant: 'primary' }
+  BButton: { variant: 'primary' },
 })
 
 // Then install components globally
@@ -208,8 +208,8 @@ export default {
     BAlert,
     BButton,
     BRow,
-    BCol
-  }
+    BCol,
+  },
   // ...
 }
 ```

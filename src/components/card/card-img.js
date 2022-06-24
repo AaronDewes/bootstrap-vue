@@ -13,7 +13,7 @@ export const props = makePropsConfigurable(
     bottom: makeProp(PROP_TYPE_BOOLEAN, false),
     end: makeProp(PROP_TYPE_BOOLEAN, false),
     start: makeProp(PROP_TYPE_BOOLEAN, false),
-    top: makeProp(PROP_TYPE_BOOLEAN, false)
+    top: makeProp(PROP_TYPE_BOOLEAN, false),
   }),
   NAME_CARD_IMG
 )
@@ -43,8 +43,8 @@ export const BCardImg = /*#__PURE__*/ Vue.extend({
       'img',
       mergeData(data, {
         class: baseClass,
-        attrs: { src, alt, width, height }
+        attrs: { src, alt, width, height },
       })
     )
-  }
+  },
 })

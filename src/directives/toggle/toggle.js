@@ -16,7 +16,7 @@ import {
   removeStyle,
   requestAF,
   setAttr,
-  setStyle
+  setStyle,
 } from '../../utils/dom'
 import { getRootActionEventName, getRootEventName, eventOn, eventOff } from '../../utils/events'
 import { isString } from '../../utils/inspect'
@@ -72,7 +72,7 @@ const KEYDOWN_KEY_CODES = [CODE_ENTER, CODE_SPACE]
 
 // --- Helper methods ---
 
-const isNonStandardTag = el => !arrayIncludes(['button', 'a'], el.tagName.toLowerCase())
+const isNonStandardTag = (el) => !arrayIncludes(['button', 'a'], el.tagName.toLowerCase())
 
 const getTargets = ({ modifiers, arg, value }, el) => {
   // Any modifiers are considered target IDs
@@ -92,13 +92,13 @@ const getTargets = ({ modifiers, arg, value }, el) => {
   // Add ID from `arg` (if provided), and support value
   // as a single string ID or an array of string IDs
   // If `value` is not an array or string, then it gets filtered out
-  concat(arg, value).forEach(t => isString(t) && targets.push(t))
+  concat(arg, value).forEach((t) => isString(t) && targets.push(t))
 
   // Return only unique and truthy target IDs
   return targets.filter((t, index, arr) => t && arr.indexOf(t) === index)
 }
 
-const removeClickListener = el => {
+const removeClickListener = (el) => {
   const handler = el[BV_TOGGLE_CLICK_HANDLER]
   if (handler) {
     eventOff(el, 'click', handler, EVENT_OPTIONS_PASSIVE)
@@ -110,13 +110,13 @@ const removeClickListener = el => {
 const addClickListener = (el, instance) => {
   removeClickListener(el)
   if (instance) {
-    const handler = event => {
+    const handler = (event) => {
       if (
         !(event.type === 'keydown' && !arrayIncludes(KEYDOWN_KEY_CODES, event.keyCode)) &&
         !isDisabled(el)
       ) {
         const targets = el[BV_TOGGLE_TARGETS] || []
-        targets.forEach(target => {
+        targets.forEach((target) => {
           getEventRoot(instance).$emit(ROOT_ACTION_EVENT_NAME_TOGGLE, target)
         })
       }
@@ -229,7 +229,7 @@ const handleUpdate = (el, binding, vnode) => {
     // Ensure `aria-controls` is up to date
     // Request a state update from targets so that we can
     // ensure expanded state is correct (in most cases)
-    targets.forEach(target => {
+    targets.forEach((target) => {
       getEventRoot(getInstanceFromDirective(vnode, binding)).$emit(
         ROOT_ACTION_EVENT_NAME_REQUEST_STATE,
         target
@@ -270,5 +270,5 @@ export const VBToggle = {
     removeAttr(el, ATTR_ARIA_CONTROLS)
     removeAttr(el, ATTR_ROLE)
     removeStyle(el, STYLE_OVERFLOW_ANCHOR)
-  }
+  },
 }

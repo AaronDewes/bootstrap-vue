@@ -19,8 +19,8 @@ describe('pagination-nav', () => {
     const wrapper = mount(BPaginationNav, {
       propsData: {
         numberOfPages: 1,
-        value: 1
-      }
+        value: 1,
+      },
     })
     await waitNT(wrapper.vm)
     await waitRAF()
@@ -54,8 +54,8 @@ describe('pagination-nav', () => {
       propsData: {
         numberOfPages: 5,
         value: 3,
-        limit: 10
-      }
+        limit: 10,
+      },
     })
     await waitNT(wrapper.vm)
     await waitRAF()
@@ -83,8 +83,8 @@ describe('pagination-nav', () => {
       propsData: {
         numberOfPages: 5,
         value: 3,
-        limit: 10
-      }
+        limit: 10,
+      },
     })
     await waitNT(wrapper.vm)
     await waitRAF()
@@ -107,8 +107,8 @@ describe('pagination-nav', () => {
       propsData: {
         numberOfPages: 1,
         value: 1,
-        disabled: true
-      }
+        disabled: true,
+      },
     })
     await waitNT(wrapper.vm)
     await waitRAF()
@@ -148,8 +148,8 @@ describe('pagination-nav', () => {
       propsData: {
         numberOfPages: 3,
         value: 2,
-        limit: 10
-      }
+        limit: 10,
+      },
     })
     await waitNT(wrapper.vm)
     await waitRAF()
@@ -159,7 +159,7 @@ describe('pagination-nav', () => {
     expect($links.length).toBe(7)
 
     await wrapper.setProps({
-      numberOfPages: 5
+      numberOfPages: 5,
     })
 
     await waitNT(wrapper.vm)
@@ -175,8 +175,8 @@ describe('pagination-nav', () => {
         numberOfPages: 5,
         value: 3,
         limit: 10,
-        baseUrl: '/foo/'
-      }
+        baseUrl: '/foo/',
+      },
     })
     await waitNT(wrapper.vm)
     await waitRAF()
@@ -205,8 +205,8 @@ describe('pagination-nav', () => {
         numberOfPages: 5,
         value: 3,
         limit: 10,
-        linkGen: page => `?${page}`
-      }
+        linkGen: (page) => `?${page}`,
+      },
     })
     await waitNT(wrapper.vm)
     await waitRAF()
@@ -235,8 +235,8 @@ describe('pagination-nav', () => {
         numberOfPages: 5,
         value: 3,
         limit: 10,
-        linkGen: page => ({ path: `/baz?${page}` })
-      }
+        linkGen: (page) => ({ path: `/baz?${page}` }),
+      },
     })
     await waitNT(wrapper.vm)
     await waitRAF()
@@ -265,8 +265,8 @@ describe('pagination-nav', () => {
         numberOfPages: 5,
         value: 3,
         limit: 10,
-        pageGen: page => `Page ${page}`
-      }
+        pageGen: (page) => `Page ${page}`,
+      },
     })
     await waitNT(wrapper.vm)
     await waitRAF()
@@ -289,8 +289,8 @@ describe('pagination-nav', () => {
       propsData: {
         value: 3,
         limit: 10,
-        pages: ['/baz?1', '/baz?2', '/baz?3', '/baz?4', '/baz?5']
-      }
+        pages: ['/baz?1', '/baz?2', '/baz?3', '/baz?4', '/baz?5'],
+      },
     })
     await waitNT(wrapper.vm)
     await waitRAF()
@@ -330,9 +330,9 @@ describe('pagination-nav', () => {
           { link: '/baz?2', text: 'two' },
           { link: '/baz?3', text: 'three' },
           { link: '/baz?4', text: 'four' },
-          { link: '/baz?5', text: 'five' }
-        ]
-      }
+          { link: '/baz?5', text: 'five' },
+        ],
+      },
     })
     await waitNT(wrapper.vm)
     await waitRAF()
@@ -367,8 +367,8 @@ describe('pagination-nav', () => {
       propsData: {
         value: 2,
         limit: 10,
-        pages: ['/baz?1', '/baz?2', '/baz?3']
-      }
+        pages: ['/baz?1', '/baz?2', '/baz?3'],
+      },
     })
     await waitNT(wrapper.vm)
     await waitRAF()
@@ -387,7 +387,7 @@ describe('pagination-nav', () => {
 
     // Add extra page
     await wrapper.setProps({
-      pages: ['/baz?1', '/baz?2', '/baz?3', '/baz?4']
+      pages: ['/baz?1', '/baz?2', '/baz?3', '/baz?4'],
     })
     await waitNT(wrapper.vm)
 
@@ -415,7 +415,7 @@ describe('pagination-nav', () => {
           if (page === 3) {
             bvEvent.preventDefault()
           }
-        }
+        },
       },
       render(h) {
         return h(BPaginationNav, {
@@ -423,11 +423,11 @@ describe('pagination-nav', () => {
             baseUrl: '#', // Needed to prevent JSDOM errors
             numberOfPages: 5,
             value: 1,
-            limit: 10
+            limit: 10,
           },
-          on: { 'page-click': this.onPageClick }
+          on: { 'page-click': this.onPageClick },
         })
-      }
+      },
     }
 
     const wrapper = mount(App)
@@ -447,10 +447,7 @@ describe('pagination-nav', () => {
     expect(paginationNav.emitted('page-click')).toBeUndefined()
 
     // Click on current (1st) page link (does nothing)
-    await lis
-      .at(2)
-      .find('a')
-      .trigger('click')
+    await lis.at(2).find('a').trigger('click')
     await waitRAF()
     expect(paginationNav.vm.computedCurrentPage).toBe(1)
     expect(paginationNav.emitted('input')).toBeUndefined()
@@ -458,10 +455,7 @@ describe('pagination-nav', () => {
     expect(paginationNav.emitted('page-click')).toBeUndefined()
 
     // Click on 2nd page link
-    await lis
-      .at(3)
-      .find('a')
-      .trigger('click')
+    await lis.at(3).find('a').trigger('click')
     await waitRAF()
     expect(paginationNav.vm.computedCurrentPage).toBe(2)
     expect(paginationNav.emitted('input')).toBeDefined()
@@ -472,10 +466,7 @@ describe('pagination-nav', () => {
     expect(paginationNav.emitted('page-click').length).toBe(1)
 
     // Click goto last page link
-    await lis
-      .at(8)
-      .find('a')
-      .trigger('click')
+    await lis.at(8).find('a').trigger('click')
     await waitRAF()
     expect(paginationNav.vm.computedCurrentPage).toBe(5)
     expect(paginationNav.emitted('input')[1][0]).toBe(5)
@@ -483,10 +474,7 @@ describe('pagination-nav', () => {
     expect(paginationNav.emitted('page-click').length).toBe(2)
 
     // Click prev page link
-    await lis
-      .at(1)
-      .find('a')
-      .trigger('click')
+    await lis.at(1).find('a').trigger('click')
     await waitRAF()
     expect(paginationNav.vm.computedCurrentPage).toBe(4)
     expect(paginationNav.emitted('input')[2][0]).toBe(4)
@@ -494,10 +482,7 @@ describe('pagination-nav', () => {
     expect(paginationNav.emitted('page-click').length).toBe(3)
 
     // Click on 3rd page link (prevented)
-    await lis
-      .at(4)
-      .find('a')
-      .trigger('click')
+    await lis.at(4).find('a').trigger('click')
     await waitRAF()
     expect(paginationNav.vm.computedCurrentPage).toBe(4)
     expect(paginationNav.emitted('input').length).toBe(3)
@@ -520,8 +505,8 @@ describe('pagination-nav', () => {
         propsData: {
           numberOfPages: 3,
           value: null,
-          linkGen: page => (page === 2 ? '/' : `/#${page}`)
-        }
+          linkGen: (page) => (page === 2 ? '/' : `/#${page}`),
+        },
       })
       await waitNT(wrapper.vm)
       await waitRAF()
@@ -552,32 +537,35 @@ describe('pagination-nav', () => {
             // We return a to prop to auto trigger use of $router
             // if using strings, we would need to set use-router=true
             return page === 2 ? { path: '/' } : { path: '/' + page }
-          }
+          },
         },
         template: `
           <div>
             <b-pagination-nav :number-of-pages="3" :link-gen="linkGen"></b-pagination-nav>
             <router-view></router-view>
           </div>
-        `
+        `,
       }
       // Our router view component
       const FooRoute = {
         compatConfig: { MODE: 3, RENDER_FUNCTION: 'suppress-warning' },
         render(h) {
           return h('div', { class: 'foo-content' }, ['stub'])
-        }
+        },
       }
       // Create router instance
       const router = new VueRouter({
-        routes: [{ path: '/', component: FooRoute }, { path: '/:page', component: FooRoute }]
+        routes: [
+          { path: '/', component: FooRoute },
+          { path: '/:page', component: FooRoute },
+        ],
       })
       const wrapper = mount(App, { router })
 
       expect(wrapper).toBeDefined()
 
       // Wait for the router to initialize
-      await new Promise(resolve => router.onReady(resolve))
+      await new Promise((resolve) => router.onReady(resolve))
 
       // Wait for the guessCurrentPage to complete
       await waitNT(wrapper.vm)
@@ -615,32 +603,35 @@ describe('pagination-nav', () => {
             // We return a to prop to auto trigger use of $router
             // if using strings, we would need to set use-router=true
             return page === 2 ? '/' : `/${page}`
-          }
+          },
         },
         template: `
           <div>
             <b-pagination-nav :number-of-pages="3" :link-gen="linkGen" use-router></b-pagination-nav>
             <router-view></router-view>
           </div>
-        `
+        `,
       }
       // Our router view component
       const FooRoute = {
         compatConfig: { MODE: 3, RENDER_FUNCTION: 'suppress-warning' },
         render(h) {
           return h('div', { class: 'foo-content' }, ['stub'])
-        }
+        },
       }
       // Create router instance
       const router = new VueRouter({
-        routes: [{ path: '/', component: FooRoute }, { path: '/:page', component: FooRoute }]
+        routes: [
+          { path: '/', component: FooRoute },
+          { path: '/:page', component: FooRoute },
+        ],
       })
       const wrapper = mount(App, { router })
 
       expect(wrapper).toBeDefined()
 
       // Wait for the router to initialize
-      await new Promise(resolve => router.onReady(resolve))
+      await new Promise((resolve) => router.onReady(resolve))
 
       // Wait for the guessCurrentPage to complete
       await waitNT(wrapper.vm)

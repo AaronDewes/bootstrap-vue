@@ -6,7 +6,7 @@ import { makeProp, makePropsConfigurable } from '../utils/props'
 
 export const props = makePropsConfigurable(
   {
-    size: makeProp(PROP_TYPE_STRING)
+    size: makeProp(PROP_TYPE_STRING),
   },
   'formControls'
 )
@@ -19,6 +19,6 @@ export const formSizeMixin = Vue.extend({
   computed: {
     sizeFormClass() {
       return [this.size ? `form-control-${this.size}` : null]
-    }
-  }
+    },
+  },
 })

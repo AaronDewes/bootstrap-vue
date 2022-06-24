@@ -14,8 +14,8 @@ export const sanitizeRow = (row, ignoreFields, includeFields, fieldsObj = {}) =>
     const formatter = isFunction(filterByFormatted)
       ? /* istanbul ignore next */ filterByFormatted
       : filterByFormatted
-        ? /* istanbul ignore next */ field.formatter
-        : null
+      ? /* istanbul ignore next */ field.formatter
+      : null
 
     if (isFunction(formatter)) {
       result[key] = formatter(row[key], key, row)
@@ -29,7 +29,7 @@ export const sanitizeRow = (row, ignoreFields, includeFields, fieldsObj = {}) =>
   //   - Ignore fields in the `ignoreFields` array
   //   - Include only fields in the `includeFields` array
   const allowedKeys = keys(formattedRow).filter(
-    key =>
+    (key) =>
       !IGNORED_FIELD_KEYS[key] &&
       !(isArray(ignoreFields) && ignoreFields.length > 0 && arrayIncludes(ignoreFields, key)) &&
       !(isArray(includeFields) && includeFields.length > 0 && !arrayIncludes(includeFields, key))

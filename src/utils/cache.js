@@ -3,9 +3,9 @@ import { cloneDeep } from './clone-deep'
 import { looseEqual } from './loose-equal'
 import { hasOwnProperty, keys } from './object'
 
-const isEmpty = value => !value || keys(value).length === 0
+const isEmpty = (value) => !value || keys(value).length === 0
 
-export const makePropWatcher = propName => ({
+export const makePropWatcher = (propName) => ({
   handler(newValue, oldValue) {
     if (looseEqual(newValue, oldValue)) {
       return
@@ -22,7 +22,7 @@ export const makePropWatcher = propName => ({
     for (const key in newValue) {
       this.$set(this.$data[propName], key, newValue[key])
     }
-  }
+  },
 })
 
 export const makePropCacheMixin = (propName, proxyPropName) =>
@@ -32,6 +32,6 @@ export const makePropCacheMixin = (propName, proxyPropName) =>
     },
     watch: {
       // Work around unwanted re-renders: https://github.com/vuejs/vue/issues/10115
-      [propName]: makePropWatcher(proxyPropName)
-    }
+      [propName]: makePropWatcher(proxyPropName),
+    },
   })

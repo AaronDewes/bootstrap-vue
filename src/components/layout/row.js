@@ -24,7 +24,7 @@ const computeRowColsClass = memoize((breakpoint, cols) => {
 
 // Get the breakpoint name from the `rowCols` prop name
 // Memoized function for better performance on extracting breakpoint names
-const computeRowColsBreakpoint = memoize(prop => lowerCase(prop.replace('cols', '')))
+const computeRowColsBreakpoint = memoize((prop) => lowerCase(prop.replace('cols', '')))
 
 // Cached copy of the `row-cols` breakpoint prop names
 // Will be populated when the props are generated
@@ -47,17 +47,17 @@ export const generateProps = () => {
   return makePropsConfigurable(
     sortKeys({
       ...rowColsProps,
-      alignContent: makeProp(PROP_TYPE_STRING, null, value => {
+      alignContent: makeProp(PROP_TYPE_STRING, null, (value) => {
         return arrayIncludes(concat(COMMON_ALIGNMENT, 'between', 'around', 'stretch'), value)
       }),
-      alignH: makeProp(PROP_TYPE_STRING, null, value => {
+      alignH: makeProp(PROP_TYPE_STRING, null, (value) => {
         return arrayIncludes(concat(COMMON_ALIGNMENT, 'between', 'around'), value)
       }),
-      alignV: makeProp(PROP_TYPE_STRING, null, value => {
+      alignV: makeProp(PROP_TYPE_STRING, null, (value) => {
         return arrayIncludes(concat(COMMON_ALIGNMENT, 'baseline', 'stretch'), value)
       }),
       noGutters: makeProp(PROP_TYPE_BOOLEAN, false),
-      tag: makeProp(PROP_TYPE_STRING, 'div')
+      tag: makeProp(PROP_TYPE_STRING, 'div'),
     }),
     NAME_ROW
   )
@@ -84,7 +84,7 @@ export const BRow = {
 
     // Loop through row-cols breakpoint props and generate the classes
     const classList = []
-    rowColsPropList.forEach(prop => {
+    rowColsPropList.forEach((prop) => {
       const c = computeRowColsClass(computeRowColsBreakpoint(prop), props[prop])
       // If a class is returned, push it onto the array
       if (c) {
@@ -96,16 +96,16 @@ export const BRow = {
       'no-gutters': props.noGutters,
       [`align-items-${alignV}`]: alignV,
       [`justify-content-${alignH}`]: alignH,
-      [`align-content-${alignContent}`]: alignContent
+      [`align-content-${alignContent}`]: alignContent,
     })
 
     return h(
       props.tag,
       mergeData(data, {
         staticClass: 'row',
-        class: classList
+        class: classList,
       }),
       children
     )
-  }
+  },
 }

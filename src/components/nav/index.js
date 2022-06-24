@@ -15,11 +15,11 @@ const NavPlugin = /*#__PURE__*/ pluginFactory({
     BNavItemDropdown,
     BNavItemDd: BNavItemDropdown,
     BNavDropdown: BNavItemDropdown,
-    BNavDd: BNavItemDropdown
+    BNavDd: BNavItemDropdown,
   },
   plugins: {
-    DropdownPlugin
-  }
+    DropdownPlugin,
+  },
 })
 
 export { NavPlugin, BNav, BNavItem, BNavText, BNavForm, BNavItemDropdown }

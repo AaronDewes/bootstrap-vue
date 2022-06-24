@@ -3,7 +3,7 @@ import { NAME_FORM_RADIO_GROUP } from '../../constants/components'
 import { makePropsConfigurable } from '../../utils/props'
 import {
   formRadioCheckGroupMixin,
-  props as formRadioCheckGroupProps
+  props as formRadioCheckGroupProps,
 } from '../../mixins/form-radio-check-group'
 
 // --- Props ---
@@ -18,13 +18,13 @@ export const BFormRadioGroup = /*#__PURE__*/ Vue.extend({
   mixins: [formRadioCheckGroupMixin],
   provide() {
     return {
-      getBvRadioGroup: () => this
+      getBvRadioGroup: () => this,
     }
   },
   props,
   computed: {
     isRadioGroup() {
       return true
-    }
-  }
+    },
+  },
 })

@@ -1,5 +1,5 @@
 /* istanbul ignore file */
-const getRealChild = vnode => {
+const getRealChild = (vnode) => {
   const compOptions = vnode && vnode.componentOptions
   if (compOptions && compOptions.Ctor.options.abstract) {
     return getRealChild(getFirstComponentChild(compOptions.children))
@@ -12,7 +12,7 @@ const isSameChild = (child, oldChild) => {
   return oldChild.key === child.key && oldChild.tag === child.tag
 }
 
-const getFirstComponentChild = children => {
+const getFirstComponentChild = (children) => {
   if (Array.isArray(children)) {
     for (let i = 0; i < children.length; i++) {
       const c = children[i]
@@ -23,15 +23,15 @@ const getFirstComponentChild = children => {
   }
 }
 
-const isPrimitive = value =>
+const isPrimitive = (value) =>
   typeof value === 'string' ||
   typeof value === 'number' ||
   typeof value === 'symbol' ||
   typeof value === 'boolean'
 
-const isAsyncPlaceholder = node => node.isComment && node.asyncFactory
+const isAsyncPlaceholder = (node) => node.isComment && node.asyncFactory
 
-const hasParentTransition = vnode => {
+const hasParentTransition = (vnode) => {
   while ((vnode = vnode.parent)) {
     if (vnode.data.transition) {
       return true
@@ -47,7 +47,7 @@ export default {
     }
 
     // Filter out text nodes (possible whitespaces)
-    children = children.filter(c => c.tag || isAsyncPlaceholder(c))
+    children = children.filter((c) => c.tag || isAsyncPlaceholder(c))
     /* istanbul ignore if */
     if (!children.length) {
       return
@@ -76,21 +76,21 @@ export default {
           ? id + 'comment'
           : id + child.tag
         : isPrimitive(child.key)
-          ? String(child.key).indexOf(id) === 0
-            ? child.key
-            : id + child.key
-          : child.key
+        ? String(child.key).indexOf(id) === 0
+          ? child.key
+          : id + child.key
+        : child.key
 
     const data = child.data || (child.data = {})
     const oldRawChild = this._vnode
     const oldChild = getRealChild(oldRawChild)
-    if (child.data.directives && child.data.directives.some(d => d.name === 'show')) {
+    if (child.data.directives && child.data.directives.some((d) => d.name === 'show')) {
       child.data.show = true
     }
 
     // Mark `v-show` so that the transition module can hand over
     // the control to the directive
-    if (child.data.directives && child.data.directives.some(d => d.name === 'show')) {
+    if (child.data.directives && child.data.directives.some((d) => d.name === 'show')) {
       child.data.show = true
     }
     if (
@@ -103,5 +103,5 @@ export default {
       oldChild.data = { ...data }
     }
     return rawChild
-  }
+  },
 }

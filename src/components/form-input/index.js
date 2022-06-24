@@ -4,8 +4,8 @@ import { pluginFactory } from '../../utils/plugins'
 const FormInputPlugin = /*#__PURE__*/ pluginFactory({
   components: {
     BFormInput,
-    BInput: BFormInput
-  }
+    BInput: BFormInput,
+  },
 })
 
 export { FormInputPlugin, BFormInput }

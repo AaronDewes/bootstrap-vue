@@ -10,7 +10,7 @@ import {
   getBreakpointsUp,
   getComponentConfig,
   getConfig,
-  getConfigValue
+  getConfigValue,
 } from './config'
 
 describe('utils/config', () => {
@@ -24,10 +24,10 @@ describe('utils/config', () => {
 
   it('setConfig() works', async () => {
     const config = {
-      BAlert: { variant: 'danger' }
+      BAlert: { variant: 'danger' },
     }
     const breakpointsConfig = {
-      breakpoints: ['aa', 'bb', 'cc', 'dd', 'ee']
+      breakpoints: ['aa', 'bb', 'cc', 'dd', 'ee'],
     }
     expect(getConfig()).toEqual({})
 
@@ -59,7 +59,7 @@ describe('utils/config', () => {
     it('config via Vue.use(BootstrapVue) works', async () => {
       const localVue = createLocalVue()
       const config = {
-        BAlert: { variant: 'foobar' }
+        BAlert: { variant: 'foobar' },
       }
 
       expect(getConfig()).toEqual({})
@@ -75,7 +75,7 @@ describe('utils/config', () => {
     it('config via Vue.use(ComponentPlugin) works', async () => {
       const localVue = createLocalVue()
       const config = {
-        BAlert: { variant: 'foobar' }
+        BAlert: { variant: 'foobar' },
       }
 
       expect(getConfig()).toEqual({})
@@ -91,7 +91,7 @@ describe('utils/config', () => {
     it('config via Vue.use(BVConfig) works', async () => {
       const localVue = createLocalVue()
       const config = {
-        BAlert: { variant: 'foobar' }
+        BAlert: { variant: 'foobar' },
       }
 
       expect(getConfig()).toEqual({})
@@ -107,7 +107,7 @@ describe('utils/config', () => {
 
   it('getConfigValue() works', async () => {
     const config = {
-      formControls: { size: 'sm' }
+      formControls: { size: 'sm' },
     }
     setConfig(config)
 
@@ -122,7 +122,7 @@ describe('utils/config', () => {
 
   it('getComponentConfig() works', async () => {
     const config = {
-      BAlert: { variant: 'info' }
+      BAlert: { variant: 'info' },
     }
     setConfig(config)
 
@@ -140,7 +140,7 @@ describe('utils/config', () => {
 
   it('getBreakpoints() works', async () => {
     const breakpointsConfig = {
-      breakpoints: ['aa', 'bb', 'cc', 'dd', 'ee']
+      breakpoints: ['aa', 'bb', 'cc', 'dd', 'ee'],
     }
 
     expect(getBreakpoints()).toEqual(['xs', 'sm', 'md', 'lg', 'xl'])

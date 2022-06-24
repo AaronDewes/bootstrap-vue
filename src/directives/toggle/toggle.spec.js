@@ -16,7 +16,7 @@ describe('v-b-toggle directive', () => {
     const spy = jest.fn()
     const App = {
       directives: {
-        bToggle: VBToggle
+        bToggle: VBToggle,
       },
       created() {
         this.$root.$on(EVENT_TOGGLE, spy)
@@ -24,7 +24,7 @@ describe('v-b-toggle directive', () => {
       beforeDestroy() {
         this.$root.$off(EVENT_TOGGLE, spy)
       },
-      template: '<button v-b-toggle.test>button</button>'
+      template: '<button v-b-toggle.test>button</button>',
     }
 
     const wrapper = mount(App)
@@ -62,7 +62,7 @@ describe('v-b-toggle directive', () => {
     const spy = jest.fn()
     const App = {
       directives: {
-        bToggle: VBToggle
+        bToggle: VBToggle,
       },
       mounted() {
         this.$root.$on(EVENT_TOGGLE, spy)
@@ -70,7 +70,7 @@ describe('v-b-toggle directive', () => {
       beforeDestroy() {
         this.$root.$off(EVENT_TOGGLE, spy)
       },
-      template: `<button v-b-toggle="'test'">button</button>`
+      template: `<button v-b-toggle="'test'">button</button>`,
     }
 
     const wrapper = mount(App)
@@ -106,7 +106,7 @@ describe('v-b-toggle directive', () => {
     const spy = jest.fn()
     const App = {
       directives: {
-        bToggle: VBToggle
+        bToggle: VBToggle,
       },
       mounted() {
         this.$root.$on(EVENT_TOGGLE, spy)
@@ -114,7 +114,7 @@ describe('v-b-toggle directive', () => {
       beforeDestroy() {
         this.$root.$off(EVENT_TOGGLE, spy)
       },
-      template: `<button v-b-toggle:test>button</button>`
+      template: `<button v-b-toggle:test>button</button>`,
     }
 
     const wrapper = mount(App)
@@ -150,7 +150,7 @@ describe('v-b-toggle directive', () => {
     const spy = jest.fn()
     const App = {
       directives: {
-        bToggle: VBToggle
+        bToggle: VBToggle,
       },
       created() {
         this.$root.$on(EVENT_TOGGLE, spy)
@@ -158,7 +158,7 @@ describe('v-b-toggle directive', () => {
       beforeDestroy() {
         this.$root.$off(EVENT_TOGGLE, spy)
       },
-      template: '<a href="#test" v-b-toggle>link</a>'
+      template: '<a href="#test" v-b-toggle>link</a>',
     }
 
     const wrapper = mount(App)
@@ -196,13 +196,13 @@ describe('v-b-toggle directive', () => {
     const spy = jest.fn()
     const App = {
       directives: {
-        bToggle: VBToggle
+        bToggle: VBToggle,
       },
       props: {
         target: {
           type: [String, Array],
-          default: null
-        }
+          default: null,
+        },
       },
       mounted() {
         this.$root.$on(EVENT_TOGGLE, spy)
@@ -210,13 +210,13 @@ describe('v-b-toggle directive', () => {
       beforeDestroy() {
         this.$root.$off(EVENT_TOGGLE, spy)
       },
-      template: `<button v-b-toggle="target">button</button>`
+      template: `<button v-b-toggle="target">button</button>`,
     }
 
     const wrapper = mount(App, {
       propsData: {
-        target: 'test1'
-      }
+        target: 'test1',
+      },
     })
 
     await waitRAF()
@@ -276,11 +276,11 @@ describe('v-b-toggle directive', () => {
     const spy = jest.fn()
     const App = {
       directives: {
-        bToggle: VBToggle
+        bToggle: VBToggle,
       },
       data() {
         return {
-          text: 'span'
+          text: 'span',
         }
       },
       mounted() {
@@ -289,7 +289,7 @@ describe('v-b-toggle directive', () => {
       beforeDestroy() {
         this.$root.$off(EVENT_TOGGLE, spy)
       },
-      template: '<span v-b-toggle.test>{{ text }}</span>'
+      template: '<span v-b-toggle.test>{{ text }}</span>',
     }
 
     const wrapper = mount(App)
@@ -370,9 +370,9 @@ describe('v-b-toggle directive', () => {
   it('responds to state update events', async () => {
     const App = {
       directives: {
-        bToggle: VBToggle
+        bToggle: VBToggle,
       },
-      template: '<button v-b-toggle.test>button</button>'
+      template: '<button v-b-toggle.test>button</button>',
     }
 
     const wrapper = mount(App)
@@ -415,9 +415,9 @@ describe('v-b-toggle directive', () => {
   it('responds to private sync state update events', async () => {
     const App = {
       directives: {
-        bToggle: VBToggle
+        bToggle: VBToggle,
       },
-      template: '<button v-b-toggle.test>button</button>'
+      template: '<button v-b-toggle.test>button</button>',
     }
 
     const wrapper = mount(App)

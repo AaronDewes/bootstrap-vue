@@ -4,40 +4,40 @@ export default {
   props: {
     value: {
       type: String,
-      default: ''
+      default: '',
     },
     mode: {
       type: [String, Object],
-      default: ''
+      default: '',
     },
     theme: {
       type: String,
-      default: 'default'
+      default: 'default',
     },
     tabMode: {
       type: String,
-      default: 'indent'
+      default: 'indent',
     },
     tabSize: {
       type: [Number, String],
-      default: 2
+      default: 2,
     },
     lineWrapping: {
       type: Boolean,
-      default: true
+      default: true,
     },
     lineNumbers: {
       type: Boolean,
-      default: true
+      default: true,
     },
     readOnly: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   data() {
     return {
-      CM: null
+      CM: null,
     }
   },
   computed: {
@@ -45,19 +45,19 @@ export default {
       return {
         staticClass: 'notranslate m-0 p-0',
         style: { minHeight: '300px' },
-        attrs: { translate: 'no' }
+        attrs: { translate: 'no' },
       }
-    }
+    },
   },
   watch: {
     value(newVal, oldVal) {
       if (!oldVal || oldVal === '') {
         this.CM.setValue(newVal)
       }
-    }
+    },
   },
   mounted() {
-    import('../utils/code-mirror' /* webpackChunkName: "code-mirror" */).then(module => {
+    import('../utils/code-mirror' /* webpackChunkName: "code-mirror" */).then((module) => {
       const CodeMirror = module.default || module
 
       this.CM = CodeMirror.fromTextArea(this.$refs.input, {
@@ -69,7 +69,7 @@ export default {
         lineNumbers: this.lineNumbers,
         autoCloseTags: true,
         autoCloseBrackets: true,
-        readOnly: this.readOnly
+        readOnly: this.readOnly,
       })
 
       // this.CM.on('change', () => {
@@ -96,8 +96,8 @@ export default {
         ref: 'input',
         staticClass: 'w-100 border-0',
         style: { minWidth: '100px' },
-        props: { value: this.value }
-      })
+        props: { value: this.value },
+      }),
     ])
-  }
+  },
 }

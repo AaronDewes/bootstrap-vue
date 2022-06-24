@@ -18,8 +18,8 @@ describe('avatar', () => {
   it('should have expected structure when prop `button` set', async () => {
     const wrapper = mount(BAvatar, {
       propsData: {
-        button: true
-      }
+        button: true,
+      },
     })
     expect(wrapper.vm).toBeDefined()
     expect(wrapper.element.tagName).toBe('BUTTON')
@@ -47,8 +47,8 @@ describe('avatar', () => {
   it('should have expected structure when prop `href` set', async () => {
     const wrapper = mount(BAvatar, {
       propsData: {
-        href: '#foo'
-      }
+        href: '#foo',
+      },
     })
     expect(wrapper.vm).toBeDefined()
     expect(wrapper.element.tagName).toBe('A')
@@ -77,8 +77,8 @@ describe('avatar', () => {
   it('should have expected structure when prop `text` set', async () => {
     const wrapper = mount(BAvatar, {
       propsData: {
-        text: 'BV'
-      }
+        text: 'BV',
+      },
     })
     expect(wrapper.vm).toBeDefined()
     expect(wrapper.element.tagName).toBe('SPAN')
@@ -96,11 +96,11 @@ describe('avatar', () => {
   it('should have expected structure when default slot used', async () => {
     const wrapper = mount(BAvatar, {
       propsData: {
-        text: 'FOO'
+        text: 'FOO',
       },
       slots: {
-        default: 'BAR'
-      }
+        default: 'BAR',
+      },
     })
     expect(wrapper.vm).toBeDefined()
     expect(wrapper.element.tagName).toBe('SPAN')
@@ -120,8 +120,8 @@ describe('avatar', () => {
     const wrapper = mount(BAvatar, {
       propsData: {
         src: '/foo/bar',
-        text: 'BV'
-      }
+        text: 'BV',
+      },
     })
     expect(wrapper.vm).toBeDefined()
     expect(wrapper.element.tagName).toBe('SPAN')
@@ -160,8 +160,8 @@ describe('avatar', () => {
     const wrapper = mount(BAvatar, {
       localVue,
       propsData: {
-        icon: 'person'
-      }
+        icon: 'person',
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -218,8 +218,8 @@ describe('avatar', () => {
   it('should have expected structure when prop badge is set', async () => {
     const wrapper = mount(BAvatar, {
       propsData: {
-        badge: true
-      }
+        badge: true,
+      },
     })
     expect(wrapper.vm).toBeDefined()
     expect(wrapper.element.tagName).toBe('SPAN')
@@ -250,8 +250,8 @@ describe('avatar', () => {
     const wrapper1 = mount(BAvatar, {
       provide: {
         // Emulate `undefined`/`null` props
-        getBvAvatarGroup: () => ({})
-      }
+        getBvAvatarGroup: () => ({}),
+      },
     })
 
     expect(wrapper1.vm).toBeDefined()
@@ -266,9 +266,9 @@ describe('avatar', () => {
     const wrapper2 = mount(BAvatar, {
       provide: {
         getBvAvatarGroup: () => ({
-          variant: 'danger'
-        })
-      }
+          variant: 'danger',
+        }),
+      },
     })
 
     expect(wrapper2.vm).toBeDefined()
@@ -285,12 +285,12 @@ describe('avatar', () => {
   it('should handle b-avatar-group size', async () => {
     const wrapper1 = mount(BAvatar, {
       propsData: {
-        size: '5em'
+        size: '5em',
       },
       provide: {
         // Emulate `undefined`/`null` props
-        getBvAvatarGroup: () => ({})
-      }
+        getBvAvatarGroup: () => ({}),
+      },
     })
 
     expect(wrapper1.vm).toBeDefined()
@@ -304,13 +304,13 @@ describe('avatar', () => {
 
     const wrapper2 = mount(BAvatar, {
       propsData: {
-        size: '2em'
+        size: '2em',
       },
       provide: {
         getBvAvatarGroup: () => ({
-          size: '5em'
-        })
-      }
+          size: '5em',
+        }),
+      },
     })
 
     expect(wrapper2.vm).toBeDefined()
@@ -327,8 +327,8 @@ describe('avatar', () => {
     const wrapper = mount(BAvatar, {
       propsData: {
         src: '/foo/bar',
-        alt: ''
-      }
+        alt: '',
+      },
     })
     expect(wrapper.vm).toBeDefined()
     expect(wrapper.find('img').exists()).toBe(true)
@@ -342,8 +342,8 @@ describe('avatar', () => {
     const wrapper = mount(BAvatar, {
       propsData: {
         src: '/foo/bar',
-        alt: null
-      }
+        alt: null,
+      },
     })
     expect(wrapper.vm).toBeDefined()
     expect(wrapper.find('img').exists()).toBe(true)

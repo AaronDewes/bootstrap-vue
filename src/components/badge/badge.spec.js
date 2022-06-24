@@ -19,8 +19,8 @@ describe('badge', () => {
   it('should have default slot content', async () => {
     const wrapper = mount(BBadge, {
       slots: {
-        default: 'foobar'
-      }
+        default: 'foobar',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('SPAN')
@@ -38,8 +38,8 @@ describe('badge', () => {
   it('should apply variant class', async () => {
     const wrapper = mount(BBadge, {
       propsData: {
-        variant: 'danger'
-      }
+        variant: 'danger',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('SPAN')
@@ -55,8 +55,8 @@ describe('badge', () => {
   it('should apply pill class', async () => {
     const wrapper = mount(BBadge, {
       propsData: {
-        pill: true
-      }
+        pill: true,
+      },
     })
 
     expect(wrapper.element.tagName).toBe('SPAN')
@@ -72,8 +72,8 @@ describe('badge', () => {
   it('should have active class when prop active set', async () => {
     const wrapper = mount(BBadge, {
       propsData: {
-        active: true
-      }
+        active: true,
+      },
     })
 
     expect(wrapper.element.tagName).toBe('SPAN')
@@ -89,8 +89,8 @@ describe('badge', () => {
   it('should have disabled class when prop disabled set', async () => {
     const wrapper = mount(BBadge, {
       propsData: {
-        disabled: true
-      }
+        disabled: true,
+      },
     })
 
     expect(wrapper.element.tagName).toBe('SPAN')
@@ -106,8 +106,8 @@ describe('badge', () => {
   it('renders custom root element', async () => {
     const wrapper = mount(BBadge, {
       propsData: {
-        tag: 'small'
-      }
+        tag: 'small',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('SMALL')
@@ -123,8 +123,8 @@ describe('badge', () => {
   it('renders link when href provided', async () => {
     const wrapper = mount(BBadge, {
       propsData: {
-        href: '/foo/bar'
-      }
+        href: '/foo/bar',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('A')

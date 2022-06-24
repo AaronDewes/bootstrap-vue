@@ -19,7 +19,7 @@ const App = {
     'variant',
     'customClass',
     'delay',
-    'isModal'
+    'isModal',
   ],
   render(h) {
     const tipProps = {
@@ -32,12 +32,12 @@ const App = {
       title: this.title || null,
       variant: this.variant,
       customClass: this.customClass,
-      delay: this.delay
+      delay: this.delay,
     }
     const wrapperData = {
       attrs: { id: 'wrapper' },
       // Class to simulate being in a modal
-      class: { 'modal-content': !!this.isModal }
+      class: { 'modal-content': !!this.isModal },
     }
     return h('article', wrapperData, [
       h(
@@ -47,17 +47,17 @@ const App = {
             id: 'foo',
             type: 'button',
             disabled: this.btnDisabled || null,
-            title: this.titleAttr || null
+            title: this.titleAttr || null,
           },
-          ref: 'target'
+          ref: 'target',
         },
         'text'
       ),
       typeof this.$slots.default === `undefined` || !this.$slots.default
         ? h(BTooltip, { props: tipProps })
-        : h(BTooltip, { props: tipProps }, this.$slots.default)
+        : h(BTooltip, { props: tipProps }, this.$slots.default),
     ])
-  }
+  },
 }
 
 // Note: `wrapper.destroy()` MUST be called at the end of each test in order for
@@ -76,8 +76,8 @@ describe('b-tooltip', () => {
       setEnd: () => {},
       commonAncestorContainer: {
         nodeName: 'BODY',
-        ownerDocument: document
-      }
+        ownerDocument: document,
+      },
     })
     // Mock `getBoundingClientRect()` so that the `isVisible(el)` test returns `true`
     // Needed for visibility checks of trigger element, etc
@@ -87,7 +87,7 @@ describe('b-tooltip', () => {
       top: 0,
       left: 0,
       bottom: 0,
-      right: 0
+      right: 0,
     }))
   })
 
@@ -102,11 +102,11 @@ describe('b-tooltip', () => {
     const wrapper = mount(App, {
       attachTo: document.body,
       propsData: {
-        triggers: 'click'
+        triggers: 'click',
       },
       slots: {
-        default: 'title'
-      }
+        default: 'title',
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -140,11 +140,11 @@ describe('b-tooltip', () => {
       attachTo: document.body,
       propsData: {
         triggers: 'click',
-        show: true
+        show: true,
       },
       slots: {
-        default: 'title'
-      }
+        default: 'title',
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -225,8 +225,8 @@ describe('b-tooltip', () => {
       propsData: {
         triggers: 'click',
         show: true,
-        title: 'hello'
-      }
+        title: 'hello',
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -293,11 +293,11 @@ describe('b-tooltip', () => {
       propsData: {
         target: () => wrapper.vm.$refs.target,
         triggers: 'click',
-        show: false
+        show: false,
       },
       slots: {
-        default: 'title'
-      }
+        default: 'title',
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -353,11 +353,11 @@ describe('b-tooltip', () => {
       attachTo: document.body,
       propsData: {
         triggers: 'click',
-        show: false
+        show: false,
       },
       slots: {
-        default: 'title'
-      }
+        default: 'title',
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -414,11 +414,11 @@ describe('b-tooltip', () => {
       propsData: {
         triggers: 'focus',
         show: false,
-        delay: 0
+        delay: 0,
       },
       slots: {
-        default: 'title'
-      }
+        default: 'title',
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -493,11 +493,11 @@ describe('b-tooltip', () => {
         triggers: 'hover',
         show: false,
         // Add no fade for coverage
-        noFade: true
+        noFade: true,
       },
       slots: {
-        default: 'title'
-      }
+        default: 'title',
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -571,11 +571,11 @@ describe('b-tooltip', () => {
       propsData: {
         triggers: 'click',
         show: false,
-        disabled: true
+        disabled: true,
       },
       slots: {
-        default: 'title'
-      }
+        default: 'title',
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -674,11 +674,11 @@ describe('b-tooltip', () => {
         triggers: 'click',
         show: true,
         disabled: false,
-        titleAttr: 'ignored'
+        titleAttr: 'ignored',
       },
       slots: {
-        default: 'title'
-      }
+        default: 'title',
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -755,11 +755,11 @@ describe('b-tooltip', () => {
         triggers: 'click',
         show: true,
         disabled: false,
-        titleAttr: 'ignored'
+        titleAttr: 'ignored',
       },
       slots: {
-        default: 'title'
-      }
+        default: 'title',
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -827,11 +827,11 @@ describe('b-tooltip', () => {
         triggers: 'click',
         show: true,
         disabled: false,
-        titleAttr: 'ignored'
+        titleAttr: 'ignored',
       },
       slots: {
-        default: 'title'
-      }
+        default: 'title',
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -898,11 +898,11 @@ describe('b-tooltip', () => {
         triggers: 'click',
         show: true,
         disabled: false,
-        titleAttr: 'ignored'
+        titleAttr: 'ignored',
       },
       slots: {
-        default: 'title'
-      }
+        default: 'title',
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -971,11 +971,11 @@ describe('b-tooltip', () => {
         triggers: 'click',
         show: true,
         disabled: false,
-        titleAttr: 'ignored'
+        titleAttr: 'ignored',
       },
       slots: {
-        default: 'title'
-      }
+        default: 'title',
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -1044,11 +1044,11 @@ describe('b-tooltip', () => {
         show: true,
         disabled: false,
         titleAttr: 'ignored',
-        isModal: true
+        isModal: true,
       },
       slots: {
-        default: 'title'
-      }
+        default: 'title',
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -1116,11 +1116,11 @@ describe('b-tooltip', () => {
       propsData: {
         triggers: 'click',
         show: true,
-        disabled: false
+        disabled: false,
       },
       slots: {
-        default: 'title'
-      }
+        default: 'title',
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -1227,8 +1227,8 @@ describe('b-tooltip', () => {
       attachTo: document.body,
       propsData: {
         show: true,
-        title: 'hello'
-      }
+        title: 'hello',
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -1290,11 +1290,11 @@ describe('b-tooltip', () => {
     const wrapper = mount(App, {
       attachTo: document.body,
       propsData: {
-        show: true
+        show: true,
       },
       slots: {
-        default: 'title'
-      }
+        default: 'title',
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -1345,11 +1345,11 @@ describe('b-tooltip', () => {
       attachTo: document.body,
       propsData: {
         show: true,
-        variant: 'danger'
+        variant: 'danger',
       },
       slots: {
-        default: 'title'
-      }
+        default: 'title',
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -1397,11 +1397,11 @@ describe('b-tooltip', () => {
       attachTo: document.body,
       propsData: {
         show: true,
-        customClass: 'foobar-class'
+        customClass: 'foobar-class',
       },
       slots: {
-        default: 'title'
-      }
+        default: 'title',
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -1453,11 +1453,11 @@ describe('b-tooltip', () => {
       propsData: {
         triggers: 'click',
         show: false,
-        titleAttr: 'bar'
+        titleAttr: 'bar',
       },
       slots: {
-        default: 'title'
-      }
+        default: 'title',
+      },
     })
 
     expect(wrapper.vm).toBeDefined()

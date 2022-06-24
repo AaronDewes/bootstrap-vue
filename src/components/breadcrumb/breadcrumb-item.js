@@ -19,9 +19,9 @@ export const BBreadcrumbItem = /*#__PURE__*/ Vue.extend({
       'li',
       mergeData(data, {
         staticClass: 'breadcrumb-item',
-        class: { active: props.active }
+        class: { active: props.active },
       }),
       [h(BBreadcrumbLink, { props }, children)]
     )
-  }
+  },
 })

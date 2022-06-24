@@ -15,7 +15,7 @@ if (typeof window !== 'undefined') {
       const rx = /^\s+/
       obj[prop] =
         obj.trimLeft ||
-        function() {
+        function () {
           return this.replace(rx, '')
         }
     }
@@ -34,7 +34,7 @@ if (typeof window !== 'undefined') {
       const rx = /\s+$/
       obj[prop] =
         obj.trimRight ||
-        function() {
+        function () {
           return this.replace(rx, '')
         }
     }
@@ -60,8 +60,8 @@ const transformOptions = {
   plugins: [
     // Not used as we need to import the helpers into the transpiled code
     // 'transform-runtime',
-    'proposal-object-rest-spread'
-  ]
+    'proposal-object-rest-spread',
+  ],
 }
 
 // Our transpilation compiler method

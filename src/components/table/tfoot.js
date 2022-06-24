@@ -11,7 +11,7 @@ import { normalizeSlotMixin } from '../../mixins/normalize-slot'
 export const props = makePropsConfigurable(
   {
     // Supported values: 'lite', 'dark', or null
-    footVariant: makeProp(PROP_TYPE_STRING)
+    footVariant: makeProp(PROP_TYPE_STRING),
   },
   NAME_TFOOT
 )
@@ -27,14 +27,14 @@ export const BTfoot = /*#__PURE__*/ Vue.extend({
   mixins: [attrsMixin, listenersMixin, normalizeSlotMixin],
   provide() {
     return {
-      getBvTableRowGroup: () => this
+      getBvTableRowGroup: () => this,
     }
   },
   inject: {
     // Sniffed by `<b-tr>` / `<b-td>` / `<b-th>`
     getBvTable: {
-      default: /* istanbul ignore next */ () => () => ({})
-    }
+      default: /* istanbul ignore next */ () => () => ({}),
+    },
   },
   inheritAttrs: false,
   props,
@@ -78,7 +78,7 @@ export const BTfoot = /*#__PURE__*/ Vue.extend({
     },
     tfootAttrs() {
       return { ...this.bvAttrs, role: 'rowgroup' }
-    }
+    },
   },
   render(h) {
     return h(
@@ -87,9 +87,9 @@ export const BTfoot = /*#__PURE__*/ Vue.extend({
         class: this.tfootClasses,
         attrs: this.tfootAttrs,
         // Pass down any native listeners
-        on: this.bvListeners
+        on: this.bvListeners,
       },
       this.normalizeSlot()
     )
-  }
+  },
 })

@@ -14,7 +14,7 @@ describe('mixins/listen-on-root', () => {
       },
       render(h) {
         return h('div', this.$slots.default)
-      }
+      },
     }
 
     const App = {
@@ -22,18 +22,18 @@ describe('mixins/listen-on-root', () => {
       props: {
         destroy: {
           type: Boolean,
-          default: false
-        }
+          default: false,
+        },
       },
       render(h) {
         return h('div', [this.destroy ? h() : h(TestComponent, 'test-component')])
-      }
+      },
     }
 
     const wrapper = mount(App, {
       propsData: {
-        destroy: false
-      }
+        destroy: false,
+      },
     })
 
     expect(wrapper.vm).toBeDefined()

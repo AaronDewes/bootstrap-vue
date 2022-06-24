@@ -30,7 +30,7 @@ The directive has no modifiers.
 
 ```html
 <template>
-  <div v-b-hover="hoverHandler"> ... </div>
+  <div v-b-hover="hoverHandler">...</div>
 </template>
 
 <script>
@@ -42,8 +42,8 @@ The directive has no modifiers.
         } else {
           // Do something else
         }
-      }
-    }
+      },
+    },
   }
 </script>
 ```
@@ -67,14 +67,14 @@ In the following, we are swapping icons and text color depending on the hover st
   export default {
     data() {
       return {
-        isHovered: false
+        isHovered: false,
       }
     },
     methods: {
       handleHover(hovered) {
         this.isHovered = hovered
-      }
-    }
+      },
+    },
   }
 </script>
 

@@ -17,6 +17,6 @@ export const directivesPlugin = /*#__PURE__*/ pluginFactory({
     VBScrollspyPlugin,
     VBTogglePlugin,
     VBTooltipPlugin,
-    VBVisiblePlugin
-  }
+    VBVisiblePlugin,
+  },
 })

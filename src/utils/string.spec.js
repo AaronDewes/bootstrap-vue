@@ -5,7 +5,7 @@ import {
   pascalCase,
   startCase,
   toString,
-  upperFirst
+  upperFirst,
 } from './string'
 
 describe('utils/string', () => {

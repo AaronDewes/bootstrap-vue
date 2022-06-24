@@ -2,14 +2,14 @@ import { Vue } from '../../../vue'
 import {
   EVENT_NAME_HEAD_CLICKED,
   EVENT_NAME_SORT_CHANGED,
-  MODEL_EVENT_NAME_PREFIX
+  MODEL_EVENT_NAME_PREFIX,
 } from '../../../constants/events'
 import {
   PROP_TYPE_ARRAY_STRING,
   PROP_TYPE_BOOLEAN,
   PROP_TYPE_FUNCTION,
   PROP_TYPE_OBJECT,
-  PROP_TYPE_STRING
+  PROP_TYPE_STRING,
 } from '../../../constants/props'
 import { arrayIncludes } from '../../../utils/array'
 import { isFunction, isUndefinedOrNull } from '../../../utils/inspect'
@@ -58,13 +58,13 @@ export const props = {
   // This prop is named incorrectly
   // It should be `initialSortDirection` as it is a bit misleading
   // (not to mention it screws up the ARIA label on the headers)
-  sortDirection: makeProp(PROP_TYPE_STRING, SORT_DIRECTION_ASC, value => {
+  sortDirection: makeProp(PROP_TYPE_STRING, SORT_DIRECTION_ASC, (value) => {
     return arrayIncludes(SORT_DIRECTIONS, value)
   }),
   // Place the sorting icon on the left of the header cells
   sortIconLeft: makeProp(PROP_TYPE_BOOLEAN, false),
   // Sort null and undefined to appear last
-  sortNullLast: makeProp(PROP_TYPE_BOOLEAN, false)
+  sortNullLast: makeProp(PROP_TYPE_BOOLEAN, false),
 }
 
 // --- Mixin ---
@@ -75,7 +75,7 @@ export const sortingMixin = Vue.extend({
   data() {
     return {
       localSortBy: this[MODEL_PROP_NAME_SORT_BY] || '',
-      localSortDesc: this[MODEL_PROP_NAME_SORT_DESC] || false
+      localSortDesc: this[MODEL_PROP_NAME_SORT_DESC] || false,
     }
   },
   computed: {
@@ -83,7 +83,7 @@ export const sortingMixin = Vue.extend({
       return this.hasProvider ? !!this.noProviderSorting : !this.noLocalSorting
     },
     isSortable() {
-      return this.computedFields.some(f => f.sortable)
+      return this.computedFields.some((f) => f.sortable)
     },
     // Sorts the filtered items and returns a new array of the sorted items
     // When not sorted, the original items array will be returned
@@ -96,7 +96,7 @@ export const sortingMixin = Vue.extend({
         sortCompare,
         localSorting,
         filteredItems,
-        localItems
+        localItems,
       } = safeVueInstance(this)
       const items = (filteredItems || localItems || []).slice()
       const localeOptions = { ...this.sortCompareOptions, usage: 'sort' }
@@ -107,8 +107,8 @@ export const sortingMixin = Vue.extend({
         const formatter = isFunction(sortByFormatted)
           ? /* istanbul ignore next */ sortByFormatted
           : sortByFormatted
-            ? this.getFieldFormatter(sortBy)
-            : undefined
+          ? this.getFieldFormatter(sortBy)
+          : undefined
 
         // `stableSort` returns a new array, and leaves the original array intact
         return stableSort(items, (a, b) => {
@@ -128,7 +128,7 @@ export const sortingMixin = Vue.extend({
               formatter,
               locale,
               localeOptions,
-              nullLast
+              nullLast,
             })
           }
           // Negate result if sorting in descending order
@@ -137,7 +137,7 @@ export const sortingMixin = Vue.extend({
       }
 
       return items
-    }
+    },
   },
   watch: {
     /* istanbul ignore next: pain in the butt to test */
@@ -175,7 +175,7 @@ export const sortingMixin = Vue.extend({
       if (newValue !== oldValue) {
         this.$emit(MODEL_EVENT_NAME_SORT_BY, newValue)
       }
-    }
+    },
   },
   created() {
     if (this.isSortable) {
@@ -234,7 +234,7 @@ export const sortingMixin = Vue.extend({
       return {
         // If sortable and sortIconLeft are true, then place sort icon on the left
         'b-table-sort-icon-left':
-          field.sortable && this.sortIconLeft && !(isFoot && this.noFooterSorting)
+          field.sortable && this.sortIconLeft && !(isFoot && this.noFooterSorting),
       }
     },
     sortTheadThAttrs(key, field, isFoot) {
@@ -254,11 +254,11 @@ export const sortingMixin = Vue.extend({
             ? 'descending'
             : 'ascending'
           : sortable
-            ? 'none'
-            : null
+          ? 'none'
+          : null
       // Return the attribute
       return {
-        'aria-sort': ariaSort
+        'aria-sort': ariaSort,
       }
     },
     // A label to be placed in an `.sr-only` element in the header cell
@@ -294,6 +294,6 @@ export const sortingMixin = Vue.extend({
       }
       // Return the `.sr-only` sort label or `null` if no label
       return trim(labelSorting) || null
-    }
-  }
+    },
+  },
 })

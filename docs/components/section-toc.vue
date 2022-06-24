@@ -45,7 +45,7 @@ export default {
   components: {
     CarbonAd,
     Main,
-    Section
+    Section,
   },
   layout: 'docs',
   computed: {
@@ -66,13 +66,13 @@ export default {
       return title === 'Components'
         ? 'Component groups'
         : title === 'Misc'
-          ? 'Miscellaneous'
-          : title || ''
+        ? 'Miscellaneous'
+        : title || ''
     },
     pages() {
       return this.group.pages || []
-    }
-  }
+    },
+  },
 }
 </script>
 

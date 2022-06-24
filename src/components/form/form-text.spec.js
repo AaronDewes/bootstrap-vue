@@ -17,8 +17,8 @@ describe('form > form-text', () => {
   it('renders default slot content', async () => {
     const wrapper = mount(BFormText, {
       slots: {
-        default: 'foobar'
-      }
+        default: 'foobar',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('SMALL')
@@ -33,8 +33,8 @@ describe('form > form-text', () => {
   it('renders custom root element when prop tag set', async () => {
     const wrapper = mount(BFormText, {
       propsData: {
-        tag: 'p'
-      }
+        tag: 'p',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('P')
@@ -49,8 +49,8 @@ describe('form > form-text', () => {
   it('has user supplied ID', async () => {
     const wrapper = mount(BFormText, {
       propsData: {
-        id: 'foo'
-      }
+        id: 'foo',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('SMALL')
@@ -63,8 +63,8 @@ describe('form > form-text', () => {
   it('does not have class form-text when prop inline set', async () => {
     const wrapper = mount(BFormText, {
       propsData: {
-        inline: true
-      }
+        inline: true,
+      },
     })
 
     expect(wrapper.element.tagName).toBe('SMALL')
@@ -78,8 +78,8 @@ describe('form > form-text', () => {
   it('has variant class applied when prop text-variant is set', async () => {
     const wrapper = mount(BFormText, {
       propsData: {
-        textVariant: 'info'
-      }
+        textVariant: 'info',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('SMALL')

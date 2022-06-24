@@ -4,8 +4,8 @@ import { pluginFactory } from '../../utils/plugins'
 const FormFilePlugin = /*#__PURE__*/ pluginFactory({
   components: {
     BFormFile,
-    BFile: BFormFile
-  }
+    BFile: BFormFile,
+  },
 })
 
 export { FormFilePlugin, BFormFile }

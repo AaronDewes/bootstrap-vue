@@ -13,7 +13,7 @@ export const props = makePropsConfigurable(
     ...copyProps(BCardProps, prefixPropName.bind(null, 'header')),
     header: makeProp(PROP_TYPE_STRING),
     headerClass: makeProp(PROP_TYPE_ARRAY_OBJECT_STRING),
-    headerHtml: makeProp(PROP_TYPE_STRING)
+    headerHtml: makeProp(PROP_TYPE_STRING),
   }),
   NAME_CARD_HEADER
 )
@@ -37,12 +37,12 @@ export const BCardHeader = /*#__PURE__*/ Vue.extend({
           {
             [`bg-${headerBgVariant}`]: headerBgVariant,
             [`border-${headerBorderVariant}`]: headerBorderVariant,
-            [`text-${headerTextVariant}`]: headerTextVariant
-          }
+            [`text-${headerTextVariant}`]: headerTextVariant,
+          },
         ],
-        domProps: children ? {} : htmlOrText(props.headerHtml, props.header)
+        domProps: children ? {} : htmlOrText(props.headerHtml, props.header),
       }),
       children
     )
-  }
+  },
 })

@@ -16,8 +16,8 @@ describe('nav', () => {
   it('renders custom root element when prop tag set', async () => {
     const wrapper = mount(BNav, {
       propsData: {
-        tag: 'ol'
-      }
+        tag: 'ol',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('OL')
@@ -31,8 +31,8 @@ describe('nav', () => {
   it('renders default slot content', async () => {
     const wrapper = mount(BNav, {
       slots: {
-        default: 'foobar'
-      }
+        default: 'foobar',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('UL')
@@ -46,8 +46,8 @@ describe('nav', () => {
   it('applies pill style', async () => {
     const wrapper = mount(BNav, {
       propsData: {
-        pills: true
-      }
+        pills: true,
+      },
     })
 
     expect(wrapper.element.tagName).toBe('UL')
@@ -62,8 +62,8 @@ describe('nav', () => {
   it('applies tab style', async () => {
     const wrapper = mount(BNav, {
       propsData: {
-        tabs: true
-      }
+        tabs: true,
+      },
     })
 
     expect(wrapper.element.tagName).toBe('UL')
@@ -78,8 +78,8 @@ describe('nav', () => {
   it('applies vertical style', async () => {
     const wrapper = mount(BNav, {
       propsData: {
-        vertical: true
-      }
+        vertical: true,
+      },
     })
 
     expect(wrapper.element.tagName).toBe('UL')
@@ -94,8 +94,8 @@ describe('nav', () => {
   it('applies justify style when justified', async () => {
     const wrapper = mount(BNav, {
       propsData: {
-        justified: true
-      }
+        justified: true,
+      },
     })
 
     expect(wrapper.element.tagName).toBe('UL')
@@ -111,8 +111,8 @@ describe('nav', () => {
     const wrapper = mount(BNav, {
       propsData: {
         justified: true,
-        vertical: true
-      }
+        vertical: true,
+      },
     })
 
     expect(wrapper.element.tagName).toBe('UL')
@@ -127,8 +127,8 @@ describe('nav', () => {
   it('applies fill style style when fill set', async () => {
     const wrapper = mount(BNav, {
       propsData: {
-        fill: true
-      }
+        fill: true,
+      },
     })
 
     expect(wrapper.element.tagName).toBe('UL')
@@ -144,8 +144,8 @@ describe('nav', () => {
     const wrapper = mount(BNav, {
       propsData: {
         fill: true,
-        vertical: true
-      }
+        vertical: true,
+      },
     })
 
     expect(wrapper.element.tagName).toBe('UL')
@@ -160,8 +160,8 @@ describe('nav', () => {
   it('applies alignment correctly', async () => {
     const wrapper = mount(BNav, {
       propsData: {
-        align: 'center'
-      }
+        align: 'center',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('UL')
@@ -177,8 +177,8 @@ describe('nav', () => {
     const wrapper = mount(BNav, {
       propsData: {
         align: 'center',
-        vertical: true
-      }
+        vertical: true,
+      },
     })
 
     expect(wrapper.element.tagName).toBe('UL')
@@ -193,8 +193,8 @@ describe('nav', () => {
   it('applies small style', async () => {
     const wrapper = mount(BNav, {
       propsData: {
-        small: true
-      }
+        small: true,
+      },
     })
 
     expect(wrapper.element.tagName).toBe('UL')
@@ -210,8 +210,8 @@ describe('nav', () => {
     const wrapper = mount(BNav, {
       propsData: {
         tabs: true,
-        cardHeader: true
-      }
+        cardHeader: true,
+      },
     })
 
     expect(wrapper.element.tagName).toBe('UL')
@@ -228,8 +228,8 @@ describe('nav', () => {
     const wrapper = mount(BNav, {
       propsData: {
         pills: true,
-        cardHeader: true
-      }
+        cardHeader: true,
+      },
     })
 
     expect(wrapper.element.tagName).toBe('UL')

@@ -14,7 +14,7 @@ export const props = makePropsConfigurable(
     small: makeProp(PROP_TYPE_BOOLEAN, false),
     tag: makeProp(PROP_TYPE_STRING, 'span'),
     type: makeProp(PROP_TYPE_STRING, 'border'),
-    variant: makeProp(PROP_TYPE_STRING)
+    variant: makeProp(PROP_TYPE_STRING),
   },
   NAME_SPINNER
 )
@@ -40,15 +40,15 @@ export const BSpinner = /*#__PURE__*/ Vue.extend({
       mergeData(data, {
         attrs: {
           role: $label ? props.role || 'status' : null,
-          'aria-hidden': $label ? null : 'true'
+          'aria-hidden': $label ? null : 'true',
         },
         class: {
           [`spinner-${props.type}`]: props.type,
           [`spinner-${props.type}-sm`]: props.small,
-          [`text-${props.variant}`]: props.variant
-        }
+          [`text-${props.variant}`]: props.variant,
+        },
       }),
       [$label || h()]
     )
-  }
+  },
 })

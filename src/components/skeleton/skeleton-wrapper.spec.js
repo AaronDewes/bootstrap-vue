@@ -5,11 +5,11 @@ describe('skeleton-wrapper', () => {
   it('`loading` slot renders when `loading` prop is true', async () => {
     const wrapper = mount(BSkeletonWrapper, {
       propsData: {
-        loading: true
+        loading: true,
       },
       slots: {
-        loading: '<span>Loading state</span>'
-      }
+        loading: '<span>Loading state</span>',
+      },
     })
 
     expect(wrapper).toBeDefined()
@@ -24,11 +24,11 @@ describe('skeleton-wrapper', () => {
   it('`default` slot renders when `loading` prop is false', async () => {
     const wrapper = mount(BSkeletonWrapper, {
       propsData: {
-        loading: false
+        loading: false,
       },
       slots: {
-        default: '<button>Action</button>'
-      }
+        default: '<button>Action</button>',
+      },
     })
 
     expect(wrapper.find('button').text()).toBe('Action')
@@ -37,8 +37,8 @@ describe('skeleton-wrapper', () => {
   it('root element has correct aria attributes in loading state', async () => {
     const wrapper = mount(BSkeletonWrapper, {
       propsData: {
-        loading: true
-      }
+        loading: true,
+      },
     })
 
     expect(wrapper.attributes('aria-busy')).toBe('true')

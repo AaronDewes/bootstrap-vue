@@ -18,8 +18,8 @@ describe('button-group', () => {
   it('should render default slot', async () => {
     const wrapper = mount(BButtonGroup, {
       slots: {
-        default: '<span>foobar</span>'
-      }
+        default: '<span>foobar</span>',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')
@@ -36,8 +36,8 @@ describe('button-group', () => {
   it('should apply vertical class', async () => {
     const wrapper = mount(BButtonGroup, {
       propsData: {
-        vertical: true
-      }
+        vertical: true,
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')
@@ -51,8 +51,8 @@ describe('button-group', () => {
   it('should apply size class', async () => {
     const wrapper = mount(BButtonGroup, {
       propsData: {
-        size: 'sm'
-      }
+        size: 'sm',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')
@@ -67,8 +67,8 @@ describe('button-group', () => {
     const wrapper = mount(BButtonGroup, {
       propsData: {
         size: 'sm',
-        vertical: true
-      }
+        vertical: true,
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')
@@ -83,8 +83,8 @@ describe('button-group', () => {
   it('has custom role when aria-role prop set', async () => {
     const wrapper = mount(BButtonGroup, {
       propsData: {
-        ariaRole: 'foobar'
-      }
+        ariaRole: 'foobar',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')

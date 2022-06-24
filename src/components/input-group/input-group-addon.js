@@ -11,7 +11,7 @@ export const props = makePropsConfigurable(
     append: makeProp(PROP_TYPE_BOOLEAN, false),
     id: makeProp(PROP_TYPE_STRING),
     isText: makeProp(PROP_TYPE_BOOLEAN, false),
-    tag: makeProp(PROP_TYPE_STRING, 'div')
+    tag: makeProp(PROP_TYPE_STRING, 'div'),
   },
   NAME_INPUT_GROUP_ADDON
 )
@@ -31,13 +31,13 @@ export const BInputGroupAddon = /*#__PURE__*/ Vue.extend({
       mergeData(data, {
         class: {
           'input-group-append': append,
-          'input-group-prepend': !append
+          'input-group-prepend': !append,
         },
         attrs: {
-          id: props.id
-        }
+          id: props.id,
+        },
       }),
       props.isText ? [h(BInputGroupText, children)] : children
     )
-  }
+  },
 })

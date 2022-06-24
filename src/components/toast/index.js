@@ -6,7 +6,7 @@ import { pluginFactory } from '../../utils/plugins'
 const ToastPlugin = /*#__PURE__*/ pluginFactory({
   components: { BToast, BToaster },
   // $bvToast injection
-  plugins: { BVToastPlugin }
+  plugins: { BVToastPlugin },
 })
 
 export { ToastPlugin, BToast, BToaster }

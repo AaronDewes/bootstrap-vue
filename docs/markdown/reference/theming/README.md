@@ -167,7 +167,7 @@ $grid-breakpoints: (
   sm: 456px,
   md: 789px,
   lg: 999px,
-  xl: 1234px
+  xl: 1234px,
 );
 $bv-enable-table-stacked: false;
 

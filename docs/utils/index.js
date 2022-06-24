@@ -1,24 +1,25 @@
 const RX_HYPHENATE = /\B([A-Z])/g
 
 // Converts PascalCase or camelCase to kebab-case
-export const kebabCase = value => value.replace(RX_HYPHENATE, '-$1').toLowerCase()
+export const kebabCase = (value) => value.replace(RX_HYPHENATE, '-$1').toLowerCase()
 
 // Parse a fully qualified version from a string
-export const parseVersion = version => {
+export const parseVersion = (version) => {
   const matches = version.match(/([0-9]+\.[0-9]+\.[0-9]+)/) || []
   return matches.length > 0 ? matches[0] : ''
 }
 
 // Parse a fully qualified version from a string (including alpha/beta/etc.)
-export const parseFullVersion = version => {
+export const parseFullVersion = (version) => {
   const matches = version.match(/([0-9]+\.[0-9]+\.[0-9]+(-[a-z]+[.-]?[0-9]+)?)/) || []
   return matches.length > 0 ? matches[0] : ''
 }
 
-export const getComponentName = component => kebabCase(component).replace(/{/g, '-{')
-export const getCleanComponentName = component => getComponentName(component).replace(/({|})/g, '')
+export const getComponentName = (component) => kebabCase(component).replace(/{/g, '-{')
+export const getCleanComponentName = (component) =>
+  getComponentName(component).replace(/({|})/g, '')
 
-export const parseUrl = value => {
+export const parseUrl = (value) => {
   const $anchor = document.createElement('a')
   $anchor.href = value
 
@@ -64,7 +65,7 @@ export const parseUrl = value => {
   return parseUrl(`${baseUrl}/${value}`)
 }
 
-export const relativeUrl = url => {
+export const relativeUrl = (url) => {
   const { pathname, hash } = parseUrl(url)
   if (!pathname) {
     return url
@@ -101,7 +102,7 @@ export const updateMetaTOC = (tocData = {}, meta = null) => {
         // Add component import sub-heading
         {
           label: 'Importing individual components',
-          href: '#importing-individual-components'
+          href: '#importing-individual-components',
         }
       )
     }
@@ -109,19 +110,19 @@ export const updateMetaTOC = (tocData = {}, meta = null) => {
     if (hasDirectives) {
       componentToc.push({
         label: 'Importing individual directives',
-        href: '#importing-individual-directives'
+        href: '#importing-individual-directives',
       })
     }
     // Add plugin import sub-heading
     componentToc.push({
       label: 'Importing as a Vue.js plugin',
-      href: '#importing-as-a-plugin'
+      href: '#importing-as-a-plugin',
     })
     // Add component reference heading
     tocData.toc.push({
       label: 'Component reference',
       href: '#component-reference',
-      toc: componentToc
+      toc: componentToc,
     })
   } else if (isDirective) {
     // Add directive reference heading
@@ -132,35 +133,35 @@ export const updateMetaTOC = (tocData = {}, meta = null) => {
         // Directive import sub-heading
         {
           label: 'Importing individual directives',
-          href: '#importing-individual-directives'
+          href: '#importing-individual-directives',
         },
         // Plugin import sub-heading
         {
           label: 'Importing as a Vue.js plugin',
-          href: '#importing-as-a-plugin'
-        }
-      ]
+          href: '#importing-as-a-plugin',
+        },
+      ],
     })
   }
 
   return tocData
 }
 
-export const importAll = context => {
+export const importAll = (context) => {
   // Get array of datas by keys from context
   const datas = context.keys().map(context)
 
   return (
     datas
       // Filter out private datas
-      .filter(data => !data.private)
+      .filter((data) => !data.private)
       // Map meta information
-      .map(data => data.meta || data)
+      .map((data) => data.meta || data)
       // Normalize meta information
-      .map(meta => ({
+      .map((meta) => ({
         ...meta,
         slug:
-          meta.slug === undefined ? (meta.title || '').replace(' ', '-').toLowerCase() : meta.slug
+          meta.slug === undefined ? (meta.title || '').replace(' ', '-').toLowerCase() : meta.slug,
       }))
       // Sort by slug
       .sort((a, b) => {
@@ -188,7 +189,7 @@ export const scrollTo = ($scroller, to, duration, callback) => {
   const change = to - start
   const increment = 20
   let currentTime = 0
-  const animateScroll = function() {
+  const animateScroll = function () {
     currentTime += increment
     $scroller.scrollTop = Math.round(easeInOutQuad(currentTime, start, change, duration))
     if (currentTime < duration) {
@@ -202,7 +203,7 @@ export const scrollTo = ($scroller, to, duration, callback) => {
 
 // Return an element's offset wrt document element
 // https://j11y.io/jquery/#v=git&fn=jQuery.fn.offset
-export const offsetTop = $el =>
+export const offsetTop = ($el) =>
   $el.getClientRects().length > 0
     ? $el.getBoundingClientRect().top + $el.ownerDocument.defaultView.pageYOffset
     : 0

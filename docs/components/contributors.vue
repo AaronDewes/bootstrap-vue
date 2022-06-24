@@ -48,10 +48,7 @@
     <!-- BACKERS -->
     <template v-if="backers.length > 0">
       <h3 class="h4 mx-auto mt-4 text-muted">Backers</h3>
-      <BVContributorsContainer
-        type="backers"
-        :contributors="backers"
-      ></BVContributorsContainer>
+      <BVContributorsContainer type="backers" :contributors="backers"></BVContributorsContainer>
     </template>
 
     <!-- DONORS -->
@@ -94,7 +91,7 @@ export default {
       silverSponsors: [],
       bronzeSponsors: [],
       backers: [],
-      donors: []
+      donors: [],
     }
   },
   computed: {
@@ -103,9 +100,9 @@ export default {
         ...this.platinumSponsors,
         ...this.goldSponsors,
         ...this.silverSponsors,
-        ...this.bronzeSponsors
+        ...this.bronzeSponsors,
       ]
-    }
+    },
   },
   methods: {
     makeOcRequest(cb, params = {}) {
@@ -129,7 +126,7 @@ export default {
           cb(this.processOcNodes(response.nodes || []), null)
         } else {
           // We just return an empty node list rather than spew an error
-          // eslint-disable-next-line node/no-callback-literal
+          // eslint-disable-next-line n/no-callback-literal
           cb([], xhr.statusText)
         }
       }
@@ -140,7 +137,7 @@ export default {
       xhr.send()
     },
     processOcNodes(nodes = []) {
-      return nodes.map(entry => {
+      return nodes.map((entry) => {
         // For recurring donations, this is the total amount donated
         // For users that donate multiple times, this will be the total of all one time donations
         const totalAmount = entry.totalDonations.value
@@ -175,7 +172,7 @@ export default {
           // We now have sponsor tiers, but some appear as
           // `null` (they were made before the tiers were created)
           tier: (entry.tier || {}).slug || null,
-          date: new Date(entry.createdAt)
+          date: new Date(entry.createdAt),
         }
       })
     },
@@ -210,7 +207,7 @@ export default {
       // backing before we started the tier levels
       // Limit to top N backers
       this.backers = backers
-        .filter(b => b.tier === null || b.tier === 'backers')
+        .filter((b) => b.tier === null || b.tier === 'backers')
         .sort(this.sortCompare)
         .slice(0, MAX_BACKERS)
     },
@@ -222,7 +219,7 @@ export default {
       // Limit to top N most recent donors
       this.donors = donors
         .reduce((results, donor) => {
-          if (results.map(d => d.slug).indexOf(donor.slug) === -1) {
+          if (results.map((d) => d.slug).indexOf(donor.slug) === -1) {
             results.push(donor)
           }
           return results
@@ -247,8 +244,8 @@ export default {
       this.makeOcRequest(this.processBackers.bind(this), { status: 'active' })
       // Donors are people/organizations with one-time (paid) donations
       this.makeOcRequest(this.processDonors.bind(this), { status: 'paid' })
-    }
-  }
+    },
+  },
 }
 </script>
 

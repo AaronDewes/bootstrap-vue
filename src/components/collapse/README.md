@@ -96,9 +96,9 @@ support.
   export default {
     data() {
       return {
-        visible: true
+        visible: true,
       }
-    }
+    },
   }
 </script>
 
@@ -150,7 +150,9 @@ at a time.
       </b-card-header>
       <b-collapse id="accordion-1" visible accordion="my-accordion" role="tabpanel">
         <b-card-body>
-          <b-card-text>I start opened because <code>visible</code> is <code>true</code></b-card-text>
+          <b-card-text
+            >I start opened because <code>visible</code> is <code>true</code></b-card-text
+          >
           <b-card-text>{{ text }}</b-card-text>
         </b-card-body>
       </b-collapse>
@@ -193,9 +195,9 @@ at a time.
           wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher
           vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic
           synth nesciunt you probably haven't heard of them accusamus labore VHS.
-        `
+        `,
       }
-    }
+    },
   }
 </script>
 
@@ -260,7 +262,7 @@ export default {
       console.log('collapseId:', collapseId)
       console.log('isJustShown:', isJustShown)
     })
-  }
+  },
 }
 ```
 

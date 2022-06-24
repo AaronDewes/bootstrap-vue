@@ -7,7 +7,7 @@ import { eventOn, eventOff } from '../utils/events'
 export const clickOutMixin = Vue.extend({
   data() {
     return {
-      listenForClickOut: false
+      listenForClickOut: false,
     }
   },
   watch: {
@@ -28,7 +28,7 @@ export const clickOutMixin = Vue.extend({
           )
         }
       }
-    }
+    },
   },
   beforeCreate() {
     // Declare non-reactive properties
@@ -67,6 +67,6 @@ export const clickOutMixin = Vue.extend({
       if (this.clickOutHandler && this.isClickOut(event)) {
         this.clickOutHandler(event)
       }
-    }
-  }
+    },
+  },
 })

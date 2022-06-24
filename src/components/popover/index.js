@@ -4,7 +4,7 @@ import { pluginFactory } from '../../utils/plugins'
 
 const PopoverPlugin = /*#__PURE__*/ pluginFactory({
   components: { BPopover },
-  plugins: { VBPopoverPlugin }
+  plugins: { VBPopoverPlugin },
 })
 
 export { PopoverPlugin, BPopover }

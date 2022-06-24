@@ -50,7 +50,7 @@ auto-dismissing).
       return {
         dismissSecs: 10,
         dismissCountDown: 0,
-        showDismissibleAlert: false
+        showDismissibleAlert: false,
       }
     },
     methods: {
@@ -59,8 +59,8 @@ auto-dismissing).
       },
       showAlert() {
         this.dismissCountDown = this.dismissSecs
-      }
-    }
+      },
+    },
   }
 </script>
 
@@ -124,7 +124,7 @@ styled with the appropriate color matching the variant.
       run a bit longer so that you can see how spacing within an alert works with this kind of
       content.
     </p>
-    <hr>
+    <hr />
     <p class="mb-0">
       Whenever you need to, be sure to use margin utilities to keep things nice and tidy.
     </p>
@@ -199,7 +199,7 @@ integer number of seconds are supported.
     data() {
       return {
         dismissSecs: 5,
-        dismissCountDown: 0
+        dismissCountDown: 0,
       }
     },
     methods: {
@@ -208,8 +208,8 @@ integer number of seconds are supported.
       },
       showAlert() {
         this.dismissCountDown = this.dismissSecs
-      }
-    }
+      },
+    },
   }
 </script>
 
@@ -260,7 +260,7 @@ Use the `fade` prop to enable animation. By default alerts are not animated.
       return {
         dismissSecs: 5,
         dismissCountDown: 0,
-        showDismissibleAlert: false
+        showDismissibleAlert: false,
       }
     },
     methods: {
@@ -269,8 +269,8 @@ Use the `fade` prop to enable animation. By default alerts are not animated.
       },
       showAlert() {
         this.dismissCountDown = this.dismissSecs
-      }
-    }
+      },
+    },
   }
 </script>
 

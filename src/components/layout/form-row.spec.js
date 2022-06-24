@@ -16,8 +16,8 @@ describe('layout > form-row', () => {
   it('custom root element when prop tag set', async () => {
     const wrapper = mount(BFormRow, {
       propsData: {
-        tag: 'span'
-      }
+        tag: 'span',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('SPAN')
@@ -31,8 +31,8 @@ describe('layout > form-row', () => {
   it('renders default slot content', async () => {
     const wrapper = mount(BFormRow, {
       slots: {
-        default: 'foobar'
-      }
+        default: 'foobar',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')

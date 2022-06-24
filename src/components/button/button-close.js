@@ -14,7 +14,7 @@ export const props = makePropsConfigurable(
     ariaLabel: makeProp(PROP_TYPE_STRING, 'Close'),
     content: makeProp(PROP_TYPE_STRING, '&times;'),
     disabled: makeProp(PROP_TYPE_BOOLEAN, false),
-    textVariant: makeProp(PROP_TYPE_STRING)
+    textVariant: makeProp(PROP_TYPE_STRING),
   },
   NAME_BUTTON_CLOSE
 )
@@ -33,12 +33,12 @@ export const BButtonClose = /*#__PURE__*/ Vue.extend({
     const componentData = {
       staticClass: 'close',
       class: {
-        [`text-${props.textVariant}`]: props.textVariant
+        [`text-${props.textVariant}`]: props.textVariant,
       },
       attrs: {
         type: 'button',
         disabled: props.disabled,
-        'aria-label': props.ariaLabel ? String(props.ariaLabel) : null
+        'aria-label': props.ariaLabel ? String(props.ariaLabel) : null,
       },
       on: {
         click(event) {
@@ -47,8 +47,8 @@ export const BButtonClose = /*#__PURE__*/ Vue.extend({
           if (props.disabled && isEvent(event)) {
             stopEvent(event)
           }
-        }
-      }
+        },
+      },
     }
 
     // Careful not to override the default slot with innerHTML
@@ -61,5 +61,5 @@ export const BButtonClose = /*#__PURE__*/ Vue.extend({
       mergeData(data, componentData),
       normalizeSlot(SLOT_NAME_DEFAULT, {}, $scopedSlots, $slots)
     )
-  }
+  },
 })

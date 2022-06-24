@@ -2,7 +2,11 @@ import { mount } from '@vue/test-utils'
 import { BTable } from './table'
 
 const testItems = [{ a: 1, b: 2, c: 3 }]
-const testFields = [{ key: 'a', label: 'A' }, { key: 'b', label: 'B' }, { key: 'c', label: 'C' }]
+const testFields = [
+  { key: 'a', label: 'A' },
+  { key: 'b', label: 'B' },
+  { key: 'c', label: 'C' },
+]
 
 describe('table > custom tfoot slot', () => {
   it('should not render tfoot by default', async () => {
@@ -10,8 +14,8 @@ describe('table > custom tfoot slot', () => {
       propsData: {
         fields: testFields,
         items: testItems,
-        footClone: false
-      }
+        footClone: false,
+      },
     })
     expect(wrapper).toBeDefined()
     expect(wrapper.element.tagName).toBe('TABLE')
@@ -27,11 +31,11 @@ describe('table > custom tfoot slot', () => {
       propsData: {
         fields: testFields,
         items: testItems,
-        footClone: false
+        footClone: false,
       },
       slots: {
-        'custom-foot': '<tr><td colspan="3">CUSTOM-FOOTER</td></tr>'
-      }
+        'custom-foot': '<tr><td colspan="3">CUSTOM-FOOTER</td></tr>',
+      },
     })
     expect(wrapper).toBeDefined()
     expect(wrapper.element.tagName).toBe('TABLE')
@@ -49,11 +53,11 @@ describe('table > custom tfoot slot', () => {
       propsData: {
         fields: testFields,
         items: testItems,
-        footClone: true
+        footClone: true,
       },
       slots: {
-        'custom-foot': '<tr><td colspan="3">CUSTOM-FOOTER</td></tr>'
-      }
+        'custom-foot': '<tr><td colspan="3">CUSTOM-FOOTER</td></tr>',
+      },
     })
     expect(wrapper).toBeDefined()
     expect(wrapper.element.tagName).toBe('TABLE')
@@ -71,11 +75,11 @@ describe('table > custom tfoot slot', () => {
         fields: testFields,
         items: testItems,
         footClone: false,
-        footVariant: 'dark'
+        footVariant: 'dark',
       },
       slots: {
-        'custom-foot': '<tr><td colspan="3">CUSTOM-FOOTER</td></tr>'
-      }
+        'custom-foot': '<tr><td colspan="3">CUSTOM-FOOTER</td></tr>',
+      },
     })
     expect(wrapper).toBeDefined()
     expect(wrapper.element.tagName).toBe('TABLE')

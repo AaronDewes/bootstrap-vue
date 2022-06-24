@@ -17,8 +17,8 @@ describe('dropdown', () => {
       setEnd: () => {},
       commonAncestorContainer: {
         nodeName: 'BODY',
-        ownerDocument: document
-      }
+        ownerDocument: document,
+      },
     })
     // Mock `getBoundingClientRect()` so that the `isVisible(el)` test returns `true`
     // Needed for keyboard navigation testing
@@ -28,7 +28,7 @@ describe('dropdown', () => {
       top: 0,
       left: 0,
       bottom: 0,
-      right: 0
+      right: 0,
     }))
   })
 
@@ -40,7 +40,7 @@ describe('dropdown', () => {
 
   it('has expected default structure', async () => {
     const wrapper = mount(BDropdown, {
-      attachTo: document.body
+      attachTo: document.body,
     })
 
     expect(wrapper.element.tagName).toBe('DIV')
@@ -89,8 +89,8 @@ describe('dropdown', () => {
     const wrapper = mount(BDropdown, {
       attachTo: document.body,
       propsData: {
-        split: true
-      }
+        split: true,
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')
@@ -156,8 +156,8 @@ describe('dropdown', () => {
       attachTo: document.body,
       propsData: {
         split: true,
-        splitButtonType: 'submit'
-      }
+        splitButtonType: 'submit',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')
@@ -185,8 +185,8 @@ describe('dropdown', () => {
     const wrapper = mount(BDropdown, {
       attachTo: document.body,
       slots: {
-        default: 'foobar'
-      }
+        default: 'foobar',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')
@@ -203,8 +203,8 @@ describe('dropdown', () => {
     const wrapper = mount(BDropdown, {
       attachTo: document.body,
       slots: {
-        'button-content': 'foobar'
-      }
+        'button-content': 'foobar',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')
@@ -222,11 +222,11 @@ describe('dropdown', () => {
     const wrapper = mount(BDropdown, {
       attachTo: document.body,
       propsData: {
-        split: true
+        split: true,
       },
       slots: {
-        'button-content': 'foobar'
-      }
+        'button-content': 'foobar',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')
@@ -249,11 +249,11 @@ describe('dropdown', () => {
     const wrapper = mount(BDropdown, {
       attachTo: document.body,
       propsData: {
-        lazy: true
+        lazy: true,
       },
       slots: {
-        default: 'foobar'
-      }
+        default: 'foobar',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')
@@ -270,8 +270,8 @@ describe('dropdown', () => {
     const wrapper = mount(BDropdown, {
       attachTo: document.body,
       propsData: {
-        id: 'test'
-      }
+        id: 'test',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')
@@ -297,8 +297,8 @@ describe('dropdown', () => {
     const wrapper = mount(BDropdown, {
       attachTo: document.body,
       propsData: {
-        block: true
-      }
+        block: true,
+      },
     })
 
     expect(wrapper.classes()).not.toContain('btn-group')
@@ -311,8 +311,8 @@ describe('dropdown', () => {
       attachTo: document.body,
       propsData: {
         block: true,
-        split: true
-      }
+        split: true,
+      },
     })
 
     expect(wrapper.classes()).toContain('btn-group')
@@ -325,8 +325,8 @@ describe('dropdown', () => {
     const wrapper = mount(BDropdown, {
       attachTo: document.body,
       propsData: {
-        noCaret: true
-      }
+        noCaret: true,
+      },
     })
 
     expect(wrapper.find('.dropdown-toggle').classes()).toContain('dropdown-toggle-no-caret')
@@ -339,8 +339,8 @@ describe('dropdown', () => {
       attachTo: document.body,
       propsData: {
         noCaret: true,
-        split: true
-      }
+        split: true,
+      },
     })
 
     expect(wrapper.find('.dropdown-toggle').classes()).not.toContain('dropdown-toggle-no-caret')
@@ -352,8 +352,8 @@ describe('dropdown', () => {
     const wrapper = mount(BDropdown, {
       attachTo: document.body,
       propsData: {
-        toggleTag: 'div'
-      }
+        toggleTag: 'div',
+      },
     })
 
     expect(wrapper.find('.dropdown-toggle').element.tagName).toBe('DIV')
@@ -365,8 +365,8 @@ describe('dropdown', () => {
     const wrapper = mount(BDropdown, {
       attachTo: document.body,
       propsData: {
-        toggleAttrs: { 'data-foo-bar': 'foo-bar' }
-      }
+        toggleAttrs: { 'data-foo-bar': 'foo-bar' },
+      },
     })
 
     expect(wrapper.find('.dropdown-toggle').attributes('data-foo-bar')).toBe('foo-bar')
@@ -378,8 +378,8 @@ describe('dropdown', () => {
     const wrapper = mount(BDropdown, {
       attachTo: document.body,
       propsData: {
-        dropup: true
-      }
+        dropup: true,
+      },
     })
 
     expect(wrapper.classes()).toContain('dropdown')
@@ -403,8 +403,8 @@ describe('dropdown', () => {
     const wrapper = mount(BDropdown, {
       attachTo: document.body,
       propsData: {
-        dropright: true
-      }
+        dropright: true,
+      },
     })
 
     expect(wrapper.classes()).toContain('dropdown')
@@ -428,8 +428,8 @@ describe('dropdown', () => {
     const wrapper = mount(BDropdown, {
       attachTo: document.body,
       propsData: {
-        dropleft: true
-      }
+        dropleft: true,
+      },
     })
 
     expect(wrapper.classes()).toContain('dropdown')
@@ -455,8 +455,8 @@ describe('dropdown', () => {
       attachTo: document.body,
       propsData: {
         splitClass,
-        split: true
-      }
+        split: true,
+      },
     })
 
     const $buttons = wrapper.findAll('button')
@@ -470,8 +470,8 @@ describe('dropdown', () => {
     const wrapper = mount(BDropdown, {
       attachTo: document.body,
       propsData: {
-        right: true
-      }
+        right: true,
+      },
     })
 
     expect(wrapper.classes()).toContain('dropdown')
@@ -495,8 +495,8 @@ describe('dropdown', () => {
     const wrapper = mount(BDropdown, {
       attachTo: document.body,
       propsData: {
-        split: true
-      }
+        split: true,
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')
@@ -518,20 +518,20 @@ describe('dropdown', () => {
   it('dropdown opens and closes', async () => {
     const App = {
       props: {
-        disabled: { type: Boolean, default: false }
+        disabled: { type: Boolean, default: false },
       },
       render(h) {
         const { disabled } = this
 
         return h('div', { attrs: { id: 'container' } }, [
           h(BDropdown, { props: { id: 'test', disabled } }, [h(BDropdownItem, 'item')]),
-          h('input', { attrs: { id: 'input' } })
+          h('input', { attrs: { id: 'input' } }),
         ])
-      }
+      },
     }
 
     const wrapper = mount(App, {
-      attachTo: document.body
+      attachTo: document.body,
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -733,12 +733,12 @@ describe('dropdown', () => {
     const wrapper = mount(BDropdown, {
       attachTo: document.body,
       listeners: {
-        show: bvEvent => {
+        show: (bvEvent) => {
           if (prevent) {
             bvEvent.preventDefault()
           }
-        }
-      }
+        },
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')
@@ -793,14 +793,14 @@ describe('dropdown', () => {
             h(BDropdownItem, { attrs: { id: 'item-1' } }, 'item'),
             h(BDropdownItem, { attrs: { id: 'item-2' } }, 'item'),
             h(BDropdownItem, { attrs: { id: 'item-3' }, props: { disabled: true } }, 'item'),
-            h(BDropdownItem, { attrs: { id: 'item-4' } }, 'item')
-          ])
+            h(BDropdownItem, { attrs: { id: 'item-4' } }, 'item'),
+          ]),
         ])
-      }
+      },
     }
 
     const wrapper = mount(App, {
-      attachTo: document.body
+      attachTo: document.body,
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -900,7 +900,7 @@ describe('dropdown', () => {
 
   it('when boundary not set should not have class position-static', async () => {
     const wrapper = mount(BDropdown, {
-      attachTo: document.body
+      attachTo: document.body,
     })
     expect(wrapper.element.tagName).toBe('DIV')
     expect(wrapper.vm).toBeDefined()
@@ -913,8 +913,8 @@ describe('dropdown', () => {
     const wrapper = mount(BDropdown, {
       attachTo: document.body,
       propsData: {
-        boundary: 'viewport'
-      }
+        boundary: 'viewport',
+      },
     })
     expect(wrapper.element.tagName).toBe('DIV')
     expect(wrapper.vm).toBeDefined()
@@ -927,8 +927,8 @@ describe('dropdown', () => {
     const wrapper = mount(BDropdown, {
       attachTo: document.body,
       propsData: {
-        size: 'lg'
-      }
+        size: 'lg',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')
@@ -948,8 +948,8 @@ describe('dropdown', () => {
       attachTo: document.body,
       propsData: {
         split: true,
-        size: 'lg'
-      }
+        size: 'lg',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')
@@ -971,8 +971,8 @@ describe('dropdown', () => {
     const wrapper = mount(BDropdown, {
       attachTo: document.body,
       propsData: {
-        text: 'foobar'
-      }
+        text: 'foobar',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')
@@ -992,8 +992,8 @@ describe('dropdown', () => {
       attachTo: document.body,
       propsData: {
         split: true,
-        text: 'foobar'
-      }
+        text: 'foobar',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')
@@ -1012,8 +1012,8 @@ describe('dropdown', () => {
     const wrapper = mount(BDropdown, {
       attachTo: document.body,
       propsData: {
-        variant: 'primary'
-      }
+        variant: 'primary',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')
@@ -1034,8 +1034,8 @@ describe('dropdown', () => {
       attachTo: document.body,
       propsData: {
         split: true,
-        variant: 'primary'
-      }
+        variant: 'primary',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')
@@ -1055,7 +1055,7 @@ describe('dropdown', () => {
 
     // Change split button variant
     await wrapper.setProps({
-      splitVariant: 'danger'
+      splitVariant: 'danger',
     })
     expect($split.classes()).toContain('btn-danger')
     expect($toggle.classes()).toContain('btn-primary')
@@ -1068,8 +1068,8 @@ describe('dropdown', () => {
       attachTo: document.body,
       propsData: {
         split: true,
-        splitHref: '/foo'
-      }
+        splitHref: '/foo',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')
@@ -1096,8 +1096,8 @@ describe('dropdown', () => {
       attachTo: document.body,
       propsData: {
         split: true,
-        splitTo: '/foo'
-      }
+        splitTo: '/foo',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')

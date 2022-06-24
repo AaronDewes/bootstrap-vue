@@ -4,8 +4,8 @@ import { pluginFactory } from '../../utils/plugins'
 const ButtonGroupPlugin = /*#__PURE__*/ pluginFactory({
   components: {
     BButtonGroup,
-    BBtnGroup: BButtonGroup
-  }
+    BBtnGroup: BButtonGroup,
+  },
 })
 
 export { ButtonGroupPlugin, BButtonGroup }

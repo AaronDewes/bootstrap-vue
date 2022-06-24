@@ -6,7 +6,7 @@ import { makeProp, makePropsConfigurable } from '../../utils/props'
 import {
   MODEL_PROP_NAME,
   formRadioCheckGroupMixin,
-  props as formRadioCheckGroupProps
+  props as formRadioCheckGroupProps,
 } from '../../mixins/form-radio-check-group'
 
 // --- Props ---
@@ -16,7 +16,7 @@ export const props = makePropsConfigurable(
     ...formRadioCheckGroupProps,
     [MODEL_PROP_NAME]: makeProp(PROP_TYPE_ARRAY, []),
     // Custom switch styling
-    switches: makeProp(PROP_TYPE_BOOLEAN, false)
+    switches: makeProp(PROP_TYPE_BOOLEAN, false),
   }),
   NAME_FORM_CHECKBOX_GROUP
 )
@@ -30,13 +30,13 @@ export const BFormCheckboxGroup = /*#__PURE__*/ Vue.extend({
   mixins: [formRadioCheckGroupMixin],
   provide() {
     return {
-      getBvCheckGroup: () => this
+      getBvCheckGroup: () => this,
     }
   },
   props,
   computed: {
     isRadioGroup() {
       return false
-    }
-  }
+    },
+  },
 })

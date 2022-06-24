@@ -16,8 +16,8 @@ describe('media-aside', () => {
   it('has custom root element when prop `tag` set', async () => {
     const wrapper = mount(BMediaAside, {
       propsData: {
-        tag: 'span'
-      }
+        tag: 'span',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('SPAN')
@@ -32,8 +32,8 @@ describe('media-aside', () => {
   it('has correct class when prop `right` set', async () => {
     const wrapper = mount(BMediaAside, {
       propsData: {
-        right: true
-      }
+        right: true,
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')
@@ -48,8 +48,8 @@ describe('media-aside', () => {
   it('has alignment class when prop `vertical-align` set', async () => {
     const wrapper = mount(BMediaAside, {
       propsData: {
-        verticalAlign: 'bottom'
-      }
+        verticalAlign: 'bottom',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')
@@ -63,8 +63,8 @@ describe('media-aside', () => {
   it('renders default slot content', async () => {
     const wrapper = mount(BMediaAside, {
       slots: {
-        default: '<b>foobar</b>'
-      }
+        default: '<b>foobar</b>',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')

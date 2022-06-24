@@ -24,9 +24,9 @@ and devices.
   export default {
     data() {
       return {
-        value: ''
+        value: '',
       }
-    }
+    },
   }
 </script>
 
@@ -68,10 +68,7 @@ For disabling specific dates or setting minimum and maximum date limits, refer t
 ```html
 <template>
   <div>
-    <b-form-group
-      label="Select date picker interactive state"
-      v-slot="{ ariaDescribedby }"
-    >
+    <b-form-group label="Select date picker interactive state" v-slot="{ ariaDescribedby }">
       <b-form-radio-group
         v-model="state"
         :aria-describedby="ariaDescribedby"
@@ -95,7 +92,7 @@ For disabling specific dates or setting minimum and maximum date limits, refer t
   export default {
     data() {
       return {
-        state: 'disabled'
+        state: 'disabled',
       }
     },
     computed: {
@@ -104,8 +101,8 @@ For disabling specific dates or setting minimum and maximum date limits, refer t
       },
       readonly() {
         return this.state === 'readonly'
-      }
-    }
+      },
+    },
   }
 </script>
 
@@ -143,9 +140,9 @@ format of `YYYY-MM-DD` or a `Date` object.
       return {
         value: '',
         min: minDate,
-        max: maxDate
+        max: maxDate,
       }
-    }
+    },
   }
 </script>
 
@@ -167,7 +164,11 @@ return a value as quickly as possible.
 ```html
 <template>
   <div>
-    <b-form-datepicker v-model="value" :date-disabled-fn="dateDisabled" locale="en"></b-form-datepicker>
+    <b-form-datepicker
+      v-model="value"
+      :date-disabled-fn="dateDisabled"
+      locale="en"
+    ></b-form-datepicker>
   </div>
 </template>
 
@@ -175,7 +176,7 @@ return a value as quickly as possible.
   export default {
     data() {
       return {
-        value: ''
+        value: '',
       }
     },
     methods: {
@@ -186,8 +187,8 @@ return a value as quickly as possible.
         const day = date.getDate()
         // Return `true` if the date should be disabled
         return weekday === 0 || weekday === 6 || day === 13
-      }
-    }
+      },
+    },
   }
 </script>
 
@@ -262,7 +263,11 @@ a placeholder is not provided, the value of the `label-no-date-selected` prop is
 <template>
   <div>
     <label for="datepicker-placeholder">Date picker with placeholder</label>
-    <b-form-datepicker id="datepicker-placeholder" placeholder="Choose a date" locale="en"></b-form-datepicker>
+    <b-form-datepicker
+      id="datepicker-placeholder"
+      placeholder="Choose a date"
+      locale="en"
+    ></b-form-datepicker>
   </div>
 </template>
 
@@ -386,7 +391,7 @@ In the following simple example, we are placing the datepicker (button only mode
       return {
         value: '',
         formatted: '',
-        selected: ''
+        selected: '',
       }
     },
     methods: {
@@ -395,8 +400,8 @@ In the following simple example, we are placing the datepicker (button only mode
         this.formatted = ctx.selectedFormatted
         // The following will be an empty string until a valid date is entered
         this.selected = ctx.selectedYMD
-      }
-    }
+      },
+    },
   }
 </script>
 
@@ -520,9 +525,9 @@ To create a full width calendar dropdown (where the width matches the input widt
   export default {
     data() {
       return {
-        value: ''
+        value: '',
       }
-    }
+    },
   }
 </script>
 
@@ -549,10 +554,20 @@ Saturday.
 <template>
   <div>
     <label for="example-locales">Locale:</label>
-    <b-form-select id="example-locales" v-model="locale" :options="locales" class="mb-2"></b-form-select>
+    <b-form-select
+      id="example-locales"
+      v-model="locale"
+      :options="locales"
+      class="mb-2"
+    ></b-form-select>
 
     <label for="example-weekdays">Start weekday:</label>
-    <b-form-select id="example-weekdays" v-model="weekday" :options="weekdays" class="mb-2"></b-form-select>
+    <b-form-select
+      id="example-weekdays"
+      v-model="weekday"
+      :options="weekdays"
+      class="mb-2"
+    ></b-form-select>
 
     <div>
       <b-form-checkbox v-model="showDecadeNav" switch inline class="my-2">
@@ -574,9 +589,9 @@ Saturday.
       :show-decade-nav="showDecadeNav"
       :hide-header="hideHeader"
       class="mb-2"
-     ></b-form-datepicker>
-     <p>Value: <b>'{{ value }}'</b></p>
-   </div>
+    ></b-form-datepicker>
+    <p>Value: <b>'{{ value }}'</b></p>
+  </div>
 </template>
 
 <script>
@@ -591,13 +606,13 @@ Saturday.
           { value: 'en-US', text: 'English US (en-US)' },
           { value: 'de', text: 'German (de)' },
           { value: 'ar-EG', text: 'Arabic Egyptian (ar-EG)' },
-          { value: 'zh', text: 'Chinese (zh)' }
+          { value: 'zh', text: 'Chinese (zh)' },
         ],
         weekday: 0,
         weekdays: [
           { value: 0, text: 'Sunday' },
           { value: 1, text: 'Monday' },
-          { value: 6, text: 'Saturday' }
+          { value: 6, text: 'Saturday' },
         ],
         labels: {
           de: {
@@ -613,7 +628,7 @@ Saturday.
             labelNoDateSelected: 'Kein Datum gewählt',
             labelCalendar: 'Kalender',
             labelNav: 'Kalendernavigation',
-            labelHelp: 'Mit den Pfeiltasten durch den Kalender navigieren'
+            labelHelp: 'Mit den Pfeiltasten durch den Kalender navigieren',
           },
           'ar-EG': {
             weekdayHeaderFormat: 'narrow',
@@ -629,7 +644,7 @@ Saturday.
             labelNoDateSelected: 'لم يتم اختيار تاريخ',
             labelCalendar: 'التقويم',
             labelNav: 'الملاحة التقويم',
-            labelHelp: 'استخدم مفاتيح المؤشر للتنقل في التواريخ'
+            labelHelp: 'استخدم مفاتيح المؤشر للتنقل في التواريخ',
           },
           zh: {
             weekdayHeaderFormat: 'narrow',
@@ -645,11 +660,11 @@ Saturday.
             labelNoDateSelected: '未选择日期',
             labelCalendar: '日历',
             labelNav: '日历导航',
-            labelHelp: '使用光标键浏览日期'
-          }
-        }
+            labelHelp: '使用光标键浏览日期',
+          },
+        },
       }
-    }
+    },
   }
 </script>
 

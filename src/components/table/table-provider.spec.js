@@ -7,7 +7,7 @@ const testItems = [
   { a: 5, b: 5, c: 6 },
   { a: 7, b: 8, c: 9 },
   { a: 10, b: 11, c: 12 },
-  { a: 13, b: 14, c: 15 }
+  { a: 13, b: 14, c: 15 },
 ]
 
 const testFields = Object.keys(testItems[0]).sort()
@@ -20,8 +20,8 @@ describe('table > provider functions', () => {
     const wrapper = mount(BTable, {
       propsData: {
         fields: testFields,
-        items: provider
-      }
+        items: provider,
+      },
     })
     expect(wrapper).toBeDefined()
 
@@ -31,12 +31,7 @@ describe('table > provider functions', () => {
     expect(wrapper.emitted('input')).toBeDefined()
 
     expect(wrapper.find('tbody').exists()).toBe(true)
-    expect(
-      wrapper
-        .find('tbody')
-        .findAll('tr')
-        .exists()
-    ).toBe(true)
+    expect(wrapper.find('tbody').findAll('tr').exists()).toBe(true)
     expect(wrapper.find('tbody').findAll('tr').length).toBe(testItems.length)
 
     wrapper.destroy()
@@ -44,7 +39,7 @@ describe('table > provider functions', () => {
 
   it('promise items provider works', async () => {
     let doResolve
-    const promise = new Promise(resolve => {
+    const promise = new Promise((resolve) => {
       doResolve = resolve
     })
     const provider = () => {
@@ -54,8 +49,8 @@ describe('table > provider functions', () => {
       propsData: {
         fields: testFields,
         items: provider,
-        showEmpty: true
-      }
+        showEmpty: true,
+      },
     })
     expect(wrapper).toBeDefined()
 
@@ -64,12 +59,7 @@ describe('table > provider functions', () => {
     expect(wrapper.emitted('update:busy')).toBeDefined()
 
     expect(wrapper.find('tbody').exists()).toBe(true)
-    expect(
-      wrapper
-        .find('tbody')
-        .findAll('tr')
-        .exists()
-    ).toBe(true)
+    expect(wrapper.find('tbody').findAll('tr').exists()).toBe(true)
     // Should have single empty row
     expect(wrapper.find('tbody').findAll('tr').length).toBe(1)
 
@@ -80,12 +70,7 @@ describe('table > provider functions', () => {
 
     await waitNT(wrapper.vm)
 
-    expect(
-      wrapper
-        .find('tbody')
-        .findAll('tr')
-        .exists()
-    ).toBe(true)
+    expect(wrapper.find('tbody').findAll('tr').exists()).toBe(true)
     expect(wrapper.find('tbody').findAll('tr').length).toBe(testItems.length)
 
     wrapper.destroy()
@@ -101,8 +86,8 @@ describe('table > provider functions', () => {
       propsData: {
         fields: testFields,
         items: provider,
-        showEmpty: true
-      }
+        showEmpty: true,
+      },
     })
     expect(wrapper).toBeDefined()
 
@@ -111,12 +96,7 @@ describe('table > provider functions', () => {
     expect(wrapper.emitted('update:busy')).toBeDefined()
 
     expect(wrapper.find('tbody').exists()).toBe(true)
-    expect(
-      wrapper
-        .find('tbody')
-        .findAll('tr')
-        .exists()
-    ).toBe(true)
+    expect(wrapper.find('tbody').findAll('tr').exists()).toBe(true)
     // Should have single empty row
     expect(wrapper.find('tbody').findAll('tr').length).toBe(1)
 
@@ -127,12 +107,7 @@ describe('table > provider functions', () => {
 
     await waitNT(wrapper.vm)
 
-    expect(
-      wrapper
-        .find('tbody')
-        .findAll('tr')
-        .exists()
-    ).toBe(true)
+    expect(wrapper.find('tbody').findAll('tr').exists()).toBe(true)
     expect(wrapper.find('tbody').findAll('tr').length).toBe(testItems.length)
 
     wrapper.destroy()
@@ -146,8 +121,8 @@ describe('table > provider functions', () => {
       propsData: {
         fields: testFields,
         items: provider,
-        showEmpty: true
-      }
+        showEmpty: true,
+      },
     })
     expect(wrapper).toBeDefined()
 
@@ -156,12 +131,7 @@ describe('table > provider functions', () => {
     expect(wrapper.emitted('update:busy')).toBeDefined()
 
     expect(wrapper.find('tbody').exists()).toBe(true)
-    expect(
-      wrapper
-        .find('tbody')
-        .findAll('tr')
-        .exists()
-    ).toBe(true)
+    expect(wrapper.find('tbody').findAll('tr').exists()).toBe(true)
     // Should have single empty row
     expect(wrapper.find('tbody').findAll('tr').length).toBe(1)
 
@@ -173,12 +143,7 @@ describe('table > provider functions', () => {
     const last = wrapper.emitted('update:busy').length - 1
     expect(wrapper.emitted('update:busy')[last][0]).toBe(false)
 
-    expect(
-      wrapper
-        .find('tbody')
-        .findAll('tr')
-        .exists()
-    ).toBe(true)
+    expect(wrapper.find('tbody').findAll('tr').exists()).toBe(true)
     expect(wrapper.find('tbody').findAll('tr').length).toBe(1)
 
     wrapper.destroy()
@@ -192,8 +157,8 @@ describe('table > provider functions', () => {
       propsData: {
         id: 'the-table',
         fields: testFields,
-        items: provider
-      }
+        items: provider,
+      },
     })
     expect(wrapper).toBeDefined()
 
@@ -226,11 +191,11 @@ describe('table > provider functions', () => {
     }
     const wrapper = mount(BTable, {
       propsData: {
-        fields: testFields.map(f => ({ key: f, sortable: true })),
+        fields: testFields.map((f) => ({ key: f, sortable: true })),
         items: provider,
         sortBy: null,
-        sortDesc: true
-      }
+        sortDesc: true,
+      },
     })
     expect(wrapper).toBeDefined()
 
@@ -279,8 +244,8 @@ describe('table > provider functions', () => {
     const wrapper = mount(BTable, {
       propsData: {
         fields: testFields,
-        items: provider1
-      }
+        items: provider1,
+      },
     })
     expect(wrapper).toBeDefined()
 
@@ -290,12 +255,7 @@ describe('table > provider functions', () => {
     expect(wrapper.emitted('input')).toBeDefined()
 
     expect(wrapper.find('tbody').exists()).toBe(true)
-    expect(
-      wrapper
-        .find('tbody')
-        .findAll('tr')
-        .exists()
-    ).toBe(true)
+    expect(wrapper.find('tbody').findAll('tr').exists()).toBe(true)
     expect(wrapper.find('tbody').findAll('tr').length).toBe(testItems.length)
 
     await wrapper.setProps({ items: provider2 })
@@ -303,12 +263,7 @@ describe('table > provider functions', () => {
     await waitNT(wrapper.vm)
 
     expect(wrapper.find('tbody').exists()).toBe(true)
-    expect(
-      wrapper
-        .find('tbody')
-        .findAll('tr')
-        .exists()
-    ).toBe(true)
+    expect(wrapper.find('tbody').findAll('tr').exists()).toBe(true)
 
     expect(wrapper.find('tbody').findAll('tr').length).toBe(1)
 
@@ -326,8 +281,8 @@ describe('table > provider functions', () => {
       propsData: {
         filter: { a: '123' },
         fields: testFields.slice(),
-        items: provider
-      }
+        items: provider,
+      },
     })
 
     await waitNT(wrapper.vm)
@@ -354,30 +309,30 @@ describe('table > provider functions', () => {
       data() {
         return {
           filter: {
-            a: '123'
+            a: '123',
           },
-          fields: testFields.slice()
+          fields: testFields.slice(),
         }
       },
       methods: {
         provider(ctx) {
           lastProviderContext = ctx
           return testItems.slice()
-        }
+        },
       },
       render(h) {
         return h(BTable, {
           props: {
             items: this.provider,
             fields: this.fields,
-            filter: this.filter
-          }
+            filter: this.filter,
+          },
         })
-      }
+      },
     }
 
     const wrapper = mount(App, {
-      attachTo: document.body
+      attachTo: document.body,
     })
 
     expect(wrapper.element.tagName).toBe('TABLE')
@@ -390,7 +345,7 @@ describe('table > provider functions', () => {
     await waitNT(wrapper.vm)
 
     expect(lastProviderContext.filter).toEqual({
-      a: '123'
+      a: '123',
     })
 
     // Change the filter criteria child property, but not the object reference
@@ -403,7 +358,7 @@ describe('table > provider functions', () => {
     await waitNT(wrapper.vm)
 
     expect(lastProviderContext.filter).toEqual({
-      a: '456'
+      a: '456',
     })
 
     wrapper.destroy()

@@ -45,7 +45,7 @@
             height="480"
             src="https://picsum.photos/1024/480/?image=55"
             alt="image slot"
-          >
+          />
         </template>
       </b-carousel-slide>
 
@@ -59,7 +59,7 @@
     </b-carousel>
 
     <p class="mt-4">
-      Slide #: {{ slide }}<br>
+      Slide #: {{ slide }}<br />
       Sliding: {{ sliding }}
     </p>
   </div>
@@ -70,7 +70,7 @@
     data() {
       return {
         slide: 0,
-        sliding: null
+        sliding: null,
       }
     },
     methods: {
@@ -79,8 +79,8 @@
       },
       onSlideEnd(slide) {
         this.sliding = false
-      }
-    }
+      },
+    },
   }
 </script>
 
@@ -281,7 +281,7 @@ methods:
 
 ```html
 <template>
-  <b-carousel ref="myCarousel" .... >
+  <b-carousel ref="myCarousel" ....>
     <!-- slides go here -->
   </b-carousel>
 </template>
@@ -295,8 +295,8 @@ methods:
       },
       next() {
         this.$refs.myCarousel.next()
-      }
-    }
+      },
+    },
   }
 </script>
 ```

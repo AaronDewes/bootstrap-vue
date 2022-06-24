@@ -21,8 +21,8 @@ const CardPlugin = /*#__PURE__*/ pluginFactory({
     BCardImg,
     BCardImgLazy,
     BCardText,
-    BCardGroup
-  }
+    BCardGroup,
+  },
 })
 
 export {
@@ -36,5 +36,5 @@ export {
   BCardImg,
   BCardImgLazy,
   BCardText,
-  BCardGroup
+  BCardGroup,
 }

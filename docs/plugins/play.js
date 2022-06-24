@@ -17,12 +17,12 @@ const CLASS_NAMES_ERROR = 'error'
 // --- Helper methods ---
 
 // Default "transpiler" function
-let compiler = code => code
+let compiler = (code) => code
 
 const match = (regex, text) => (regex.exec(text) || [])[1]
-const removeNode = node => node && node.parentNode && node.parentNode.removeChild(node)
+const removeNode = (node) => node && node.parentNode && node.parentNode.removeChild(node)
 
-const parseVueTemplate = text => {
+const parseVueTemplate = (text) => {
   let template = match(RX_TEMPLATE, text)
   const script = match(RX_SCRIPT, text)
   const options = {}
@@ -66,7 +66,7 @@ const createVM = (name, node, vnode) => {
       ...options,
       el: holder,
       template: `<div class="bd-example vue-example vue-example-${name}" translate="no">${template}</div>`,
-      router: vnode.context.$router
+      router: vnode.context.$router,
     })
   } catch (e) {
     console.error('[v-play]', e)
@@ -89,7 +89,7 @@ const processExamples = (el, binding, vnode) => {
   if (vnode.context.$options.beforeDestroy) {
     vnode.context.$options.beforeDestroy = []
       .concat(vnode.context.$options.beforeDestroy)
-      .filter(h => h)
+      .filter((h) => h)
   } else {
     vnode.context.$options.beforeDestroy = []
   }
@@ -98,7 +98,7 @@ const processExamples = (el, binding, vnode) => {
   const pres = [...el.querySelectorAll('.bd-code pre')]
 
   // Iterate over them and parse
-  pres.forEach(pre => {
+  pres.forEach((pre) => {
     // Store example name globally
     const name = match(RX_NAME, pre.textContent)
 
@@ -170,7 +170,7 @@ Vue.directive('play', (el, binding, vnode, oldVnode) => {
   vnode.context.$nextTick(() => {
     if (needsTranspiler) {
       window && window.$nuxt && window.$nuxt.$loading.start()
-      import('../utils/compile-js').then(module => {
+      import('../utils/compile-js').then((module) => {
         // Save the compiler reference for template parser
         compiler = module.default
         // Convert examples to live/editable

@@ -10,10 +10,10 @@ describe('$bvModal', () => {
     const App = {
       render(h) {
         return h('b-modal', { props: { static: true, id: 'test1' } }, 'content')
-      }
+      },
     }
     const wrapper = mount(App, {
-      attachTo: document.body
+      attachTo: document.body,
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -57,10 +57,10 @@ describe('$bvModal', () => {
     const App = {
       render(h) {
         return h('div', 'app')
-      }
+      },
     }
     const wrapper = mount(App, {
-      attachTo: document.body
+      attachTo: document.body,
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -74,7 +74,7 @@ describe('$bvModal', () => {
     const p = bvModal.msgBoxOk('message', {
       static: true,
       id: 'test2',
-      title: 'title'
+      title: 'title',
     })
     expect(p).toBeDefined()
     expect(p).toBeInstanceOf(Promise)
@@ -118,10 +118,10 @@ describe('$bvModal', () => {
     const App = {
       render(h) {
         return h('div', 'app')
-      }
+      },
     }
     const wrapper = mount(App, {
-      attachTo: document.body
+      attachTo: document.body,
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -135,7 +135,7 @@ describe('$bvModal', () => {
     const p = bvModal.msgBoxConfirm('message', {
       static: true,
       id: 'test3',
-      title: 'title'
+      title: 'title',
     })
     expect(p).toBeDefined()
     expect(p).toBeInstanceOf(Promise)

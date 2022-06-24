@@ -19,7 +19,7 @@ export const props = makePropsConfigurable(
     precision: makeProp(PROP_TYPE_NUMBER_STRING, 0),
     showProgress: makeProp(PROP_TYPE_BOOLEAN, false),
     showValue: makeProp(PROP_TYPE_BOOLEAN, false),
-    striped: makeProp(PROP_TYPE_BOOLEAN, false)
+    striped: makeProp(PROP_TYPE_BOOLEAN, false),
   }),
   NAME_PROGRESS
 )
@@ -37,7 +37,7 @@ export const BProgress = /*#__PURE__*/ Vue.extend({
   computed: {
     progressHeight() {
       return { height: this.height || null }
-    }
+    },
   },
   render(h) {
     let $childNodes = this.normalizeSlot()
@@ -49,9 +49,9 @@ export const BProgress = /*#__PURE__*/ Vue.extend({
       'div',
       {
         staticClass: 'progress',
-        style: this.progressHeight
+        style: this.progressHeight,
       },
       [$childNodes]
     )
-  }
+  },
 })

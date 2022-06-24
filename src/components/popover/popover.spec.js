@@ -13,7 +13,7 @@ const App = {
     'titleAttr',
     'btnDisabled',
     'variant',
-    'customClass'
+    'customClass',
   ],
   render(h) {
     return h('article', { attrs: { id: 'wrapper' } }, [
@@ -24,8 +24,8 @@ const App = {
             id: 'foo',
             type: 'button',
             disabled: this.btnDisabled || null,
-            title: this.titleAttr || null
-          }
+            title: this.titleAttr || null,
+          },
         },
         'text'
       ),
@@ -34,7 +34,7 @@ const App = {
         {
           attrs: {
             id: 'bar',
-            'data-foo': 'bar'
+            'data-foo': 'bar',
           },
           props: {
             target: 'foo',
@@ -43,13 +43,13 @@ const App = {
             disabled: this.disabled,
             noFade: this.noFade || false,
             variant: this.variant,
-            customClass: this.customClass
-          }
+            customClass: this.customClass,
+          },
         },
         [h('template', { slot: 'title' }, this.$slots.title), this.$slots.default || '']
-      )
+      ),
     ])
-  }
+  },
 }
 
 // The majority of functionality has been tested in the tooltip component tests
@@ -72,8 +72,8 @@ describe('b-popover', () => {
       setEnd: () => {},
       commonAncestorContainer: {
         nodeName: 'BODY',
-        ownerDocument: document
-      }
+        ownerDocument: document,
+      },
     })
     // Mock `getBoundingClientRect()` so that the `isVisible(el)` test returns `true`
     // Needed for visibility checks of trigger element, etc
@@ -83,7 +83,7 @@ describe('b-popover', () => {
       top: 0,
       left: 0,
       bottom: 0,
-      right: 0
+      right: 0,
     }))
   })
 
@@ -98,12 +98,12 @@ describe('b-popover', () => {
     const wrapper = mount(App, {
       attachTo: document.body,
       propsData: {
-        triggers: 'click'
+        triggers: 'click',
       },
       slots: {
         title: 'title',
-        default: 'content'
-      }
+        default: 'content',
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -134,12 +134,12 @@ describe('b-popover', () => {
       attachTo: document.body,
       propsData: {
         triggers: 'click',
-        show: true
+        show: true,
       },
       slots: {
         title: 'title',
-        default: 'content'
-      }
+        default: 'content',
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -180,7 +180,7 @@ describe('b-popover', () => {
 
     // Hide the Popover
     await wrapper.setProps({
-      show: false
+      show: false,
     })
     await waitNT(wrapper.vm)
     await waitRAF()

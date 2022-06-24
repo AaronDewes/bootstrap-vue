@@ -10,7 +10,7 @@ import {
   oneYearAhead,
   oneDecadeAgo,
   oneDecadeAhead,
-  constrainDate
+  constrainDate,
 } from './date'
 
 describe('utils/date', () => {

@@ -11,7 +11,7 @@ import { props as BCardImgProps } from './card-img'
 export const props = makePropsConfigurable(
   sortKeys({
     ...omit(BImgLazyProps, keys(BImgProps)),
-    ...omit(BCardImgProps, ['src', 'alt', 'width', 'height'])
+    ...omit(BCardImgProps, ['src', 'alt', 'width', 'height']),
   }),
   NAME_CARD_IMG_LAZY
 )
@@ -40,8 +40,8 @@ export const BCardImgLazy = /*#__PURE__*/ Vue.extend({
       mergeData(data, {
         class: [baseClass],
         // Exclude `left` and `right` props before passing to `<b-img-lazy>`
-        props: omit(props, ['left', 'right'])
+        props: omit(props, ['left', 'right']),
       })
     )
-  }
+  },
 })

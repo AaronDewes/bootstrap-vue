@@ -48,7 +48,7 @@ Vue.use(VeeValidate, {
   // Important to name this something other than 'fields'
   fieldsBagName: 'veeFields',
   // This is not required but avoids possible naming conflicts
-  errorBagName: 'veeErrors'
+  errorBagName: 'veeErrors',
 })
 ```
 

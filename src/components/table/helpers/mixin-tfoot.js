@@ -2,7 +2,7 @@ import { Vue } from '../../../vue'
 import {
   PROP_TYPE_ARRAY_OBJECT_STRING,
   PROP_TYPE_BOOLEAN,
-  PROP_TYPE_STRING
+  PROP_TYPE_STRING,
 } from '../../../constants/props'
 import { SLOT_NAME_CUSTOM_FOOT } from '../../../constants/slots'
 import { makeProp } from '../../../utils/props'
@@ -18,7 +18,7 @@ export const props = {
   // 'dark', 'light', or `null` (or custom)
   footVariant: makeProp(PROP_TYPE_STRING),
   tfootClass: makeProp(PROP_TYPE_ARRAY_OBJECT_STRING),
-  tfootTrClass: makeProp(PROP_TYPE_ARRAY_OBJECT_STRING)
+  tfootTrClass: makeProp(PROP_TYPE_ARRAY_OBJECT_STRING),
 }
 
 // --- Mixin ---
@@ -35,12 +35,12 @@ export const tfootMixin = Vue.extend({
           {
             class: this.tfootClass || null,
             props: { footVariant: this.footVariant || this.headVariant || null },
-            key: 'bv-tfoot-custom'
+            key: 'bv-tfoot-custom',
           },
           this.normalizeSlot(SLOT_NAME_CUSTOM_FOOT, {
             items: this.computedItems.slice(),
             fields: this.computedFields.slice(),
-            columns: this.computedFields.length
+            columns: this.computedFields.length,
           })
         )
       }
@@ -50,6 +50,6 @@ export const tfootMixin = Vue.extend({
     renderTfoot() {
       // Passing true to renderThead will make it render a tfoot
       return this.footClone ? this.renderThead(true) : this.renderTFootCustom()
-    }
-  }
+    },
+  },
 })

@@ -3,7 +3,7 @@ import {
   PROP_TYPE_ARRAY_OBJECT_STRING,
   PROP_TYPE_BOOLEAN,
   PROP_TYPE_BOOLEAN_STRING,
-  PROP_TYPE_STRING
+  PROP_TYPE_STRING,
 } from '../../../constants/props'
 import { identity } from '../../../utils/identity'
 import { isBoolean } from '../../../utils/inspect'
@@ -32,7 +32,7 @@ export const props = {
   stickyHeader: makeProp(PROP_TYPE_BOOLEAN_STRING, false),
   striped: makeProp(PROP_TYPE_BOOLEAN, false),
   tableClass: makeProp(PROP_TYPE_ARRAY_OBJECT_STRING),
-  tableVariant: makeProp(PROP_TYPE_STRING)
+  tableVariant: makeProp(PROP_TYPE_STRING),
 }
 
 // --- Mixin ---
@@ -42,7 +42,7 @@ export const tableRendererMixin = Vue.extend({
   mixins: [attrsMixin],
   provide() {
     return {
-      getBvTable: () => this
+      getBvTable: () => this,
     }
   },
   // Don't place attributes on root element automatically,
@@ -70,8 +70,8 @@ export const tableRendererMixin = Vue.extend({
         isResponsive === true
           ? 'table-responsive'
           : isResponsive
-            ? `table-responsive-${this.responsive}`
-            : ''
+          ? `table-responsive-${this.responsive}`
+          : '',
       ].filter(identity)
     },
     wrapperStyles() {
@@ -85,7 +85,7 @@ export const tableRendererMixin = Vue.extend({
         selectableTableClasses,
         stackedTableClasses,
         tableClass,
-        computedBusy
+        computedBusy,
       } = safeVueInstance(this)
       hover = this.isTableSimple ? hover : hover && this.computedItems.length > 0 && !computedBusy
 
@@ -104,13 +104,13 @@ export const tableRendererMixin = Vue.extend({
           border: this.outlined,
           'b-table-fixed': this.fixed,
           'b-table-caption-top': this.captionTop,
-          'b-table-no-border-collapse': this.noBorderCollapse
+          'b-table-no-border-collapse': this.noBorderCollapse,
         },
         tableVariant ? `${this.dark ? 'bg' : 'table'}-${tableVariant}` : '',
         // Stacked table classes
         stackedTableClasses,
         // Selectable classes
-        selectableTableClasses
+        selectableTableClasses,
       ]
     },
     tableAttrs() {
@@ -119,7 +119,7 @@ export const tableRendererMixin = Vue.extend({
         filteredItems,
         computedFields: fields,
         selectableTableAttrs,
-        computedBusy
+        computedBusy,
       } = safeVueInstance(this)
 
       const ariaAttrs = this.isTableSimple
@@ -129,7 +129,7 @@ export const tableRendererMixin = Vue.extend({
             'aria-colcount': toString(fields.length),
             // Preserve user supplied `aria-describedby`, if provided
             'aria-describedby':
-              this.bvAttrs['aria-describedby'] || this.$refs.caption ? this.captionId : null
+              this.bvAttrs['aria-describedby'] || this.$refs.caption ? this.captionId : null,
           }
 
       const rowCount =
@@ -147,19 +147,13 @@ export const tableRendererMixin = Vue.extend({
         id: this.safeId(),
         role: this.bvAttrs.role || 'table',
         ...ariaAttrs,
-        ...selectableTableAttrs
+        ...selectableTableAttrs,
       }
-    }
+    },
   },
   render(h) {
-    const {
-      wrapperClasses,
-      renderCaption,
-      renderColgroup,
-      renderThead,
-      renderTbody,
-      renderTfoot
-    } = safeVueInstance(this)
+    const { wrapperClasses, renderCaption, renderColgroup, renderThead, renderTbody, renderTfoot } =
+      safeVueInstance(this)
 
     const $content = []
     if (this.isTableSimple) {
@@ -188,7 +182,7 @@ export const tableRendererMixin = Vue.extend({
         staticClass: 'table b-table',
         class: this.tableClasses,
         attrs: this.tableAttrs,
-        key: 'b-table'
+        key: 'b-table',
       },
       $content.filter(identity)
     )
@@ -200,10 +194,10 @@ export const tableRendererMixin = Vue.extend({
           {
             class: wrapperClasses,
             style: this.wrapperStyles,
-            key: 'wrap'
+            key: 'wrap',
           },
           [$table]
         )
       : $table
-  }
+  },
 })

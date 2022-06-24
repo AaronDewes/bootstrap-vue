@@ -171,12 +171,7 @@ Use `<b-nav-item-dropdown>` to place dropdown items within your nav.
   <b-nav pills>
     <b-nav-item active>Active</b-nav-item>
     <b-nav-item>Link</b-nav-item>
-    <b-nav-item-dropdown
-      id="my-nav-dropdown"
-      text="Dropdown"
-      toggle-class="nav-link-custom"
-      right
-    >
+    <b-nav-item-dropdown id="my-nav-dropdown" text="Dropdown" toggle-class="nav-link-custom" right>
       <b-dropdown-item>One</b-dropdown-item>
       <b-dropdown-item>Two</b-dropdown-item>
       <b-dropdown-divider></b-dropdown-divider>
@@ -248,7 +243,7 @@ Use the `<b-nav-text>` child component to place plain text content into the nav:
 
 ```html
 <div>
-  <b-nav >
+  <b-nav>
     <b-nav-item href="#1">Link 1</b-nav-item>
     <b-nav-item href="#2">Link 2</b-nav-item>
     <b-nav-text>Plain text</b-nav-text>
@@ -423,9 +418,9 @@ const routes = [
       // route to ensure this tab is rendered by default when using named routes
       { path: '', component: DefaultTabComponent, name: 'some-route' },
       { path: 'foo', component: FooTabComponent },
-      { path: 'bar', component: BarTabComponent }
-    ]
-  }
+      { path: 'bar', component: BarTabComponent },
+    ],
+  },
 ]
 ```
 

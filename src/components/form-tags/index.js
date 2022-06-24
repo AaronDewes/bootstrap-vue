@@ -7,8 +7,8 @@ const FormTagsPlugin = /*#__PURE__*/ pluginFactory({
     BFormTags,
     BTags: BFormTags,
     BFormTag,
-    BTag: BFormTag
-  }
+    BTag: BFormTag,
+  },
 })
 
 export { FormTagsPlugin, BFormTags, BFormTag }

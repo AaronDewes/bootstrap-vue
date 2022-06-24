@@ -23,9 +23,9 @@ export const BInputGroupPrepend = /*#__PURE__*/ Vue.extend({
     return h(
       BInputGroupAddon,
       mergeData(data, {
-        props: { ...props, append: false }
+        props: { ...props, append: false },
       }),
       children
     )
-  }
+  },
 })

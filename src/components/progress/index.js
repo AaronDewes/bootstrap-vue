@@ -5,8 +5,8 @@ import { pluginFactory } from '../../utils/plugins'
 const ProgressPlugin = /*#__PURE__*/ pluginFactory({
   components: {
     BProgress,
-    BProgressBar
-  }
+    BProgressBar,
+  },
 })
 
 export { ProgressPlugin, BProgress, BProgressBar }

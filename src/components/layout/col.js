@@ -4,7 +4,7 @@ import {
   PROP_TYPE_BOOLEAN,
   PROP_TYPE_BOOLEAN_NUMBER_STRING,
   PROP_TYPE_NUMBER_STRING,
-  PROP_TYPE_STRING
+  PROP_TYPE_STRING,
 } from '../../constants/props'
 import { RX_COL_CLASS } from '../../constants/regex'
 import { arrayIncludes } from '../../utils/array'
@@ -79,7 +79,7 @@ export const generateProps = () => {
   breakpointPropMap = assign(create(null), {
     col: keys(breakpointCol),
     offset: keys(breakpointOffset),
-    order: keys(breakpointOrder)
+    order: keys(breakpointOrder),
   })
 
   // Return the generated props
@@ -89,7 +89,7 @@ export const generateProps = () => {
       ...breakpointOffset,
       ...breakpointOrder,
       // Flex alignment
-      alignSelf: makeProp(PROP_TYPE_STRING, null, value => {
+      alignSelf: makeProp(PROP_TYPE_STRING, null, (value) => {
         return arrayIncludes(ALIGN_SELF_VALUES, value)
       }),
       // Generic flexbox 'col' (xs)
@@ -98,7 +98,7 @@ export const generateProps = () => {
       cols: makeProp(PROP_TYPE_NUMBER_STRING),
       offset: makeProp(PROP_TYPE_NUMBER_STRING),
       order: makeProp(PROP_TYPE_NUMBER_STRING),
-      tag: makeProp(PROP_TYPE_STRING, 'div')
+      tag: makeProp(PROP_TYPE_STRING, 'div'),
     }),
     NAME_COL
   )
@@ -138,7 +138,7 @@ export const BCol = {
       }
     }
 
-    const hasColClasses = classList.some(className => RX_COL_CLASS.test(className))
+    const hasColClasses = classList.some((className) => RX_COL_CLASS.test(className))
 
     classList.push({
       // Default to .col if no other col-{bp}-* classes generated nor `cols` specified.
@@ -146,9 +146,9 @@ export const BCol = {
       [`col-${cols}`]: cols,
       [`offset-${offset}`]: offset,
       [`order-${order}`]: order,
-      [`align-self-${alignSelf}`]: alignSelf
+      [`align-self-${alignSelf}`]: alignSelf,
     })
 
     return h(props.tag, mergeData(data, { class: classList }), children)
-  }
+  },
 }

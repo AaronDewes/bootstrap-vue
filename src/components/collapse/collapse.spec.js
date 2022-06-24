@@ -21,7 +21,7 @@ describe('collapse', () => {
       top: 0,
       left: 0,
       bottom: 0,
-      right: 0
+      right: 0,
     }))
   })
 
@@ -35,8 +35,8 @@ describe('collapse', () => {
       attachTo: document.body,
       propsData: {
         // 'id' is a required prop
-        id: 'test'
-      }
+        id: 'test',
+      },
     })
     // const rootWrapper = createWrapper(wrapper.vm.$root)
     expect(wrapper.vm).toBeDefined()
@@ -60,8 +60,8 @@ describe('collapse', () => {
       propsData: {
         // 'id' is a required prop
         id: 'test',
-        isNav: true
-      }
+        isNav: true,
+      },
     })
     // const rootWrapper = createWrapper(wrapper.vm.$root)
     expect(wrapper.vm).toBeDefined()
@@ -84,11 +84,11 @@ describe('collapse', () => {
       attachTo: document.body,
       propsData: {
         // 'id' is a required prop
-        id: 'test'
+        id: 'test',
       },
       slots: {
-        default: '<div>foobar</div>'
-      }
+        default: '<div>foobar</div>',
+      },
     })
     expect(wrapper.vm).toBeDefined()
     await waitNT(wrapper.vm)
@@ -111,11 +111,11 @@ describe('collapse', () => {
       propsData: {
         // 'id' is a required prop
         id: 'test',
-        visible: true
+        visible: true,
       },
       slots: {
-        default: '<div>foobar</div>'
-      }
+        default: '<div>foobar</div>',
+      },
     })
     expect(wrapper.vm).toBeDefined()
     await waitNT(wrapper.vm)
@@ -137,11 +137,11 @@ describe('collapse', () => {
       attachTo: document.body,
       propsData: {
         // 'id' is a required prop
-        id: 'test'
+        id: 'test',
       },
       slots: {
-        default: '<div>foobar</div>'
-      }
+        default: '<div>foobar</div>',
+      },
     })
     const rootWrapper = createWrapper(wrapper.vm.$root)
     await waitNT(wrapper.vm)
@@ -166,11 +166,11 @@ describe('collapse', () => {
       propsData: {
         // 'id' is a required prop
         id: 'test',
-        visible: true
+        visible: true,
       },
       slots: {
-        default: '<div>foobar</div>'
-      }
+        default: '<div>foobar</div>',
+      },
     })
     const rootWrapper = createWrapper(wrapper.vm.$root)
     await waitNT(wrapper.vm)
@@ -195,11 +195,11 @@ describe('collapse', () => {
       propsData: {
         // 'id' is a required prop
         id: 'test',
-        visible: true
+        visible: true,
       },
       slots: {
-        default: '<div>foobar</div>'
-      }
+        default: '<div>foobar</div>',
+      },
     })
     const rootWrapper = createWrapper(wrapper.vm.$root)
     await waitNT(wrapper.vm)
@@ -233,11 +233,11 @@ describe('collapse', () => {
       propsData: {
         // 'id' is a required prop
         id: 'test',
-        visible: false
+        visible: false,
       },
       slots: {
-        default: '<div>foobar</div>'
-      }
+        default: '<div>foobar</div>',
+      },
     })
     const rootWrapper = createWrapper(wrapper.vm.$root)
     await waitNT(wrapper.vm)
@@ -255,7 +255,7 @@ describe('collapse', () => {
 
     // Change visible prop
     await wrapper.setProps({
-      visible: true
+      visible: true,
     })
     await waitNT(wrapper.vm)
     await waitRAF()
@@ -279,11 +279,11 @@ describe('collapse', () => {
         // 'id' is a required prop
         id: 'test',
         accordion: 'foo',
-        visible: true
+        visible: true,
       },
       slots: {
-        default: '<div>foobar</div>'
-      }
+        default: '<div>foobar</div>',
+      },
     })
     const rootWrapper = createWrapper(wrapper.vm.$root)
     await waitNT(wrapper.vm)
@@ -382,16 +382,16 @@ describe('collapse', () => {
               props: {
                 id: 'test',
                 isNav: true,
-                visible: true
-              }
+                visible: true,
+              },
             },
             [h('a', { class: 'nav-link', attrs: { href: '#' } }, 'nav link')]
-          )
+          ),
         ])
-      }
+      },
     }
     const wrapper = mount(App, {
-      attachTo: document.body
+      attachTo: document.body,
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -438,16 +438,16 @@ describe('collapse', () => {
               props: {
                 id: 'test',
                 isNav: true,
-                visible: true
-              }
+                visible: true,
+              },
             },
             [h('a', { class: 'nav-link', attrs: { href: '#' } }, 'nav link')]
-          )
+          ),
         ])
-      }
+      },
     }
     const wrapper = mount(App, {
-      attachTo: document.body
+      attachTo: document.body,
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -480,11 +480,11 @@ describe('collapse', () => {
       attachTo: document.body,
       propsData: {
         // 'id' is a required prop
-        id: 'test'
+        id: 'test',
       },
       slots: {
-        default: '<div>foobar</div>'
-      }
+        default: '<div>foobar</div>',
+      },
     })
     // const rootWrapper = createWrapper(wrapper.vm.$root)
     expect(wrapper.vm).toBeDefined()
@@ -512,14 +512,14 @@ describe('collapse', () => {
       propsData: {
         // 'id' is a required prop
         id: 'test',
-        visible: true
+        visible: true,
       },
       scopedSlots: {
         default(props) {
           scope = props
           return this.$createElement('div', 'foobar')
-        }
-      }
+        },
+      },
     })
     const rootWrapper = createWrapper(wrapper.vm.$root)
     await waitNT(wrapper.vm)

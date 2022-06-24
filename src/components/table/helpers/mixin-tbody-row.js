@@ -2,12 +2,12 @@ import { Vue } from '../../../vue'
 import {
   EVENT_NAME_ROW_CLICKED,
   EVENT_NAME_ROW_HOVERED,
-  EVENT_NAME_ROW_UNHOVERED
+  EVENT_NAME_ROW_UNHOVERED,
 } from '../../../constants/events'
 import {
   PROP_TYPE_ARRAY_OBJECT_STRING,
   PROP_TYPE_FUNCTION,
-  PROP_TYPE_OBJECT_FUNCTION
+  PROP_TYPE_OBJECT_FUNCTION,
 } from '../../../constants/props'
 import { SLOT_NAME_ROW_DETAILS } from '../../../constants/slots'
 import { useParentMixin } from '../../../mixins/use-parent'
@@ -26,7 +26,7 @@ import { FIELD_KEY_CELL_VARIANT, FIELD_KEY_ROW_VARIANT, FIELD_KEY_SHOW_DETAILS }
 export const props = {
   detailsTdClass: makeProp(PROP_TYPE_ARRAY_OBJECT_STRING),
   tbodyTrAttr: makeProp(PROP_TYPE_OBJECT_FUNCTION),
-  tbodyTrClass: makeProp([...PROP_TYPE_ARRAY_OBJECT_STRING, PROP_TYPE_FUNCTION])
+  tbodyTrClass: makeProp([...PROP_TYPE_ARRAY_OBJECT_STRING, PROP_TYPE_FUNCTION]),
 }
 
 // --- Mixin ---
@@ -127,16 +127,16 @@ export const tbodyRowMixin = Vue.extend({
           'aria-colindex': String(colIndex + 1),
           ...(isRowHeader
             ? this.getThValues(item, key, field.thAttr, 'row', {})
-            : this.getTdValues(item, key, field.tdAttr, {}))
+            : this.getTdValues(item, key, field.tdAttr, {})),
         },
-        key: `row-${rowIndex}-cell-${colIndex}-${key}`
+        key: `row-${rowIndex}-cell-${colIndex}-${key}`,
       }
       if (stickyColumn) {
         // We are using the helper BTd or BTh
         data.props = {
           stackedHeading: isStacked ? label : null,
           stickyColumn: true,
-          variant: cellVariant
+          variant: cellVariant,
         }
       } else {
         // Using native TD or TH element, so we need to
@@ -157,7 +157,7 @@ export const tbodyRowMixin = Vue.extend({
         unformatted: get(item, key, ''),
         value: formatted,
         toggleDetails: this.toggleDetailsFactory(hasDetailsSlot, item),
-        detailsShowing: Boolean(item[FIELD_KEY_SHOW_DETAILS])
+        detailsShowing: Boolean(item[FIELD_KEY_SHOW_DETAILS]),
       }
       // If table supports selectable mode, then add in the following scope
       // this.supportsSelectableRows will be undefined if mixin isn't loaded
@@ -195,7 +195,7 @@ export const tbodyRowMixin = Vue.extend({
         perPage,
         tbodyTrClass,
         tbodyTrAttr,
-        hasSelectableRowClick
+        hasSelectableRowClick,
       } = safeVueInstance(this)
       const h = this.$createElement
       const hasDetailsSlot = this.hasNormalizedSlot(SLOT_NAME_ROW_DETAILS)
@@ -262,16 +262,16 @@ export const tbodyRowMixin = Vue.extend({
               'aria-details': detailsId,
               'aria-owns': detailsId,
               'aria-rowindex': ariaRowIndex,
-              ...selectableAttrs
+              ...selectableAttrs,
             },
             on: {
               // Note: These events are not A11Y friendly!
               mouseenter: this.rowHovered,
-              mouseleave: this.rowUnhovered
+              mouseleave: this.rowUnhovered,
             },
             key: `__b-table-row-${rowKey}__`,
             ref: 'item-rows',
-            refInFor: true
+            refInFor: true,
           },
           $tds
         )
@@ -283,7 +283,7 @@ export const tbodyRowMixin = Vue.extend({
           item,
           index: rowIndex,
           fields,
-          toggleDetails: this.toggleDetailsFactory(hasDetailsSlot, item)
+          toggleDetails: this.toggleDetailsFactory(hasDetailsSlot, item),
         }
         // If table supports selectable mode, then add in the following scope
         // this.supportsSelectableRows will be undefined if mixin isn't loaded
@@ -298,7 +298,7 @@ export const tbodyRowMixin = Vue.extend({
           BTd,
           {
             props: { colspan: fields.length },
-            class: this.detailsTdClass
+            class: this.detailsTdClass,
           },
           [this.normalizeSlot(SLOT_NAME_ROW_DETAILS, detailsScope)]
         )
@@ -312,9 +312,9 @@ export const tbodyRowMixin = Vue.extend({
               staticClass: 'd-none',
               attrs: {
                 'aria-hidden': 'true',
-                role: 'presentation'
+                role: 'presentation',
               },
-              key: `__b-table-details-stripe__${rowKey}`
+              key: `__b-table-details-stripe__${rowKey}`,
             })
           )
         }
@@ -337,9 +337,9 @@ export const tbodyRowMixin = Vue.extend({
                 ...userDetailsTrAttrs,
                 // Users cannot override the following attributes
                 id: detailsId,
-                tabindex: '-1'
+                tabindex: '-1',
               },
-              key: `__b-table-details__${rowKey}`
+              key: `__b-table-details__${rowKey}`,
             },
             [$details]
           )
@@ -355,6 +355,6 @@ export const tbodyRowMixin = Vue.extend({
 
       // Return the row(s)
       return $rows
-    }
-  }
+    },
+  },
 })

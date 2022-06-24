@@ -51,15 +51,15 @@ For pagination that changes to a new URL, use the
           { id: 6, first_name: 'Bamm Bamm', last_name: 'Rubble' },
           { id: 7, first_name: 'The Great', last_name: 'Gazzoo' },
           { id: 8, first_name: 'Rockhead', last_name: 'Slate' },
-          { id: 9, first_name: 'Pearl', last_name: 'Slaghoople' }
-        ]
+          { id: 9, first_name: 'Pearl', last_name: 'Slaghoople' },
+        ],
       }
     },
     computed: {
       rows() {
         return this.items.length
-      }
-    }
+      },
+    },
   }
 </script>
 
@@ -125,12 +125,7 @@ For a full list of all available slots see the [Slots](#comp-ref-b-pagination-sl
     ></b-pagination>
 
     <!-- Use HTML and sub-components in slots -->
-    <b-pagination
-      v-model="currentPage"
-      :total-rows="rows"
-      :per-page="perPage"
-      class="mt-4"
-    >
+    <b-pagination v-model="currentPage" :total-rows="rows" :per-page="perPage" class="mt-4">
       <template #first-text><span class="text-success">First</span></template>
       <template #prev-text><span class="text-danger">Prev</span></template>
       <template #next-text><span class="text-warning">Next</span></template>
@@ -154,9 +149,9 @@ For a full list of all available slots see the [Slots](#comp-ref-b-pagination-sl
       return {
         rows: 100,
         perPage: 10,
-        currentPage: 1
+        currentPage: 1,
       }
-    }
+    },
   }
 </script>
 
@@ -232,9 +227,9 @@ use the `first-number` and `last-number` props.
       return {
         rows: 100,
         perPage: 1,
-        currentPage: 5
+        currentPage: 5,
       }
-    }
+    },
   }
 </script>
 
@@ -271,9 +266,9 @@ smaller buttons or `'lg'` for larger buttons.
     data() {
       return {
         rows: 100,
-        currentPage: 1
+        currentPage: 1,
       }
-    }
+    },
   }
 </script>
 
@@ -309,9 +304,9 @@ Easily switch to pill style buttons by setting the `pills` prop
     data() {
       return {
         rows: 100,
-        currentPage: 1
+        currentPage: 1,
       }
-    }
+    },
   }
 </script>
 
@@ -355,9 +350,9 @@ By default the pagination component is left aligned. Change the alignment to `ce
     data() {
       return {
         rows: 100,
-        currentPage: 3
+        currentPage: 3,
       }
-    }
+    },
   }
 </script>
 

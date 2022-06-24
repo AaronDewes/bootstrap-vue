@@ -10,8 +10,8 @@ describe('icons', () => {
   it('b-icon has expected structure', async () => {
     const wrapper = mount(BIcon, {
       propsData: {
-        icon: 'alarm-fill'
-      }
+        icon: 'alarm-fill',
+      },
     })
 
     expect(wrapper.exists()).toBe(true)
@@ -41,8 +41,8 @@ describe('icons', () => {
     const wrapper = mount(BIcon, {
       propsData: {
         icon: 'alarm-fill',
-        stacked: true
-      }
+        stacked: true,
+      },
     })
 
     expect(wrapper.exists()).toBe(true)
@@ -76,8 +76,8 @@ describe('icons', () => {
     // components for the icons)
     const wrapper = mount(BIcon, {
       propsData: {
-        icon: ''
-      }
+        icon: '',
+      },
     })
 
     expect(wrapper.exists()).toBe(true)
@@ -97,8 +97,8 @@ describe('icons', () => {
     // As we currently do not check the validity of icon names
     const wrapper = mount(BIcon, {
       propsData: {
-        icon: undefined
-      }
+        icon: undefined,
+      },
     })
 
     expect(wrapper.exists()).toBe(true)
@@ -114,8 +114,8 @@ describe('icons', () => {
   it('b-icon with unknown icon name renders BIconBlank', async () => {
     const wrapper = mount(BIcon, {
       propsData: {
-        icon: 'unknown-icon-name'
-      }
+        icon: 'unknown-icon-name',
+      },
     })
 
     expect(wrapper.exists()).toBe(true)
@@ -135,8 +135,8 @@ describe('icons', () => {
     const wrapper = mount(BIcon, {
       propsData: {
         icon: 'alarm-fill',
-        variant: 'danger'
-      }
+        variant: 'danger',
+      },
     })
 
     expect(wrapper.exists()).toBe(true)
@@ -160,8 +160,8 @@ describe('icons', () => {
     const wrapper = mount(BIcon, {
       propsData: {
         icon: 'alarm-fill',
-        fontScale: '1.25'
-      }
+        fontScale: '1.25',
+      },
     })
 
     expect(wrapper.exists()).toBe(true)
@@ -187,15 +187,15 @@ describe('icons', () => {
       name: 'ParentComponent',
       components: {
         // For testing user defined Icons
-        BIconFakeIconTest: makeIcon('FakeIconTest', '<path class="fake-path" />')
+        BIconFakeIconTest: makeIcon('FakeIconTest', '<path class="fake-path" />'),
       },
-      template: '<b-icon icon="fake-icon-test" />'
+      template: '<b-icon icon="fake-icon-test" />',
     }
 
     const wrapper = mount(ParentComponent, {
       propsData: {
-        icon: 'fake-icon-test'
-      }
+        icon: 'fake-icon-test',
+      },
     })
 
     expect(wrapper.exists()).toBe(true)
@@ -215,8 +215,8 @@ describe('icons', () => {
     const wrapper = mount(BIcon, {
       propsData: {
         icon: 'alarm-fill',
-        rotate: '45'
-      }
+        rotate: '45',
+      },
     })
 
     expect(wrapper.exists()).toBe(true)
@@ -239,8 +239,8 @@ describe('icons', () => {
     const wrapper = mount(BIcon, {
       propsData: {
         icon: 'alarm-fill',
-        scale: '1.5'
-      }
+        scale: '1.5',
+      },
     })
 
     expect(wrapper.exists()).toBe(true)
@@ -263,8 +263,8 @@ describe('icons', () => {
     const wrapper = mount(BIcon, {
       propsData: {
         icon: 'alarm-fill',
-        flipH: true
-      }
+        flipH: true,
+      },
     })
 
     expect(wrapper.exists()).toBe(true)
@@ -287,8 +287,8 @@ describe('icons', () => {
     const wrapper = mount(BIcon, {
       propsData: {
         icon: 'alarm-fill',
-        flipV: true
-      }
+        flipV: true,
+      },
     })
 
     expect(wrapper.exists()).toBe(true)
@@ -312,8 +312,8 @@ describe('icons', () => {
       propsData: {
         icon: 'alarm-fill',
         flipH: true,
-        flipV: true
-      }
+        flipV: true,
+      },
     })
 
     expect(wrapper.exists()).toBe(true)
@@ -337,8 +337,8 @@ describe('icons', () => {
       propsData: {
         icon: 'alarm-fill',
         scale: '1.5',
-        flipH: true
-      }
+        flipH: true,
+      },
     })
 
     expect(wrapper.exists()).toBe(true)
@@ -362,8 +362,8 @@ describe('icons', () => {
       propsData: {
         icon: 'alarm-fill',
         scale: '1.5',
-        flipV: true
-      }
+        flipV: true,
+      },
     })
 
     expect(wrapper.exists()).toBe(true)
@@ -388,8 +388,8 @@ describe('icons', () => {
         icon: 'alarm-fill',
         scale: '1.5',
         flipH: true,
-        flipV: true
-      }
+        flipV: true,
+      },
     })
 
     expect(wrapper.exists()).toBe(true)
@@ -413,8 +413,8 @@ describe('icons', () => {
       propsData: {
         icon: 'alarm-fill',
         shiftH: 8,
-        shiftV: 16
-      }
+        shiftV: 16,
+      },
     })
 
     expect(wrapper.exists()).toBe(true)
@@ -439,8 +439,8 @@ describe('icons', () => {
         icon: 'alarm-fill',
         rotate: 45,
         shiftH: 8,
-        shiftV: 16
-      }
+        shiftV: 16,
+      },
     })
 
     expect(wrapper.exists()).toBe(true)
@@ -466,8 +466,8 @@ describe('icons', () => {
     const wrapper = mount(BIcon, {
       propsData: {
         icon: 'circle-fill',
-        animation: 'spin'
-      }
+        animation: 'spin',
+      },
     })
 
     expect(wrapper.exists()).toBe(true)
@@ -484,8 +484,8 @@ describe('icons', () => {
     const wrapper = mount(BIcon, {
       propsData: {
         icon: 'circle-fill',
-        title: 'Circle'
-      }
+        title: 'Circle',
+      },
     })
 
     expect(wrapper.exists()).toBe(true)
@@ -504,8 +504,8 @@ describe('icons', () => {
   it('b-icon <title> should not render when title is undefined', async () => {
     const wrapper = mount(BIcon, {
       propsData: {
-        icon: 'circle-fill'
-      }
+        icon: 'circle-fill',
+      },
     })
 
     expect(wrapper.exists()).toBe(true)

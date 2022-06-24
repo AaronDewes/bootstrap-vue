@@ -8,7 +8,7 @@ import { omit } from '../../utils/object'
 
 export const props = makePropsConfigurable(
   {
-    tag: makeProp(PROP_TYPE_STRING, 'hr')
+    tag: makeProp(PROP_TYPE_STRING, 'hr'),
   },
   NAME_DROPDOWN_DIVIDER
 )
@@ -27,10 +27,10 @@ export const BDropdownDivider = /*#__PURE__*/ Vue.extend({
         attrs: {
           ...(data.attrs || {}),
           role: 'separator',
-          'aria-orientation': 'horizontal'
+          'aria-orientation': 'horizontal',
         },
-        ref: 'divider'
-      })
+        ref: 'divider',
+      }),
     ])
-  }
+  },
 })

@@ -25,8 +25,8 @@ describe('button', () => {
   it('renders a link when href provided', async () => {
     const wrapper = mount(BButton, {
       propsData: {
-        href: '/foo/bar'
-      }
+        href: '/foo/bar',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('A')
@@ -49,8 +49,8 @@ describe('button', () => {
   it('renders default slot content', async () => {
     const wrapper = mount(BButton, {
       slots: {
-        default: '<span>foobar</span>'
-      }
+        default: '<span>foobar</span>',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('BUTTON')
@@ -68,8 +68,8 @@ describe('button', () => {
   it('applies variant class', async () => {
     const wrapper = mount(BButton, {
       propsData: {
-        variant: 'danger'
-      }
+        variant: 'danger',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('BUTTON')
@@ -85,8 +85,8 @@ describe('button', () => {
   it('applies block class', async () => {
     const wrapper = mount(BButton, {
       propsData: {
-        block: true
-      }
+        block: true,
+      },
     })
 
     expect(wrapper.element.tagName).toBe('BUTTON')
@@ -103,8 +103,8 @@ describe('button', () => {
   it('applies rounded-pill class when pill prop set', async () => {
     const wrapper = mount(BButton, {
       propsData: {
-        pill: true
-      }
+        pill: true,
+      },
     })
 
     expect(wrapper.element.tagName).toBe('BUTTON')
@@ -121,8 +121,8 @@ describe('button', () => {
   it('applies rounded-0 class when squared prop set', async () => {
     const wrapper = mount(BButton, {
       propsData: {
-        squared: true
-      }
+        squared: true,
+      },
     })
 
     expect(wrapper.element.tagName).toBe('BUTTON')
@@ -139,8 +139,8 @@ describe('button', () => {
   it('renders custom root element', async () => {
     const wrapper = mount(BButton, {
       propsData: {
-        tag: 'div'
-      }
+        tag: 'div',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')
@@ -161,8 +161,8 @@ describe('button', () => {
   it('button has attribute disabled when disabled set', async () => {
     const wrapper = mount(BButton, {
       propsData: {
-        disabled: true
-      }
+        disabled: true,
+      },
     })
 
     expect(wrapper.element.tagName).toBe('BUTTON')
@@ -180,8 +180,8 @@ describe('button', () => {
     const wrapper = mount(BButton, {
       propsData: {
         href: '/foo/bar',
-        disabled: true
-      }
+        disabled: true,
+      },
     })
 
     expect(wrapper.element.tagName).toBe('A')
@@ -203,8 +203,8 @@ describe('button', () => {
   it('link with href="#" should have role="button"', async () => {
     const wrapper = mount(BButton, {
       propsData: {
-        href: '#'
-      }
+        href: '#',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('A')
@@ -221,11 +221,11 @@ describe('button', () => {
     let event = null
     const wrapper = mount(BButton, {
       listeners: {
-        click: e => {
+        click: (e) => {
           event = e
           called++
-        }
-      }
+        },
+      },
     })
 
     expect(wrapper.element.tagName).toBe('BUTTON')
@@ -243,14 +243,14 @@ describe('button', () => {
     let event = null
     const wrapper = mount(BButton, {
       propsData: {
-        href: '#'
+        href: '#',
       },
       listeners: {
-        click: e => {
+        click: (e) => {
           event = e
           called++
-        }
-      }
+        },
+      },
     })
 
     expect(wrapper.element.tagName).toBe('A')
@@ -276,13 +276,13 @@ describe('button', () => {
     let called = 0
     const wrapper = mount(BButton, {
       propsData: {
-        disabled: true
+        disabled: true,
       },
       listeners: {
         click: () => {
           called++
-        }
-      }
+        },
+      },
     })
 
     expect(wrapper.element.tagName).toBe('BUTTON')
@@ -296,8 +296,8 @@ describe('button', () => {
   it('should not have `.active` class and `aria-pressed` when pressed is null', async () => {
     const wrapper = mount(BButton, {
       propsData: {
-        pressed: null
-      }
+        pressed: null,
+      },
     })
 
     expect(wrapper.classes()).not.toContain('active')
@@ -313,8 +313,8 @@ describe('button', () => {
   it('should not have `.active` class and have `aria-pressed="false"` when pressed is false', async () => {
     const wrapper = mount(BButton, {
       propsData: {
-        pressed: false
-      }
+        pressed: false,
+      },
     })
 
     expect(wrapper.classes()).not.toContain('active')
@@ -329,8 +329,8 @@ describe('button', () => {
   it('should have `.active` class and have `aria-pressed="true"` when pressed is true', async () => {
     const wrapper = mount(BButton, {
       propsData: {
-        pressed: true
-      }
+        pressed: true,
+      },
     })
 
     expect(wrapper.classes()).toContain('active')
@@ -345,8 +345,8 @@ describe('button', () => {
   it('pressed should have `.focus` class when focused', async () => {
     const wrapper = mount(BButton, {
       propsData: {
-        pressed: false
-      }
+        pressed: false,
+      },
     })
 
     expect(wrapper.classes()).not.toContain('focus')
@@ -363,14 +363,14 @@ describe('button', () => {
     const values = []
     const wrapper = mount(BButton, {
       propsData: {
-        pressed: false
+        pressed: false,
       },
       listeners: {
-        'update:pressed': value => {
+        'update:pressed': (value) => {
           values.push(value)
           called++
-        }
-      }
+        },
+      },
     })
 
     expect(called).toBe(0)

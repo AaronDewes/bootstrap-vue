@@ -22,14 +22,14 @@
     data() {
       return {
         value: 45,
-        max: 100
+        max: 100,
       }
     },
     methods: {
       randomValue() {
         this.value = Math.random() * this.max
-      }
-    }
+      },
+    },
   }
 </script>
 
@@ -75,9 +75,9 @@ the decimal) via the `precision` prop (default is `0`digits after the decimal).
     data() {
       return {
         value: 33.333333333,
-        max: 50
+        max: 50,
       }
-    }
+    },
   }
 </script>
 
@@ -102,7 +102,10 @@ Need more control over the label? Provide your own label by using the default sl
 
     <h5 class="mt-3">Custom label via property</h5>
     <b-progress :max="max">
-      <b-progress-bar :value="value" :label="`${((value / max) * 100).toFixed(2)}%`"></b-progress-bar>
+      <b-progress-bar
+        :value="value"
+        :label="`${((value / max) * 100).toFixed(2)}%`"
+      ></b-progress-bar>
     </b-progress>
 
     <h5 class="mt-3">Custom label via property (HTML support)</h5>
@@ -117,9 +120,9 @@ Need more control over the label? Provide your own label by using the default sl
     data() {
       return {
         value: 33.333333333,
-        max: 50
+        max: 50,
       }
-    }
+    },
   }
 </script>
 
@@ -159,9 +162,9 @@ classes.
   export default {
     data() {
       return {
-        value: 75
+        value: 75,
       }
-    }
+    },
   }
 </script>
 
@@ -188,9 +191,9 @@ a standard CSS dimension (`px`, `rem`, `em`, etc.). The default height is `1rem`
   export default {
     data() {
       return {
-        value: 75
+        value: 75,
       }
-    }
+    },
   }
 </script>
 
@@ -227,20 +230,20 @@ Use background variants to change the appearance of individual progress bars. Th
           { variant: 'danger', value: 75 },
           { variant: 'primary', value: 75 },
           { variant: 'secondary', value: 75 },
-          { variant: 'dark', value: 75 }
+          { variant: 'dark', value: 75 },
         ],
-        timer: null
+        timer: null,
       }
     },
     mounted() {
       this.timer = setInterval(() => {
-        this.bars.forEach(bar => (bar.value = 25 + Math.random() * 75))
+        this.bars.forEach((bar) => (bar.value = 25 + Math.random() * 75))
       }, 2000)
     },
     beforeDestroy() {
       clearInterval(this.timer)
       this.timer = null
-    }
+    },
   }
 </script>
 
@@ -269,9 +272,9 @@ Set `striped` to apply a stripe via CSS gradient over the progress bar's backgro
   export default {
     data() {
       return {
-        striped: true
+        striped: true,
       }
-    }
+    },
   }
 </script>
 
@@ -300,9 +303,9 @@ The striped gradient can also be animated by setting the `animated`prop.
   export default {
     data() {
       return {
-        animate: true
+        animate: true,
       }
-    }
+    },
   }
 </script>
 
@@ -356,9 +359,9 @@ horizontally stacked set of progress bars.
     data() {
       return {
         values: [15, 30, 20],
-        max: 100
+        max: 100,
       }
-    }
+    },
   }
 </script>
 

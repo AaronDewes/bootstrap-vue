@@ -19,7 +19,7 @@ export const hasNormalizedSlot = (names, $scopedSlots = {}, $slots = {}) => {
   // Ensure names is an array
   names = concat(names).filter(identity)
   // Returns true if the either a $scopedSlot or $slot exists with the specified name
-  return names.some(name => $scopedSlots[name] || $slots[name])
+  return names.some((name) => $scopedSlots[name] || $slots[name])
 }
 
 /**

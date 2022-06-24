@@ -13,7 +13,7 @@ export const props = makePropsConfigurable(
     ...copyProps(BCardProps, prefixPropName.bind(null, 'footer')),
     footer: makeProp(PROP_TYPE_STRING),
     footerClass: makeProp(PROP_TYPE_ARRAY_OBJECT_STRING),
-    footerHtml: makeProp(PROP_TYPE_STRING)
+    footerHtml: makeProp(PROP_TYPE_STRING),
   }),
   NAME_CARD_FOOTER
 )
@@ -37,12 +37,12 @@ export const BCardFooter = /*#__PURE__*/ Vue.extend({
           {
             [`bg-${footerBgVariant}`]: footerBgVariant,
             [`border-${footerBorderVariant}`]: footerBorderVariant,
-            [`text-${footerTextVariant}`]: footerTextVariant
-          }
+            [`text-${footerTextVariant}`]: footerTextVariant,
+          },
         ],
-        domProps: children ? {} : htmlOrText(props.footerHtml, props.footer)
+        domProps: children ? {} : htmlOrText(props.footerHtml, props.footer),
       }),
       children
     )
-  }
+  },
 })

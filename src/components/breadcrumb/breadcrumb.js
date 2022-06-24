@@ -10,7 +10,7 @@ import { BBreadcrumbItem } from './breadcrumb-item'
 
 export const props = makePropsConfigurable(
   {
-    items: makeProp(PROP_TYPE_ARRAY)
+    items: makeProp(PROP_TYPE_ARRAY),
   },
   NAME_BREADCRUMB
 )
@@ -48,5 +48,5 @@ export const BBreadcrumb = /*#__PURE__*/ Vue.extend({
     }
 
     return h('ol', mergeData(data, { staticClass: 'breadcrumb' }), childNodes)
-  }
+  },
 })

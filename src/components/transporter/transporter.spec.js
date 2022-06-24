@@ -9,11 +9,11 @@ describe('utils/transporter component', () => {
     const App = {
       render(h) {
         return h(BVTransporter, { props: { disabled: true } }, [h('div', 'content')])
-      }
+      },
     }
 
     const wrapper = mount(App, {
-      attachTo: document.body
+      attachTo: document.body,
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -27,13 +27,13 @@ describe('utils/transporter component', () => {
     const App = {
       render(h) {
         return h(BVTransporter, { props: { disabled: false } }, [
-          h('div', { attrs: { id: 'foobar' } }, 'content')
+          h('div', { attrs: { id: 'foobar' } }, 'content'),
         ])
-      }
+      },
     }
 
     const wrapper = mount(App, {
-      attachTo: document.body
+      attachTo: document.body,
     })
 
     expect(wrapper.vm).toBeDefined()

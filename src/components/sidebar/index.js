@@ -4,7 +4,7 @@ import { pluginFactory } from '../../utils/plugins'
 
 const SidebarPlugin = /*#__PURE__*/ pluginFactory({
   components: { BSidebar },
-  plugins: { VBTogglePlugin }
+  plugins: { VBTogglePlugin },
 })
 
 export { SidebarPlugin, BSidebar }

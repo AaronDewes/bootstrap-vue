@@ -26,7 +26,7 @@ const iconProps = omit(BVIconBaseProps, ['content'])
 export const props = makePropsConfigurable(
   sortKeys({
     ...iconProps,
-    icon: makeProp(PROP_TYPE_STRING)
+    icon: makeProp(PROP_TYPE_STRING),
   }),
   NAME_ICON
 )
@@ -50,5 +50,5 @@ export const BIcon = /*#__PURE__*/ Vue.extend({
       icon ? findIconComponent(parent, `BIcon${icon}`) || BIconBlank : BIconBlank,
       mergeData(data, { props: pluckProps(iconProps, props) })
     )
-  }
+  },
 })

@@ -4,7 +4,7 @@ import {
   computeHref,
   isRouterLink,
   computeRel,
-  computeTag
+  computeTag,
 } from './router'
 
 describe('utils/router', () => {
@@ -22,7 +22,7 @@ describe('utils/router', () => {
     it('handles multiple keys', async () => {
       const obj = {
         foo: 1,
-        bar: 'baz'
+        bar: 'baz',
       }
       expect(stringifyQueryObj(obj)).toEqual('?foo=1&bar=baz')
     })
@@ -30,7 +30,7 @@ describe('utils/router', () => {
     it('handles array as values', async () => {
       const obj = {
         foo: 1,
-        bar: ['a', 'b', 'c']
+        bar: ['a', 'b', 'c'],
       }
       expect(stringifyQueryObj(obj)).toEqual('?foo=1&bar=a&bar=b&bar=c')
     })
@@ -39,14 +39,14 @@ describe('utils/router', () => {
       const obj = {
         foo: 1,
         bar: undefined,
-        baz: 2
+        baz: 2,
       }
       expect(stringifyQueryObj(obj)).toEqual('?foo=1&baz=2')
     })
 
     it('skips undefined values in arrays', async () => {
       const obj = {
-        foo: ['a', undefined, 'c']
+        foo: ['a', undefined, 'c'],
       }
       expect(stringifyQueryObj(obj)).toEqual('?foo=a&foo=c')
     })
@@ -55,14 +55,14 @@ describe('utils/router', () => {
       const obj = {
         foo: 1,
         bar: null,
-        baz: 2
+        baz: 2,
       }
       expect(stringifyQueryObj(obj)).toEqual('?foo=1&bar&baz=2')
     })
 
     it('leaves in null values in arrays', async () => {
       const obj = {
-        foo: ['a', null, 'c']
+        foo: ['a', null, 'c'],
       }
       expect(stringifyQueryObj(obj)).toEqual('?foo=a&foo&foo=c')
     })
@@ -123,7 +123,7 @@ describe('utils/router', () => {
     it('returns href when both href and to provided', async () => {
       const obj = {
         href: '/foo/bar?baz=123',
-        to: '/baz/bar'
+        to: '/baz/bar',
       }
       expect(computeHref(obj)).toEqual(obj.href)
     })
@@ -136,7 +136,7 @@ describe('utils/router', () => {
 
     it('parses `to` when string', async () => {
       const obj = {
-        to: '/baz/bar'
+        to: '/baz/bar',
       }
       expect(computeHref(obj)).toEqual(obj.to)
     })
@@ -144,8 +144,8 @@ describe('utils/router', () => {
     it('parses `to` with only path', async () => {
       const obj = {
         to: {
-          path: '/baz/bar'
-        }
+          path: '/baz/bar',
+        },
       }
       expect(computeHref(obj)).toEqual(obj.to.path)
     })
@@ -153,8 +153,8 @@ describe('utils/router', () => {
     it('parses `to` with only hash', async () => {
       const obj = {
         to: {
-          hash: '#foobar'
-        }
+          hash: '#foobar',
+        },
       }
       expect(computeHref(obj)).toEqual(obj.to.hash)
     })
@@ -162,8 +162,8 @@ describe('utils/router', () => {
     it('parses `to` with hash missing "#"', async () => {
       const obj = {
         to: {
-          hash: 'foobar'
-        }
+          hash: 'foobar',
+        },
       }
       expect(computeHref(obj)).toEqual('#foobar')
     })
@@ -171,8 +171,8 @@ describe('utils/router', () => {
     it('parses `to` with only query', async () => {
       const obj = {
         to: {
-          query: { foo: 'bar' }
-        }
+          query: { foo: 'bar' },
+        },
       }
       expect(computeHref(obj)).toEqual('?foo=bar')
     })
@@ -191,10 +191,10 @@ describe('utils/router', () => {
             bar: 1,
             baz: ['a', 'b', 'c'],
             bif: null,
-            zap: undefined
+            zap: undefined,
           },
-          hash: '#fizzlerocks'
-        }
+          hash: '#fizzlerocks',
+        },
       }
       expect(computeHref(obj)).toEqual('/foo?bar=1&baz=a&baz=b&baz=c&bif#fizzlerocks')
     })

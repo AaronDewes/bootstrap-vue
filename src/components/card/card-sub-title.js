@@ -10,7 +10,7 @@ export const props = makePropsConfigurable(
   {
     subTitle: makeProp(PROP_TYPE_STRING),
     subTitleTag: makeProp(PROP_TYPE_STRING, 'h6'),
-    subTitleTextVariant: makeProp(PROP_TYPE_STRING, 'muted')
+    subTitleTextVariant: makeProp(PROP_TYPE_STRING, 'muted'),
   },
   NAME_CARD_SUB_TITLE
 )
@@ -27,9 +27,9 @@ export const BCardSubTitle = /*#__PURE__*/ Vue.extend({
       props.subTitleTag,
       mergeData(data, {
         staticClass: 'card-subtitle',
-        class: [props.subTitleTextVariant ? `text-${props.subTitleTextVariant}` : null]
+        class: [props.subTitleTextVariant ? `text-${props.subTitleTextVariant}` : null],
       }),
       children || toString(props.subTitle)
     )
-  }
+  },
 })

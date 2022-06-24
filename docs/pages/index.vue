@@ -5,7 +5,7 @@
         <b-row align-v="center" no-gutters class="mb-2 mb-md-3 mb-lg-4">
           <!-- eslint-disable-next-line vue/max-attributes-per-line -->
           <b-col tag="aside" cols="12" md="4" order-md="2" class="logo-aside mb-4 mb-md-0">
-            <BvLogo></bvLogo>
+            <BvLogo></BvLogo>
           </b-col>
 
           <b-col tag="header" cols="12" md="8" order-md="1">
@@ -23,7 +23,12 @@
 
             <b-media no-body class="my-3">
               <b-media-aside vertical-align="center">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 408" width="30px" height="30px">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 512 408"
+                  width="30px"
+                  height="30px"
+                >
                   <defs>
                     <linearGradient
                       id="bs-logo-a"
@@ -31,9 +36,10 @@
                       x2="523.48"
                       y1="10.798"
                       y2="365.945"
-                      gradientUnits="userSpaceOnUse">
-                      <stop stop-color="#9013fe"/>
-                      <stop offset="1" stop-color="#6610f2"/>
+                      gradientUnits="userSpaceOnUse"
+                    >
+                      <stop stop-color="#9013fe" />
+                      <stop offset="1" stop-color="#6610f2" />
                     </linearGradient>
                     <linearGradient
                       id="bs-logo-b"
@@ -41,9 +47,10 @@
                       x2="293.514"
                       y1="109.74"
                       y2="278.872"
-                      gradientUnits="userSpaceOnUse">
-                      <stop stop-color="#fff"/>
-                      <stop offset="1" stop-color="#f1e5fc"/>
+                      gradientUnits="userSpaceOnUse"
+                    >
+                      <stop stop-color="#fff" />
+                      <stop offset="1" stop-color="#f1e5fc" />
                     </linearGradient>
                     <filter
                       id="bs-logo-c"
@@ -53,16 +60,30 @@
                       x="161.901"
                       y="83.457"
                       color-interpolation-filters="sRGB"
-                      filterUnits="userSpaceOnUse">
-                      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-                      <feColorMatrix in="SourceAlpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/><feOffset dy="4"/>
-                      <feGaussianBlur stdDeviation="8"/><feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.15 0"/>
-                      <feBlend in2="BackgroundImageFix" result="effect1_dropShadow"/>
-                      <feBlend in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+                      filterUnits="userSpaceOnUse"
+                    >
+                      <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                      <feColorMatrix
+                        in="SourceAlpha"
+                        values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                      />
+                      <feOffset dy="4" />
+                      <feGaussianBlur stdDeviation="8" />
+                      <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.15 0" />
+                      <feBlend in2="BackgroundImageFix" result="effect1_dropShadow" />
+                      <feBlend in="SourceGraphic" in2="effect1_dropShadow" result="shape" />
                     </filter>
                   </defs>
-                  <path fill="url(#bs-logo-a)" d="M56.481 53.32C55.515 25.58 77.128 0 106.342 0h299.353c29.214 0 50.827 25.58 49.861 53.32-.928 26.647.277 61.165 8.964 89.31 8.715 28.232 23.411 46.077 47.48 48.37v26c-24.069 2.293-38.765 20.138-47.48 48.37-8.687 28.145-9.892 62.663-8.964 89.311.966 27.739-20.647 53.319-49.861 53.319H106.342c-29.214 0-50.827-25.58-49.86-53.319.927-26.648-.278-61.166-8.966-89.311C38.802 237.138 24.07 219.293 0 217v-26c24.069-2.293 38.802-20.138 47.516-48.37 8.688-28.145 9.893-62.663 8.965-89.31z"/>
-                  <path fill="url(#bs-logo-b)" filter="url(#bs-logo-c)" stroke="#fff" d="M267.103 312.457c47.297 0 75.798-23.158 75.798-61.355 0-28.873-20.336-49.776-50.532-53.085v-1.203c22.185-3.609 39.594-24.211 39.594-47.219 0-32.783-25.882-54.138-65.322-54.138h-88.74v217h89.202zm-54.692-189.48h45.911c24.958 0 39.131 11.128 39.131 31.279 0 21.505-16.484 33.535-46.372 33.535h-38.67v-64.814zm0 161.961v-71.431h45.602c32.661 0 49.608 12.03 49.608 35.49 0 23.459-16.484 35.941-47.605 35.941h-47.605z"/>
+                  <path
+                    fill="url(#bs-logo-a)"
+                    d="M56.481 53.32C55.515 25.58 77.128 0 106.342 0h299.353c29.214 0 50.827 25.58 49.861 53.32-.928 26.647.277 61.165 8.964 89.31 8.715 28.232 23.411 46.077 47.48 48.37v26c-24.069 2.293-38.765 20.138-47.48 48.37-8.687 28.145-9.892 62.663-8.964 89.311.966 27.739-20.647 53.319-49.861 53.319H106.342c-29.214 0-50.827-25.58-49.86-53.319.927-26.648-.278-61.166-8.966-89.311C38.802 237.138 24.07 219.293 0 217v-26c24.069-2.293 38.802-20.138 47.516-48.37 8.688-28.145 9.893-62.663 8.965-89.31z"
+                  />
+                  <path
+                    fill="url(#bs-logo-b)"
+                    filter="url(#bs-logo-c)"
+                    stroke="#fff"
+                    d="M267.103 312.457c47.297 0 75.798-23.158 75.798-61.355 0-28.873-20.336-49.776-50.532-53.085v-1.203c22.185-3.609 39.594-24.211 39.594-47.219 0-32.783-25.882-54.138-65.322-54.138h-88.74v217h89.202zm-54.692-189.48h45.911c24.958 0 39.131 11.128 39.131 31.279 0 21.505-16.484 33.535-46.372 33.535h-38.67v-64.814zm0 161.961v-71.431h45.602c32.661 0 49.608 12.03 49.608 35.49 0 23.459-16.484 35.941-47.605 35.941h-47.605z"
+                  />
                 </svg>
               </b-media-aside>
               <b-media-body class="ms-3 text-muted align-self-center">
@@ -83,21 +104,27 @@
                   class="media-vue-logo"
                 >
                   <title>Vue.js logo</title>
-                  <path fill="#42b883" d="M120.83 0L98.16 39.26 75.49 0H0l98.16 170.02L196.32 0h-75.49z" />
-                  <path fill="#35495e" d="M120.83 0L98.16 39.26 75.49 0H39.26l58.9 102.01L157.06 0h-36.23z" />
+                  <path
+                    fill="#42b883"
+                    d="M120.83 0L98.16 39.26 75.49 0H0l98.16 170.02L196.32 0h-75.49z"
+                  />
+                  <path
+                    fill="#35495e"
+                    d="M120.83 0L98.16 39.26 75.49 0H39.26l58.9 102.01L157.06 0h-36.23z"
+                  />
                 </svg>
               </b-media-aside>
               <b-media-body class="ms-3 text-muted align-self-center">
                 <a href="https://vuejs.org" target="_blank">Vue.js</a>
-                (pronounced <span class="text-nowrap">/<i>vjuː</i>/</span>, like view)
-                is a progressive framework for building user interfaces.
+                (pronounced <span class="text-nowrap">/<i>vjuː</i>/</span>, like view) is a
+                progressive framework for building user interfaces.
               </b-media-body>
             </b-media>
           </b-col>
         </b-row>
 
         <p class="mb-0 text-muted text-center mb-n4 mb-md-n5">
-          Current Version<br>
+          Current Version<br />
           <b-link to="/docs/reference/changelog" class="small">v{{ version }}</b-link>
         </p>
       </b-container>
@@ -111,14 +138,19 @@
             <b-row class="mb-4">
               <b-col lg="10" offset-lg="1">
                 <p class="text-lg-center">
-                  With more than 85 components, over 45 available plugins, several directives, and {{ bootstrapIconsCount }}+ icons,
+                  With more than 85 components, over 45 available plugins, several directives, and
+                  {{ bootstrapIconsCount }}+ icons,
                   <span class="bd-text-purple-bright">BootstrapVue</span> provides one of the most
                   comprehensive implementations of the
-                  <span class="bd-text-purple-bright">Bootstrap v{{ bootstrapVersionMajor }}</span> component and grid system
-                  available for <span class="bd-text-purple-bright">Vue.js v{{ vueVersionMinor }}</span>, complete with
-                  extensive and automated
+                  <span class="bd-text-purple-bright">Bootstrap v{{ bootstrapVersionMajor }}</span>
+                  component and grid system available for
+                  <span class="bd-text-purple-bright">Vue.js v{{ vueVersionMinor }}</span
+                  >, complete with extensive and automated
                   <b-link href="https://www.w3.org/WAI/standards-guidelines/aria/" target="_blank">
-                    <abbr title="Web Accessibility Initiative – Accessible Rich Internet Applications">WAI-ARIA</abbr>
+                    <abbr
+                      title="Web Accessibility Initiative – Accessible Rich Internet Applications"
+                      >WAI-ARIA</abbr
+                    >
                   </b-link>
                   accessibility markup.
                 </p>
@@ -127,24 +159,12 @@
 
             <b-row class="justify-content-lg-center">
               <b-col md="4" lg="3">
-                <b-btn
-                  to="/docs"
-                  variant="bd-primary"
-                  size="lg"
-                  class="mb-3 mb-md-0"
-                  block
-                >
+                <b-btn to="/docs" variant="bd-primary" size="lg" class="mb-3 mb-md-0" block>
                   Get started
                 </b-btn>
               </b-col>
               <b-col md="4" lg="3">
-                <b-btn
-                  to="/play"
-                  variant="bd-primary"
-                  size="lg"
-                  class="mb-3 mb-md-0"
-                  block
-                >
+                <b-btn to="/play" variant="bd-primary" size="lg" class="mb-3 mb-md-0" block>
                   Playground
                 </b-btn>
               </b-col>
@@ -175,7 +195,12 @@
         <b-card-group deck class="mb-sm-4">
           <b-card tag="article" body-text-variant="muted" class="rounded-0 border-0">
             <b-card-text text-tag="h3" class="h5 text-center mb-2 bd-text-purple-bright">
-              <b-icon icon="phone" width="2.5em" height="2.5em" class="mx-auto d-block mb-3"></b-icon>
+              <b-icon
+                icon="phone"
+                width="2.5em"
+                height="2.5em"
+                class="mx-auto d-block mb-3"
+              ></b-icon>
               <span>Responsive</span>
             </b-card-text>
             <b-card-text class="text-center">
@@ -185,11 +210,17 @@
 
           <b-card tag="article" body-text-variant="muted" class="rounded-0 border-0">
             <b-card-text text-tag="h3" class="h5 text-center bd-text-purple-bright mb-2">
-              <b-icon icon="puzzle" width="2.5em" height="2.5em" class="mx-auto d-block mb-3"></b-icon>
+              <b-icon
+                icon="puzzle"
+                width="2.5em"
+                height="2.5em"
+                class="mx-auto d-block mb-3"
+              ></b-icon>
               <span>Modular</span>
             </b-card-text>
             <b-card-text class="text-center">
-              <b-link to="/docs/#tree-shaking-with-module-bundlers">Import</b-link> only the features that you need
+              <b-link to="/docs/#tree-shaking-with-module-bundlers">Import</b-link> only the
+              features that you need
             </b-card-text>
           </b-card>
 
@@ -205,7 +236,8 @@
               <span>Accessible</span>
             </b-card-text>
             <b-card-text class="text-center">
-              Automated <b-link to="/docs/reference/accessibility">WAI-ARIA accessibility</b-link> markup
+              Automated
+              <b-link to="/docs/reference/accessibility">WAI-ARIA accessibility</b-link> markup
             </b-card-text>
           </b-card>
         </b-card-group>
@@ -235,13 +267,24 @@
             </b-card-text>
           </b-card>
 
-          <b-card tag="article" body-text-variant="muted" body-class="px-2" class="rounded-0 border-0">
+          <b-card
+            tag="article"
+            body-text-variant="muted"
+            body-class="px-2"
+            class="rounded-0 border-0"
+          >
             <b-card-text text-tag="h3" class="h5 text-center bd-text-purple-bright mb-2">
-              <b-icon icon="gear" width="2.5em" height="2.5em" class="mx-auto d-block mb-3"></b-icon>
+              <b-icon
+                icon="gear"
+                width="2.5em"
+                height="2.5em"
+                class="mx-auto d-block mb-3"
+              ></b-icon>
               <span>Configurable</span>
             </b-card-text>
             <b-card-text class="text-center">
-              Create <b-link to="/docs/reference/theming">themes</b-link> with SCSS variables and <b-link to="/docs/reference/settings">global options</b-link>
+              Create <b-link to="/docs/reference/theming">themes</b-link> with SCSS variables and
+              <b-link to="/docs/reference/settings">global options</b-link>
             </b-card-text>
           </b-card>
 
@@ -264,8 +307,14 @@
               <span>Free</span>
             </b-card-text>
             <b-card-text class="text-center">
-              Open sourced on <a href="https://github.com/bootstrap-vue/bootstrap-vue/" target="_blank">GitHub</a>,
-              <a href="https://github.com/bootstrap-vue/bootstrap-vue/blob/master/LICENSE" target="_blank">MIT</a> License
+              Open sourced on
+              <a href="https://github.com/bootstrap-vue/bootstrap-vue/" target="_blank">GitHub</a>,
+              <a
+                href="https://github.com/bootstrap-vue/bootstrap-vue/blob/master/LICENSE"
+                target="_blank"
+                >MIT</a
+              >
+              License
             </b-card-text>
           </b-card>
         </b-card-group>
@@ -316,30 +365,29 @@
             <path d="m1397 271-370 642-371-642h-592l963 1667 962-1667z" fill="#34495e" />
             <path d="m44 0h1952l-979 1696z" fill="#563d7c" fill-rule="nonzero" />
             <path d="m1633 392-612 1061-613-1061h-408l1021 1768 1020-1768z" fill="#41b883" />
-            <path d="m767 196h339c62 0 112 14 150 43 38 28 56 71 56 129 0 36-8 66-25 91s-42 44-74 58v2c43 9 75 29 98 61 22 31 33 71 33 118 0 28-5 53-15 77s-25 44-46 61c-21 18-47 31-80 41-32 11-71 16-116 16h-320zm122 292h199c29 0 54-9 73-25 20-17 29-41 29-72 0-35-8-60-26-75-17-14-43-21-76-21h-199zm0 305h216c37 0 66-10 86-29s31-46 31-81-10-61-31-80-49-28-86-28h-216z" fill="#fff" />
+            <path
+              d="m767 196h339c62 0 112 14 150 43 38 28 56 71 56 129 0 36-8 66-25 91s-42 44-74 58v2c43 9 75 29 98 61 22 31 33 71 33 118 0 28-5 53-15 77s-25 44-46 61c-21 18-47 31-80 41-32 11-71 16-116 16h-320zm122 292h199c29 0 54-9 73-25 20-17 29-41 29-72 0-35-8-60-26-75-17-14-43-21-76-21h-199zm0 305h216c37 0 66-10 86-29s31-46 31-81-10-61-31-80-49-28-86-28h-216z"
+              fill="#fff"
+            />
           </svg>
         </div>
         <b-row class="mb-3">
           <b-col lg="10" offset-lg="1">
             <p class="text-lg-center mb-0">
-              Easily integrate BootstrapVue into your Nuxt.js projects using our included Nuxt.js module.
-              You can optionally specify only the components, directives and/or plugins you require.
+              Easily integrate BootstrapVue into your Nuxt.js projects using our included Nuxt.js
+              module. You can optionally specify only the components, directives and/or plugins you
+              require.
             </p>
           </b-col>
         </b-row>
 
-        <b-button
-          to="/docs#nuxtjs-module"
-          size="sm"
-          variant="outline-secondary"
-          class="mb-3"
-        >
+        <b-button to="/docs#nuxtjs-module" size="sm" variant="outline-secondary" class="mb-3">
           BootstrapVue Nuxt.js module
         </b-button>
         <p class="mb-0 text-center">
           BootstrapVue's documentation is created using
-          <span class="bd-text-purple-bright">BootstrapVue</span> and
-          generated with <a href="https://nuxtjs.org" target="_blank">Nuxt.js</a>
+          <span class="bd-text-purple-bright">BootstrapVue</span> and generated with
+          <a href="https://nuxtjs.org" target="_blank">Nuxt.js</a>
         </p>
       </b-container>
     </section>
@@ -364,7 +412,9 @@
               fill-opacity=".4"
               d="M32.8 21c0 2.4-.8 4.9-2 6.9l5.1 5.1c2.5-3.4 4.1-7.6 4.1-12 0-4.6-1.6-8.8-4-12.2L30.7 14c1.2 2 2 4.3 2 7z"
             />
-            <path d="M20 33.7a12.8 12.8 0 0 1 0-25.6c2.6 0 5 .7 7 2.1L32 5a20 20 0 1 0 .1 31.9l-5-5.2a13 13 0 0 1-7 2z" />
+            <path
+              d="M20 33.7a12.8 12.8 0 0 1 0-25.6c2.6 0 5 .7 7 2.1L32 5a20 20 0 1 0 .1 31.9l-5-5.2a13 13 0 0 1-7 2z"
+            />
           </svg>
           Support BootstrapVue on Open Collective
         </h2>
@@ -398,7 +448,7 @@
 
         <BVContributors></BVContributors>
 
-        <hr style="withd: 90%">
+        <hr style="withd: 90%" />
 
         <div class="text-center mb-n4" aria-labeledby="parners-heading">
           <h3 id="partners-heading" class="mx-auto mt-4">Partners</h3>
@@ -427,7 +477,7 @@ import {
   bootstrapVersionMajor,
   bootstrapVersionMinor,
   version,
-  vueVersionMinor
+  vueVersionMinor,
 } from '~/content'
 import BvLogo from '~/components/bv-logo'
 import BVCarbonAd from '~/components/carbon-ad'
@@ -437,7 +487,7 @@ export default {
   components: {
     BvLogo,
     BVCarbonAd,
-    BVContributors
+    BVContributors,
   },
   created() {
     this.bootstrapUrl = `https://getbootstrap.com/docs/${bootstrapVersionMinor}`
@@ -446,7 +496,7 @@ export default {
     this.bootstrapIconsCount = bootstrapIconsCount
     this.vueVersionMinor = vueVersionMinor
     this.version = version
-  }
+  },
 }
 </script>
 

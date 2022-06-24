@@ -2,7 +2,11 @@ import { mount } from '@vue/test-utils'
 import { BTable } from './table'
 
 const testItems = [{ a: 1, b: 2, c: 3 }]
-const testFields = [{ key: 'a', label: 'A' }, { key: 'b', label: 'B' }, { key: 'c', label: 'C' }]
+const testFields = [
+  { key: 'a', label: 'A' },
+  { key: 'b', label: 'B' },
+  { key: 'c', label: 'C' },
+]
 
 describe('table > tfoot events', () => {
   it('should emit head-clicked event when a head cell is clicked', async () => {
@@ -10,13 +14,13 @@ describe('table > tfoot events', () => {
       propsData: {
         fields: testFields,
         items: testItems,
-        footClone: true
+        footClone: true,
       },
       listeners: {
         // Head-clicked will not be emitted unless there is a
         // registered head-clicked listener
-        'head-clicked': () => {}
-      }
+        'head-clicked': () => {},
+      },
     })
     expect(wrapper).toBeDefined()
     const $rows = wrapper.findAll('tfoot > tr')
@@ -48,13 +52,13 @@ describe('table > tfoot events', () => {
         fields: testFields,
         items: testItems,
         footClone: true,
-        busy: true
+        busy: true,
       },
       listeners: {
         // Head-clicked will not be emitted unless there is a
         // registered head-clicked listener
-        'head-clicked': () => {}
-      }
+        'head-clicked': () => {},
+      },
     })
     expect(wrapper).toBeDefined()
     const $ths = wrapper.findAll('tfoot > tr > th')
@@ -71,16 +75,16 @@ describe('table > tfoot events', () => {
       propsData: {
         fields: testFields,
         items: testItems,
-        footClone: true
+        footClone: true,
       },
       listeners: {
         // Head-clicked will not be emitted unless there is a
         // registered head-clicked listener
-        'head-clicked': () => {}
-      }
+        'head-clicked': () => {},
+      },
     })
     await wrapper.setData({
-      localBusy: true
+      localBusy: true,
     })
     expect(wrapper).toBeDefined()
     const $ths = wrapper.findAll('tfoot > tr > th')
@@ -97,20 +101,20 @@ describe('table > tfoot events', () => {
       propsData: {
         fields: testFields,
         items: testItems,
-        footClone: true
+        footClone: true,
       },
       listeners: {
         // Head-clicked will not be emitted unless there is a
         // registered head-clicked listener
-        'head-clicked': () => {}
+        'head-clicked': () => {},
       },
       slots: {
         // In Vue 2.6x, slots get translated into scopedSlots
         'foot(a)': '<button id="a">button</button>',
         'foot(b)': '<input id="b">',
         // Will use `head` slot if foot slot not defined
-        'head(c)': '<a href="#" id="c">link</a>'
-      }
+        'head(c)': '<a href="#" id="c">link</a>',
+      },
     })
     expect(wrapper).toBeDefined()
     const $ths = wrapper.findAll('tfoot > tr > th')

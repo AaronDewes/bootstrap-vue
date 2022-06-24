@@ -5,8 +5,8 @@ describe('form-datalist', () => {
   it('has root element datalist', async () => {
     const wrapper = mount(BFormDatalist, {
       propsData: {
-        id: 'test-list'
-      }
+        id: 'test-list',
+      },
     })
     expect(wrapper.element.tagName).toBe('DATALIST')
 
@@ -16,8 +16,8 @@ describe('form-datalist', () => {
   it('has user supplied ID', async () => {
     const wrapper = mount(BFormDatalist, {
       propsData: {
-        id: 'test-list'
-      }
+        id: 'test-list',
+      },
     })
     expect(wrapper.attributes('id')).toBe('test-list')
 
@@ -27,8 +27,8 @@ describe('form-datalist', () => {
   it('has no option elements by default', async () => {
     const wrapper = mount(BFormDatalist, {
       propsData: {
-        id: 'test-list'
-      }
+        id: 'test-list',
+      },
     })
     expect(wrapper.findAll('option').length).toBe(0)
 
@@ -39,8 +39,8 @@ describe('form-datalist', () => {
     const wrapper = mount(BFormDatalist, {
       propsData: {
         id: 'test-list',
-        options: ['one', 'two']
-      }
+        options: ['one', 'two'],
+      },
     })
     const $options = wrapper.findAll('option')
 

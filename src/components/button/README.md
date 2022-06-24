@@ -236,15 +236,15 @@ modifier (available in Vue 2.3+) on the `pressed` property
           { caption: 'Toggle 1', state: true },
           { caption: 'Toggle 2', state: false },
           { caption: 'Toggle 3', state: true },
-          { caption: 'Toggle 4', state: false }
-        ]
+          { caption: 'Toggle 4', state: false },
+        ],
       }
     },
     computed: {
       btnStates() {
-        return this.buttons.map(btn => btn.state)
-      }
-    }
+        return this.buttons.map((btn) => btn.state)
+      },
+    },
   }
 </script>
 

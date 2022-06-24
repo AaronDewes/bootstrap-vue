@@ -7,7 +7,7 @@ import { makeProp, makePropsConfigurable } from '../../utils/props'
 
 export const props = makePropsConfigurable(
   {
-    textTag: makeProp(PROP_TYPE_STRING, 'p')
+    textTag: makeProp(PROP_TYPE_STRING, 'p'),
   },
   NAME_CARD_TEXT
 )
@@ -21,5 +21,5 @@ export const BCardText = /*#__PURE__*/ Vue.extend({
   props,
   render(h, { props, data, children }) {
     return h(props.textTag, mergeData(data, { staticClass: 'card-text' }), children)
-  }
+  },
 })

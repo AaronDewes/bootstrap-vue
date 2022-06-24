@@ -23,7 +23,7 @@ export default {
     Importdoc,
     Main,
     QuickLinks,
-    Section
+    Section,
   },
   mixins: [docsMixin],
   layout: 'docs',
@@ -35,7 +35,7 @@ export default {
       // Key for icons meta is `''` (empty slug)
       meta: iconsMeta[''],
       bootstrapIconsVersion,
-      bootstrapIconsCount
+      bootstrapIconsCount,
     }
   },
   computed: {
@@ -48,7 +48,7 @@ export default {
     },
     importMeta() {
       return { ...this.meta, slug: 'icons', components: this.componentMeta }
-    }
+    },
   },
   // We use a string template here so that the docs README can do interpolation
   template: `
@@ -82,5 +82,5 @@ export default {
           <code>IconsPlugin</code> is also exported as <code>BootstrapVueIcons</code>.
         </p>
       </Section>
-    </Main>`
+    </Main>`,
 }

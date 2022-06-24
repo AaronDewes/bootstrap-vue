@@ -11,7 +11,7 @@ import {
   EVENT_NAME_OPEN,
   EVENT_NAME_SHOW,
   EVENT_NAME_SHOWN,
-  MODEL_EVENT_NAME_PREFIX
+  MODEL_EVENT_NAME_PREFIX,
 } from '../../constants/events'
 import {
   PROP_TYPE_ARRAY_STRING,
@@ -20,7 +20,7 @@ import {
   PROP_TYPE_NUMBER_OBJECT_STRING,
   PROP_TYPE_NUMBER_STRING,
   PROP_TYPE_OBJECT,
-  PROP_TYPE_STRING
+  PROP_TYPE_STRING,
 } from '../../constants/props'
 import { HTMLElement, SVGElement } from '../../constants/safe-types'
 import { useParentMixin } from '../../mixins/use-parent'
@@ -75,7 +75,7 @@ export const props = makePropsConfigurable(
     ),
     title: makeProp(PROP_TYPE_STRING),
     triggers: makeProp(PROP_TYPE_ARRAY_STRING, 'hover focus'),
-    variant: makeProp(PROP_TYPE_STRING)
+    variant: makeProp(PROP_TYPE_STRING),
   },
   NAME_TOOLTIP
 )
@@ -92,7 +92,7 @@ export const BTooltip = /*#__PURE__*/ Vue.extend({
     return {
       localShow: this[MODEL_PROP_NAME_SHOW],
       localTitle: '',
-      localContent: ''
+      localContent: '',
     }
   },
   computed: {
@@ -118,15 +118,15 @@ export const BTooltip = /*#__PURE__*/ Vue.extend({
           'target',
           'triggers',
           'variant',
-          MODEL_PROP_NAME_ENABLED
-        ])
+          MODEL_PROP_NAME_ENABLED,
+        ]),
       }
     },
     // Used to watch for changes to the title and content props
     templateTitleContent() {
       const { title, content } = this
       return { title, content }
-    }
+    },
   },
   watch: {
     [MODEL_PROP_NAME_SHOW](newValue, oldValue) {
@@ -160,7 +160,7 @@ export const BTooltip = /*#__PURE__*/ Vue.extend({
     // Watchers for title/content props (prop changes do not trigger the `updated()` hook)
     templateTitleContent() {
       this.$nextTick(this.updateContent)
-    }
+    },
   },
   created() {
     // Create private non-reactive props
@@ -197,7 +197,7 @@ export const BTooltip = /*#__PURE__*/ Vue.extend({
       // Create the instance
       const $toolpop = (this.$_toolpop = createNewChildComponent(this, Component, {
         // Pass down the scoped style ID
-        _scopeId: scopeId || undefined
+        _scopeId: scopeId || undefined,
       }))
       // Set the initial data
       $toolpop.updateData(this.templateData)
@@ -304,7 +304,7 @@ export const BTooltip = /*#__PURE__*/ Vue.extend({
     },
     doEnable() {
       this.$_toolpop && this.$_toolpop.enable()
-    }
+    },
   },
   render(h) {
     // Always renders a comment node
@@ -312,5 +312,5 @@ export const BTooltip = /*#__PURE__*/ Vue.extend({
     //   Future: Possibly render a target slot (single root element)
     //   which we can apply the listeners to (pass `this.$el` to BVTooltip)
     return h()
-  }
+  },
 })

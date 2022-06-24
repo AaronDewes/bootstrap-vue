@@ -28,10 +28,10 @@ export const topRowMixin = Vue.extend({
           staticClass: 'b-table-top-row',
           class: [isFunction(tbodyTrClass) ? tbodyTrClass(null, 'row-top') : tbodyTrClass],
           attrs: isFunction(tbodyTrAttr) ? tbodyTrAttr(null, 'row-top') : tbodyTrAttr,
-          key: 'b-top-row'
+          key: 'b-top-row',
         },
         [this.normalizeSlot(SLOT_NAME_TOP_ROW, { columns: fields.length, fields })]
       )
-    }
-  }
+    },
+  },
 })

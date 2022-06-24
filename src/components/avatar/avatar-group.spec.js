@@ -20,8 +20,8 @@ describe('avatar-group', () => {
   it('should render custom root element when prop tag is set', async () => {
     const wrapper = mount(BAvatarGroup, {
       propsData: {
-        tag: 'article'
-      }
+        tag: 'article',
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -38,8 +38,8 @@ describe('avatar-group', () => {
   it('should render content from default slot', async () => {
     const wrapper = mount(BAvatarGroup, {
       slots: {
-        default: '<span>FOOBAR</span>'
-      }
+        default: '<span>FOOBAR</span>',
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -59,8 +59,8 @@ describe('avatar-group', () => {
   it('overlap props work', async () => {
     const wrapper = mount(BAvatarGroup, {
       propsData: {
-        overlap: 0.65
-      }
+        overlap: 0.65,
+      },
     })
 
     expect(wrapper.vm).toBeDefined()

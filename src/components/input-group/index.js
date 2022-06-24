@@ -11,8 +11,8 @@ const InputGroupPlugin = /*#__PURE__*/ pluginFactory({
     BInputGroupAddon,
     BInputGroupPrepend,
     BInputGroupAppend,
-    BInputGroupText
-  }
+    BInputGroupText,
+  },
 })
 
 export {
@@ -21,5 +21,5 @@ export {
   BInputGroupAddon,
   BInputGroupPrepend,
   BInputGroupAppend,
-  BInputGroupText
+  BInputGroupText,
 }

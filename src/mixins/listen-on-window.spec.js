@@ -12,8 +12,8 @@ describe('mixins/listen-on-window', () => {
       props: {
         offResizeOne: {
           type: Boolean,
-          default: false
-        }
+          default: false,
+        },
       },
       mounted() {
         this.listenOnWindow('resize', spyResize1)
@@ -25,11 +25,11 @@ describe('mixins/listen-on-window', () => {
           if (newValue) {
             this.listenOffWindow('resize', spyResize1)
           }
-        }
+        },
       },
       render(h) {
         return h('div', this.$slots.default)
-      }
+      },
     }
 
     const App = {
@@ -37,26 +37,26 @@ describe('mixins/listen-on-window', () => {
       props: {
         offResizeOne: {
           type: Boolean,
-          default: false
+          default: false,
         },
         destroy: {
           type: Boolean,
-          default: false
-        }
+          default: false,
+        },
       },
       render(h) {
         const props = {
-          offResizeOne: this.offResizeOne
+          offResizeOne: this.offResizeOne,
         }
         return h('div', [this.destroy ? h() : h(TestComponent, { props }, 'test-component')])
-      }
+      },
     }
 
     const wrapper = mount(App, {
       attachTo: document.body,
       propsData: {
-        destroy: false
-      }
+        destroy: false,
+      },
     })
 
     expect(wrapper.vm).toBeDefined()

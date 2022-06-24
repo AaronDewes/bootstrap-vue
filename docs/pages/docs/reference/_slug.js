@@ -2,7 +2,7 @@ import MainDocs from '~/components/main-docs'
 import docsMixin from '~/plugins/docs-mixin'
 import { reference as referenceMeta } from '~/content'
 
-const getReadmeData = name => {
+const getReadmeData = (name) => {
   try {
     return import(`~/markdown/reference/${name}/README.md` /* webpackChunkName: "docs/reference" */)
   } catch {
@@ -33,8 +33,8 @@ export default {
         meta: this.meta,
         titleLead: this.titleLead,
         body: this.body,
-        loadError: this.loadError
-      }
+        loadError: this.loadError,
+      },
     })
-  }
+  },
 }

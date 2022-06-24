@@ -20,6 +20,6 @@ export const BTh = /*#__PURE__*/ Vue.extend({
   computed: {
     tag() {
       return 'th'
-    }
-  }
+    },
+  },
 })

@@ -17,7 +17,7 @@ export const props = makePropsConfigurable(
     headerClasses: makeProp(PROP_TYPE_ARRAY_OBJECT_STRING),
     headerTag: makeProp(PROP_TYPE_STRING, 'header'),
     headerVariant: makeProp(PROP_TYPE_STRING),
-    id: makeProp(PROP_TYPE_STRING)
+    id: makeProp(PROP_TYPE_STRING),
   },
   NAME_DROPDOWN_GROUP
 )
@@ -45,8 +45,8 @@ export const BDropdownGroup = /*#__PURE__*/ Vue.extend({
           class: [props.headerClasses, { [`text-${variant}`]: variant }],
           attrs: {
             id: headerId,
-            role: isTag(headerTag, 'header') ? null : 'heading'
-          }
+            role: isTag(headerTag, 'header') ? null : 'heading',
+          },
         },
         normalizeSlot(SLOT_NAME_HEADER, slotScope, $scopedSlots, $slots) || header
       )
@@ -63,14 +63,11 @@ export const BDropdownGroup = /*#__PURE__*/ Vue.extend({
             id,
             role: 'group',
             'aria-describedby':
-              [headerId, props.ariaDescribedBy]
-                .filter(identity)
-                .join(' ')
-                .trim() || null
-          }
+              [headerId, props.ariaDescribedBy].filter(identity).join(' ').trim() || null,
+          },
         },
         normalizeSlot(SLOT_NAME_DEFAULT, slotScope, $scopedSlots, $slots)
-      )
+      ),
     ])
-  }
+  },
 })

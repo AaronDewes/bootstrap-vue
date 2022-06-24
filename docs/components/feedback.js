@@ -3,7 +3,7 @@ export default {
   name: 'BVFeedback',
   data() {
     return {
-      baseUrl: 'https://github.com/bootstrap-vue/bootstrap-vue'
+      baseUrl: 'https://github.com/bootstrap-vue/bootstrap-vue',
     }
   },
   computed: {
@@ -40,7 +40,7 @@ export default {
         }
       }
       return `${this.baseUrl}/tree/dev/${path}`
-    }
+    },
   },
   render(h) {
     if (!this.show) {
@@ -52,8 +52,8 @@ export default {
         props: {
           variant: 'light',
           href: this.reportIssueUrl,
-          target: '_blank'
-        }
+          target: '_blank',
+        },
       },
       'Report an issue'
     )
@@ -63,11 +63,11 @@ export default {
         props: {
           variant: 'light',
           href: this.editPageUrl,
-          target: '_blank'
-        }
+          target: '_blank',
+        },
       },
       'Edit this page'
     )
     return h('b-button-group', { props: { size: 'sm' } }, [$reportIssueButton, $editPageButton])
-  }
+  },
 }

@@ -38,9 +38,9 @@ describe('dropdown-item', () => {
           hide(arg) {
             called = true
             refocus = arg
-          }
-        })
-      }
+          },
+        }),
+      },
     })
     expect(wrapper.element.tagName).toBe('LI')
 
@@ -64,9 +64,9 @@ describe('dropdown-item', () => {
           hide(arg) {
             called = true
             refocus = arg
-          }
-        })
-      }
+          },
+        }),
+      },
     })
     expect(wrapper.element.tagName).toBe('LI')
 
@@ -83,8 +83,8 @@ describe('dropdown-item', () => {
   it('has linkClass when prop is passed a value', () => {
     const wrapper = mount(BDropdownItem, {
       propsData: {
-        linkClass: 'link-class'
-      }
+        linkClass: 'link-class',
+      },
     })
     expect(wrapper.element.tagName).toBe('LI')
 
@@ -102,8 +102,8 @@ describe('dropdown-item', () => {
         routes: [
           { path: '/', component: { name: 'R', template: '<div class="r">ROOT</div>' } },
           { path: '/a', component: { name: 'A', template: '<div class="a">A</div>' } },
-          { path: '/b', component: { name: 'B', template: '<div class="a">B</div>' } }
-        ]
+          { path: '/b', component: { name: 'B', template: '<div class="a">B</div>' } },
+        ],
       })
 
       const App = {
@@ -116,13 +116,13 @@ describe('dropdown-item', () => {
             h(BDropdownItem, { props: { href: '/a' } }, ['href-a']),
             // <router-link>
             h(BDropdownItem, { props: { to: { path: '/b' } } }, ['to-path-b']),
-            h('router-view')
+            h('router-view'),
           ])
-        }
+        },
       }
 
       const wrapper = mount(App, {
-        attachTo: document.body
+        attachTo: document.body,
       })
 
       expect(wrapper.vm).toBeDefined()
@@ -133,12 +133,12 @@ describe('dropdown-item', () => {
 
       const $links = wrapper.findAllComponents('a')
 
-      $links.wrappers.forEach($link => {
+      $links.wrappers.forEach(($link) => {
         expect($link.vm).toBeDefined()
         expect($links.at(0).vm.$options.name).toBe('BLink')
       })
       expect(
-        $links.wrappers.map($link => $link.findComponent({ name: 'RouterLink' }).exists())
+        $links.wrappers.map(($link) => $link.findComponent({ name: 'RouterLink' }).exists())
       ).toStrictEqual([true, false, true])
 
       wrapper.destroy()

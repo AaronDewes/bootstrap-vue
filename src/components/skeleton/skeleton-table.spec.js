@@ -19,8 +19,8 @@ describe('skeleton-table', () => {
   it("prop `hide-header` doesn't render `<thead>`", async () => {
     const wrapper = mount(BSkeletonTable, {
       propsData: {
-        hideHeader: true
-      }
+        hideHeader: true,
+      },
     })
 
     expect(wrapper).toBeDefined()
@@ -33,8 +33,8 @@ describe('skeleton-table', () => {
   it('prop `show-footer` renders `<tfoot>`', async () => {
     const wrapper = mount(BSkeletonTable, {
       propsData: {
-        showFooter: true
-      }
+        showFooter: true,
+      },
     })
 
     expect(wrapper).toBeDefined()
@@ -47,8 +47,8 @@ describe('skeleton-table', () => {
   it('setting `rows` prop changes amount of `tr` rendered in `tbody`', async () => {
     const wrapper = mount(BSkeletonTable, {
       propsData: {
-        rows: 7
-      }
+        rows: 7,
+      },
     })
 
     expect(wrapper).toBeDefined()
@@ -61,8 +61,8 @@ describe('skeleton-table', () => {
   it('setting `columns` prop changes amount of `th` rendered in `thead`', async () => {
     const wrapper = mount(BSkeletonTable, {
       propsData: {
-        columns: 6
-      }
+        columns: 6,
+      },
     })
 
     expect(wrapper).toBeDefined()
@@ -77,9 +77,9 @@ describe('skeleton-table', () => {
       propsData: {
         tableProps: {
           bordered: true,
-          striped: true
-        }
-      }
+          striped: true,
+        },
+      },
     })
 
     expect(wrapper).toBeDefined()
@@ -93,8 +93,8 @@ describe('skeleton-table', () => {
   it('`animation` prop changes animation used in cells', async () => {
     const wrapper = mount(BSkeletonTable, {
       propsData: {
-        animation: 'fade'
-      }
+        animation: 'fade',
+      },
     })
 
     expect(wrapper).toBeDefined()
@@ -107,8 +107,8 @@ describe('skeleton-table', () => {
   it('accepts custom classes', async () => {
     const wrapper = mount(BSkeletonTable, {
       context: {
-        class: ['foobar']
-      }
+        class: ['foobar'],
+      },
     })
 
     expect(wrapper.classes()).toContain('b-table')

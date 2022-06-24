@@ -40,7 +40,7 @@ export default {
     return {
       toc: {},
       offset: 0,
-      expanded: false
+      expanded: false,
     }
   },
   computed: {
@@ -49,10 +49,10 @@ export default {
     },
     toogleText() {
       return `${this.expanded ? 'Hide' : 'Show'} page table of contents`
-    }
+    },
   },
   created() {
-    this.$root.$on('docs-set-toc', toc => {
+    this.$root.$on('docs-set-toc', (toc) => {
       this.expanded = false
       // Update the TOC content
       this.toc = toc
@@ -84,8 +84,8 @@ export default {
           $el.focus()
         })
       }
-    }
-  }
+    },
+  },
 }
 </script>
 

@@ -5,5 +5,5 @@ export default {
     const children = this.$slots.default || []
 
     return h(tag, children)
-  }
+  },
 }

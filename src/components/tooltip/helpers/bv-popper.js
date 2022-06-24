@@ -13,12 +13,12 @@ import {
   EVENT_NAME_HIDE,
   EVENT_NAME_SHOW,
   EVENT_NAME_SHOWN,
-  HOOK_EVENT_NAME_DESTROYED
+  HOOK_EVENT_NAME_DESTROYED,
 } from '../../../constants/events'
 import {
   PROP_TYPE_ARRAY_STRING,
   PROP_TYPE_NUMBER_STRING,
-  PROP_TYPE_STRING
+  PROP_TYPE_STRING,
 } from '../../../constants/props'
 import { HTMLElement, SVGElement } from '../../../constants/safe-types'
 import { useParentMixin } from '../../../mixins/use-parent'
@@ -42,7 +42,7 @@ const AttachmentMap = {
   BOTTOMLEFT: 'bottom',
   BOTTOMRIGHT: 'bottom',
   LEFTTOP: 'left',
-  LEFTBOTTOM: 'left'
+  LEFTBOTTOM: 'left',
 }
 
 const OffsetMap = {
@@ -58,7 +58,7 @@ const OffsetMap = {
   BOTTOMRIGHT: +1,
   LEFTTOP: -1,
   LEFT: 0,
-  LEFTBOTTOM: +1
+  LEFTBOTTOM: +1,
 }
 
 // --- Props ---
@@ -76,7 +76,7 @@ export const props = {
   offset: makeProp(PROP_TYPE_NUMBER_STRING, 0),
   placement: makeProp(PROP_TYPE_STRING, 'top'),
   // Element that the tooltip/popover is positioned relative to
-  target: makeProp([HTMLElement, SVGElement])
+  target: makeProp([HTMLElement, SVGElement]),
 }
 
 // --- Main component ---
@@ -92,7 +92,7 @@ export const BVPopper = /*#__PURE__*/ Vue.extend({
       noFade: false,
       // State related data
       localShow: true,
-      attachment: this.getAttachment(this.placement)
+      attachment: this.getAttachment(this.placement),
     }
   },
   computed: {
@@ -113,22 +113,22 @@ export const BVPopper = /*#__PURE__*/ Vue.extend({
           arrow: { element: '.arrow' },
           preventOverflow: {
             padding: this.boundaryPadding,
-            boundariesElement: this.boundary
-          }
+            boundariesElement: this.boundary,
+          },
         },
-        onCreate: data => {
+        onCreate: (data) => {
           // Handle flipping arrow classes
           if (data.originalPlacement !== data.placement) {
             /* istanbul ignore next: can't test in JSDOM */
             this.popperPlacementChange(data)
           }
         },
-        onUpdate: data => {
+        onUpdate: (data) => {
           // Handle flipping arrow classes
           this.popperPlacementChange(data)
-        }
+        },
       }
-    }
+    },
   },
   created() {
     // Note: We are created on-demand, and should be guaranteed that
@@ -137,7 +137,7 @@ export const BVPopper = /*#__PURE__*/ Vue.extend({
     // Ensure we show as we mount
     this.localShow = true
     // Create popper instance before shown
-    this.$on(EVENT_NAME_SHOW, el => {
+    this.$on(EVENT_NAME_SHOW, (el) => {
       this.popperCreate(el)
     })
     // Self destruct handler
@@ -223,7 +223,7 @@ export const BVPopper = /*#__PURE__*/ Vue.extend({
     renderTemplate(h) {
       // Will be overridden by templates
       return h('div')
-    }
+    },
   },
   render(h) {
     const { noFade } = this
@@ -236,13 +236,13 @@ export const BVPopper = /*#__PURE__*/ Vue.extend({
         props: { appear: true, noFade },
         on: {
           // Events used by parent component/instance
-          beforeEnter: el => this.$emit(EVENT_NAME_SHOW, el),
-          afterEnter: el => this.$emit(EVENT_NAME_SHOWN, el),
-          beforeLeave: el => this.$emit(EVENT_NAME_HIDE, el),
-          afterLeave: el => this.$emit(EVENT_NAME_HIDDEN, el)
-        }
+          beforeEnter: (el) => this.$emit(EVENT_NAME_SHOW, el),
+          afterEnter: (el) => this.$emit(EVENT_NAME_SHOWN, el),
+          beforeLeave: (el) => this.$emit(EVENT_NAME_HIDE, el),
+          afterLeave: (el) => this.$emit(EVENT_NAME_HIDDEN, el),
+        },
       },
       [this.localShow ? this.renderTemplate(h) : h()]
     )
-  }
+  },
 })

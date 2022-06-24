@@ -7,7 +7,7 @@ import {
   PROP_TYPE_BOOLEAN_NUMBER_STRING,
   PROP_TYPE_FUNCTION_STRING,
   PROP_TYPE_NUMBER_STRING,
-  PROP_TYPE_STRING
+  PROP_TYPE_STRING,
 } from '../constants/props'
 import {
   SLOT_NAME_ELLIPSIS_TEXT,
@@ -15,7 +15,7 @@ import {
   SLOT_NAME_LAST_TEXT,
   SLOT_NAME_NEXT_TEXT,
   SLOT_NAME_PAGE,
-  SLOT_NAME_PREV_TEXT
+  SLOT_NAME_PREV_TEXT,
 } from '../constants/slots'
 import { createArray } from '../utils/array'
 import {
@@ -24,7 +24,7 @@ import {
   getAttr,
   isDisabled,
   isVisible,
-  selectAll
+  selectAll,
 } from '../utils/dom'
 import { stopEvent } from '../utils/events'
 import { isFunction, isNull } from '../utils/inspect'
@@ -48,7 +48,7 @@ const {
   mixin: modelMixin,
   props: modelProps,
   prop: MODEL_PROP_NAME,
-  event: MODEL_EVENT_NAME
+  event: MODEL_EVENT_NAME,
 } = makeModelMixin('value', {
   type: PROP_TYPE_BOOLEAN_NUMBER_STRING,
   defaultValue: null,
@@ -59,7 +59,7 @@ const {
       return false
     }
     return true
-  }
+  },
 })
 
 export { MODEL_PROP_NAME, MODEL_EVENT_NAME }
@@ -77,7 +77,7 @@ const makePageArray = (startNumber, numberOfPages) =>
   createArray(numberOfPages, (_, i) => ({ number: startNumber + i, classes: null }))
 
 // Sanitize the provided limit value (converting to a number)
-const sanitizeLimit = value => {
+const sanitizeLimit = (value) => {
   const limit = toInteger(value) || 1
   return limit < 1 ? DEFAULT_LIMIT : limit
 }
@@ -90,7 +90,7 @@ const sanitizeCurrentPage = (val, numberOfPages) => {
 
 // Links don't normally respond to SPACE, so we add that
 // functionality via this handler
-const onSpaceKey = event => {
+const onSpaceKey = (event) => {
   if (event.keyCode === CODE_SPACE) {
     // Stop page from scrolling
     stopEvent(event, { immediatePropagation: true })
@@ -126,7 +126,7 @@ export const props = makePropsConfigurable(
     limit: makeProp(
       PROP_TYPE_NUMBER_STRING,
       DEFAULT_LIMIT,
-      /* istanbul ignore next */ value => {
+      /* istanbul ignore next */ (value) => {
         if (toInteger(value, 0) < 1) {
           warn('Prop "limit" must be a number greater than "0"', NAME_PAGINATION)
           return false
@@ -140,7 +140,7 @@ export const props = makePropsConfigurable(
     pills: makeProp(PROP_TYPE_BOOLEAN, false),
     prevClass: makeProp(PROP_TYPE_ARRAY_OBJECT_STRING),
     prevText: makeProp(PROP_TYPE_STRING, '\u2039'), // '‹'
-    size: makeProp(PROP_TYPE_STRING)
+    size: makeProp(PROP_TYPE_STRING),
   }),
   'pagination'
 )
@@ -159,7 +159,7 @@ export const paginationMixin = Vue.extend({
     return {
       currentPage,
       localNumberOfPages: 1,
-      localLimit: DEFAULT_LIMIT
+      localLimit: DEFAULT_LIMIT,
     }
   },
   computed: {
@@ -194,7 +194,7 @@ export const paginationMixin = Vue.extend({
         computedCurrentPage: currentPage,
         hideEllipsis,
         firstNumber,
-        lastNumber
+        lastNumber,
       } = this
       let showFirstDots = false
       let showLastDots = false
@@ -293,7 +293,7 @@ export const paginationMixin = Vue.extend({
         }
       }
       return pages
-    }
+    },
   },
   watch: {
     [MODEL_PROP_NAME](newValue, oldValue) {
@@ -311,7 +311,7 @@ export const paginationMixin = Vue.extend({
       if (newValue !== oldValue) {
         this.localLimit = sanitizeLimit(newValue)
       }
-    }
+    },
   },
   created() {
     // Set our default values in data
@@ -340,13 +340,13 @@ export const paginationMixin = Vue.extend({
     },
     getButtons() {
       // Return only buttons that are visible
-      return selectAll('button.page-link, a.page-link', this.$el).filter(btn => isVisible(btn))
+      return selectAll('button.page-link, a.page-link', this.$el).filter((btn) => isVisible(btn))
     },
     focusCurrent() {
       // We do this in `$nextTick()` to ensure buttons have finished rendering
       this.$nextTick(() => {
         const btn = this.getButtons().find(
-          el => toInteger(getAttr(el, 'aria-posinset'), 0) === this.computedCurrentPage
+          (el) => toInteger(getAttr(el, 'aria-posinset'), 0) === this.computedCurrentPage
         )
         if (!attemptFocus(btn)) {
           // Fallback if current page is not in button list
@@ -357,7 +357,7 @@ export const paginationMixin = Vue.extend({
     focusFirst() {
       // We do this in `$nextTick()` to ensure buttons have finished rendering
       this.$nextTick(() => {
-        const btn = this.getButtons().find(el => !isDisabled(el))
+        const btn = this.getButtons().find((el) => !isDisabled(el))
         attemptFocus(btn)
       })
     },
@@ -366,7 +366,7 @@ export const paginationMixin = Vue.extend({
       this.$nextTick(() => {
         const btn = this.getButtons()
           .reverse()
-          .find(el => !isDisabled(el))
+          .find((el) => !isDisabled(el))
         attemptFocus(btn)
       })
     },
@@ -389,7 +389,7 @@ export const paginationMixin = Vue.extend({
           attemptFocus(buttons[index + 1])
         }
       })
-    }
+    },
   },
   render(h) {
     const {
@@ -398,15 +398,15 @@ export const paginationMixin = Vue.extend({
       ariaLabel,
       isNav,
       localNumberOfPages: numberOfPages,
-      computedCurrentPage: currentPage
+      computedCurrentPage: currentPage,
     } = safeVueInstance(this)
-    const pageNumbers = this.pageList.map(p => p.number)
+    const pageNumbers = this.pageList.map((p) => p.number)
     const { showFirstDots, showLastDots } = this.paginationParams
     const fill = this.align === 'fill'
     const $buttons = []
 
     // Helper function and flag
-    const isActivePage = pageNumber => pageNumber === currentPage
+    const isActivePage = (pageNumber) => pageNumber === currentPage
     const noCurrentPage = this.currentPage < 1
 
     // Factory function for prev/next/first/last buttons
@@ -428,16 +428,16 @@ export const paginationMixin = Vue.extend({
             tabindex: isDisabled || isNav ? null : '-1',
             'aria-label': ariaLabel,
             'aria-controls': safeVueInstance(this).ariaControls || null,
-            'aria-disabled': isDisabled ? 'true' : null
+            'aria-disabled': isDisabled ? 'true' : null,
           },
           on: isDisabled
             ? {}
             : {
-                '!click': event => {
+                '!click': (event) => {
                   this.onClick(event, linkTo)
                 },
-                keydown: onSpaceKey
-              }
+                keydown: onSpaceKey,
+              },
         },
         [$btnContent]
       )
@@ -450,33 +450,33 @@ export const paginationMixin = Vue.extend({
             {
               disabled: isDisabled,
               'flex-fill': fill,
-              'd-flex': fill && !isNav && !isDisabled
+              'd-flex': fill && !isNav && !isDisabled,
             },
-            btnClass
+            btnClass,
           ],
           attrs: {
             role: isNav ? null : 'presentation',
-            'aria-hidden': isDisabled ? 'true' : null
-          }
+            'aria-hidden': isDisabled ? 'true' : null,
+          },
         },
         [$inner]
       )
     }
 
     // Ellipsis factory
-    const makeEllipsis = isLast => {
+    const makeEllipsis = (isLast) => {
       return h(
         'li',
         {
           staticClass: 'page-item',
           class: ['disabled', 'bv-d-xs-down-none', fill ? 'flex-fill' : '', this.ellipsisClass],
           attrs: { role: 'separator' },
-          key: `ellipsis-${isLast ? 'last' : 'first'}`
+          key: `ellipsis-${isLast ? 'last' : 'first'}`,
         },
         [
           h('span', { staticClass: 'page-link' }, [
-            this.normalizeSlot(SLOT_NAME_ELLIPSIS_TEXT) || toString(this.ellipsisText) || h()
-          ])
+            this.normalizeSlot(SLOT_NAME_ELLIPSIS_TEXT) || toString(this.ellipsisText) || h(),
+          ]),
         ]
       )
     }
@@ -501,7 +501,7 @@ export const paginationMixin = Vue.extend({
         'aria-posinset': isNav ? null : pageNumber,
         'aria-setsize': isNav ? null : numberOfPages,
         // ARIA "roving tabindex" method (except in `isNav` mode)
-        tabindex: isNav ? null : tabIndex
+        tabindex: isNav ? null : tabIndex,
       }
       const btnContent = toString(this.makePage(pageNumber))
       const scope = {
@@ -509,7 +509,7 @@ export const paginationMixin = Vue.extend({
         index: pageNumber - 1,
         content: btnContent,
         active,
-        disabled
+        disabled,
       }
 
       const $inner = h(
@@ -522,11 +522,11 @@ export const paginationMixin = Vue.extend({
           on: disabled
             ? {}
             : {
-                '!click': event => {
+                '!click': (event) => {
                   this.onClick(event, pageNumber)
                 },
-                keydown: onSpaceKey
-              }
+                keydown: onSpaceKey,
+              },
         },
         [this.normalizeSlot(SLOT_NAME_PAGE, scope) || btnContent]
       )
@@ -540,13 +540,13 @@ export const paginationMixin = Vue.extend({
               disabled,
               active,
               'flex-fill': fill,
-              'd-flex': fill && !isNav && !disabled
+              'd-flex': fill && !isNav && !disabled,
             },
             page.classes,
-            this.pageClass
+            this.pageClass,
           ],
           attrs: { role: isNav ? null : 'presentation' },
-          key: `page-${pageNumber}`
+          key: `page-${pageNumber}`,
         },
         [$inner]
       )
@@ -641,11 +641,11 @@ export const paginationMixin = Vue.extend({
         attrs: {
           role: isNav ? null : 'menubar',
           'aria-disabled': disabled ? 'true' : 'false',
-          'aria-label': isNav ? null : ariaLabel || null
+          'aria-label': isNav ? null : ariaLabel || null,
         },
         // We disable keyboard left/right nav when `<b-pagination-nav>`
         on: isNav ? {} : { keydown: this.handleKeyNav },
-        ref: 'ul'
+        ref: 'ul',
       },
       $buttons
     )
@@ -658,13 +658,13 @@ export const paginationMixin = Vue.extend({
           attrs: {
             'aria-disabled': disabled ? 'true' : null,
             'aria-hidden': disabled ? 'true' : 'false',
-            'aria-label': isNav ? ariaLabel || null : null
-          }
+            'aria-label': isNav ? ariaLabel || null : null,
+          },
         },
         [$pagination]
       )
     }
 
     return $pagination
-  }
+  },
 })

@@ -37,8 +37,8 @@ describe('nav-item-dropdown', () => {
   it('should have custom toggle class when "toggle-class" prop set', async () => {
     const wrapper = mount(BNavItemDropdown, {
       propsData: {
-        toggleClass: 'nav-link-custom'
-      }
+        toggleClass: 'nav-link-custom',
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -53,8 +53,8 @@ describe('nav-item-dropdown', () => {
   it('should be disabled when "disabled" prop set', async () => {
     const wrapper = mount(BNavItemDropdown, {
       propsData: {
-        disabled: true
-      }
+        disabled: true,
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -70,8 +70,8 @@ describe('nav-item-dropdown', () => {
   it('should have href with ID when "id" prop set', async () => {
     const wrapper = mount(BNavItemDropdown, {
       propsData: {
-        id: 'foo'
-      }
+        id: 'foo',
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -89,8 +89,8 @@ describe('nav-item-dropdown', () => {
   it('should have correct toggle content when "text" prop set [DEPRECATED]', async () => {
     const wrapper = mount(BNavItemDropdown, {
       propsData: {
-        text: 'foo'
-      }
+        text: 'foo',
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -106,8 +106,8 @@ describe('nav-item-dropdown', () => {
     const wrapper = mount(BNavItemDropdown, {
       propsData: {
         text: 'foo',
-        html: '<span>bar</span>'
-      }
+        html: '<span>bar</span>',
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -124,11 +124,11 @@ describe('nav-item-dropdown', () => {
     const wrapper = mount(BNavItemDropdown, {
       propsData: {
         text: 'foo',
-        html: '<span>bar</span>'
+        html: '<span>bar</span>',
       },
       slots: {
-        text: '<strong>baz</strong>'
-      }
+        text: '<strong>baz</strong>',
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -145,12 +145,12 @@ describe('nav-item-dropdown', () => {
     const wrapper = mount(BNavItemDropdown, {
       propsData: {
         text: 'foo',
-        html: '<span>bar</span>'
+        html: '<span>bar</span>',
       },
       slots: {
         'button-content': '<article>foobar</article>',
-        text: '<strong>baz</strong>'
-      }
+        text: '<strong>baz</strong>',
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -170,8 +170,8 @@ describe('nav-item-dropdown', () => {
         default(scope) {
           slotScope = scope
           return this.$createElement('div', 'foo')
-        }
-      }
+        },
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -190,13 +190,13 @@ describe('nav-item-dropdown', () => {
   it('should only render menu content when visible when "lazy" prop set', async () => {
     const wrapper = mount(BNavItemDropdown, {
       propsData: {
-        lazy: true
+        lazy: true,
       },
       scopedSlots: {
         default() {
           return this.$createElement('div', 'bar')
-        }
-      }
+        },
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -248,8 +248,8 @@ describe('nav-item-dropdown', () => {
   it('should prevent toggle click', async () => {
     const wrapper = mount(BNavItemDropdown, {
       propsData: {
-        text: 'toggle'
-      }
+        text: 'toggle',
+      },
     })
 
     expect(wrapper.vm).toBeDefined()

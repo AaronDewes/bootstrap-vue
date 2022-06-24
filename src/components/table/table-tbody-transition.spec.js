@@ -8,7 +8,11 @@ if (!isVue3) {
   vtuConfig.stubs['transition-group'] = TransitionGroupStub
 }
 
-const testItems = [{ a: 1, b: 2, c: 3 }, { a: 5, b: 5, c: 6 }, { a: 7, b: 8, c: 9 }]
+const testItems = [
+  { a: 1, b: 2, c: 3 },
+  { a: 5, b: 5, c: 6 },
+  { a: 7, b: 8, c: 9 },
+]
 const testFields = ['a', 'b', 'c']
 
 describe('table > tbody transition', () => {
@@ -25,8 +29,8 @@ describe('table > tbody transition', () => {
       attachTo: document.body,
       propsData: {
         fields: testFields,
-        items: testItems
-      }
+        items: testItems,
+      },
     })
     expect(wrapper).toBeDefined()
     expect(wrapper.element.tagName).toBe('TABLE')
@@ -45,9 +49,9 @@ describe('table > tbody transition', () => {
         fields: testFields,
         items: testItems,
         tbodyTransitionProps: {
-          name: 'fade'
-        }
-      }
+          name: 'fade',
+        },
+      },
     })
     expect(wrapper).toBeDefined()
     expect(wrapper.element.tagName).toBe('TABLE')
@@ -68,9 +72,9 @@ describe('table > tbody transition', () => {
           onBeforeEnter: () => {},
           onAfterEnter: () => {},
           onBeforeLeave: () => {},
-          onAfterLeave: () => {}
-        }
-      }
+          onAfterLeave: () => {},
+        },
+      },
     })
     expect(wrapper).toBeDefined()
     expect(wrapper.element.tagName).toBe('TABLE')

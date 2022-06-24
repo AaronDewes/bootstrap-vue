@@ -24,10 +24,10 @@ Generate your select options by passing an array or object to the `options` prop
           { value: 'a', text: 'This is First option' },
           { value: 'b', text: 'Selected Option' },
           { value: { C: '3PO' }, text: 'This is an option with object value' },
-          { value: 'd', text: 'This one is disabled', disabled: true }
-        ]
+          { value: 'd', text: 'This one is disabled', disabled: true },
+        ],
       }
-    }
+    },
   }
 </script>
 
@@ -57,12 +57,12 @@ You can even define option groups with the `options` prop:
             label: 'Grouped options',
             options: [
               { value: { C: '3PO' }, text: 'Option with object value' },
-              { value: { R: '2D2' }, text: 'Another option with object value' }
-            ]
-          }
-        ]
+              { value: { R: '2D2' }, text: 'Another option with object value' },
+            ],
+          },
+        ],
       }
-    }
+    },
   }
 </script>
 
@@ -80,7 +80,9 @@ Or manually provide your options and option groups:
       <b-form-select-option value="b" disabled>Option B (disabled)</b-form-select-option>
       <b-form-select-option-group label="Grouped options">
         <b-form-select-option :value="{ C: '3PO' }">Option with object value</b-form-select-option>
-        <b-form-select-option :value="{ R: '2D2' }">Another option with object value</b-form-select-option>
+        <b-form-select-option :value="{ R: '2D2' }"
+          >Another option with object value</b-form-select-option
+        >
       </b-form-select-option-group>
     </b-form-select>
 
@@ -92,9 +94,9 @@ Or manually provide your options and option groups:
   export default {
     data() {
       return {
-        selected: null
+        selected: null,
       }
-    }
+    },
   }
 </script>
 
@@ -112,7 +114,9 @@ options specified by the `options` prop, use the named slot `first`.
     <b-form-select v-model="selected" :options="options" class="mb-3">
       <!-- This slot appears above the options from 'options' prop -->
       <template #first>
-        <b-form-select-option :value="null" disabled>-- Please select an option --</b-form-select-option>
+        <b-form-select-option :value="null" disabled
+          >-- Please select an option --</b-form-select-option
+        >
       </template>
 
       <!-- These options will appear after the ones from 'options' prop -->
@@ -131,10 +135,10 @@ options specified by the `options` prop, use the named slot `first`.
         selected: null,
         options: [
           { value: 'A', text: 'Option A (from options prop)' },
-          { value: 'B', text: 'Option B (from options prop)' }
-        ]
+          { value: 'B', text: 'Option B (from options prop)' },
+        ],
       }
-    }
+    },
   }
 </script>
 
@@ -188,7 +192,7 @@ const options = [
   { text: 'C', value: 'C', disabled: false },
   { text: 'D', value: { d: 1 }, disabled: true },
   { text: 'E', value: 'E', disabled: false },
-  { text: 'F', value: 'F', disabled: false }
+  { text: 'F', value: 'F', disabled: false },
 ]
 ```
 
@@ -202,7 +206,7 @@ const options = [
   { text: 'Item 2', value: 'second' },
   { html: '<b>Item</b> 3', value: 'third', disabled: true },
   { text: 'Item 4' },
-  { text: 'Item 5', value: { foo: 'bar', baz: true } }
+  { text: 'Item 5', value: { foo: 'bar', baz: true } },
 ]
 ```
 
@@ -220,9 +224,9 @@ const options = [
   { text: 'Item 2', value: 'second' },
   {
     label: 'Grouped options',
-    options: [{ html: '<b>Item</b> 3', value: 'third', disabled: true }, { text: 'Item 4' }]
+    options: [{ html: '<b>Item</b> 3', value: 'third', disabled: true }, { text: 'Item 4' }],
   },
-  { text: 'Item 5', value: { foo: 'bar', baz: true } }
+  { text: 'Item 5', value: { foo: 'bar', baz: true } },
 ]
 ```
 
@@ -240,7 +244,7 @@ const options = {
   b: 'Item B',
   c: { html: 'Item C', disabled: true },
   d: { text: 'Item D', value: 'overridden_value' },
-  e: { text: 'Item E', value: { foo: 'bar', baz: true } }
+  e: { text: 'Item E', value: { foo: 'bar', baz: true } },
 }
 ```
 
@@ -255,7 +259,7 @@ const options = [
   { text: 'Item B', value: 'b', disabled: false },
   { html: 'Item C', value: 'c', disabled: false },
   { text: 'Item D', value: 'overridden_value', disabled: true },
-  { text: 'Item E', value: { foo: 'bar', baz: true }, disabled: false }
+  { text: 'Item E', value: { foo: 'bar', baz: true }, disabled: false },
 ]
 ```
 
@@ -293,10 +297,10 @@ If you want to customize the field property names (for example using `name` fiel
           { item: 'A', name: 'Option A' },
           { item: 'B', name: 'Option B' },
           { item: 'D', name: 'Option C', notEnabled: true },
-          { item: { d: 1 }, name: 'Option D' }
-        ]
+          { item: { d: 1 }, name: 'Option D' },
+        ],
       }
-    }
+    },
   }
 </script>
 
@@ -348,10 +352,10 @@ option.
           { value: 'a', text: 'This is First option' },
           { value: 'b', text: 'Default Selected Option' },
           { value: 'c', text: 'This is another option' },
-          { value: 'd', text: 'This one is disabled', disabled: true }
-        ]
+          { value: 'd', text: 'This one is disabled', disabled: true },
+        ],
       }
-    }
+    },
   }
 </script>
 
@@ -389,10 +393,10 @@ Note that not all mobile browsers will show the select as a list-box.
           { value: 'c', text: 'This is option c' },
           { value: 'd', text: 'This one is disabled', disabled: true },
           { value: 'e', text: 'This is option e' },
-          { value: 'e', text: 'This is option f' }
-        ]
+          { value: 'e', text: 'This is option f' },
+        ],
       }
-    }
+    },
   }
 </script>
 
@@ -430,10 +434,10 @@ an array reference as your `v-model` when in `multiple` mode.
           { value: 'd', text: 'This one is disabled', disabled: true },
           { value: 'e', text: 'This is option e' },
           { value: 'f', text: 'This is option f' },
-          { value: 'g', text: 'This is option g' }
-        ]
+          { value: 'g', text: 'This is option g' },
+        ],
       }
-    }
+    },
   }
 </script>
 

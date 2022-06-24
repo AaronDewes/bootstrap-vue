@@ -17,7 +17,7 @@ export const props = makePropsConfigurable(
   sortKeys({
     ...linkProps,
     linkClass: makeProp(PROP_TYPE_ARRAY_OBJECT_STRING),
-    variant: makeProp(PROP_TYPE_STRING)
+    variant: makeProp(PROP_TYPE_STRING),
   }),
   NAME_DROPDOWN_ITEM
 )
@@ -29,7 +29,7 @@ export const BDropdownItem = /*#__PURE__*/ Vue.extend({
   name: NAME_DROPDOWN_ITEM,
   mixins: [attrsMixin, normalizeSlotMixin],
   inject: {
-    getBvDropdown: { default: () => () => null }
+    getBvDropdown: { default: () => () => null },
   },
   inheritAttrs: false,
   props,
@@ -40,9 +40,9 @@ export const BDropdownItem = /*#__PURE__*/ Vue.extend({
     computedAttrs() {
       return {
         ...this.bvAttrs,
-        role: 'menuitem'
+        role: 'menuitem',
       }
-    }
+    },
   },
   methods: {
     closeDropdown() {
@@ -56,7 +56,7 @@ export const BDropdownItem = /*#__PURE__*/ Vue.extend({
     onClick(event) {
       this.$emit(EVENT_NAME_CLICK, event)
       this.closeDropdown()
-    }
+    },
   },
   render(h) {
     const { linkClass, variant, active, disabled, onClick, bvAttrs } = this
@@ -66,7 +66,7 @@ export const BDropdownItem = /*#__PURE__*/ Vue.extend({
       {
         class: bvAttrs.class,
         style: bvAttrs.style,
-        attrs: { role: 'presentation' }
+        attrs: { role: 'presentation' },
       },
       [
         h(
@@ -77,11 +77,11 @@ export const BDropdownItem = /*#__PURE__*/ Vue.extend({
             props: pluckProps(linkProps, this.$props),
             attrs: this.computedAttrs,
             on: { click: onClick },
-            ref: 'item'
+            ref: 'item',
           },
           this.normalizeSlot()
-        )
+        ),
       ]
     )
-  }
+  },
 })

@@ -26,9 +26,9 @@
     data() {
       return {
         file1: null,
-        file2: null
+        file2: null,
       }
-    }
+    },
   }
 </script>
 
@@ -221,8 +221,8 @@ be called if no files are selected.
     methods: {
       formatNames(files) {
         return files.length === 1 ? files[0].name : `${files.length} files selected`
-      }
-    }
+      },
+    },
   }
 </script>
 
@@ -245,12 +245,12 @@ All three properties are always arrays, regardless of the setting of the `multip
 ```html
 <template>
   <b-form-file multiple>
-   <template slot="file-name" slot-scope="{ names }">
-     <b-badge variant="dark">{{ names[0] }}</b-badge>
-     <b-badge v-if="names.length > 1" variant="dark" class="ms-1">
-       + {{ names.length - 1 }} More files
-     </b-badge>
-   </template>
+    <template slot="file-name" slot-scope="{ names }">
+      <b-badge variant="dark">{{ names[0] }}</b-badge>
+      <b-badge v-if="names.length > 1" variant="dark" class="ms-1">
+        + {{ names.length - 1 }} More files
+      </b-badge>
+    </template>
   </b-form-file>
 </template>
 
@@ -323,14 +323,14 @@ input. To take advantage of the `reset()` method, you will need to obtain a refe
   export default {
     data() {
       return {
-        file: null
+        file: null,
       }
     },
     methods: {
       clearFiles() {
         this.$refs['file-input'].reset()
-      }
-    }
+      },
+    },
   }
 </script>
 

@@ -14,7 +14,7 @@ const ITEM_SELECTOR = [
   '.form-control:not(.disabled):not([disabled])',
   'select:not(.disabled):not([disabled])',
   'input[type="checkbox"]:not(.disabled)',
-  'input[type="radio"]:not(.disabled)'
+  'input[type="radio"]:not(.disabled)',
 ].join(',')
 
 // --- Props ---
@@ -22,7 +22,7 @@ const ITEM_SELECTOR = [
 export const props = makePropsConfigurable(
   {
     justify: makeProp(PROP_TYPE_BOOLEAN, false),
-    keyNav: makeProp(PROP_TYPE_BOOLEAN, false)
+    keyNav: makeProp(PROP_TYPE_BOOLEAN, false),
   },
   NAME_BUTTON_TOOLBAR
 )
@@ -45,10 +45,10 @@ export const BButtonToolbar = /*#__PURE__*/ Vue.extend({
     getItems() {
       const items = selectAll(ITEM_SELECTOR, this.$el)
       // Ensure `tabindex="-1"` is set on every item
-      items.forEach(item => {
+      items.forEach((item) => {
         item.tabIndex = -1
       })
-      return items.filter(el => isVisible(el))
+      return items.filter((el) => isVisible(el))
     },
     focusFirst() {
       const items = this.getItems()
@@ -90,7 +90,7 @@ export const BButtonToolbar = /*#__PURE__*/ Vue.extend({
         stopEvent(event)
         shiftKey ? this.focusLast(event) : this.focusNext(event)
       }
-    }
+    },
   },
   render(h) {
     const { keyNav } = this
@@ -102,16 +102,16 @@ export const BButtonToolbar = /*#__PURE__*/ Vue.extend({
         class: { 'justify-content-between': this.justify },
         attrs: {
           role: 'toolbar',
-          tabindex: keyNav ? '0' : null
+          tabindex: keyNav ? '0' : null,
         },
         on: keyNav
           ? {
               focusin: this.onFocusin,
-              keydown: this.onKeydown
+              keydown: this.onKeydown,
             }
-          : {}
+          : {},
       },
       [this.normalizeSlot()]
     )
-  }
+  },
 })

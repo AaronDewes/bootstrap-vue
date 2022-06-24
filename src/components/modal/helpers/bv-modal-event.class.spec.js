@@ -25,7 +25,7 @@ describe('modal > BvModalEvent', () => {
 
   it('supports cancelable events via event.preventDefault()', async () => {
     const event = new BvModalEvent('foobar', {
-      cancelable: true
+      cancelable: true,
     })
     expect(event).toBeInstanceOf(BvModalEvent)
     expect(event.type).toBe('foobar')
@@ -37,7 +37,7 @@ describe('modal > BvModalEvent', () => {
 
   it('supports non cancelable events', async () => {
     const event = new BvModalEvent('foobar', {
-      cancelable: false
+      cancelable: false,
     })
     expect(event).toBeInstanceOf(BvModalEvent)
     expect(event.type).toBe('foobar')
@@ -51,7 +51,7 @@ describe('modal > BvModalEvent', () => {
     const event = new BvModalEvent('foobar', {
       target: 'baz',
       trigger: 'ok',
-      componentId: 'foo'
+      componentId: 'foo',
     })
     expect(event).toBeInstanceOf(BvModalEvent)
     expect(event.type).toBe('foobar')
@@ -72,7 +72,7 @@ describe('modal > BvModalEvent', () => {
 
   it('supports custom properties', async () => {
     const event = new BvEvent('foobar', {
-      custom: 123
+      custom: 123,
     })
     expect(event).toBeInstanceOf(BvEvent)
     expect(event.type).toBe('foobar')

@@ -3,14 +3,14 @@ import {
   EVENT_NAME_BLUR,
   EVENT_NAME_CHANGE,
   EVENT_NAME_INPUT,
-  EVENT_NAME_UPDATE
+  EVENT_NAME_UPDATE,
 } from '../constants/events'
 import {
   PROP_TYPE_BOOLEAN,
   PROP_TYPE_BOOLEAN_STRING,
   PROP_TYPE_FUNCTION,
   PROP_TYPE_NUMBER_STRING,
-  PROP_TYPE_STRING
+  PROP_TYPE_STRING,
 } from '../constants/props'
 import { attemptBlur, attemptFocus } from '../utils/dom'
 import { stopEvent } from '../utils/events'
@@ -27,11 +27,11 @@ const {
   mixin: modelMixin,
   props: modelProps,
   prop: MODEL_PROP_NAME,
-  event: MODEL_EVENT_NAME
+  event: MODEL_EVENT_NAME,
 } = makeModelMixin('value', {
   type: PROP_TYPE_NUMBER_STRING,
   defaultValue: '',
-  event: EVENT_NAME_UPDATE
+  event: EVENT_NAME_UPDATE,
 })
 
 export { MODEL_PROP_NAME, MODEL_EVENT_NAME }
@@ -53,7 +53,7 @@ export const props = makePropsConfigurable(
     placeholder: makeProp(PROP_TYPE_STRING),
     plaintext: makeProp(PROP_TYPE_BOOLEAN, false),
     readonly: makeProp(PROP_TYPE_BOOLEAN, false),
-    trim: makeProp(PROP_TYPE_BOOLEAN, false)
+    trim: makeProp(PROP_TYPE_BOOLEAN, false),
   }),
   'formTextControls'
 )
@@ -68,7 +68,7 @@ export const formTextMixin = Vue.extend({
     const value = this[MODEL_PROP_NAME]
     return {
       localValue: toString(value),
-      vModelValue: this.modifyValue(value)
+      vModelValue: this.modifyValue(value),
     }
   },
   computed: {
@@ -85,10 +85,10 @@ export const formTextMixin = Vue.extend({
           'form-control-plaintext': plaintext && !isRange && !isColor,
           // `form-control` not used by `type="range"` or `plaintext`
           // Always used by `type="color"`
-          'form-control': isColor || (!plaintext && !isRange)
+          'form-control': isColor || (!plaintext && !isRange),
         },
         this.sizeFormClass,
-        this.stateClass
+        this.stateClass,
       ]
     },
     computedDebounce() {
@@ -97,7 +97,7 @@ export const formTextMixin = Vue.extend({
     },
     hasFormatter() {
       return hasPropFunction(this.formatter)
-    }
+    },
   },
   watch: {
     [MODEL_PROP_NAME](newValue) {
@@ -110,7 +110,7 @@ export const formTextMixin = Vue.extend({
         this.localValue = stringifyValue
         this.vModelValue = modifiedValue
       }
-    }
+    },
   },
   created() {
     // Create private non-reactive props
@@ -245,6 +245,6 @@ export const formTextMixin = Vue.extend({
       if (!this.disabled) {
         attemptBlur(this.$el)
       }
-    }
-  }
+    },
+  },
 })

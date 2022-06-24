@@ -6,7 +6,7 @@ import Section from '~/components/section'
 import docsMixin from '~/plugins/docs-mixin'
 import { components as componentsMeta } from '~/content'
 
-const getReadmeData = name => {
+const getReadmeData = (name) => {
   try {
     return import(`~/../src/components/${name}/README.md` /* webpackChunkName: "docs/components" */)
   } catch {
@@ -38,11 +38,11 @@ export default {
       ...this.meta.components.map(
         ({ component, events, rootEventListeners, slots, aliases, props: propsMeta, version }) =>
           h(Componentdoc, {
-            props: { component, events, rootEventListeners, slots, aliases, propsMeta, version }
+            props: { component, events, rootEventListeners, slots, aliases, propsMeta, version },
           })
       ),
       // Component importing information
-      h(Importdoc, { props: { meta: this.meta } })
+      h(Importdoc, { props: { meta: this.meta } }),
     ])
 
     return h(
@@ -54,10 +54,10 @@ export default {
           meta: this.meta,
           titleLead: this.titleLead,
           body: this.body,
-          loadError: this.loadError
-        }
+          loadError: this.loadError,
+        },
       },
       [$referenceSection]
     )
-  }
+  },
 }

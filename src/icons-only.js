@@ -15,7 +15,7 @@ export {
   NAME,
   // Main BootstrapVueIcons Plugin
   BootstrapVueIcons,
-  IconsPlugin
+  IconsPlugin,
 }
 
 //

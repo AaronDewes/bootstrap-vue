@@ -5,7 +5,7 @@ import {
   PROP_TYPE_BOOLEAN,
   PROP_TYPE_BOOLEAN_STRING,
   PROP_TYPE_NUMBER_STRING,
-  PROP_TYPE_STRING
+  PROP_TYPE_STRING,
 } from '../../constants/props'
 import { concat } from '../../utils/array'
 import { identity } from '../../utils/identity'
@@ -64,7 +64,7 @@ export const props = makePropsConfigurable(
     src: makeProp(PROP_TYPE_STRING),
     srcset: makeProp(PROP_TYPE_ARRAY_STRING),
     thumbnail: makeProp(PROP_TYPE_BOOLEAN, false),
-    width: makeProp(PROP_TYPE_NUMBER_STRING)
+    width: makeProp(PROP_TYPE_NUMBER_STRING),
   },
   NAME_IMG
 )
@@ -81,12 +81,8 @@ export const BImg = /*#__PURE__*/ Vue.extend({
     let width = toInteger(props.width) || null
     let height = toInteger(props.height) || null
     let align = null
-    let srcset = concat(props.srcset)
-      .filter(identity)
-      .join(',')
-    let sizes = concat(props.sizes)
-      .filter(identity)
-      .join(',')
+    let srcset = concat(props.srcset).filter(identity).join(',')
+    let sizes = concat(props.sizes).filter(identity).join(',')
 
     if (props.blank) {
       if (!height && width) {
@@ -122,7 +118,7 @@ export const BImg = /*#__PURE__*/ Vue.extend({
           width: width ? toString(width) : null,
           height: height ? toString(height) : null,
           srcset: srcset || null,
-          sizes: sizes || null
+          sizes: sizes || null,
         },
         class: {
           'img-thumbnail': props.thumbnail,
@@ -131,9 +127,9 @@ export const BImg = /*#__PURE__*/ Vue.extend({
           rounded: rounded === '' || rounded === true,
           [`rounded-${rounded}`]: isString(rounded) && rounded !== '',
           [align]: align,
-          'd-block': block
-        }
+          'd-block': block,
+        },
       })
     )
-  }
+  },
 })

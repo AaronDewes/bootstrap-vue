@@ -27,9 +27,9 @@
   export default {
     data() {
       return {
-        status: 'not_accepted'
+        status: 'not_accepted',
       }
-    }
+    },
   }
 </script>
 
@@ -78,10 +78,10 @@
           { text: 'Orange', value: 'orange' },
           { text: 'Apple', value: 'apple' },
           { text: 'Pineapple', value: 'pineapple' },
-          { text: 'Grape', value: 'grape' }
-        ]
+          { text: 'Grape', value: 'grape' },
+        ],
       }
-    }
+    },
   }
 </script>
 
@@ -138,7 +138,7 @@ const options = [
   { text: 'C', value: 'C', disabled: false },
   { text: 'D', value: { d: 1 }, disabled: true },
   { text: 'E', value: 'E', disabled: false },
-  { text: 'F', value: 'F', disabled: false }
+  { text: 'F', value: 'F', disabled: false },
 ]
 ```
 
@@ -152,7 +152,7 @@ const options = [
   { text: 'Item 2', value: 'second' },
   { html: '<b>Item</b> 3', value: 'third', disabled: true },
   { text: 'Item 4' },
-  { text: 'Item 5', value: { foo: 'bar', baz: true } }
+  { text: 'Item 5', value: { foo: 'bar', baz: true } },
 ]
 ```
 
@@ -170,7 +170,7 @@ const options = [
   { text: 'Item 2', value: 'second', disabled: false },
   { html: '<b>Item</b> 3', value: 'third', disabled: true },
   { text: 'Item 4', value: 'Item 4', disabled: false },
-  { text: 'Item 5', value: 'E', disabled: false }
+  { text: 'Item 5', value: 'E', disabled: false },
 ]
 ```
 
@@ -204,10 +204,10 @@ If you want to customize the field property names (for example using `name` fiel
           { item: 'A', name: 'Option A' },
           { item: 'B', name: 'Option B' },
           { item: 'D', name: 'Option C', notEnabled: true },
-          { item: { d: 1 }, name: 'Option D' }
-        ]
+          { item: { d: 1 }, name: 'Option D' },
+        ],
       }
-    }
+    },
   }
 </script>
 
@@ -238,10 +238,7 @@ or if using individual checkboxes not inside a `<b-form-checkbox-group>`, set th
       ></b-form-checkbox-group>
     </b-form-group>
 
-    <b-form-group
-      label="Form-checkbox-group stacked checkboxes"
-      v-slot="{ ariaDescribedby }"
-    >
+    <b-form-group label="Form-checkbox-group stacked checkboxes" v-slot="{ ariaDescribedby }">
       <b-form-checkbox-group
         v-model="selected"
         :options="options"
@@ -251,10 +248,7 @@ or if using individual checkboxes not inside a `<b-form-checkbox-group>`, set th
       ></b-form-checkbox-group>
     </b-form-group>
 
-    <b-form-group
-      label="Individual stacked checkboxes (default)"
-      v-slot="{ ariaDescribedby }"
-    >
+    <b-form-group label="Individual stacked checkboxes (default)" v-slot="{ ariaDescribedby }">
       <b-form-checkbox
         v-for="option in options"
         v-model="selected"
@@ -267,10 +261,7 @@ or if using individual checkboxes not inside a `<b-form-checkbox-group>`, set th
       </b-form-checkbox>
     </b-form-group>
 
-    <b-form-group
-      label="Individual inline checkboxes"
-      v-slot="{ ariaDescribedby }"
-    >
+    <b-form-group label="Individual inline checkboxes" v-slot="{ ariaDescribedby }">
       <b-form-checkbox
         v-for="option in options"
         v-model="selected"
@@ -295,10 +286,10 @@ or if using individual checkboxes not inside a `<b-form-checkbox-group>`, set th
           { text: 'Orange', value: 'orange' },
           { text: 'Apple', value: 'apple' },
           { text: 'Pineapple', value: 'pineapple' },
-          { text: 'Grape', value: 'grape' }
-        ]
+          { text: 'Grape', value: 'grape' },
+        ],
       }
-    }
+    },
   }
 </script>
 
@@ -396,9 +387,9 @@ variant is `secondary`.
     data() {
       return {
         checked1: false,
-        checked2: false
+        checked2: false,
       }
-    }
+    },
   }
 </script>
 
@@ -417,10 +408,7 @@ variants). The default `button-variant` is `secondary`.
 ```html
 <template>
   <div>
-    <b-form-group
-      label="Button-group style checkboxes"
-      v-slot="{ ariaDescribedby }"
-    >
+    <b-form-group label="Button-group style checkboxes" v-slot="{ ariaDescribedby }">
       <b-form-checkbox-group
         v-model="selected"
         :options="options"
@@ -469,10 +457,10 @@ variants). The default `button-variant` is `secondary`.
           { text: 'Orange', value: 'orange' },
           { text: 'Apple', value: 'apple' },
           { text: 'Pineapple', value: 'pineapple' },
-          { text: 'Grape', value: 'grape' }
-        ]
+          { text: 'Grape', value: 'grape' },
+        ],
       }
-    }
+    },
   }
 </script>
 
@@ -503,9 +491,9 @@ A single checkbox can be rendered with a switch appearance by setting the prop `
   export default {
     data() {
       return {
-        checked: false
+        checked: false,
       }
-    }
+    },
   }
 </script>
 
@@ -520,10 +508,7 @@ Render groups of checkboxes with the look of a switches by setting the prop `swi
 ```html
 <template>
   <div>
-    <b-form-group
-      label="Inline switch style checkboxes"
-      v-slot="{ ariaDescribedby }"
-    >
+    <b-form-group label="Inline switch style checkboxes" v-slot="{ ariaDescribedby }">
       <b-form-checkbox-group
         v-model="selected"
         :options="options"
@@ -532,10 +517,7 @@ Render groups of checkboxes with the look of a switches by setting the prop `swi
       ></b-form-checkbox-group>
     </b-form-group>
 
-    <b-form-group
-      label="Stacked (vertical) switch style checkboxes"
-      v-slot="{ ariaDescribedby }"
-    >
+    <b-form-group label="Stacked (vertical) switch style checkboxes" v-slot="{ ariaDescribedby }">
       <b-form-checkbox-group
         v-model="selected"
         :options="options"
@@ -556,10 +538,10 @@ Render groups of checkboxes with the look of a switches by setting the prop `swi
           { text: 'Red', value: 'red' },
           { text: 'Green', value: 'green' },
           { text: 'Yellow (disabled)', value: 'yellow', disabled: true },
-          { text: 'Blue', value: 'blue' }
-        ]
+          { text: 'Blue', value: 'blue' },
+        ],
       }
-    }
+    },
   }
 </script>
 
@@ -625,10 +607,10 @@ by setting the `plain` prop.
           { text: 'Orange', value: 'orange' },
           { text: 'Apple', value: 'apple' },
           { text: 'Pineapple', value: 'pineapple' },
-          { text: 'Grape', value: 'grape' }
-        ]
+          { text: 'Grape', value: 'grape' },
+        ],
       }
-    }
+    },
   }
 </script>
 
@@ -679,15 +661,15 @@ To apply one of the contextual state icons on `<b-form-checkbox>`, set the `stat
         options: [
           { text: 'First Check', value: 'first' },
           { text: 'Second Check', value: 'second' },
-          { text: 'Third Check', value: 'third' }
-        ]
+          { text: 'Third Check', value: 'third' },
+        ],
       }
     },
     computed: {
       state() {
         return this.value.length === 2
-      }
-    }
+      },
+    },
   }
 </script>
 
@@ -745,7 +727,7 @@ modifier.
     </b-form-checkbox>
 
     <div class="mt-3">
-      Checked: <strong>{{ checked }}</strong><br>
+      Checked: <strong>{{ checked }}</strong><br />
       Indeterminate: <strong>{{ indeterminate }}</strong>
     </div>
 
@@ -758,14 +740,14 @@ modifier.
     data() {
       return {
         checked: true,
-        indeterminate: true
+        indeterminate: true,
       }
     },
     methods: {
       toggleIndeterminate() {
         this.indeterminate = !this.indeterminate
-      }
-    }
+      },
+    },
   }
 </script>
 
@@ -779,7 +761,7 @@ modifier.
   <div>
     <b-form-group>
       <template #label>
-        <b>Choose your flavours:</b><br>
+        <b>Choose your flavours:</b><br />
         <b-form-checkbox
           v-model="allSelected"
           :indeterminate="indeterminate"
@@ -806,8 +788,8 @@ modifier.
     </b-form-group>
 
     <div>
-      Selected: <strong>{{ selected }}</strong><br>
-      All Selected: <strong>{{ allSelected }}</strong><br>
+      Selected: <strong>{{ selected }}</strong><br />
+      All Selected: <strong>{{ allSelected }}</strong><br />
       Indeterminate: <strong>{{ indeterminate }}</strong>
     </div>
   </div>
@@ -820,13 +802,13 @@ modifier.
         flavours: ['Orange', 'Grape', 'Apple', 'Lime', 'Very Berry'],
         selected: [],
         allSelected: false,
-        indeterminate: false
+        indeterminate: false,
       }
     },
     methods: {
       toggleAll(checked) {
         this.selected = checked ? this.flavours.slice() : []
-      }
+      },
     },
     watch: {
       selected(newValue, oldValue) {
@@ -841,8 +823,8 @@ modifier.
           this.indeterminate = true
           this.allSelected = false
         }
-      }
-    }
+      },
+    },
   }
 </script>
 

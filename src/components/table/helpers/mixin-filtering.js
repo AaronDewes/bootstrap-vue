@@ -6,7 +6,7 @@ import {
   PROP_TYPE_ARRAY_OBJECT_STRING,
   PROP_TYPE_FUNCTION,
   PROP_TYPE_ARRAY,
-  PROP_TYPE_NUMBER_STRING
+  PROP_TYPE_NUMBER_STRING,
 } from '../../../constants/props'
 import { RX_DIGITS, RX_SPACES } from '../../../constants/regex'
 import { concat } from '../../../utils/array'
@@ -29,12 +29,12 @@ const DEBOUNCE_DEPRECATED_MSG =
 
 export const props = {
   filter: makeProp([...PROP_TYPE_ARRAY_OBJECT_STRING, PROP_TYPE_REG_EXP]),
-  filterDebounce: makeProp(PROP_TYPE_NUMBER_STRING, 0, value => {
+  filterDebounce: makeProp(PROP_TYPE_NUMBER_STRING, 0, (value) => {
     return RX_DIGITS.test(String(value))
   }),
   filterFunction: makeProp(PROP_TYPE_FUNCTION),
   filterIgnoredFields: makeProp(PROP_TYPE_ARRAY, []),
-  filterIncludedFields: makeProp(PROP_TYPE_ARRAY, [])
+  filterIncludedFields: makeProp(PROP_TYPE_ARRAY, []),
 }
 
 // --- Mixin ---
@@ -48,7 +48,7 @@ export const filteringMixin = Vue.extend({
       isFiltered: false,
       // Where we store the copy of the filter criteria after debouncing
       // We pre-set it with the sanitized filter value
-      localFilter: this.filterSanitize(this.filter)
+      localFilter: this.filterSanitize(this.filter),
     }
   },
   computed: {
@@ -96,7 +96,7 @@ export const filteringMixin = Vue.extend({
 
       // We only do local filtering when requested and there are records to filter
       return filterFn && items.length > 0 ? items.filter(filterFn) : items
-    }
+    },
   },
   watch: {
     // Watch for debounce being set to 0
@@ -123,7 +123,7 @@ export const filteringMixin = Vue.extend({
           // Otherwise, immediately update `localFilter` with `newFilter` value
           this.localFilter = this.filterSanitize(newCriteria)
         }
-      }
+      },
     },
     // Watch for changes to the filter criteria and filtered items vs `localItems`
     // Set visual state and emit events as required
@@ -152,7 +152,7 @@ export const filteringMixin = Vue.extend({
         const { localItems } = this
         this.$emit(EVENT_NAME_FILTERED, localItems, localItems.length)
       }
-    }
+    },
   },
   created() {
     // Create private non-reactive props
@@ -210,7 +210,7 @@ export const filteringMixin = Vue.extend({
       }
 
       // Build the wrapped filter test function, passing the criteria to the provided function
-      const fn = item => {
+      const fn = (item) => {
         // Generated function returns true if the criteria matches part
         // of the serialized data, otherwise false
         return filterFn(item, criteria)
@@ -239,7 +239,7 @@ export const filteringMixin = Vue.extend({
       }
 
       // Generate the wrapped filter test function to use
-      const fn = item => {
+      const fn = (item) => {
         // This searches all row values (and sub property values) in the entire (excluding
         // special `_` prefixed keys), because we convert the record to a space-separated
         // string containing all the value properties (recursively), even ones that are
@@ -266,6 +266,6 @@ export const filteringMixin = Vue.extend({
 
       // Return the generated function
       return fn
-    }
-  }
+    },
+  },
 })

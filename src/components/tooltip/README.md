@@ -5,13 +5,9 @@
 
 ```html
 <div class="text-center my-3">
-  <b-button v-b-tooltip.hover title="Tooltip directive content">
-    Hover Me
-  </b-button>
+  <b-button v-b-tooltip.hover title="Tooltip directive content"> Hover Me </b-button>
 
-  <b-button id="tooltip-target-1">
-    Hover Me
-  </b-button>
+  <b-button id="tooltip-target-1"> Hover Me </b-button>
   <b-tooltip target="tooltip-target-1" triggers="hover">
     I am tooltip <b>component</b> content!
   </b-tooltip>
@@ -137,21 +133,12 @@ use an element that renders the `<a>` tag, not the `<button>` tag, and you also 
 The following will generate an `<a>` that looks like a button:
 
 ```html
-<b-button
-  href="#"
-  tabindex="0"
-  v-b-tooltip.focus
-  title="Tooltip title"
->
+<b-button href="#" tabindex="0" v-b-tooltip.focus title="Tooltip title">
   Link button with tooltip directive
 </b-button>
 
-<b-button id="link-button" href="#" tabindex="0">
-  Link button with tooltip component
-</b-button>
-<b-tooltip target="link-button" title="Tooltip title" triggers="focus">
-  Tooltip title
-</b-tooltip>
+<b-button id="link-button" href="#" tabindex="0"> Link button with tooltip component </b-button>
+<b-tooltip target="link-button" title="Tooltip title" triggers="focus"> Tooltip title </b-tooltip>
 ```
 
 ### Making tooltips work for keyboard and assistive technology users
@@ -203,9 +190,7 @@ override the `pointer-events` on the disabled element.
   <b-tooltip target="button-1" title="Online!"></b-tooltip>
 
   <!-- HTML title specified via default slot -->
-  <b-tooltip target="button-2" placement="bottom">
-    Hello <strong>World!</strong>
-  </b-tooltip>
+  <b-tooltip target="button-2" placement="bottom"> Hello <strong>World!</strong> </b-tooltip>
 
   <!-- Tooltip for an element identified by ref -->
   <b-tooltip :target="() => $refs['button-3']" title="Alternative!"></b-tooltip>
@@ -248,7 +233,9 @@ Bootstraps default behavior apply the `noninteractive` prop:
 
   <div class="mt-3">
     <b-button id="tooltip-button-not-interactive">Mine is not...</b-button>
-    <b-tooltip target="tooltip-button-not-interactive" noninteractive>Catch me if you can!</b-tooltip>
+    <b-tooltip target="tooltip-button-not-interactive" noninteractive
+      >Catch me if you can!</b-tooltip
+    >
   </div>
 </div>
 
@@ -311,8 +298,8 @@ it to `true` will show the tooltip, while setting it to `false` will hide the to
 <script>
   export default {
     data: {
-      show: true
-    }
+      show: true,
+    },
   }
 </script>
 
@@ -359,8 +346,8 @@ by reference.
       },
       onClose() {
         this.$refs.tooltip.$emit('close')
-      }
-    }
+      },
+    },
   }
 </script>
 
@@ -404,7 +391,7 @@ long as you have provided the `.sync` prop modifier.
   export default {
     data() {
       return {
-        disabled: false
+        disabled: false,
       }
     },
     methods: {
@@ -414,8 +401,8 @@ long as you have provided the `.sync` prop modifier.
         } else {
           this.$refs.tooltip.$emit('disable')
         }
-      }
-    }
+      },
+    },
   }
 </script>
 
@@ -444,11 +431,7 @@ markup:
     </b-col>
 
     <b-col md="6" class="py-4">
-      <b-button
-        v-b-tooltip.html
-        title="Hello <strong>World!</strong>"
-        variant="outline-success"
-      >
+      <b-button v-b-tooltip.html title="Hello <strong>World!</strong>" variant="outline-success">
         Html chat
       </b-button>
     </b-col>
@@ -536,10 +519,10 @@ To listen to any tooltip opening, use:
 ```js
 export default {
   mounted() {
-    this.$root.$on('bv::tooltip::show', bvEvent => {
+    this.$root.$on('bv::tooltip::show', (bvEvent) => {
       console.log('bvEvent:', bvEvent)
     })
-  }
+  },
 }
 ```
 

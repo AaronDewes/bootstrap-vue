@@ -15,7 +15,7 @@ describe('form-group', () => {
       top: 0,
       left: 0,
       bottom: 0,
-      right: 0
+      right: 0,
     }))
   })
 
@@ -45,8 +45,8 @@ describe('form-group', () => {
   it('renders content from default slot', async () => {
     const wrapper = mount(BFormGroup, {
       slots: {
-        default: 'foobar'
-      }
+        default: 'foobar',
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -65,14 +65,14 @@ describe('form-group', () => {
     const wrapper = mount(BFormGroup, {
       propsData: {
         label,
-        description
+        description,
       },
       scopedSlots: {
         default(scope) {
           slotScope = scope
           return 'foobar'
-        }
-      }
+        },
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -95,11 +95,11 @@ describe('form-group', () => {
       propsData: {
         label: 'test',
         labelFor: 'input-id',
-        id: 'foo'
+        id: 'foo',
       },
       slots: {
-        default: '<input id="input-id" type="text">'
-      }
+        default: '<input id="input-id" type="text">',
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -119,11 +119,11 @@ describe('form-group', () => {
         label: 'test',
         labelFor: '/input-id',
         // Description is needed to set `aria-describedby`
-        description: 'foo'
+        description: 'foo',
       },
       slots: {
-        default: '<input id="/input-id" type="text">'
-      }
+        default: '<input id="/input-id" type="text">',
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -140,11 +140,11 @@ describe('form-group', () => {
     const wrapper = mount(BFormGroup, {
       propsData: {
         label: 'test',
-        labelFor: 'input-id'
+        labelFor: 'input-id',
       },
       slots: {
-        default: '<input id="input-id" type="text">'
-      }
+        default: '<input id="input-id" type="text">',
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -182,11 +182,11 @@ describe('form-group', () => {
         labelColsSm: 2,
         labelColsMd: 3,
         labelColsLg: 4,
-        labelColsXl: 5
+        labelColsXl: 5,
       },
       slots: {
-        default: '<input id="input-id" type="text">'
-      }
+        default: '<input id="input-id" type="text">',
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -226,11 +226,11 @@ describe('form-group', () => {
         labelColsSm: 2,
         labelColsMd: 3,
         labelColsLg: 4,
-        labelColsXl: 5
+        labelColsXl: 5,
       },
       slots: {
-        default: '<input id="input-id" type="text">'
-      }
+        default: '<input id="input-id" type="text">',
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -262,11 +262,11 @@ describe('form-group', () => {
   it('has expected structure for horizontal layout without label content', async () => {
     const wrapper = mount(BFormGroup, {
       propsData: {
-        labelCols: 1
+        labelCols: 1,
       },
       slots: {
-        default: '<input id="input-id" type="text">'
-      }
+        default: '<input id="input-id" type="text">',
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -297,11 +297,11 @@ describe('form-group', () => {
         labelFor: 'input-id',
         description: 'foo',
         invalidFeedback: 'bar',
-        validFeedback: 'baz'
+        validFeedback: 'baz',
       },
       slots: {
-        default: '<input id="input-id" type="text">'
-      }
+        default: '<input id="input-id" type="text">',
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -358,11 +358,11 @@ describe('form-group', () => {
         labelFor: 'input-id',
         invalidFeedback: 'bar',
         validFeedback: 'baz',
-        feedbackAriaLive: 'polite'
+        feedbackAriaLive: 'polite',
       },
       slots: {
-        default: '<input id="input-id" type="text">'
-      }
+        default: '<input id="input-id" type="text">',
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -405,11 +405,11 @@ describe('form-group', () => {
         labelFor: 'input-id',
         labelAlign: 'left',
         labelAlignMd: 'center',
-        labelAlignXl: 'right'
+        labelAlignXl: 'right',
       },
       slots: {
-        default: '<input id="input-id" type="text">'
-      }
+        default: '<input id="input-id" type="text">',
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -430,11 +430,11 @@ describe('form-group', () => {
         id: 'group-id',
         label: 'test',
         labelFor: 'input-id',
-        labelSrOnly: true
+        labelSrOnly: true,
       },
       slots: {
-        default: '<input id="input-id" type="text">'
-      }
+        default: '<input id="input-id" type="text">',
+      },
     })
 
     expect(wrapper.vm).toBeDefined()
@@ -451,11 +451,11 @@ describe('form-group', () => {
       attachTo: document.body,
       propsData: {
         id: 'group-id',
-        label: 'test'
+        label: 'test',
       },
       slots: {
-        default: '<input id="input-id" type="text">'
-      }
+        default: '<input id="input-id" type="text">',
+      },
     })
 
     expect(wrapper.vm).toBeDefined()

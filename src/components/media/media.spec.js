@@ -19,8 +19,8 @@ describe('media', () => {
   it('renders custom root element when `tag` prop set', async () => {
     const wrapper = mount(BMedia, {
       propsData: {
-        tag: 'section'
-      }
+        tag: 'section',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('SECTION')
@@ -33,8 +33,8 @@ describe('media', () => {
   it('has expected structure when slot `aside` present', async () => {
     const wrapper = mount(BMedia, {
       slots: {
-        aside: 'foobar'
-      }
+        aside: 'foobar',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')
@@ -52,11 +52,11 @@ describe('media', () => {
   it('has expected structure when prop `right-align` is set and slot `aside` present', async () => {
     const wrapper = mount(BMedia, {
       propsData: {
-        rightAlign: true
+        rightAlign: true,
       },
       slots: {
-        aside: 'foobar'
-      }
+        aside: 'foobar',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')
@@ -74,8 +74,8 @@ describe('media', () => {
   it('places default slot inside `media-body`', async () => {
     const wrapper = mount(BMedia, {
       slots: {
-        default: '<b>foobar</b>'
-      }
+        default: '<b>foobar</b>',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')
@@ -91,8 +91,8 @@ describe('media', () => {
   it('does not have child `media-body` when prop `no-body` set', async () => {
     const wrapper = mount(BMedia, {
       propsData: {
-        noBody: true
-      }
+        noBody: true,
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')
@@ -108,11 +108,11 @@ describe('media', () => {
   it('places default slot inside self when `no-body` set', async () => {
     const wrapper = mount(BMedia, {
       propsData: {
-        noBody: true
+        noBody: true,
       },
       slots: {
-        default: '<b>foobar</b>'
-      }
+        default: '<b>foobar</b>',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')
@@ -127,11 +127,11 @@ describe('media', () => {
   it('sets `vertical-align` prop on `media-aside` child', async () => {
     const wrapper = mount(BMedia, {
       propsData: {
-        verticalAlign: 'bottom'
+        verticalAlign: 'bottom',
       },
       slots: {
-        aside: 'foobar'
-      }
+        aside: 'foobar',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('DIV')

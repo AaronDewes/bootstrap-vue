@@ -20,8 +20,8 @@ describe('skeleton-img', () => {
   it('`aspect` prop applies correct padding', async () => {
     const wrapper = mount(BSkeletonImg, {
       propsData: {
-        aspect: '4:3'
-      }
+        aspect: '4:3',
+      },
     })
 
     expect(wrapper).toBeDefined()
@@ -36,8 +36,8 @@ describe('skeleton-img', () => {
   it('`no-aspect` prop removes wrapping `b-aspect`', async () => {
     const wrapper = mount(BSkeletonImg, {
       propsData: {
-        noAspect: true
-      }
+        noAspect: true,
+      },
     })
 
     expect(wrapper).toBeDefined()
@@ -54,8 +54,8 @@ describe('skeleton-img', () => {
     const wrapper = mount(BSkeletonImg, {
       propsData: {
         noAspect: true,
-        width: '200px'
-      }
+        width: '200px',
+      },
     })
 
     expect(wrapper).toBeDefined()
@@ -69,8 +69,8 @@ describe('skeleton-img', () => {
     const wrapper = mount(BSkeletonImg, {
       propsData: {
         noAspect: true,
-        height: '200px'
-      }
+        height: '200px',
+      },
     })
 
     expect(wrapper).toBeDefined()
@@ -83,8 +83,8 @@ describe('skeleton-img', () => {
   it('`variant` prop adds `bg-[variant]` class', async () => {
     const wrapper = mount(BSkeletonImg, {
       propsData: {
-        variant: 'primary'
-      }
+        variant: 'primary',
+      },
     })
 
     expect(wrapper).toBeDefined()
@@ -97,8 +97,8 @@ describe('skeleton-img', () => {
   it('has class `b-skeleton-animate-fade` when `animation="fade"` is set', async () => {
     const wrapper = mount(BSkeletonImg, {
       propsData: {
-        animation: 'fade'
-      }
+        animation: 'fade',
+      },
     })
 
     expect(wrapper).toBeDefined()
@@ -113,8 +113,8 @@ describe('skeleton-img', () => {
   it('`card-img` applies the correct class', async () => {
     const wrapper = mount(BSkeletonImg, {
       propsData: {
-        cardImg: 'top'
-      }
+        cardImg: 'top',
+      },
     })
 
     expect(wrapper).toBeDefined()
@@ -127,8 +127,8 @@ describe('skeleton-img', () => {
   it('accepts custom classes', async () => {
     const wrapper = mount(BSkeletonImg, {
       context: {
-        class: ['foobar']
-      }
+        class: ['foobar'],
+      },
     })
 
     expect(wrapper.find('.b-aspect-content > .b-skeleton-img').exists()).toBe(true)

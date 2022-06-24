@@ -5,7 +5,7 @@ import {
   PROP_TYPE_BOOLEAN,
   PROP_TYPE_BOOLEAN_STRING,
   PROP_TYPE_NUMBER_STRING,
-  PROP_TYPE_STRING
+  PROP_TYPE_STRING,
 } from '../../constants/props'
 import { SLOT_NAME_BADGE } from '../../constants/slots'
 import { isNumber, isNumeric, isString } from '../../utils/inspect'
@@ -30,7 +30,7 @@ const BADGE_FONT_SIZE_SCALE = FONT_SIZE_SCALE * 0.7
 
 // --- Helper methods ---
 
-export const computeSize = value => {
+export const computeSize = (value) => {
   // Parse to number when value is a float-like string
   value = isString(value) && isNumeric(value) ? toFloat(value, 0) : value
   // Convert all numbers to pixel values
@@ -59,7 +59,7 @@ export const props = makePropsConfigurable(
     square: makeProp(PROP_TYPE_BOOLEAN, false),
     src: makeProp(PROP_TYPE_STRING),
     text: makeProp(PROP_TYPE_STRING),
-    variant: makeProp(PROP_TYPE_STRING, 'secondary')
+    variant: makeProp(PROP_TYPE_STRING, 'secondary'),
   }),
   NAME_AVATAR
 )
@@ -71,12 +71,12 @@ export const BAvatar = /*#__PURE__*/ Vue.extend({
   name: NAME_AVATAR,
   mixins: [normalizeSlotMixin],
   inject: {
-    getBvAvatarGroup: { default: () => () => null }
+    getBvAvatarGroup: { default: () => () => null },
   },
   props,
   data() {
     return {
-      localSrc: this.src || null
+      localSrc: this.src || null,
     }
   },
   computed: {
@@ -117,16 +117,16 @@ export const BAvatar = /*#__PURE__*/ Vue.extend({
         top: badgeTop ? offset : null,
         bottom: badgeTop ? null : offset,
         left: badgeLeft ? offset : null,
-        right: badgeLeft ? null : offset
+        right: badgeLeft ? null : offset,
       }
-    }
+    },
   },
   watch: {
     src(newValue, oldValue) {
       if (newValue !== oldValue) {
         this.localSrc = newValue || null
       }
-    }
+    },
   },
   methods: {
     onImgError(event) {
@@ -135,7 +135,7 @@ export const BAvatar = /*#__PURE__*/ Vue.extend({
     },
     onClick(event) {
       this.$emit(EVENT_NAME_CLICK, event)
-    }
+    },
   },
   render(h) {
     const {
@@ -152,7 +152,7 @@ export const BAvatar = /*#__PURE__*/ Vue.extend({
       buttonType: type,
       badge,
       badgeVariant,
-      badgeStyle
+      badgeStyle,
     } = this
     const link = !button && isLink(this)
     const tag = button ? BButton : link ? BLink : 'span'
@@ -167,20 +167,20 @@ export const BAvatar = /*#__PURE__*/ Vue.extend({
       $content = h('img', {
         style: variant ? {} : { width: '100%', height: '100%' },
         attrs: { src, alt },
-        on: { error: this.onImgError }
+        on: { error: this.onImgError },
       })
       $content = h('span', { staticClass: 'b-avatar-img' }, [$content])
     } else if (icon) {
       $content = h(BIcon, {
         props: { icon },
-        attrs: { 'aria-hidden': 'true', alt }
+        attrs: { 'aria-hidden': 'true', alt },
       })
     } else if (text) {
       $content = h(
         'span',
         {
           staticClass: 'b-avatar-text',
-          style: fontStyle
+          style: fontStyle,
         },
         [h('span', text)]
       )
@@ -198,7 +198,7 @@ export const BAvatar = /*#__PURE__*/ Vue.extend({
         {
           staticClass: 'b-avatar-badge',
           class: { [`badge-${badgeVariant}`]: badgeVariant },
-          style: badgeStyle
+          style: badgeStyle,
         },
         [hasBadgeSlot ? this.normalizeSlot(SLOT_NAME_BADGE) : badgeText]
       )
@@ -215,14 +215,14 @@ export const BAvatar = /*#__PURE__*/ Vue.extend({
         rounded: rounded === true,
         [`rounded-${rounded}`]: rounded && rounded !== true,
         // Other classes
-        disabled
+        disabled,
       },
       style: { ...marginStyle, width: size, height: size },
       attrs: { 'aria-label': ariaLabel || null },
       props: button ? { variant, disabled, type } : link ? pluckProps(linkProps, this) : {},
-      on: button || link ? { click: this.onClick } : {}
+      on: button || link ? { click: this.onClick } : {},
     }
 
     return h(tag, componentData, [$content, $badge])
-  }
+  },
 })

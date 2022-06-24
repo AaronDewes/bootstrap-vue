@@ -167,12 +167,14 @@ Positioning is relative to the trigger element.
         <b-button v-b-popover.hover.topleft="'Popover!'" variant="primary">Top left</b-button>
       </b-col>
       <b-col md="3" class="py-3">
-        <b-button v-b-popover.hover.bottomright="'Popover!'" variant="primary">Bottom right</b-button>
+        <b-button v-b-popover.hover.bottomright="'Popover!'" variant="primary"
+          >Bottom right</b-button
+        >
       </b-col>
-       <b-col md="3" class="py-3">
+      <b-col md="3" class="py-3">
         <b-button v-b-popover.hover.bottomleft="'Popover!'" variant="primary">Bottom left</b-button>
       </b-col>
-     <b-col md="3" class="py-3">
+      <b-col md="3" class="py-3">
         <b-button v-b-popover.hover.lefttop="'Popover!'" variant="primary">Left top</b-button>
       </b-col>
       <b-col md="3" class="py-3">
@@ -182,7 +184,9 @@ Positioning is relative to the trigger element.
         <b-button v-b-popover.hover.righttop="'Popover!'" variant="primary">right top</b-button>
       </b-col>
       <b-col md="3" class="py-3">
-        <b-button v-b-popover.hover.rightbottom="'Popover!'" variant="primary">right bottom</b-button>
+        <b-button v-b-popover.hover.rightbottom="'Popover!'" variant="primary"
+          >right bottom</b-button
+        >
       </b-col>
     </b-row>
   </b-container>
@@ -216,7 +220,9 @@ then clicks the trigger element, they must click it again **and** move focus to 
         <b-button v-b-popover.focus="'Popover!'" variant="outline-success">Focus</b-button>
       </b-col>
       <b-col md="6" class="py-3">
-        <b-button v-b-popover.hover.focus="'Popover!'" variant="outline-success">Hover + Focus</b-button>
+        <b-button v-b-popover.hover.focus="'Popover!'" variant="outline-success"
+          >Hover + Focus</b-button
+        >
       </b-col>
     </b-row>
   </b-container>
@@ -245,12 +251,7 @@ use an element that renders the `<a>` tag, not the `<button>` tag, and you also 
 The following will generate an `<a>` that looks like a button:
 
 ```html
-<b-button
-  href="#"
-  tabindex="0"
-  v-b-popover.focus="'Popover content'"
-  title="Popover title"
->
+<b-button href="#" tabindex="0" v-b-popover.focus="'Popover content'" title="Popover title">
   Link button with popover directive
 </b-button>
 ```
@@ -276,16 +277,24 @@ via pressing the <kbd>Tab</kbd> key). Some call this behavior _self dismissing_.
   <b-container fluid>
     <b-row class="text-center">
       <b-col md="3" class="py-3">
-        <b-button v-b-popover.click.blur="'Content'" title="Popover" variant="primary">Click</b-button>
+        <b-button v-b-popover.click.blur="'Content'" title="Popover" variant="primary"
+          >Click</b-button
+        >
       </b-col>
       <b-col md="3" class="py-3">
-        <b-button v-b-popover.click.blur="'Content'" title="Popover" variant="primary">Click</b-button>
+        <b-button v-b-popover.click.blur="'Content'" title="Popover" variant="primary"
+          >Click</b-button
+        >
       </b-col>
       <b-col md="3" class="py-3">
-        <b-button v-b-popover.click.blur="'Content'" title="Popover" variant="primary">Click</b-button>
+        <b-button v-b-popover.click.blur="'Content'" title="Popover" variant="primary"
+          >Click</b-button
+        >
       </b-col>
       <b-col md="3" class="py-3">
-        <b-button v-b-popover.click.blur="'Content'" title="Popover" variant="primary">Click</b-button>
+        <b-button v-b-popover.click.blur="'Content'" title="Popover" variant="primary"
+          >Click</b-button
+        >
       </b-col>
     </b-row>
   </b-container>
@@ -307,7 +316,7 @@ passed as an object to `v-b-popover` in the form of
 ```js
 const options = {
   title: 'This is the title',
-  content: 'This is the content'
+  content: 'This is the content',
 }
 ```
 
@@ -321,7 +330,7 @@ or use the directive modifier `html`
 const options = {
   title: 'This is the <strong>title</strong>',
   content: 'This is the <em>content<em>',
-  html: true
+  html: true,
 }
 ```
 
@@ -334,7 +343,11 @@ function reference whenever the content changes.
   <b-container fluid>
     <b-row class="text-center">
       <b-col md="3" class="py-3">
-        <b-button v-b-popover.hover="'Content!'" title="Title from title attribute" variant="success">
+        <b-button
+          v-b-popover.hover="'Content!'"
+          title="Title from title attribute"
+          variant="success"
+        >
           Title + Content
         </b-button>
       </b-col>
@@ -350,7 +363,11 @@ function reference whenever the content changes.
         <b-button v-b-popover.hover="popoverData" variant="success">Config from data</b-button>
       </b-col>
       <b-col md="3" class="py-3">
-        <b-button v-b-popover.hover.html="popoverMethod" title="Popover with HTML" variant="success">
+        <b-button
+          v-b-popover.hover.html="popoverMethod"
+          title="Popover with HTML"
+          variant="success"
+        >
           Method
         </b-button>
       </b-col>
@@ -369,7 +386,7 @@ function reference whenever the content changes.
       return {
         date: new Date(),
         counter: 0,
-        timer: null
+        timer: null,
       }
     },
     computed: {
@@ -385,15 +402,15 @@ function reference whenever the content changes.
           content: () => {
             // Note this is called only when the popover is opened
             return 'The date is:<br><em>' + new Date() + '</em>'
-          }
+          },
         }
       },
       popoverData() {
         return {
           title: 'Popover Title',
-          content: 'The date is ' + this.date
+          content: 'The date is ' + this.date,
         }
-      }
+      },
     },
     mounted() {
       this.timer = setInterval(() => {
@@ -408,8 +425,8 @@ function reference whenever the content changes.
         // Returns the content as a string
         // Will be called each time the popover is opened
         return '<strong>' + new Date() + '</strong>'
-      }
-    }
+      },
+    },
   }
 </script>
 

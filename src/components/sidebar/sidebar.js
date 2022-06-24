@@ -8,14 +8,14 @@ import {
   PROP_TYPE_BOOLEAN,
   PROP_TYPE_BOOLEAN_STRING,
   PROP_TYPE_NUMBER_STRING,
-  PROP_TYPE_STRING
+  PROP_TYPE_STRING,
 } from '../../constants/props'
 import {
   SLOT_NAME_DEFAULT,
   SLOT_NAME_FOOTER,
   SLOT_NAME_HEADER,
   SLOT_NAME_HEADER_CLOSE,
-  SLOT_NAME_TITLE
+  SLOT_NAME_TITLE,
 } from '../../constants/slots'
 import { attemptFocus, contains, getActiveElement, getTabables } from '../../utils/dom'
 import { getRootActionEventName, getRootEventName } from '../../utils/events'
@@ -44,11 +44,11 @@ const {
   mixin: modelMixin,
   props: modelProps,
   prop: MODEL_PROP_NAME,
-  event: MODEL_EVENT_NAME
+  event: MODEL_EVENT_NAME,
 } = makeModelMixin('visible', {
   type: PROP_TYPE_BOOLEAN,
   defaultValue: false,
-  event: EVENT_NAME_CHANGE
+  event: EVENT_NAME_CHANGE,
 })
 
 // --- Props ---
@@ -85,7 +85,7 @@ export const props = makePropsConfigurable(
     textVariant: makeProp(PROP_TYPE_STRING, 'dark'),
     title: makeProp(PROP_TYPE_STRING),
     width: makeProp(PROP_TYPE_STRING),
-    zIndex: makeProp(PROP_TYPE_NUMBER_STRING)
+    zIndex: makeProp(PROP_TYPE_NUMBER_STRING),
   }),
   NAME_SIDEBAR
 )
@@ -114,7 +114,7 @@ const renderHeaderClose = (h, ctx) => {
     {
       props: { ariaLabel: closeLabel, textVariant },
       on: { click: hide },
-      ref: 'close-button'
+      ref: 'close-button',
     },
     [ctx.normalizeSlot(SLOT_NAME_HEADER_CLOSE) || h(BIconX)]
   )
@@ -137,7 +137,7 @@ const renderHeader = (h, ctx) => {
     {
       staticClass: `${CLASS_NAME}-header`,
       class: ctx.headerClass,
-      key: 'header'
+      key: 'header',
     },
     $content
   )
@@ -149,7 +149,7 @@ const renderBody = (h, ctx) => {
     {
       staticClass: `${CLASS_NAME}-body`,
       class: ctx.bodyClass,
-      key: 'body'
+      key: 'body',
     },
     [ctx.normalizeSlot(SLOT_NAME_DEFAULT, ctx.slotScope)]
   )
@@ -166,7 +166,7 @@ const renderFooter = (h, ctx) => {
     {
       staticClass: `${CLASS_NAME}-footer`,
       class: ctx.footerClass,
-      key: 'footer'
+      key: 'footer',
     },
     [$footer]
   )
@@ -194,7 +194,7 @@ const renderBackdrop = (h, ctx) => {
     directives: [{ name: 'show', value: ctx.localShow }],
     staticClass: 'b-sidebar-backdrop',
     class: { [`bg-${backdropVariant}`]: backdropVariant },
-    on: { click: ctx.onBackdropClick }
+    on: { click: ctx.onBackdropClick },
   })
 }
 
@@ -212,7 +212,7 @@ export const BSidebar = /*#__PURE__*/ Vue.extend({
       // Internal `v-model` state
       localShow: visible,
       // For lazy render triggering
-      isOpen: visible
+      isOpen: visible,
     }
   },
   computed: {
@@ -226,7 +226,7 @@ export const BSidebar = /*#__PURE__*/ Vue.extend({
             enterToClass: 'show',
             leaveClass: 'show',
             leaveActiveClass: 'slide',
-            leaveToClass: ''
+            leaveToClass: '',
           }
     },
     slotScope() {
@@ -253,9 +253,9 @@ export const BSidebar = /*#__PURE__*/ Vue.extend({
         'aria-modal': this.backdrop ? 'true' : 'false',
         'aria-hidden': this.localShow ? null : 'true',
         'aria-label': this.ariaLabel || null,
-        'aria-labelledby': this.ariaLabelledby || this.titleId || null
+        'aria-labelledby': this.ariaLabelledby || this.titleId || null,
       }
-    }
+    },
   },
   watch: {
     [MODEL_PROP_NAME](newValue, oldValue) {
@@ -274,7 +274,7 @@ export const BSidebar = /*#__PURE__*/ Vue.extend({
       if (!this.noCloseOnRouteChange && newValue.fullPath !== oldValue.fullPath) {
         this.hide()
       }
-    }
+    },
   },
   created() {
     // Define non-reactive properties
@@ -366,7 +366,7 @@ export const BSidebar = /*#__PURE__*/ Vue.extend({
       if (!this.noEnforceFocus) {
         attemptFocus(el)
       }
-    }
+    },
   },
   render(h) {
     const { bgVariant, width, textVariant, localShow } = this
@@ -382,14 +382,14 @@ export const BSidebar = /*#__PURE__*/ Vue.extend({
             [`shadow-${shadow}`]: shadow && shadow !== true,
             [`${CLASS_NAME}-right`]: this.right,
             [`bg-${bgVariant}`]: bgVariant,
-            [`text-${textVariant}`]: textVariant
+            [`text-${textVariant}`]: textVariant,
           },
-          this.sidebarClass
+          this.sidebarClass,
         ],
         style: { width },
         attrs: this.computedAttrs,
         directives: [{ name: 'show', value: localShow }],
-        ref: 'content'
+        ref: 'content',
       },
       [renderContent(h, this)]
     )
@@ -401,14 +401,14 @@ export const BSidebar = /*#__PURE__*/ Vue.extend({
         on: {
           beforeEnter: this.onBeforeEnter,
           afterEnter: this.onAfterEnter,
-          afterLeave: this.onAfterLeave
-        }
+          afterLeave: this.onAfterLeave,
+        },
       },
       [$sidebar]
     )
 
     const $backdrop = h(BVTransition, { props: { noFade: this.noSlide } }, [
-      renderBackdrop(h, this)
+      renderBackdrop(h, this),
     ])
 
     let $tabTrapTop = h()
@@ -416,11 +416,11 @@ export const BSidebar = /*#__PURE__*/ Vue.extend({
     if (this.backdrop && localShow) {
       $tabTrapTop = h('div', {
         attrs: { tabindex: '0' },
-        on: { focus: this.onTopTrapFocus }
+        on: { focus: this.onTopTrapFocus },
       })
       $tabTrapBottom = h('div', {
         attrs: { tabindex: '0' },
-        on: { focus: this.onBottomTrapFocus }
+        on: { focus: this.onBottomTrapFocus },
       })
     }
 
@@ -430,9 +430,9 @@ export const BSidebar = /*#__PURE__*/ Vue.extend({
         staticClass: 'b-sidebar-outer',
         style: { zIndex: this.zIndex },
         attrs: { tabindex: '-1' },
-        on: { keydown: this.onKeydown }
+        on: { keydown: this.onKeydown },
       },
       [$tabTrapTop, $sidebar, $tabTrapBottom, $backdrop]
     )
-  }
+  },
 })

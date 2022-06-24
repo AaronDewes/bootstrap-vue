@@ -13,7 +13,7 @@ import { BIconClock, BIconClockFill } from '../../icons/icons'
 import { BButton } from '../button/button'
 import {
   BVFormBtnLabelControl,
-  props as BVFormBtnLabelControlProps
+  props as BVFormBtnLabelControlProps,
 } from '../form-btn-label-control/bv-form-btn-label-control'
 import { BTime, props as BTimeProps } from '../time/time'
 
@@ -23,10 +23,10 @@ const {
   mixin: modelMixin,
   props: modelProps,
   prop: MODEL_PROP_NAME,
-  event: MODEL_EVENT_NAME
+  event: MODEL_EVENT_NAME,
 } = makeModelMixin('value', {
   type: PROP_TYPE_STRING,
-  defaultValue: ''
+  defaultValue: '',
 })
 
 // --- Props ---
@@ -38,7 +38,7 @@ const formBtnLabelControlProps = omit(BVFormBtnLabelControlProps, [
   'id',
   'lang',
   'rtl',
-  'value'
+  'value',
 ])
 
 export const props = makePropsConfigurable(
@@ -56,7 +56,7 @@ export const props = makePropsConfigurable(
     nowButtonVariant: makeProp(PROP_TYPE_STRING, 'outline-primary'),
     resetButton: makeProp(PROP_TYPE_BOOLEAN, false),
     resetButtonVariant: makeProp(PROP_TYPE_STRING, 'outline-danger'),
-    resetValue: makeProp(PROP_TYPE_DATE_STRING)
+    resetValue: makeProp(PROP_TYPE_DATE_STRING),
   }),
   NAME_FORM_TIMEPICKER
 )
@@ -77,13 +77,13 @@ export const BFormTimepicker = /*#__PURE__*/ Vue.extend({
       isRTL: false,
       formattedValue: '',
       // If the menu is opened
-      isVisible: false
+      isVisible: false,
     }
   },
   computed: {
     computedLang() {
       return (this.localLocale || '').replace(/-u-.*$/i, '') || null
-    }
+    },
   },
   watch: {
     [MODEL_PROP_NAME](newValue) {
@@ -96,7 +96,7 @@ export const BFormTimepicker = /*#__PURE__*/ Vue.extend({
       if (this.isVisible) {
         this.$emit(MODEL_EVENT_NAME, newValue || '')
       }
-    }
+    },
   },
   methods: {
     // Public methods
@@ -136,7 +136,7 @@ export const BFormTimepicker = /*#__PURE__*/ Vue.extend({
       const hours = now.getHours()
       const minutes = now.getMinutes()
       const seconds = this.showSeconds ? now.getSeconds() : 0
-      const value = [hours, minutes, seconds].map(v => `00${v || ''}`.slice(-2)).join(':')
+      const value = [hours, minutes, seconds].map((v) => `00${v || ''}`.slice(-2)).join(':')
       this.setAndClose(value)
     },
     onResetButton() {
@@ -161,9 +161,9 @@ export const BFormTimepicker = /*#__PURE__*/ Vue.extend({
     // Render function helpers
     defaultButtonFn({ isHovered, hasFocus }) {
       return this.$createElement(isHovered || hasFocus ? BIconClockFill : BIconClock, {
-        attrs: { 'aria-hidden': 'true' }
+        attrs: { 'aria-hidden': 'true' },
       })
-    }
+    },
   },
   render(h) {
     const { localHMS, disabled, readonly, $props } = this
@@ -183,11 +183,11 @@ export const BFormTimepicker = /*#__PURE__*/ Vue.extend({
             props: {
               size: 'sm',
               disabled: disabled || readonly,
-              variant: this.nowButtonVariant
+              variant: this.nowButtonVariant,
             },
             attrs: { 'aria-label': label || null },
             on: { click: this.onNowButton },
-            key: 'now-btn'
+            key: 'now-btn',
           },
           label
         )
@@ -207,11 +207,11 @@ export const BFormTimepicker = /*#__PURE__*/ Vue.extend({
             props: {
               size: 'sm',
               disabled: disabled || readonly,
-              variant: this.resetButtonVariant
+              variant: this.resetButtonVariant,
             },
             attrs: { 'aria-label': label || null },
             on: { click: this.onResetButton },
-            key: 'reset-btn'
+            key: 'reset-btn',
           },
           label
         )
@@ -233,11 +233,11 @@ export const BFormTimepicker = /*#__PURE__*/ Vue.extend({
             props: {
               size: 'sm',
               disabled,
-              variant: this.closeButtonVariant
+              variant: this.closeButtonVariant,
             },
             attrs: { 'aria-label': label || null },
             on: { click: this.onCloseButton },
-            key: 'close-btn'
+            key: 'close-btn',
           },
           label
         )
@@ -252,11 +252,11 @@ export const BFormTimepicker = /*#__PURE__*/ Vue.extend({
             staticClass: 'b-form-date-controls d-flex flex-wrap',
             class: {
               'justify-content-between': $footer.length > 1,
-              'justify-content-end': $footer.length < 2
-            }
+              'justify-content-end': $footer.length < 2,
+            },
           },
           $footer
-        )
+        ),
       ]
     }
 
@@ -267,13 +267,13 @@ export const BFormTimepicker = /*#__PURE__*/ Vue.extend({
         props: {
           ...pluckProps(timeProps, $props),
           value: localHMS,
-          hidden: !this.isVisible
+          hidden: !this.isVisible,
         },
         on: {
           input: this.onInput,
-          context: this.onContext
+          context: this.onContext,
         },
-        ref: 'time'
+        ref: 'time',
       },
       $footer
     )
@@ -289,20 +289,20 @@ export const BFormTimepicker = /*#__PURE__*/ Vue.extend({
           formattedValue: localHMS ? this.formattedValue : '',
           placeholder,
           rtl: this.isRTL,
-          lang: this.computedLang
+          lang: this.computedLang,
         },
         on: {
           show: this.onShow,
           shown: this.onShown,
-          hidden: this.onHidden
+          hidden: this.onHidden,
         },
         scopedSlots: {
           [SLOT_NAME_BUTTON_CONTENT]:
-            this.$scopedSlots[SLOT_NAME_BUTTON_CONTENT] || this.defaultButtonFn
+            this.$scopedSlots[SLOT_NAME_BUTTON_CONTENT] || this.defaultButtonFn,
         },
-        ref: 'control'
+        ref: 'control',
       },
       [$time]
     )
-  }
+  },
 })

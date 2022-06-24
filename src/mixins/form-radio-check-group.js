@@ -25,7 +25,7 @@ const {
   mixin: modelMixin,
   props: modelProps,
   prop: MODEL_PROP_NAME,
-  event: MODEL_EVENT_NAME
+  event: MODEL_EVENT_NAME,
 } = makeModelMixin('checked')
 
 export { MODEL_PROP_NAME, MODEL_EVENT_NAME }
@@ -47,7 +47,7 @@ export const props = makePropsConfigurable(
     // Render as button style
     buttons: makeProp(PROP_TYPE_BOOLEAN, false),
     stacked: makeProp(PROP_TYPE_BOOLEAN, false),
-    validated: makeProp(PROP_TYPE_BOOLEAN, false)
+    validated: makeProp(PROP_TYPE_BOOLEAN, false),
   }),
   'formRadioCheckGroups'
 )
@@ -64,13 +64,13 @@ export const formRadioCheckGroupMixin = Vue.extend({
     formOptionsMixin,
     formSizeMixin,
     formStateMixin,
-    formCustomMixin
+    formCustomMixin,
   ],
   inheritAttrs: false,
   props,
   data() {
     return {
-      localChecked: this[MODEL_PROP_NAME]
+      localChecked: this[MODEL_PROP_NAME],
     }
   },
   computed: {
@@ -93,13 +93,13 @@ export const formRadioCheckGroupMixin = Vue.extend({
           {
             'btn-group': inline,
             'btn-group-vertical': !inline,
-            [`btn-group-${size}`]: size
-          }
+            [`btn-group-${size}`]: size,
+          },
         ]
       }
 
       return classes
-    }
+    },
   },
   watch: {
     [MODEL_PROP_NAME](newValue) {
@@ -111,7 +111,7 @@ export const formRadioCheckGroupMixin = Vue.extend({
       if (!looseEqual(newValue, oldValue)) {
         this.$emit(MODEL_EVENT_NAME, newValue)
       }
-    }
+    },
   },
   render(h) {
     const { isRadioGroup } = this
@@ -128,7 +128,7 @@ export const formRadioCheckGroupMixin = Vue.extend({
             // Individual radios or checks can be disabled in a group
             disabled: option.disabled || false,
             id: this.safeId(key),
-            value: option.value
+            value: option.value,
             // We don't need to include these, since the input's will know they are inside here
             // form: this.form || null,
             // name: this.groupName,
@@ -136,7 +136,7 @@ export const formRadioCheckGroupMixin = Vue.extend({
             // state: this.state
           },
           attrs,
-          key
+          key,
         },
         [h('span', { domProps: htmlOrText(option.html, option.text) })]
       )
@@ -153,10 +153,10 @@ export const formRadioCheckGroupMixin = Vue.extend({
           id: this.safeId(),
           role: isRadioGroup ? 'radiogroup' : 'group',
           // Add `tabindex="-1"` to allow group to be focused if needed by screen readers
-          tabindex: '-1'
-        }
+          tabindex: '-1',
+        },
       },
       [this.normalizeSlot(SLOT_NAME_FIRST), $inputs, this.normalizeSlot()]
     )
-  }
+  },
 })

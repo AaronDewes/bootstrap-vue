@@ -46,7 +46,7 @@ describe('form-spinbutton', () => {
     expect($output.text()).toEqual('')
 
     await wrapper.setProps({
-      placeholder: 'foobar'
+      placeholder: 'foobar',
     })
     await waitNT(wrapper.vm)
     expect($output.text()).toEqual('foobar')
@@ -59,8 +59,8 @@ describe('form-spinbutton', () => {
       propsData: {
         min: 0,
         max: 10,
-        value: 5
-      }
+        value: 5,
+      },
     })
     expect(wrapper.vm).toBeDefined()
     await waitNT(wrapper.vm)
@@ -101,7 +101,7 @@ describe('form-spinbutton', () => {
     expect($output.attributes('aria-valuetext')).toEqual('5')
 
     await wrapper.setProps({
-      value: 8
+      value: 8,
     })
     await waitNT(wrapper.vm)
 
@@ -116,8 +116,8 @@ describe('form-spinbutton', () => {
   it('has expected structure when prop inline set', async () => {
     const wrapper = mount(BFormSpinbutton, {
       propsData: {
-        inline: true
-      }
+        inline: true,
+      },
     })
     expect(wrapper.vm).toBeDefined()
     await waitNT(wrapper.vm)
@@ -164,8 +164,8 @@ describe('form-spinbutton', () => {
   it('has expected structure when prop vertical set', async () => {
     const wrapper = mount(BFormSpinbutton, {
       propsData: {
-        vertical: true
-      }
+        vertical: true,
+      },
     })
     expect(wrapper.vm).toBeDefined()
     await waitNT(wrapper.vm)
@@ -213,8 +213,8 @@ describe('form-spinbutton', () => {
     const wrapper = mount(BFormSpinbutton, {
       propsData: {
         name: 'foobar',
-        value: null
-      }
+        value: null,
+      },
     })
     expect(wrapper.vm).toBeDefined()
     await waitNT(wrapper.vm)
@@ -229,7 +229,7 @@ describe('form-spinbutton', () => {
     expect($hidden.attributes('value')).toBe('')
 
     await wrapper.setProps({
-      value: 50
+      value: 50,
     })
     await waitNT(wrapper.vm)
     await waitRAF()
@@ -241,7 +241,7 @@ describe('form-spinbutton', () => {
 
   it('basic +/- buttons click', async () => {
     const wrapper = mount(BFormSpinbutton, {
-      attachTo: document.body
+      attachTo: document.body,
     })
     expect(wrapper.vm).toBeDefined()
     await waitNT(wrapper.vm)
@@ -342,7 +342,7 @@ describe('form-spinbutton', () => {
 
     await wrapper.setProps({
       disabled: false,
-      readonly: true
+      readonly: true,
     })
     await $increment.trigger('mousedown')
     await $increment.trigger('mouseup')
@@ -362,7 +362,7 @@ describe('form-spinbutton', () => {
 
     await wrapper.setProps({
       disabled: false,
-      readonly: false
+      readonly: false,
     })
     // Touch events should work as well
     await $increment.trigger('touchstart')
@@ -384,7 +384,7 @@ describe('form-spinbutton', () => {
 
   it('basic keyboard control works', async () => {
     const wrapper = mount(BFormSpinbutton, {
-      attachTo: document.body
+      attachTo: document.body,
     })
     expect(wrapper.vm).toBeDefined()
     await waitNT(wrapper.vm)
@@ -494,8 +494,8 @@ describe('form-spinbutton', () => {
         min: 1,
         max: 100,
         step: 1,
-        value: 1
-      }
+        value: 1,
+      },
     })
     expect(wrapper.vm).toBeDefined()
     await waitNT(wrapper.vm)
@@ -656,7 +656,7 @@ describe('form-spinbutton', () => {
 
   it('focus and blur handling works', async () => {
     const wrapper = mount(BFormSpinbutton, {
-      attachTo: document.body
+      attachTo: document.body,
     })
     expect(wrapper.vm).toBeDefined()
     await waitNT(wrapper.vm)
@@ -706,7 +706,7 @@ describe('form-spinbutton', () => {
     expect(document.activeElement).not.toBe($output.element)
 
     await wrapper.setProps({
-      disabled: true
+      disabled: true,
     })
     await waitNT(wrapper.vm)
 

@@ -19,20 +19,21 @@ const TYPES = {
   refactor: { title: '💅 Refactors' },
   chore: { title: '🏡 Chore' },
   test: { title: '👓 Tests' },
-  types: { title: '🇹 Types' }
+  types: { title: '🇹 Types' },
 }
 
 const ALLOWED_TYPES = Object.keys(TYPES)
 
 const IGNORE_SCOPES = ['deps', 'deps-dev']
 
-const KNOWN_AUTHORS = pkg.contributors.map(c => c.name.toLowerCase())
+const KNOWN_AUTHORS = pkg.contributors.map((c) => c.name.toLowerCase())
 
 // --- Helper methods ---
 
-const execCommand = (cmd, args) => execa(cmd, args).then(r => r.stdout)
+const execCommand = (cmd, args) => execa(cmd, args).then((r) => r.stdout)
 
-const isKnownAuthor = name => !!KNOWN_AUTHORS.find(author => name.toLowerCase().includes(author))
+const isKnownAuthor = (name) =>
+  !!KNOWN_AUTHORS.find((author) => name.toLowerCase().includes(author))
 
 const getLastGitTag = () => execCommand('git', ['describe', '--tags', '--abbrev=0'])
 const getCurrentGitBranch = () => execCommand('git', ['rev-parse', '--abbrev-ref', 'HEAD'])
@@ -43,56 +44,55 @@ const getGitDiff = async (from, to) => {
     '--no-pager',
     'log',
     `${from}...${to}`,
-    '--pretty=%s|%h|%an|%ae'
+    '--pretty=%s|%h|%an|%ae',
   ])
-  return result.split('\n').map(line => {
+  return result.split('\n').map((line) => {
     const [message, commit, authorName, authorEmail] = line.split('|')
     return { message, commit, authorName, authorEmail }
   })
 }
 
-const parseCommits = commits => {
+const parseCommits = (commits) => {
   const referencesRegex = /#[0-9]+/g
 
-  return commits.filter(c => c.message.includes(':')).map(commit => {
-    let [type, ...message] = commit.message.split(':')
-    message = message.join(':')
+  return commits
+    .filter((c) => c.message.includes(':'))
+    .map((commit) => {
+      let [type, ...message] = commit.message.split(':')
+      message = message.join(':')
 
-    // Extract references from message
-    message = message.replace(/\((closes|fixes) #\d[^)]+\)/g, '')
-    const references = []
-    let referenceMatch
-    while ((referenceMatch = referencesRegex.exec(message))) {
-      references.push(referenceMatch[0])
-    }
+      // Extract references from message
+      message = message.replace(/\((closes|fixes) #\d[^)]+\)/g, '')
+      const references = []
+      let referenceMatch
+      while ((referenceMatch = referencesRegex.exec(message))) {
+        references.push(referenceMatch[0])
+      }
 
-    // Remove references and normalize
-    message = message
-      .replace(referencesRegex, '')
-      .replace(/\(\)/g, '')
-      .trim()
+      // Remove references and normalize
+      message = message.replace(referencesRegex, '').replace(/\(\)/g, '').trim()
 
-    // Extract scope from type
-    let scope = type.match(/\((.*)\)/)
-    if (scope) {
-      scope = scope[1]
-    }
-    if (!scope) {
-      scope = 'general'
-    }
-    type = type.split('(')[0]
+      // Extract scope from type
+      let scope = type.match(/\((.*)\)/)
+      if (scope) {
+        scope = scope[1]
+      }
+      if (!scope) {
+        scope = 'general'
+      }
+      type = type.split('(')[0]
 
-    return {
-      ...commit,
-      message,
-      type,
-      scope,
-      references
-    }
-  })
+      return {
+        ...commit,
+        message,
+        type,
+        scope,
+        references,
+      }
+    })
 }
 
-const generateMarkDown = commits => {
+const generateMarkDown = (commits) => {
   const typeGroups = groupBy(commits, 'type')
   const emptyLine = ''
   const lines = []
@@ -122,7 +122,7 @@ const generateMarkDown = commits => {
           '  - ' +
             (commit.references.length > 0 ? commit.references.join(', ') : commit.commit) +
             ' ' +
-            commit.message.replace(/^(.)/, v => v.toUpperCase())
+            commit.message.replace(/^(.)/, (v) => v.toUpperCase())
         )
       }
     }
@@ -133,14 +133,14 @@ const generateMarkDown = commits => {
 
   // Add authors
   const authors = sortBy(
-    uniq(commits.map(commit => commit.authorName).filter(author => !isKnownAuthor(author)))
+    uniq(commits.map((commit) => commit.authorName).filter((author) => !isKnownAuthor(author)))
   )
   if (authors.length > 0) {
     lines.push(
       emptyLine,
       '### 💖 Thanks to',
       emptyLine,
-      ...authors.map(author => `- ${author}`),
+      ...authors.map((author) => `- ${author}`),
       emptyLine
     )
   }
@@ -164,7 +164,9 @@ const main = async () => {
   commits = parseCommits(commits)
 
   // Filter commits
-  commits = commits.filter(c => ALLOWED_TYPES.includes(c.type) && !IGNORE_SCOPES.includes(c.scope))
+  commits = commits.filter(
+    (c) => ALLOWED_TYPES.includes(c.type) && !IGNORE_SCOPES.includes(c.scope)
+  )
 
   // Write markdown file
   await fs.writeFile(FILE_NAME, generateMarkDown(commits), 'utf-8')

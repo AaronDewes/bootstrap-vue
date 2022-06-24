@@ -5,8 +5,8 @@ describe('form-tag', () => {
   it('has expected structure', async () => {
     const wrapper = mount(BFormTag, {
       propsData: {
-        title: 'foobar'
-      }
+        title: 'foobar',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('SPAN')
@@ -29,8 +29,8 @@ describe('form-tag', () => {
     const wrapper = mount(BFormTag, {
       propsData: {
         tag: 'li',
-        title: 'foobar'
-      }
+        title: 'foobar',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('LI')
@@ -48,11 +48,11 @@ describe('form-tag', () => {
   it('renders default slot', async () => {
     const wrapper = mount(BFormTag, {
       propsData: {
-        title: 'foo'
+        title: 'foo',
       },
       slots: {
-        default: 'bar'
-      }
+        default: 'bar',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('SPAN')
@@ -69,8 +69,8 @@ describe('form-tag', () => {
     const wrapper = mount(BFormTag, {
       propsData: {
         pill: true,
-        title: 'foo'
-      }
+        title: 'foo',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('SPAN')
@@ -90,8 +90,8 @@ describe('form-tag', () => {
     const wrapper = mount(BFormTag, {
       propsData: {
         title: 'foo',
-        variant: 'danger'
-      }
+        variant: 'danger',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('SPAN')
@@ -109,8 +109,8 @@ describe('form-tag', () => {
   it('emits "remove" event when button clicked', async () => {
     const wrapper = mount(BFormTag, {
       propsData: {
-        title: 'foobar'
-      }
+        title: 'foobar',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('SPAN')
@@ -133,8 +133,8 @@ describe('form-tag', () => {
     const wrapper = mount(BFormTag, {
       propsData: {
         disabled: true,
-        title: 'foobar'
-      }
+        title: 'foobar',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('SPAN')
@@ -151,8 +151,8 @@ describe('form-tag', () => {
     const wrapper = mount(BFormTag, {
       propsData: {
         noRemove: true,
-        title: 'foobar'
-      }
+        title: 'foobar',
+      },
     })
 
     expect(wrapper.element.tagName).toBe('SPAN')
