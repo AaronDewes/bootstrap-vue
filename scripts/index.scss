@@ -3,9 +3,9 @@
  */
 
 // Include Bootstrap functions, variables, and mixins
-@import "bootstrap5/scss/functions";
-@import "bootstrap5/scss/variables";
-@import "bootstrap5/scss/mixins";
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/mixins";
 
 // Import BootstrapVue custom SCSS
 @import "../src/index.scss";
