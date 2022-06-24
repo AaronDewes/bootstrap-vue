@@ -98,6 +98,7 @@
     "@nuxtjs/pwa": "^3.3.5",
     "@nuxtjs/robots": "^2.5.0",
     "@nuxtjs/sitemap": "^2.4.0",
+    "@nuxtjs/vercel-builder": "^0.22.1",
     "@testing-library/jest-dom": "^5.12.0",
     "@vue/compat": "^3.2.24",
     "@vue/compiler-dom": "^3.2.24",
