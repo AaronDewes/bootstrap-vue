@@ -22,7 +22,7 @@ const ALLOWED_FIELDS_IN_DATA = [
 ]
 
 if (isVue3) {
-  const { extend: originalExtend } = Vue
+  const { defineComponent: originalExtend } = Vue
   const KNOWN_COMPONENTS = ['router-link', 'transition']
   const originalVModelDynamicCreated = Vue.vModelDynamic.created
   const originalVModelDynamicBeforeUpdate = Vue.vModelDynamic.beforeUpdate
